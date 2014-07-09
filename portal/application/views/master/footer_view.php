@@ -148,6 +148,22 @@
 <!-- Main Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>script.js"></script>
 
+<!-- UnderScore Script -->
+<script type="text/javascript" src="<?php echo URL_JS; ?>underscore-min.js"></script>
+<!-- Calendar Script -->
+<script type="text/javascript" src="<?php echo URL_JS; ?>jstz.js"></script>
+<!-- Calendar Script -->
+<script type="text/javascript" src="<?php echo URL_JS; ?>calendar.js"></script>
+<!-- Calendar Script -->
+<script type="text/javascript" src="<?php echo URL_JS; ?>app.js"></script>
+<script type="text/javascript">
+        var disqus_shortname = 'bootstrapcalendar'; // required: replace example with your forum shortname
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
 <!--[if lt IE 9]>
         <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.placeholder.js"></script>
         <script type="text/javascript" src="<?php echo URL_JS; ?>script_ie.js"></script>

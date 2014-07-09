@@ -1,0 +1,28 @@
+<div class="cal-month-day <%= cls %>">
+	<span class="day" data-cal-date="<%= data_day %>" data-cal-view="day" data-toggle="tooltip" title="<%= tooltip %>"><%= day %></span>
+	<ul class="events">
+	<% if (events.length > 0) { %>
+		<div class="events-list" data-cal-start="<%= start %>" data-cal-end="<%= end %>">
+			<% _.each(events, function(event) { %>
+			<li>
+				<a href="eventos/mostrar/1"><%= event.title %></a>
+											
+				<div class="event-popover">
+					
+					<h6><a href="eventos/mostrar/1"><%= event.title %></a></h6>
+					<ul class="event-meta">
+						<li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
+						<li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
+					</ul>
+					
+					<img src="img/events/event1-thumbnail.jpg" alt="" class="align-left">
+					<p>Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque... Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae...</p>
+					
+				</div>
+
+			</li>
+			<% }); %>
+		</div>
+	<% } %>
+	</ul>
+</div>

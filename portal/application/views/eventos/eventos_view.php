@@ -1,13 +1,5 @@
 
-<link href="<?php echo URL_CSS; ?>calendar.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="<?php echo URL_JS; ?>calendar.js"></script>
-<script type="text/javascript">
-    var calendar = $("#calendar").calendar(
-        {
-            tmpl_path: "/tmpls/",
-            events_source: function () { return []; }
-        });         
-</script>
+
 
 <section id="content">			
 
@@ -47,38 +39,24 @@
 				<!-- Events Calendar -->
 				<div class="events-calendar">
 					
-					<!-- Events Calendar Header -->
-					<div class="calendar-header animate-onscroll">
-						
-						<div class="row">
-							
-							<div class="col-lg-6 col-md-6 col-sm-6">
-								<h3>Events for Enero 2014</h3>
-							</div>
-							
-							<!-- <div class="col-lg-6 col-md-6 col-sm-6 align-right">
-								<label>View As:</label>
-								<ul class="filter-dropdown">
-									<li><span>All</span>
-										<ul>
-											<li class="filter" data-filter="all">All</li>
-											<li class="filter" data-filter=".category-campaign">Campaign</li>
-											<li class="filter" data-filter=".category-meetings">Meetings</li>
-											<li class="filter" data-filter=".category-videos">Videos</li>
-											<li class="filter" data-filter=".category-photos">Photos</li>
-										</ul>
-									</li>
-								</ul>
-							</div> -->
-							
-						</div>
-						
-					</div>
+
 					<!-- /Events Calendar Header -->
 					
 					
-					
-					<table class="event-calendar animate-onscroll">
+					<div class="page-header calendar-header animate-onscroll">
+
+						<div class="pull-right form-inline">
+							<div class="btn-group">
+								<button class="btn btn-primary" data-calendar-nav="prev"><< Anterior</button>
+								<button class="btn" data-calendar-nav="today">Hoy</button>
+								<button class="btn btn-primary" data-calendar-nav="next">Siguiente >></button>
+							</div>
+						</div>
+
+						<h3></h3>
+	
+					</div>
+					<table id="calendar" class="event-calendar animate-onscroll">
 						
 						<tr class="calendar-days">
 							<th>Monday</th>
@@ -100,51 +78,51 @@
 									<li>
 										<a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Sed in lacus ut enim</a>
 										
-									<div class="event-popover">
-										
-										<h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Sed in lacus ut enim</a></h6>
-										<ul class="event-meta">
-											<li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-											<li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
-										</ul>
-										
-										<img src="img/events/event1-thumbnail.jpg" alt="" class="align-left">
-										<p>Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque... Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae...</p>
-										
-									</div>
-																			</li>
+										<div class="event-popover">
+											
+											<h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Sed in lacus ut enim</a></h6>
+											<ul class="event-meta">
+												<li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
+												<li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
+											</ul>
+											
+											<img src="img/events/event1-thumbnail.jpg" alt="" class="align-left">
+											<p>Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque... Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae...</p>
+											
+										</div>
+									</li>
 									<li>
 										<a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Integer rutrum ante...</a>
 										
-									<div class="event-popover">
-										
-										<h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Integer rutrum ante...</a></h6>
-										<ul class="event-meta">
-											<li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-											<li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
-										</ul>
-										
-										<img src="img/events/event1-thumbnail2.jpg" alt="" class="align-left">
-										<p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. </p>
-										
-									</div>
-																			</li>
+										<div class="event-popover">
+											
+											<h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Integer rutrum ante...</a></h6>
+											<ul class="event-meta">
+												<li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
+												<li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
+											</ul>
+											
+											<img src="img/events/event1-thumbnail2.jpg" alt="" class="align-left">
+											<p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. </p>
+											
+										</div>
+									</li>
 									<li>
 										<a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Vestibulum libero</a>
 										
-									<div class="event-popover">
-										
-										<h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Vestibulum libero</a></h6>
-										<ul class="event-meta">
-											<li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-											<li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
-										</ul>
-										
-										<img src="img/events/event1-thumbnail3.jpg" alt="" class="align-left">
-										<p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vivamus eget nibh. Etiam cursus leo vel metus. </p>
-										
-									</div>
-																			</li>
+										<div class="event-popover">
+											
+											<h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/1">Vestibulum libero</a></h6>
+											<ul class="event-meta">
+												<li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
+												<li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
+											</ul>
+											
+											<img src="img/events/event1-thumbnail3.jpg" alt="" class="align-left">
+											<p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vivamus eget nibh. Etiam cursus leo vel metus. </p>
+											
+										</div>
+									</li>
 								</ul>
 							</td>
 							<td class="no-events"><span class="day">3</span></td>
@@ -605,18 +583,6 @@
 						</tr>
 						
 					</table>
-					
-					<div class="row">
-				
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 align-left animate-onscroll">
-							<a href="#" class="button big button-arrow-before">December</a>
-						</div>
-						
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 align-right animate-onscroll">
-							<a href="#" class="button big button-arrow">February</a>
-						</div>
-					
-					</div>
 					
 					
 				</div>
