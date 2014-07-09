@@ -52,7 +52,7 @@
 									
 									<i class="icons icon-calendar"></i>
 									<p class="title">Start Date - End Date</p>
-									<p>Oct 1st, 2013 - Oct 5th, 2013</p>
+									<p><?=$result[0][dEveStartTime]?> - <?=$result[0][dEveEndTime]?></p>
 									
 								</div>
 								
@@ -60,63 +60,23 @@
 									
 									<i class="icons icon-clock"></i>
 									<p class="title">Start Time - End Time</p>
-									<p>4:00 p.m. - 6:00 p.m.</p>
+									<p><?=$result[0][dEveStartTime]?> - <?=$result[0][dEveEndTime]?></p>
 									
 								</div>
 								
 								<div class="event-meta-block animate-onscroll">
 									
 									<i class="icons icon-location"></i>
-									<p class="title">Event Location</p>
-									<p>340 W 50th St, New York</p>
+									<p class="title">Direccion del Evento</p>
+									<p><?=$result[0][cEveDireccion]?></p>
 									
 								</div>
 								
 								<div class="event-meta-block animate-onscroll">
 									
 									<i class="icons icon-ticket"></i>
-									<p class="title">Cost</p>
-									<p>Free Entrance</p>
-									
-								</div>
-								
-								<div class="event-meta-block animate-onscroll">
-									
-									<i class="icons icon-folder-open"></i>
-									<p class="title">Category</p>
-									<p><a href="#">Advertisement</a></p>
-									
-								</div>
-								
-								<div class="event-meta-block animate-onscroll">
-									
-									<i class="icons icon-tags"></i>
-									<p class="title">Tags</p>
-									<p><a href="#">events</a>, <a href="#">meeting</a></p>
-									
-								</div>
-								
-								<div class="event-meta-block animate-onscroll">
-									
-									<i class="icons icon-user"></i>
-									<p class="title">Organizer</p>
-									<p>Organizer Name</p>
-									
-								</div>
-								
-								<div class="event-meta-block animate-onscroll">
-									
-									<i class="icons icon-phone"></i>
-									<p class="title">Phone</p>
-									<p>+1 800 559 6580</p>
-									
-								</div>
-								
-								<div class="event-meta-block animate-onscroll">
-									
-									<i class="icons icon-mail-alt"></i>
-									<p class="title">Email</p>
-									<p><a href="mailto:mail@companyname.com">mail@companyname.com</a></p>
+									<p class="title">Costo</p>
+									<p><?=$result[0][nEveCosto]==0?'Entrada Libre':'S/.'.$result[0][nEveCosto]?></p>
 									
 								</div>
 								
@@ -125,10 +85,7 @@
 									<i class="icons icon-share"></i>
 									<p class="title">Share This</p>
 									<ul class="social-share">
-										<li class="facebook"><a href="#" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>
-										<li class="twitter"><a href="#" class="tooltip-ontop" title="Twitter"><i class="icons icon-twitter"></i></a></li>
-										<li class="google"><a href="#" class="tooltip-ontop" title="Google Plus"><i class="icons icon-gplus"></i></a></li>
-										<li class="pinterest"><a href="#" class="tooltip-ontop" title="Pinterest"><i class="icons icon-pinterest-3"></i></a></li>
+										<li class="facebook"><a href="<?=$result[0][cEveLinkFacebook]?>" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>
 										<li class="email"><a href="#" class="tooltip-ontop" title="Email"><i class="icons icon-mail"></i></a></li>
 									</ul>
 									
@@ -148,17 +105,17 @@
 				
 				<div class="row event-pagination">
 				
-					<div class="col-lg-4 col-md-4 col-sm-4 align-left animate-onscroll">
+					<!-- <div class="col-lg-4 col-md-4 col-sm-4 align-left animate-onscroll">
 						<a href="#" class="button big button-arrow-before">Prev event</a>
+					</div> -->
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 align-center animate-onscroll">
+						<a href="<?php echo URL_MAIN ?>eventos/" class="button big">All events</a>
 					</div>
 					
-					<div class="col-lg-4 col-md-4 col-sm-4 align-center animate-onscroll">
-						<a href="#" class="button big">All events</a>
-					</div>
-					
-					<div class="col-lg-4 col-md-4 col-sm-4 align-right animate-onscroll">
+					<!-- <div class="col-lg-4 col-md-4 col-sm-4 align-right animate-onscroll">
 						<a href="#" class="button big button-arrow">Next event</a>
-					</div>
+					</div> -->
 				
 				</div>
 				
