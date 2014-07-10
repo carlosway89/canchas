@@ -1,13 +1,15 @@
 (function($) {
 
 	"use strict";
+	var fecha = new Date();
+	fecha=fecha.getFullYear()+"-"+(fecha.getMonth()<9?'0'+(fecha.getMonth()+1):fecha.getMonth()+1)+"-"+fecha.getDate();
 
 	var options = {
-		events_source: 'events.json.php',
+		events_source: 'eventos/events_json',
 		view: 'month',
 		tmpl_path: 'tmpls/',
 		tmpl_cache: false,
-		day: '2013-03-12',
+		day: fecha,
 		onAfterEventsLoad: function(events) {
 			if(!events) {
 				return;

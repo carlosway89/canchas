@@ -872,8 +872,19 @@ if(!String.prototype.formatNum) {
 						if(browser_timezone.length) {
 							params.browser_timezone = browser_timezone;
 						}
+						
+						
+						var url_json=buildEventsUrl(source, params);
+
+						/*var _url_location=" "+window.location+" ";
+						var existe = _url_location.search("index.php");
+						if(existe!=-1){
+							url_json='../'+url_json;
+						}*/
+						
+						
 						$.ajax({
-							url:      buildEventsUrl(source, params),
+							url:      url_json,
 							dataType: 'json',
 							type:     'GET',
 							async:    false
@@ -921,8 +932,17 @@ if(!String.prototype.formatNum) {
 			return;
 		}
 		var self = this;
+		var url_template=self._templatePath(name);
+		
+
+		var url_location=" "+window.location+" ";
+		var existe = url_location.search("index.php");
+		if(existe!=-1){
+			url_template='../'+url_template;
+		}
+
 		$.ajax({
-			url:      self._templatePath(name),
+			url:      url_template,
 			dataType: 'html',
 			type:     'GET',
 			async:    false,

@@ -13,6 +13,7 @@ class Canchas extends CI_Controller {
         $this->load->model('admin/ubigeo_model');
         $this->load->model('admin/canchas_model');
         $this->load->model('admin/comentarios_canchas_model');
+        $this->load->model('admin/noticias_model');
     }
 
     public function index() {
@@ -20,6 +21,7 @@ class Canchas extends CI_Controller {
         $data['title'] = '.: Solo Canchas - Inicio :.';
         $data['menu_home'] = 'canchas';
         $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
+        $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO'));
         $this->load->view('master/template_view', $data);
     }
 
@@ -45,7 +47,7 @@ class Canchas extends CI_Controller {
                 $id_cancha = $row->nCanID;
                 $name_cancha = $row->cCanNombre;
             }
-            redirect("../canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
+            redirect("../index.php/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
         } else {
             $this->load->view('master/template_view', $data);
         }
@@ -70,7 +72,7 @@ class Canchas extends CI_Controller {
             $data['nCanID'] = $this->canchas_model->getCanID();
             $data['cCanNombre'] = $this->canchas_model->getCanNombre();
             $data['cCanDescripcion'] = $this->canchas_model->getCanDescripcion();
-            $data['cCamLatitud'] = $this->canchas_model->getCanLatitud();
+            $data['cCanLatitud'] = $this->canchas_model->getCanLatitud();
             $data['cCanLongitud'] = $this->canchas_model->getCanLongitud();
             $data['fecha_registro'] = $this->canchas_model->getCanFechaRegistro();
             $data['cCanDireccion'] = $this->canchas_model->getCanDireccion();

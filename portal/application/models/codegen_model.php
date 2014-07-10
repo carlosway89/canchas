@@ -10,7 +10,10 @@ class Codegen_model extends CI_Model {
         
         $this->db->select($fields);
         $this->db->from($table);
-        $this->db->limit($perpage,$start);
+        if ($perpage!=null) {
+            $this->db->limit($perpage,$start);
+        }
+        
         if($where){
         $this->db->where($where);
         }

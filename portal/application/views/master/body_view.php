@@ -77,19 +77,106 @@
                         <img src="<?php echo URL_IMG; ?>new-demo.jpg" alt="">
                     </div>
 
-                    <h4 class="post-title"><a href="blog-single-sidebar.html">Las espectativas de los Brasileños</a></h4>
+                    <h4 class="post-title"><a href="blog-single-sidebar.html">Argentina vs Holanda: albicelestes y tulipanes se enfrentan por semifinal de Brasil 2014</a></h4>
 
                     <div class="post-meta">
                         <span>by <a href="#">admin</a></span>
                         <span>October 01, 2013 11:28AM</span>
                     </div>
 
-                    <p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.</p>
+                    <p>Decisivo duelo se jugará a partir de las 3:00 p.m. (hora peruana) en el Arena de Sao Paulo. El ganador se enfrentará, el domingo 13 de julio, a la selección de Alemania..</p>
 
                     <a href="blog-single-sidebar.html" class="button read-more-button big button-arrow">Read More</a>
 
                 </div>
                 <!-- /Blog Post -->	
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Owl Carousel -->
+                <div class="owl-carousel-container">
+                    <div class="owl-header">
+                        <div class="side-segment">
+                            <h3 class="animate-onscroll">
+                                <i class="icons icon-star"></i> Noticias importantes
+                            </h3>
+                        </div>
+
+                        <div class="carousel-arrows animate-onscroll">
+                            <span class="left-arrow"><i class="icons icon-left-dir"></i></span>
+                            <span class="right-arrow"><i class="icons icon-right-dir"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="owl-carousel" data-max-items="3">
+
+                        <?php foreach ($list_noticias as $list_noticias) { ?>
+                            <!-- Owl Item -->
+                            <div>
+                                <!-- Blog Post -->
+                                <div class="blog-post animate-onscroll">
+                                    <!-- Event Item -->
+                                    <div class="event-item">
+
+                                        <div class="event-image">
+                                            <img src="<?php echo URL_IMG; ?>noticias/<?php echo $list_noticias->foto_noticia; ?>" alt="">
+                                        </div>
+
+                                        <div class="event-info">
+
+                                            <div class="date">
+                                                <span>
+                                                    <span class="day">25</span>
+                                                    <span class="month">DEC</span>
+                                                </span>
+                                            </div>
+
+                                            <div class="event-content">
+                                                <h6><a href="#"><?php echo $list_noticias->cInfoTitulo; ?></a></h6>
+                                                <ul class="event-meta">
+                                                    <li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
+                                                    <li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- /Event Item -->
+                                </div>
+                                <!-- /Blog Post -->
+                            </div>
+                            <!-- /Owl Item -->
+                        <?php } ?>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <!-- Owl Carousel -->
                 <div class="owl-carousel-container">

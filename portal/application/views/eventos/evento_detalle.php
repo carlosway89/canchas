@@ -1,10 +1,15 @@
+<?php
+
+error_reporting(0);
+
+?>
 <section id="content">
 	
 
 	<!-- Page Heading -->
 	<section class="section page-heading animate-onscroll">
 		
-		<h1><?=$result[0][cEveTitulo]?></h1>
+		<h1><?=$result[0]['cEveTitulo']?></h1>
 		
 	</section>
 	<!-- Page Heading -->
@@ -39,7 +44,7 @@
 							
 							<h6>Description</h6>
 							
-							<p><?=$result[0][cEveDescripcion]?> </p>
+							<p><?=$result[0]['cEveDescripcion']?> </p>
 							
 						</div>
 						
@@ -51,16 +56,16 @@
 								<div class="event-meta-block animate-onscroll">
 									
 									<i class="icons icon-calendar"></i>
-									<p class="title">Start Date - End Date</p>
-									<p><?=$result[0][dEveStartTime]?> - <?=$result[0][dEveEndTime]?></p>
+									<p class="title">Fecha Empiezo - Fecha Termino</p>
+									<p><?= date("d/m/y",strtotime($result[0]['dEveStartTime']));?> - <?= date("d/m/y",strtotime($result[0]['dEveEndTime']));?></p>
 									
 								</div>
 								
 								<div class="event-meta-block animate-onscroll">
 									
 									<i class="icons icon-clock"></i>
-									<p class="title">Start Time - End Time</p>
-									<p><?=$result[0][dEveStartTime]?> - <?=$result[0][dEveEndTime]?></p>
+									<p class="title">Hora Empiezo - Hora Termino</p>
+									<p><?=date("H:i",strtotime($result[0]['dEveStartTime']));?> - <?=date("H:i",strtotime($result[0]['dEveEndTime']));?></p>
 									
 								</div>
 								
@@ -68,7 +73,7 @@
 									
 									<i class="icons icon-location"></i>
 									<p class="title">Direccion del Evento</p>
-									<p><?=$result[0][cEveDireccion]?></p>
+									<p><?=$result[0]['cEveDireccion']?></p>
 									
 								</div>
 								
@@ -76,7 +81,7 @@
 									
 									<i class="icons icon-ticket"></i>
 									<p class="title">Costo</p>
-									<p><?=$result[0][nEveCosto]==0?'Entrada Libre':'S/.'.$result[0][nEveCosto]?></p>
+									<p><?=$result[0]['nEveCosto']==0?'Entrada Libre':'S/.'.$result[0]['nEveCosto']?></p>
 									
 								</div>
 								
@@ -85,7 +90,7 @@
 									<i class="icons icon-share"></i>
 									<p class="title">Share This</p>
 									<ul class="social-share">
-										<li class="facebook"><a href="<?=$result[0][cEveLinkFacebook]?>" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>
+										<li class="facebook"><a href="<?=$result[0]['cEveLinkFacebook']?>" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>
 										<li class="email"><a href="#" class="tooltip-ontop" title="Email"><i class="icons icon-mail"></i></a></li>
 									</ul>
 									

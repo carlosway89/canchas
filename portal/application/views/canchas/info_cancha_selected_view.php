@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="event-image animate-onscroll">
-                            <iframe width="900" height="260" src="https://maps.google.rs/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=marmora+road&amp;sll=44.210767,20.922416&amp;sspn=4.606139,10.821533&amp;ie=UTF8&amp;hq=&amp;hnear=Marmora+Rd,+London+SE22+0RX,+United+Kingdom&amp;t=m&amp;z=14&amp;ll=51.451955,-0.055755&amp;output=embed"></iframe>
+                            <div id="maps" class="detail-google-maps"></div>
                         </div>
                     </div>
                 </div>
@@ -95,3 +95,46 @@
     <!-- /Related Events -->
 
 </section>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function(){
+            loadScriptmapa()
+        }, 500);
+    });
+    
+    // FUNCIÓN PARA CARGAR MAPA DE CONTACTANOS
+    function initialize_maps(){
+        var popupinicial;
+        var myOptions = {
+            center: new google.maps.LatLng(<?php echo $cCanLatitud; ?>,<?php echo $cCanLongitud; ?>),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    
+        var map = new google.maps.Map(document.getElementById("maps"),myOptions);       
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(<?php echo $cCanLatitud; ?>,<?php echo $cCanLongitud; ?>),
+            map: map,	   
+            title: 'Ubicación de <?php echo $cCanNombre; ?>'		
+        });
+    
+        if(!popupinicial){
+            popupinicial = new google.maps.InfoWindow();
+        }
+           
+        var contenido='<?php echo $cCanNombre; ?>';
+        popupinicial.setContent(contenido);
+        popupinicial.open(map, marker);
+    }
+
+    function loadScriptmapa() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'http://maps.google.com/maps/api/js?sensor=false&' +
+            'callback=initialize_maps';
+        document.body.appendChild(script);
+    }
+</script>
+

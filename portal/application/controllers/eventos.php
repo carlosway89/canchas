@@ -27,6 +27,29 @@ class Eventos extends CI_Controller {
         $this->load->view('master/template_view', $data);
     }
 
+    public function events_json(){
+        $model=$this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', '', null);
+        //print_r($out);
+        for($i=0;$i<count($model);$i++){
+
+            $out[] = array(
+                'id'=>$model[$i]['nEveID'],
+                'title'=>$model[$i]['cEveTitulo'],
+                'url'=>$model[$i]['cEveLinkFacebook'],
+                'location'=>$model[$i]['cEveDireccion'],
+                'startTime'=>date("H:i",strtotime($model[$i]['dEveStartTime'])),
+                'endTime'=>date("H:i",strtotime($model[$i]['dEveEndTime'])),
+                'linkFoto'=>$model[$i]['cEveLinkFoto'],
+                'description'=>$model[$i]['cEveDescripcion'],
+                'start'=>strtotime($model[$i]['dEveStartTime']).'000',
+                'end'=>strtotime($model[$i]['dEveEndTime']).'000'
+
+            );
+            
+
+        }
+        echo json_encode(array('success' => 1, 'result' => $out));
+    }
     public function mostrar() {
 
         
@@ -52,7 +75,7 @@ class Eventos extends CI_Controller {
         // make sure to put the primarykey first when selecting , 
         //eg. 'userID,name as Name , lastname as Last_Name' , Name and Last_Name will be use as table header.
         // Last_Name will be converted into Last Name using humanize() function, under inflector helper of the CI core.
-        $this->data['results'] = $this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', 'nEveID = 1', $config['per_page'], $this->uri->segment(3));
+        $this->data['results'] = $this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', '', $config['per_page'], $this->uri->segment(3));
 
         $this->data['main_content'] = 'eventos/list';
         $this->data['title'] = '.: Solo Canchas - Eventos :.';
