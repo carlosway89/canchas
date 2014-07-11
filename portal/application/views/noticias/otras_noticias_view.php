@@ -7,43 +7,49 @@
     </div>
 
     <?php $i = 1; ?>
-    <?php foreach ($list_noticias as $list_noticias) { ?>
+    <?php foreach ($list_otrasnoticias as $list_otrasnoticias) { ?>
         <div class="col-lg-4 col-md-4 col-sm-4 animate-onscroll">
 
             <!-- Event Item -->
-                    <div class="event-item">
+            <div class="event-item">
+                <?php
+                $titulo_noticia = replace_caracteres_raros($list_otrasnoticias->cInfoTitulo);
+                ?>
+                <div class="event-image">
+                    <a target="_blank" href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
+                        <img src="<?php echo URL_IMG; ?>noticias/<?php echo $list_otrasnoticias->foto_noticia; ?>" alt="">
+                    </a>
+                </div>
 
-                        <div class="event-image">
-                            <a target="_blank" href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo str_replace(" ", "-", $list_noticias->cInfoTitulo); ?>_<?php echo $list_noticias->nInfoID; ?>">
-                                <img src="<?php echo URL_IMG; ?>noticias/<?php echo $list_noticias->foto_noticia; ?>" alt="">
-                            </a>
-                        </div>
-
-                        <div class="event-info">
-
-                            <div class="date">
-                                <span>
-                                    <span class="day">25</span>
-                                    <span class="month">DEC</span>
-                                </span>
-                            </div>
-
-                            <div class="event-content">
-                                <h6>
-                                    <a target="_blank" href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo str_replace(" ", "-", $list_noticias->cInfoTitulo); ?>_<?php echo $list_noticias->nInfoID; ?>">
-                                        <?php echo $list_noticias->cInfoTitulo; ?>
-                                    </a>
-                                </h6>
-                                <ul class="event-meta">
-                                    <li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-                                    <li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
-                                </ul>
-                            </div>
-
-                        </div>
-
+                <div class="event-info">
+                    <?php
+                    $cadena_fecha2 = explode("/", $list_otrasnoticias->dInfoFechaRegistro);
+                    $nombre_mes2 = toNameMonthAbreviatura($cadena_fecha2[1]);
+                    $nro_dia2 = $cadena_fecha2[0];
+                    ?>
+                    <div class="date">
+                        <span>
+                            <span class="day"><?php echo $nombre_mes2 ?></span>
+                            <span class="month"><?php echo $nro_dia2; ?></span>
+                        </span>
                     </div>
-                    <!-- /Event Item -->
+
+                    <div class="event-content">
+                        <h6>
+                            <a target="_blank" href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
+                                <?php echo $list_otrasnoticias->cInfoTitulo; ?>
+                            </a>
+                        </h6>
+                        <ul class="event-meta">
+                            <li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
+                            <li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /Event Item -->
 
         </div>
 

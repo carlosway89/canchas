@@ -28,7 +28,7 @@ class Noticias extends CI_Controller {
         $data['main_content'] = 'noticias/noticia_seleccionada_view';
         $data['title'] = '.: Solo Canchas - Información de la Noticia seleccionada :.';
         $data['menu_home'] = 'noticias';
-        $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-OTRAS',''));
+        $data['list_otrasnoticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-OTRAS',$cadena[1]));
         $this->load->view('master/template_view', $data);
     }
     

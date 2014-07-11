@@ -23,8 +23,7 @@
                     <div class="event-item">
 
                         <?php
-                        $validacion_array = Array(',', '"', '(', ')', '&', '/', "'", '%');
-                        $titulo_noticia = str_replace($validacion_array, "", str_replace(" ", "-", $list_noticias->cInfoTitulo));
+                        $titulo_noticia = replace_caracteres_raros($list_noticias->cInfoTitulo);
                         ?>
                         <div class="event-image">
                             <a target="_blank" href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_noticias->nInfoID; ?>">
@@ -33,11 +32,15 @@
                         </div>
 
                         <div class="event-info">
-
+                            <?php
+                            $cadena_fecha1 = explode("/", $list_noticias->dInfoFechaRegistro);
+                            $nombre_mes1 = toNameMonthAbreviatura($cadena_fecha1[1]);
+                            $nro_dia1 = $cadena_fecha1[0];
+                            ?>
                             <div class="date">
                                 <span>
-                                    <span class="day">25</span>
-                                    <span class="month">DEC</span>
+                                    <span class="day"><?php echo $nro_dia1; ?></span>
+                                    <span class="month"><?php echo $nombre_mes1; ?></span>
                                 </span>
                             </div>
 

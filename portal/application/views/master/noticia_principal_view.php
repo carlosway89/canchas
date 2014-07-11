@@ -1,18 +1,29 @@
-<div class="blog-post big animate-onscroll">
+<?php foreach ($noticia_principal as $noticia_principal) { ?>
+    <div class="blog-post big animate-onscroll">
 
-    <div class="post-image">
-        <img src="<?php echo URL_IMG; ?>new-demo.jpg" alt="">
+        <?php
+        $titulo_noticia_principal = replace_caracteres_raros($noticia_principal->cInfoTitulo);
+        ?>
+
+        <div class="post-image">
+            <img src="<?php echo URL_IMG; ?>noticias/<?php echo $noticia_principal->foto_noticia; ?>" alt="">
+        </div>
+
+        <h4 class="post-title"><a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia_principal; ?>_<?php echo $noticia_principal->nInfoID; ?>">
+                <?php echo $noticia_principal->cInfoTitulo; ?>
+            </a>
+        </h4>
+
+        <div class="post-meta">
+            <span>Por <a href="#"><?php echo $noticia_principal->cInfoAutor; ?></a></span>
+            <span><?php echo $noticia_principal->dInfoFechaRegistro; ?></span>
+        </div>
+
+        <p><?php echo $noticia_principal->cInfoSumilla; ?></p>
+
+        <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia_principal; ?>_<?php echo $noticia_principal->nInfoID; ?>" class="button read-more-button big button-arrow">
+            Leer más
+        </a>
+
     </div>
-
-    <h4 class="post-title"><a href="blog-single-sidebar.html">Argentina vs Holanda: albicelestes y tulipanes se enfrentan por semifinal de Brasil 2014</a></h4>
-
-    <div class="post-meta">
-        <span>by <a href="#">admin</a></span>
-        <span>October 01, 2013 11:28AM</span>
-    </div>
-
-    <p>Decisivo duelo se jugará a partir de las 3:00 p.m. (hora peruana) en el Arena de Sao Paulo. El ganador se enfrentará, el domingo 13 de julio, a la selección de Alemania..</p>
-
-    <a href="blog-single-sidebar.html" class="button read-more-button big button-arrow">Read More</a>
-
-</div>
+<?php } ?>
