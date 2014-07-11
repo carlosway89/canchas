@@ -19,7 +19,7 @@ class Inicio extends CI_Controller {
         $data['title'] = '.: Solo Canchas - Inicio :.';
         $data['menu_home'] = 'home';
         $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
-        $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO'));
+        $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
         $this->load->view('master/template_view', $data);
     }
     

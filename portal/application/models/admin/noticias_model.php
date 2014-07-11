@@ -10,6 +10,8 @@ class Noticias_Model extends CI_Model {
     private $NotiFechaRegistro;
     private $NotiFechaInicio;
     private $NotiFechaFinal;
+    private $NotiLugar;
+    private $NotiAutor;
     private $NotiFotoPortada;
     private $NotiNroVisitas;
     private $NotiEstado;
@@ -83,6 +85,22 @@ class Noticias_Model extends CI_Model {
         $this->NotiFechaFinal = $NotiFechaFinal;
     }
 
+    public function getNotiLugar() {
+        return $this->NotiLugar;
+    }
+
+    public function setNotiLugar($NotiLugar) {
+        $this->NotiLugar = $NotiLugar;
+    }
+
+    public function getNotiAutor() {
+        return $this->NotiAutor;
+    }
+
+    public function setNotiAutor($NotiAutor) {
+        $this->NotiAutor = $NotiAutor;
+    }
+
     public function getNotiFotoPortada() {
         return $this->NotiFotoPortada;
     }
@@ -107,11 +125,45 @@ class Noticias_Model extends CI_Model {
         $this->NotiEstado = $NotiEstado;
     }
 
+    
     function noticiasQry($Parametros) {
-        $query = $this->db->query("CALL USP_GEN_S_NOTICIAS (?)", $Parametros);
+        $query = $this->db->query("CALL USP_GEN_S_NOTICIAS (?,?)", $Parametros);
         $this->db->close();
         if ($query->num_rows() > 0) {
             return $query->result();
+        } else {
+            return null;
+        }
+    }
+    
+    function noticiasGet($Parametros) {
+        $query = $this->db->query("CALL USP_GEN_S_NOTICIAS (?,?)", $Parametros);
+        $this->db->close();
+        if ($query) {
+            $row = $query->row();
+            //CREANDO EL OBJETO
+            
+            $this->setNotiID($row->nInfoID);
+            $this->setNotiTipoID($row->nInfoTipoID);
+            $this->setNotiTitulo($row->cInfoTitulo);
+            $this->setNotiSumilla($row->cInfoSumilla);
+            $this->setNotiDescripcion($row->cInfoDescripcion);
+            $this->setNotiAutor($row->cInfoAutor);
+            $this->setNotiLugar($row->cInfoLugar);
+            $this->setNotiFechaRegistro($row->dInfoFechaRegistro);
+            $this->setNotiFotoPortada($row->foto_noticia);
+//            $this->setCanLatitud($row->cCanLatitud);
+//            $this->setCanLongitud($row->cCanLongitud);
+//            $this->setCanFechaRegistro($row->fecha_registro);
+//            $this->setCanDireccion($row->direccion);
+//            $this->setCanTelefono($row->telefono);
+//            $this->setCanNroCanchas($row->nro_canchas);
+//            $this->setCanFacebook($row->facebook);
+//            $this->setCanEmail($row->email);
+//            $this->setCanSitioWeb($row->sitio_web);
+//            $this->setCanVisitas($row->nCanVisitas);
+//            $this->setCanEstado($row->cCanEstado);
+            return $row;
         } else {
             return null;
         }

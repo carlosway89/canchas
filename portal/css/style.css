@@ -8151,3 +8151,15 @@ input.numeric-input:focus{
 .cursor_pointer{
     cursor: pointer;
 }
+
+.img_noticia{
+    width: 40%;
+}
+
+.parrafo_justificado{
+    text-align: justify !important;
+}
+
+.post-exceprt .parrafo_justificado{
+    text-align: justify !important;
+}

@@ -63,43 +63,43 @@ function toArrayNumerico($query) {
     return $array;
 }
 
-function toNameMonth($valor) {
+function toNameMonthAbreviatura($valor) {
     switch ($valor) {
         case '01':
-            $m = lang('idioma.meses_1');
+            $m = "Ene";
             break;
         case '02':
-            $m = lang('idioma.meses_2');
+            $m = "Feb";
             break;
         case '03':
-            $m = lang('idioma.meses_3');
+            $m = "Mar";
             break;
         case '04':
-            $m = lang('idioma.meses_4');
+            $m = "Abr";
             break;
         case '05':
-            $m = lang('idioma.meses_5');
+            $m = "May";
             break;
         case '06':
-            $m = lang('idioma.meses_6');
+            $m = "Jun";
             break;
         case '07':
-            $m = lang('idioma.meses_7');
+            $m = "Jul";
             break;
         case '08':
-            $m = lang('idioma.meses_8');
+            $m = "Ago";
             break;
         case '09':
-            $m = lang('idioma.meses_9');
+            $m = "Set";
             break;
         case '10':
-            $m = lang('idioma.meses_10');
+            $m = "Oct";
             break;
         case '11':
-            $m = lang('idioma.meses_11');
+            $m = "Nov";
             break;
         case '12':
-            $m = lang('idioma.meses_12');
+            $m = "Dic";
             break;
         default:
             $m = 'valor incorrecto del mes';
