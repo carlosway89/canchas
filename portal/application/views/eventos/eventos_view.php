@@ -13,27 +13,23 @@
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				
 				
-				<!-- <form class="white-box animate-onscroll">
+				<form id="busqueda_eventos" class="white-box animate-onscroll">
 					
-					<h5>Find events</h5>
+					<h5>Buscar eventos</h5>
 					
 					<div class="inline-inputs">
 						
-						<div class="col-lg-3 col-md-3 col-sm-4">
-							<input type="text" placeholder="Select date">
-						</div>
-						
 						<div class="col-lg-7 col-md-7 col-sm-5">
-							<input type="text" placeholder="Search">
+							<input id="evento_nombre" type="text" placeholder="Buscar por nombre">
 						</div>
 						
 						<div class="col-lg-2 col-md-2 col-sm-3">
-							<button class="medium"><i class="icons icon-search"></i> Find Events</button>
+							<button id="buscar_evento" class="medium"><i class="icons icon-search"></i> Buscar</button>
 						</div>
 						
 					</div>
 					
-				</form> -->
+				</form>
 				
 				
 				<!-- Events Calendar -->
@@ -73,6 +69,6 @@
 		
 	</section>
 	<!-- /Section -->
-
+<script type="text/javascript" src="<?php echo URL_JS; ?>jsBuscarEventos.js"></script>
 </section>
 

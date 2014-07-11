@@ -27,6 +27,15 @@ class Eventos extends CI_Controller {
         $this->load->view('master/template_view', $data);
     }
 
+    public function buscar($nombre){
+
+        $data['result']=$this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto','',null,null,false,'array','cEveTitulo',$nombre);
+        $data['main_content'] = 'eventos/evento_buscar';
+        $data['title'] = '.: Solo Canchas - Eventos :.';
+        $data['menu_home'] = 'Eventos';
+        $this->load->view('master/template_view', $data);
+    }
+
     public function events_json(){
         $model=$this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', '', null);
         //print_r($out);

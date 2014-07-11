@@ -115,7 +115,7 @@ error_reporting(0);
 					</div> -->
 					
 					<div class="col-lg-12 col-md-12 col-sm-12 align-center animate-onscroll">
-						<a href="<?php echo URL_MAIN ?>eventos/" class="button big">All events</a>
+						<a href="<?php echo URL_MAIN ?>eventos" class="button big">All events</a>
 					</div>
 					
 					<!-- <div class="col-lg-4 col-md-4 col-sm-4 align-right animate-onscroll">

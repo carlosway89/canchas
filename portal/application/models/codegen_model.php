@@ -6,7 +6,7 @@ class Codegen_model extends CI_Model {
     }
 
     
-    function get($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array'){
+    function get($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array',$like_body='',$like_sentence=''){
         
         $this->db->select($fields);
         $this->db->from($table);
@@ -16,6 +16,9 @@ class Codegen_model extends CI_Model {
         
         if($where){
         $this->db->where($where);
+        }
+        if($like_body){
+        $this->db->like($like_body,$like_sentence);
         }
         
         $query = $this->db->get();
