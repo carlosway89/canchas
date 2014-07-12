@@ -8,6 +8,7 @@ $(function(){
     $("#cbo_fnd_cancha_departamentos").bind('change', function(event){
         get_provincias();
         get_distritos();
+        get_html();
     });  
     
     // ACCION COMBO DEPARTAMENTO -> BUSCAR PROVINCIAS Y DISTRITOS
@@ -94,4 +95,5 @@ function get_distritos(){
         }              
     });
 }
+// funcion prueba para obtner html de la pagina
 

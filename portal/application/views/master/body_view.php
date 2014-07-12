@@ -29,7 +29,7 @@
                         <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>eventos">
                             <i class="icons icon-calendar margen_ico"></i>
                             <h4 class="letra-h4">Buscar Eventos</h4>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <p>busca los eventos en el calendario</p>
                         </a>
                     </div>
 
@@ -37,7 +37,7 @@
                         <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>eventos/registrar">
                             <i class="icons icon-check margen_ico"></i>
                             <h4 class="letra-h4">Registra tu evento</h4>
-                            <p>Nemo enim ipsam</p>
+                            <p>Registra tus eventos importantes</p>
                         </a>
                     </div>
 
@@ -45,15 +45,15 @@
                         <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>multimedia/publica">
                             <i class="icons icon-picture margen_ico"></i>
                             <h4 class="letra-h4">Publica Multimedia</h4>
-                            <p>Fotos y Videos</p>
+                            <p>Publica tus Fotos y Videos</p>
                         </a>
                     </div>
 
                     <div class="banner-wrapper">
                         <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>noticias/publica">
                             <i class="icons icon-picture margen_ico"></i>
-                            <h4 class="letra-h4">Publica Noticias</h4>
-                            <p>Pellentesque sed dolor</p>
+                            <h4 class="letra-h4">Torneos</h4>
+                            <p>Crea tu torne de tu club</p>
                         </a>
                     </div>							
                 </div>
