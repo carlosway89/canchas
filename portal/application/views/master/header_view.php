@@ -25,9 +25,10 @@
         <link href="<?php echo URL_CSS; ?>owl.carousel.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>responsive-calendar.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>chosen.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo URL_JS; ?>jackbox/css/jackbox.min.css" rel="stylesheet" type="text/css" />
+<!--        <link href="<?php echo URL_JS; ?>jackbox/css/jackbox.min.css" rel="stylesheet" type="text/css" />-->
         <link href="<?php echo URL_CSS; ?>cloud-zoom.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo URL_CSS; ?>colorpicker.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo URL_CSS; ?>prettyPhoto.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>style.css" rel="stylesheet" type="text/css">
 
 
@@ -60,6 +61,7 @@
         <!-- Preloader -->
         <script src="<?php echo URL_JS; ?>jquery.queryloader2.min.js"></script>
         <script src="<?php echo URL_JS; ?>jsCustomHeader.js"></script>
+        
 
     </head>
 

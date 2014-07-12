@@ -95,8 +95,6 @@
                     <div class="tab-header">
                         <ul>
                             <li class="active-tab"><a href="#tab11"><h6>Fotos</h6></a></li>
-                            <li><a href="#tab22"><h6>Videos</h6></a></li>
-                            <li><a href="#tab33"><h6>Comentarios</h6></a></li>
                         </ul>
                     </div>
 
@@ -105,20 +103,7 @@
                         <div class="tab" id="tab11" style="display: block;">
                             <?php $this->load->view("noticias/fotos_noticia_seleccionada_view"); ?>  
                         </div>
-
-                        <div class="tab" id="tab22" style="display: none;">
-                            <p>Sed entum velit vel ipsum bibendum em lacus, itor et aliquam eget, iaculis id lacus. Praesent tudin. 
-                                <br><br>
-                                Aiquam eget, iaculis id lacus. Praesent tudin. Ut sem lacus, ttitor putate uam mi nec hendrerit.</p>
-                            <p>Sed entum velit vel ipsum bibendum em lacus, itor et aliquam eget, iaculis id lacus. Praesent tudin. 
-                                <br><br>
-                                Aiquam eget, iaculis id lacus. Praesent tudin. Ut sem lacus, ttitor putate uam mi nec hendrerit.</p>
-                        </div>
-
-                        <div class="tab" id="tab33" style="display: none;">
-                            <p>Sed entum velit vel ipsum bibendum em lacus, itor et aliquam eget, iaculis id lacus. Praesent tudin.</p>
-                        </div>
-
+                        
                     </div>
 
                 </div>

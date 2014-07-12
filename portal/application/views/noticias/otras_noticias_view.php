@@ -16,7 +16,7 @@
                 $titulo_noticia = replace_caracteres_raros($list_otrasnoticias->cInfoTitulo);
                 ?>
                 <div class="event-image">
-                    <a target="_blank" href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
+                    <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
                         <img src="<?php echo URL_IMG; ?>noticias/<?php echo $list_otrasnoticias->foto_noticia; ?>" alt="">
                     </a>
                 </div>
@@ -36,7 +36,7 @@
 
                     <div class="event-content">
                         <h6>
-                            <a target="_blank" href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
+                            <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
                                 <?php echo $list_otrasnoticias->cInfoTitulo; ?>
                             </a>
                         </h6>

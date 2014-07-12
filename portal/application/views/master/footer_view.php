@@ -22,12 +22,12 @@
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 menu-container">
                     <ul class="menu">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Canchas</a></li>
+                        <li><a href="<?php echo URL_MAIN; ?>">Inicio</a></li>
+                        <li><a href="<?php echo URL_MAIN; ?>canchas">Canchas</a></li>
                         <li><a href="#">Academias</a></li>
                         <li><a href="#">Gimnasios</a></li> 
                         <li><a href="#">Campeonatos</a></li>
-                        <li><a href="#">Contáctenos</a></li>
+                        <li><a href="<?php echo URL_MAIN; ?>contactenos">Contáctenos</a></li>
                     </ul>
                 </div>
             </div>
@@ -139,13 +139,16 @@
 <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.mixitup.js"></script>
 
 <!-- JackBox -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>jackbox/js/jackbox-packed.min.js"></script>
+<!--<script type="text/javascript" src="<?php echo URL_JS; ?>jackbox/js/jackbox-packed.min.js"></script>-->
 
 <!-- CloudZoom -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>zoomsl-3.0.min.js"></script>
 
 <!-- ColorPicker -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>colorpicker.js"></script>
+
+<!-- PrettyPhoto -->
+<script src="<?php echo URL_JS; ?>jquery.prettyPhoto.js"></script>
 
 <!-- Main Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>script.js"></script>
@@ -158,14 +161,7 @@
 <script type="text/javascript" src="<?php echo URL_JS; ?>calendar.js"></script>
 <!-- Calendar Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>app.js"></script>
-<script type="text/javascript">
-        var disqus_shortname = 'bootstrapcalendar'; // required: replace example with your forum shortname
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
+
 <!--[if lt IE 9]>
         <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.placeholder.js"></script>
         <script type="text/javascript" src="<?php echo URL_JS; ?>script_ie.js"></script>

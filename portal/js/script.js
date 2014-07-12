@@ -109,8 +109,8 @@ $(document).ready(function(){
 	
 	
     /* Other Plugins */
-	
-    enableJackBox(); // JackBox Plugin
+    enablePrettyPhoto();
+    //enableJackBox(); // JackBox Plugin
 	
     enableCalendar(); // Full Calendar
 	
@@ -618,16 +618,35 @@ $(document).ready(function(){
             });	
         });		
     }
-
-    /* JackBox Plugin */
-    function enableJackBox(){
+    
+    /* PrettyPhoto */
+    function enablePrettyPhoto(){
         $(window).load(function(){
-            jQuery(".jackbox[data-group]").jackBox("init", {
-                deepLinking: false,
-                defaultShareImage:""
-            });	
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+            $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
+                animation_speed:'normal',
+                theme:'light_square',
+                slideshow:3000, 
+                autoplay_slideshow: true
+            });
+            $(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({
+                animation_speed:'fast',
+                slideshow:10000, 
+                hideflash: true
+            });
         });
     }
+    
+
+    /* JackBox Plugin */
+    //    function enableJackBox(){
+    //        $(window).load(function(){
+    //            jQuery(".jackbox[data-group]").jackBox("init", {
+    //                deepLinking: false,
+    //                defaultShareImage:""
+    //            });	
+    //        });
+    //    }
 	
     /* Accordions */
     function enableAccordions(){
