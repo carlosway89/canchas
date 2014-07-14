@@ -24,7 +24,7 @@ define('DIR_WRITE_MODE', 0777);
 /* DEFINICION DE CONSTANTES */
 define('SERVER_NAME', 'localhost/canchas');
 define('PROJECT_NAME', 'portal');
-define('PROJECT_INTRANET', 'portal');
+define('PROJECT_INTRANET', 'intranet');
 define('URL_CSS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/css/');
 define('URL_JS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/js/');
 define('URL_IMG', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/img/');

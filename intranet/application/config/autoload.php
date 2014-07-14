@@ -37,7 +37,7 @@
 |
 */
 
-$autoload['packages'] = array();
+$autoload['packages'] = array(APPPATH.'third_party');
 
 
 /*
@@ -53,7 +53,6 @@ $autoload['packages'] = array();
 */
 
 $autoload['libraries'] = array();
-//$autoload['libraries'] = array('database', 'session', 'JqGrid', 'form_validation', 'loaders', 'email');
 
 
 /*
@@ -66,7 +65,6 @@ $autoload['libraries'] = array();
 */
 
 $autoload['helper'] = array();
-//$autoload['helper'] = array('url','form','service_helper','language');
 
 
 /*
