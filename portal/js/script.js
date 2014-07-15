@@ -623,6 +623,12 @@ $(document).ready(function(){
     function enablePrettyPhoto(){
         $(window).load(function(){
             $("a[rel^='prettyPhoto']").prettyPhoto();
+            $(".users a[rel^='prettyPhoto']").prettyPhoto({
+                default_width: 750,
+                default_height: 500,
+                custom_markup: '<script>$(function(){ alert("hola") });</script>'
+
+            });
             $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
                 animation_speed:'normal',
                 theme:'light_square',

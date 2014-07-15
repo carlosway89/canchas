@@ -1,12 +1,18 @@
 $(function(){   
 
-
+//alert("hola");
 
     // ACCION BUTTON REGISTRO USUARIOS
     $("#btn_ins_users").bind('click', function(event){
-        registro_usuarios();
+        alert("registrando...");
+//        registro_usuarios();
     });  
 });  
+
+
+function local(){
+    alert("probando");
+}
         
 function registro_usuarios(){
     var form = "#frm_ins_registro_users";

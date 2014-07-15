@@ -57,9 +57,9 @@
 
                             <ul class="slides">
 
-                                <li><a class="jackbox media-icon" data-group="image-jackbox" href="<?php echo URL_IMG; ?>galley1.jpg"><img src="<?php echo URL_IMG; ?>galley1.jpg" alt=""></a></li>
-                                <li><a class="jackbox media-icon" data-group="image-jackbox" href="<?php echo URL_IMG; ?>galley2.jpg"><img src="<?php echo URL_IMG; ?>galley2.jpg" alt=""></a></li>
-                                <li><a class="jackbox media-icon" data-group="image-jackbox" href="<?php echo URL_IMG; ?>galley3.jpg"><img src="<?php echo URL_IMG; ?>galley3.jpg" alt=""></a></li>												
+                                <li><a class="media-icon" rel="prettyPhoto[gallery_galcan]" href="<?php echo URL_IMG; ?>galley1.jpg"><img src="<?php echo URL_IMG; ?>galley1.jpg" alt=""></a></li>
+                                <li><a class="media-icon" rel="prettyPhoto[gallery_galcan]" href="<?php echo URL_IMG; ?>galley2.jpg"><img src="<?php echo URL_IMG; ?>galley2.jpg" alt=""></a></li>
+                                <li><a class="media-icon" rel="prettyPhoto[gallery_galcan]" href="<?php echo URL_IMG; ?>galley3.jpg"><img src="<?php echo URL_IMG; ?>galley3.jpg" alt=""></a></li>												
                             </ul>
 
                         </div>

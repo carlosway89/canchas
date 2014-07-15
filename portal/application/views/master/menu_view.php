@@ -148,7 +148,7 @@
 
             <!-- Donate -->
             <li class="donate-button ">
-                <a class="jackbox media-icon" data-group="media-register-users" href="<?php echo URL_MAIN; ?>registro_usuarios?iframe=true&width=800&height=950"><i class="icons icon-users"></i> Registro de Usuarios</a>
+                <a class="media-icon" rel="prettyPhoto[registro-usuarios]" href="<?php echo URL_MAIN; ?>registro_usuarios?iframe=true&width=800&height=950"><i class="icons icon-users"></i> Registro de Usuarios</a>
             </li>
             <!-- /Donate -->
 

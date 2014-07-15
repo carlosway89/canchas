@@ -21,6 +21,17 @@
                 </div>											
             </div>
 
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 users">
+
+                <a href="#inline-1" rel="prettyPhoto" >probando probando</a>
+                <div id="inline-1" style="display: none;">
+                    <?php $this->load->view("registro_usuarios/panel_view"); ?>
+                </div>
+            </div>    
+
+
             <div class="col-lg-12 col-md-12 col-sm-12">
 
                 <div class="banners-inline">
@@ -125,7 +136,7 @@
                 <!-- /Banner Rotator -->						
             </div>
 
-            
+
             <!-- Sidebar -->
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
 
