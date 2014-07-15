@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://'.SERVER_NAME.'/'.PROJECT_NAME.'/';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url']	= 'http://'.SERVER_NAME.'/'.PROJECT_NAME.'/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '|)*%5cx9Nr2gEtp04y8RYFwH3=7D^Q}+';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------

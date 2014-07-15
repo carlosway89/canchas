@@ -18,6 +18,12 @@
 	<![endif]-->
 
 	<!-- page specific plugin styles -->
+			<link rel="stylesheet" href="<?php echo URL_CSS; ?>jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="<?php echo URL_CSS; ?>chosen.css" />
+		<link rel="stylesheet" href="<?php echo URL_CSS; ?>datepicker.css" />
+		<link rel="stylesheet" href="<?php echo URL_CSS; ?>bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="<?php echo URL_CSS; ?>daterangepicker.css" />
+		<link rel="stylesheet" href="<?php echo URL_CSS; ?>colorpicker.css" />
 
 	<!-- fonts -->
 
@@ -39,12 +45,6 @@
 
 	<script src="<?php echo URL_JS; ?>ace-extra.min.js"></script>
 
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
-	<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
 </head>
 
 <body>
@@ -216,7 +216,7 @@
 
 								<li>
 									<a href="#">
-										<img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+										<img src="<?=URL_IMG?>avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
 										<span class="msg-body">
 											<span class="msg-title">
 												<span class="blue">Alex:</span>
@@ -233,7 +233,7 @@
 
 								<li>
 									<a href="#">
-										<img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+										<img src="<?=URL_IMG?>avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
 										<span class="msg-body">
 											<span class="msg-title">
 												<span class="blue">Susan:</span>
@@ -250,7 +250,7 @@
 
 								<li>
 									<a href="#">
-										<img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+										<img src="<?=URL_IMG?>avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
 										<span class="msg-body">
 											<span class="msg-title">
 												<span class="blue">Bob:</span>
@@ -276,7 +276,7 @@
 
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="<?=URL_IMG?>avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									Jason

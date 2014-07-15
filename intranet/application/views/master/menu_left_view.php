@@ -47,15 +47,15 @@
 
 					<ul class="nav nav-list">
 						<li class="active">
-							<a href="index.html">
+							<a href="<?=URL_MAIN?>manage">
 								<i class="icon-dashboard"></i>
 								<span class="menu-text"> PANEL </span>
 							</a>
 						</li>
 
 						<li>
-							<a href="typography.html">
-								<i class="icon-text-width"></i>
+							<a href="<?=URL_MAIN?>canchas">
+								<i class=" icon-globe "></i>
 								<span class="menu-text"> Canchas </span>
 							</a>
 						</li>
@@ -70,14 +70,14 @@
 
 							<ul class="submenu">
 								<li>
-									<a href="elements.html">
+									<a href="<?=URL_MAIN?>fotos">
 										<i class="icon-double-angle-right"></i>
 										Fotos
 									</a>
 								</li>
 
 								<li>
-									<a href="buttons.html">
+									<a href="<?=URL_MAIN?>videos">
 										<i class="icon-double-angle-right"></i>
 										Videos
 									</a>
@@ -86,12 +86,20 @@
 						</li>
 
 						<li>
-							<a href="typography.html">
-								<i class="icon-text-width"></i>
+							<a href="<?=URL_MAIN?>eventos">
+								<i class=" icon-bullhorn"></i>
 								<span class="menu-text"> Eventos </span>
 							</a>
 						</li>
 
+						
+
+						<li>
+							<a href="<?=URL_MAIN?>fixture">
+								<i class="icon-list-alt"></i>
+								<span class="menu-text"> Fixture </span>
+							</a>
+						</li>
 						<li>
 							<a href="#" class="dropdown-toggle">
 								<i class="icon-edit"></i>
@@ -102,28 +110,28 @@
 
 							<ul class="submenu">
 								<li>
-									<a href="form-elements.html">
+									<a href="<?=URL_MAIN?>">
 										<i class="icon-double-angle-right"></i>
-										Form Elements
+										Uusuario
 									</a>
 								</li>
 
 								<li>
-									<a href="form-wizard.html">
+									<a href="<?=URL_MAIN?>">
 										<i class="icon-double-angle-right"></i>
-										Wizard &amp; Validation
+										Parametros
 									</a>
 								</li>
 
 								<li>
-									<a href="wysiwyg.html">
+									<a href="<?=URL_MAIN?>">
 										<i class="icon-double-angle-right"></i>
 										Wysiwyg &amp; Markdown
 									</a>
 								</li>
 
 								<li>
-									<a href="dropzone.html">
+									<a href="<?=URL_MAIN?>">
 										<i class="icon-double-angle-right"></i>
 										Dropzone File Upload
 									</a>
@@ -132,14 +140,7 @@
 						</li>
 
 						<li>
-							<a href="widgets.html">
-								<i class="icon-list-alt"></i>
-								<span class="menu-text"> Fixture </span>
-							</a>
-						</li>
-
-						<li>
-							<a href="calendar.html">
+							<a href="<?=URL_MAIN?>">
 								<i class="icon-calendar"></i>
 
 								<span class="menu-text">
