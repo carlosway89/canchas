@@ -1,122 +1,96 @@
 <?php
 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 class Canchas extends CI_Controller {
-    
+
     function __construct() {
         parent::__construct();
-		$this->load->library('form_validation');		
-		$this->load->helper(array('form','url','codegen_helper'));
-		$this->load->model('codegen_model','',TRUE);
-	}	
-	
-	function index(){
-		$this->manage();
-	}
+        $this->load->library('session');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        //$this->load->model('admin/ubigeo_model');
+        //$this->load->model('admin/canchas_model');
+        //$this->load->model('admin/comentarios_canchas_model');
+        //$this->load->model('admin/noticias_model');
+    }
 
-	function manage(){
-        $this->load->library('table');
-        $this->load->library('pagination');
-        
-        //paging
-        $config['base_url'] = base_url().'index.php/canchas/manage/';
-        $config['total_rows'] = $this->codegen_model->count('canchas');
-        $config['per_page'] = 3;	
-        $this->pagination->initialize($config); 	
-        // make sure to put the primarykey first when selecting , 
-		//eg. 'userID,name as Name , lastname as Last_Name' , Name and Last_Name will be use as table header.
-		// Last_Name will be converted into Last Name using humanize() function, under inflector helper of the CI core.
-		$this->data['results'] = $this->codegen_model->get('canchas','nCanID,cCanNombre,cCanDescripcion,cCanLatitud,cCanLongitud,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dCanFechaRegistro,nCanVisitas,cCanEstado','',$config['per_page'],$this->uri->segment(3));
+    public function index() {
+        $data['main_content'] = 'canchas/panel_view';
+        $data['title'] = '.: Panel de Administración - Módulo de Canchas :.';
+        $data['breadcrumbs'] = 'Módulo de Canchas';
+        //$data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
+        //$data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
+        //$data['noticia_principal'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-PRINCIPAL',''));
+        $this->load->view('master/template_view', $data);
+    }
+
+    public function busqueda($criterio) {
+        $valor_criterio = explode("_", $criterio);
+        $texto_criterio = str_replace("-", " ", $valor_criterio[0]);
+
+        $data['main_content'] = 'canchas/qry_view';
+        $data['title'] = '.: Solo Canchas - Busqueda de Canchas :.';
+        $data['menu_home'] = 'canchas';
+        $data['list_canchas'] = $this->canchas_model->canchasQry(
+                array(
+                    'LISTADO-CANCHAS-CRITERIO',
+                    $texto_criterio,
+                    $valor_criterio[1],
+                    $valor_criterio[2],
+                    $valor_criterio[3]
+                )
+        );
+
+        if (count($data['list_canchas']) == 1) {
+            foreach ($data['list_canchas'] as $row) {
+                $id_cancha = $row->nCanID;
+                $name_cancha = $row->cCanNombre;
+            }
+            redirect("../index.php/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
+        } else {
+            $this->load->view('master/template_view', $data);
+        }
+    }
+
+    public function informacion($nombre_cancha_id) {
+        $cadena = explode("_", $nombre_cancha_id);
+        $data = $this->canchasGet($cadena[1]);
+        $data['main_content'] = 'canchas/info_cancha_selected_view';
+        $data['title'] = '.: Solo Canchas - Información de la Cancha seleccionada :.';
+        $data['menu_home'] = 'canchas';
+        $data['list_otrascanchas'] = $this->canchas_model->canchasQryOtros(array('LISTADO-CANCHAS-OTROS', $cadena[1], '', '', ''));
+        $data['list_comentarios'] = $this->comentarios_canchas_model->comentarios_canchasQry(array('LISTADO-COMENTARIOS-CANCHAS-CRITERIO'));
        
-	   $this->load->view('canchas_list', $this->data); 
-       //$this->template->load('content', 'canchas_list', $this->data); // if have template library , http://maestric.com/doc/php/codeigniter_template
-		
+        $this->load->view('master/template_view', $data);
     }
-	
-    function add(){        
-        $this->load->library('form_validation');    
-		$this->data['custom_error'] = '';
-		
-        if ($this->form_validation->run('canchas') == false)
-        {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
 
-        } else
-        {                            
-            $data = array(
-                    'cCanNombre' => set_value('cCanNombre'),
-					'cCanDescripcion' => set_value('cCanDescripcion'),
-					'cCanLatitud' => set_value('cCanLatitud'),
-					'cCanLongitud' => set_value('cCanLongitud'),
-					'nUbiDepartamento' => set_value('nUbiDepartamento'),
-					'nUbiProvincia' => set_value('nUbiProvincia'),
-					'nUbiDistrito' => set_value('nUbiDistrito'),
-					'dCanFechaRegistro' => set_value('dCanFechaRegistro'),
-					'nCanVisitas' => set_value('nCanVisitas'),
-					'cCanEstado' => set_value('cCanEstado')
-            );
-           
-			if ($this->codegen_model->add('canchas',$data) == TRUE)
-			{
-				//$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
-				// or redirect
-				redirect(base_url().'index.php/canchas/manage/');
-			}
-			else
-			{
-				$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+    function canchasGet($nCanId) {
+        $query = $this->canchas_model->canchasGet(array('LISTADO-CANCHAS-CODIGO', $nCanId, '', '', ''));
 
-			}
-		}		   
-		$this->load->view('canchas_add', $this->data);   
-        //$this->template->load('content', 'canchas_add', $this->data);
-    }	
-    
-    function edit(){        
-        $this->load->library('form_validation');    
-		$this->data['custom_error'] = '';
-		
-        if ($this->form_validation->run('canchas') == false)
-        {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
-
-        } else
-        {                            
-            $data = array(
-                    'cCanNombre' => $this->input->post('cCanNombre'),
-					'cCanDescripcion' => $this->input->post('cCanDescripcion'),
-					'cCanLatitud' => $this->input->post('cCanLatitud'),
-					'cCanLongitud' => $this->input->post('cCanLongitud'),
-					'nUbiDepartamento' => $this->input->post('nUbiDepartamento'),
-					'nUbiProvincia' => $this->input->post('nUbiProvincia'),
-					'nUbiDistrito' => $this->input->post('nUbiDistrito'),
-					'dCanFechaRegistro' => $this->input->post('dCanFechaRegistro'),
-					'nCanVisitas' => $this->input->post('nCanVisitas'),
-					'cCanEstado' => $this->input->post('cCanEstado')
-            );
-           
-			if ($this->codegen_model->edit('canchas',$data,'nCanID',$this->input->post('nCanID')) == TRUE)
-			{
-				redirect(base_url().'index.php/canchas/manage/');
-			}
-			else
-			{
-				$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
-
-			}
-		}
-
-		$this->data['result'] = $this->codegen_model->get('canchas','nCanID,cCanNombre,cCanDescripcion,cCanLatitud,cCanLongitud,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dCanFechaRegistro,nCanVisitas,cCanEstado','nCanID = '.$this->uri->segment(3),NULL,NULL,true);
-		
-		$this->load->view('canchas_edit', $this->data);		
-        //$this->template->load('content', 'canchas_edit', $this->data);
+        if ($query) {
+            $data['nCanID'] = $this->canchas_model->getCanID();
+            $data['cCanNombre'] = $this->canchas_model->getCanNombre();
+            $data['cCanDescripcion'] = $this->canchas_model->getCanDescripcion();
+            $data['cCanLatitud'] = $this->canchas_model->getCanLatitud();
+            $data['cCanLongitud'] = $this->canchas_model->getCanLongitud();
+            $data['fecha_registro'] = $this->canchas_model->getCanFechaRegistro();
+            $data['cCanDireccion'] = $this->canchas_model->getCanDireccion();
+            $data['cCamTelefono'] = $this->canchas_model->getCanTelefono();
+            $data['nCanNroCanchas'] = $this->canchas_model->getCanNroCanchas();
+            $data['cCanFacebook'] = $this->canchas_model->getCanFacebook();
+            $data['cCanEmail'] = $this->canchas_model->getCanEmail();
+            $data['cCanSitioWeb'] = $this->canchas_model->getCanSitioWeb();
+            $data['nCanVisitas'] = $this->canchas_model->getCanVisitas();
+            $data['cCanEstado'] = $this->canchas_model->getCanEstado();
+            return $data;
+        } else {
+            return false;
+        }
     }
-	
-    function delete(){
-            $ID =  $this->uri->segment(3);
-            $this->codegen_model->delete('canchas','nCanID',$ID);             
-            redirect(base_url().'index.php/canchas/manage/');
-    }
+
 }
 
-/* End of file canchas.php */
-/* Location: ./system/application/controllers/canchas.php */
+/* End of file welcome.php */
+/* Location: ./application/controllers/welcome.php */
