@@ -1864,15 +1864,19 @@ h6.shortcodes-caption{
     margin-bottom:-5px;
 }
 
-.section.full-width-image img,
-.section.full-width-map iframe{
-    width:100%;
+
+.section.full-width-image img{
+    width:40%;
+    height: 
+}
+.section.full-width-map #evento_detalle_map{
+    
+    height: 400px;
 }
 
 .event-single{
     margin-bottom:30px;
 }
-
 .event-meta{
     overflow:hidden;
 }
@@ -2062,6 +2066,10 @@ h6.shortcodes-caption{
 
 .event-item .event-image img{
     width:100%;
+}
+.event-image #maps{
+    width:100%;
+    height: 250px;
 }
 
 .event-item:hover .event-content .event-meta .icons{

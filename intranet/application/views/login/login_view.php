@@ -8,7 +8,7 @@
 
             <div class="space-6"></div>
 
-            <form>
+            <form action="<?=URL_MAIN?>manage" method="post">
                 <fieldset>
                     <label class="block clearfix">
                         <span class="block input-icon input-icon-right">
@@ -32,7 +32,7 @@
                             <span class="lbl"> Recordar contraseña</span>
                         </label>
 
-                        <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
                             <i class="icon-key"></i>
                             Ingresar
                         </button>

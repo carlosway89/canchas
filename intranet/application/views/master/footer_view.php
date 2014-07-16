@@ -7,6 +7,7 @@
 				<i class="icon-double-angle-up icon-only bigger-110"></i>
 			</a>
 		</div><!-- /.main-container -->
+		
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
@@ -57,6 +58,10 @@
 		<script src="<?php echo URL_JS; ?>jquery.inputlimiter.1.3.1.min.js"></script>
 		<script src="<?php echo URL_JS; ?>jquery.maskedinput.min.js"></script>
 		<script src="<?php echo URL_JS; ?>bootstrap-tag.min.js"></script>
+		<script src="<?php echo URL_JS; ?>jquery.dataTables.min.js"></script>
+		<script src="<?php echo URL_JS; ?>jquery.dataTables.bootstrap.js"></script>
+
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
 		
 		
 
@@ -69,26 +74,27 @@
 
 		<!-- inline scripts related to this page -->
 
+
+		
 		<script type="text/javascript">
-			$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
-				$(this).prev().focus();
-			});
-
-			$('#id-input-file-1 , #id-input-file-2').ace_file_input({
-					no_file:'Ningun Archivo Seleccionado ...',
-					btn_choose:'Elegir',
-					btn_change:'Cambiar',
-					droppable:false,
-					onchange:null,
-					thumbnail:false, //| true | large
-					whitelist:'gif|png|jpg|jpeg',
-					blacklist:'exe|php|html'
-					//onchange:''
-					//
-				});
-
-			
-			$('#spinner-numero').ace_spinner({value:0.0,min:0,max:100,step:10, on_sides: true, icon_up:'icon-caret-up', icon_down:'icon-caret-down'});
+			jQuery(function($) {
+				var oTable1 = $('#sample-table-2').dataTable( {
+				"aoColumns": [
+			      { "bSortable": false },
+			      null, null,null, null, null,
+				  { "bSortable": false }
+				] } );
+				
+				$('#table_eventos_list').dataTable( {
+				    serverSide: true,
+				    "sAjaxSource":'<?=URL_MAIN?>eventos/list_json',
+				    "aoColumns": [
+				      { "bSortable": false },
+				      null, null,null, null, null,
+					  { "bSortable": false }
+					]
+				} );
+			})
 		</script>
 
 	</body>

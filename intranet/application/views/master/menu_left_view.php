@@ -70,16 +70,22 @@
 
 							<ul class="submenu">
 								<li>
-									<a href="<?=URL_MAIN?>fotos">
+									<a href="<?=URL_MAIN?>multimedia/fotos">
 										<i class="icon-double-angle-right"></i>
 										Fotos
 									</a>
 								</li>
 
 								<li>
-									<a href="<?=URL_MAIN?>videos">
+									<a href="<?=URL_MAIN?>multimedia/videos">
 										<i class="icon-double-angle-right"></i>
 										Videos
+									</a>
+								</li>
+								<li>
+									<a href="<?=URL_MAIN?>multimedia/noticias">
+										<i class="icon-double-angle-right"></i>
+										Noticias
 									</a>
 								</li>
 							</ul>
@@ -144,7 +150,7 @@
 								<i class="icon-calendar"></i>
 
 								<span class="menu-text">
-									Calendar
+									Torneos
 									<span class="badge badge-transparent tooltip-error" title="2&nbsp;Important&nbsp;Events">
 										<i class="icon-warning-sign red bigger-130"></i>
 									</span>

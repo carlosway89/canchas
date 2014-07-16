@@ -4,43 +4,6 @@ $config = array(
              	
 
 
-             	
-
-
-             	'persona' => array(array(
-                                	'field'=>'cPerNombres',
-                                	'label'=>'CPerNombres',
-                                	'rules'=>'required|trim|xss_clean'
-                                ),
-								array(
-                                	'field'=>'cPerApePaterno',
-                                	'label'=>'CPerApePaterno',
-                                	'rules'=>'required|trim|xss_clean'
-                                ),
-								array(
-                                	'field'=>'cPerApeMaterno',
-                                	'label'=>'CPerApeMaterno',
-                                	'rules'=>'required|trim|xss_clean'
-                                ),
-								array(
-                                	'field'=>'cPerTipo',
-                                	'label'=>'CPerTipo',
-                                	'rules'=>'required|trim|xss_clean'
-                                ),
-								array(
-                                	'field'=>'dPerFechaRegistro',
-                                	'label'=>'DPerFechaRegistro',
-                                	'rules'=>'required|trim|xss_clean'
-                                ),
-								array(
-                                	'field'=>'cPerEstado',
-                                	'label'=>'CPerEstado',
-                                	'rules'=>'required|trim|xss_clean'
-                                ))
-			   
-			   
-				,
-
 				'multimedia' => array(array(
                                 	'field'=>'nMultTipoID',
                                 	'label'=>'NMultTipoID',
@@ -112,72 +75,72 @@ $config = array(
                                 ),
 								array(
                                 	'field'=>'cEveTitulo',
-                                	'label'=>'CEveTitulo',
+                                	'label'=>'Titulo',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'cEveDescripcion',
-                                	'label'=>'CEveDescripcion',
+                                	'label'=>'Descripcion',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'cEveLinkFoto',
-                                	'label'=>'CEveLinkFoto',
+                                	'label'=>'LinkFoto',
                                 	'rules'=>'trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'cEveLinkFacebook',
-                                	'label'=>'CEveLinkFacebook',
+                                	'label'=>'LinkFacebook',
                                 	'rules'=>'trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'cEveDireccion',
-                                	'label'=>'CEveDireccion',
+                                	'label'=>'Direccion',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'dEveStartTime',
-                                	'label'=>'DEveStartTime',
+                                	'label'=>'Fecha Empiezo',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'dEveEndTime',
-                                	'label'=>'DEveEndTime',
+                                	'label'=>'Fecha Termino',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'nUbiDepartamento',
-                                	'label'=>'NUbiDepartamento',
+                                	'label'=>'Departamento',
                                 	'rules'=>'trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'nUbiProvincia',
-                                	'label'=>'NUbiProvincia',
+                                	'label'=>'Provincia',
                                 	'rules'=>'trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'nUbiDistrito',
-                                	'label'=>'NUbiDistrito',
+                                	'label'=>'Distrito',
                                 	'rules'=>'trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'dEveFechaRegistro',
-                                	'label'=>'DEveFechaRegistro',
+                                	'label'=>'FechaRegistro',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'cEveEstado',
-                                	'label'=>'CEveEstado',
+                                	'label'=>'Estado',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'nEveCosto',
-                                	'label'=>'NEveCosto',
+                                	'label'=>'Costo',
                                 	'rules'=>'required|trim|xss_clean'
                                 ),
 								array(
                                 	'field'=>'nUsuario',
-                                	'label'=>'NUsuario',
+                                	'label'=>'Usuario',
                                 	'rules'=>'required|trim|xss_clean'
                                 ))
 			   );
