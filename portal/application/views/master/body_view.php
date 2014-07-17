@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>eventos/registrar">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>eventos/add" target="_blank">
                             <i class="icons icon-check margen_ico"></i>
                             <h4 class="letra-h4">Registra tu evento</h4>
                             <p>Registra tus eventos importantes</p>
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>multimedia/publica">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>multimedia/add_foto">
                             <i class="icons icon-picture margen_ico"></i>
                             <h4 class="letra-h4">Publica Multimedia</h4>
                             <p>Publica tus Fotos y Videos</p>
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>noticias/publica">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>torneos/add">
                             <i class="icons icon-picture margen_ico"></i>
                             <h4 class="letra-h4">Torneos</h4>
                             <p>Crea tu torne de tu club</p>

@@ -7,6 +7,7 @@ class Multimedia extends CI_Controller {
 		$this->load->library('form_validation');		
 		$this->load->helper(array('form','url','codegen_helper'));
 		$this->load->model('codegen_model','',TRUE);
+		$this->load->model('admin/noticias_model');
 	}	
 	
 	function index(){
@@ -29,9 +30,8 @@ class Multimedia extends CI_Controller {
 		$this->data['main_content'] = 'multimedia/noticia_list';
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';
-        $this->data['breadcrumbs'] = 'Multimedia';
-        $this->data['list_multimedia'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultFechaRegistro,cMultFechaInicial,cMultFechaFinal,nParID,cMultEstado,cMultNumVisitas', '', null);
-
+        $this->data['breadcrumbs'] = 'Noticias';
+        $this->data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
         $this->load->view('master/template_view', $this->data);
 
 	}
