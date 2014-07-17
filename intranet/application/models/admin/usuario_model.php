@@ -68,7 +68,7 @@ class usuario_model extends Persona_model {
             $this->getUsuNick(),
             $this->getUsuClave()
         );
-        
+
         $query = $this->db->query("CALL USP_GEN_S_VALIDAR_USUARIO(?,?)", $parametros);
         $this->db->close();
         if (count($query) > 0) {
@@ -78,24 +78,26 @@ class usuario_model extends Persona_model {
         }
     }
 
-    function usuarioIns() {
+    function usuariosQry($Parametros) {
+        $query = $this->db->query("CALL USP_GEN_S_PERSONA (?,?,?)", $Parametros);
+        $this->db->close();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+
+    function usuariosIns() {
         $parametros = array(
+            'INS-USUARIOS',
             $this->getPerNombres(),
-            $this->getPerFechaNacimiento(),
-            $this->getPerSexo(),
-            $this->getPerTelefono(),
-            $this->getPerCelular(),
+            $this->getPerApellidos(),
             $this->getPerEmail(),
-            $this->getPerFacebook(),
-            $this->getPerSkype(),
-            $this->getPerArea(),
-            $this->getPerCargo(),
-            $this->getUsuNick(),
             md5($this->getUsuClave()),
         );
 
-        $query = $this->db->query("CALL USP_GEN_I_PERSONA(?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
-
+        $query = $this->db->query("CALL USP_GEN_I_USUARIOS(?,?,?,?,?)", $parametros);
         $this->db->close();
         if ($query) {
             return true;
@@ -103,6 +105,32 @@ class usuario_model extends Persona_model {
             return false;
         }
     }
+
+//    function usuarioIns() {
+//        $parametros = array(
+//            $this->getPerNombres(),
+//            $this->getPerFechaNacimiento(),
+//            $this->getPerSexo(),
+//            $this->getPerTelefono(),
+//            $this->getPerCelular(),
+//            $this->getPerEmail(),
+//            $this->getPerFacebook(),
+//            $this->getPerSkype(),
+//            $this->getPerArea(),
+//            $this->getPerCargo(),
+//            $this->getUsuNick(),
+//            md5($this->getUsuClave()),
+//        );
+//
+//        $query = $this->db->query("CALL USP_GEN_I_PERSONA(?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
+//
+//        $this->db->close();
+//        if ($query) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     function getDatosUsuario($parametros) {
         $query = $this->db->query("CALL USP_GEN_S_PERSONA(?,?,?)", $parametros);
@@ -138,20 +166,6 @@ class usuario_model extends Persona_model {
         }
     }
 
-    function usuariosQry($Parametros) {
-        if ($Parametros['criterio'] <> '') {
-            $query = $this->db->query("CALL USP_GEN_S_PERSONA (?,?,?,?)", $Parametros);
-        } else {
-            $query = $this->db->query("CALL USP_GEN_S_PERSONA (?,?,?,?)", array('LISTAR-PERSONAS-CRITERIO',$Parametros["idioma"], '', ''));
-        }
-        $this->db->close();
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return null;
-        }
-    }
-
     function usuarioDel($parametros) {
         $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?,?)", $parametros);
 
@@ -180,7 +194,7 @@ class usuario_model extends Persona_model {
             $this->getUsuID(),
             md5($this->getUsuClave()),
         );
-        
+
         $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES(?,?,?)", $parametros);
         $this->db->close();
         if ($query) {
