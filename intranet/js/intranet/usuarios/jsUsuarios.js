@@ -11,14 +11,8 @@ $(function(){
     });
 });
 
-//cont_div_qry_usuarios
-
 // LISTADO DE PRODUCTOS
 function usuariosQry(){
     msgLoading("#cont_div_qry_usuarios","Cargando...");
-   
-    get_page('usuarios/usuariosQry','cont_div_qry_usuarios', {
-
-    });
-    
+    get_page('usuarios/usuariosQry','cont_div_qry_usuarios');
 }
