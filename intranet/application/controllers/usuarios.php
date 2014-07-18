@@ -11,18 +11,13 @@ class Usuarios extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('admin/usuario_model');
+        $this->load->model('admin/permisos_model');
     }
 
     public function index() {
         $data['main_content'] = 'usuarios/panel_view';
         $data['title'] = '.: Panel de Administración - Módulo de Usuarios :.';
         $data['breadcrumbs'] = 'Módulo de Usuarios';
-        
-
-//        print_r($data['list_usuarios'] );
-//        exit();
-        //$data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
-        //$data['noticia_principal'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-PRINCIPAL',''));
         $this->load->view('master/template_view', $data);
     }
     
@@ -55,6 +50,31 @@ class Usuarios extends CI_Controller {
         } else {
             echo "Error de validacion";
         }
+    }
+    
+    function getUserPermisos() {
+        $id_user = $this->input->post('id_usuario');
+        //$nombreuser = $this->input->post('nombreuser');
+        $data["Opciones"] = $this->permisos_model->permisosQry(Array('LISTAR-PERMISOS-USER', $id_user, ''));
+        
+//        print_r($data["Opciones"]);
+//        exit();
+        
+//        print_r($data);
+//        exit();
+        
+        //$data["code_user"] = $id_user;
+        //$data["nombreuser"] = $nombreuser;
+        $this->load->view('usuarios/permisos/panel_view', $data);
+    }
+    
+    function usuariosDel($nUsuID){
+      $query = $this->usuario_model->usuariosDel(array('DEL-USUARIOS', $nUsuID, ''));
+      if($query){
+          echo "1";
+      }else{
+          echo "2";
+      }
     }
 
 //    public function busqueda($criterio) {

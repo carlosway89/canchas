@@ -2,7 +2,6 @@ var ruta=window.location.host+"/canchas";
 var pathname = window.location.pathname;
 
 function msjCargando(){
-
     $('#mensajecarga').html('<div class="sms_carga"><center><br/><p><img  src="http://'+ruta+'/intranet/img/cargando.gif" /><h2 class="color_negro">Espere un Momento...</h2></p></center></div>');  
     document.getElementById("mensajecarga").style.opacity="0.6";  
     document.getElementById("mensajecarga").style.background="white";  
@@ -47,6 +46,7 @@ function initEvtOpc(clase_icono,funcion){
     });    
 }
 
+
 function initEvtOpcId(clase_icono,funcion,parametros){ 
     /*
 *@parametros : solo aceptara datos con formato Objeto Json
@@ -84,6 +84,7 @@ function initEvtChk(){
     });
     return checks;
 }
+
 //Inicializar Evento Con Opcion Popup Con Envio Id Como Parametro
 function initEvtOpcPopupId(clase_icono,url,title,alto,ancho,func_close,valor_position){
     $(".ui-icon-"+clase_icono).each(function(){
@@ -133,35 +134,58 @@ function confirmar(title,msg,funcion){
     }
 }
 
+function funciones_dialog_ui(){
+    $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+        _title: function(title) {
+            var $title = this.options.title || '&nbsp;'
+            if( ("title_html" in this.options) && this.options.title_html == true )
+                title.html($title);
+            else title.text($title);
+        }
+    }));
+}
+
+
 function confirmarDelete(title,msg,funcion,parametro){
+    funciones_dialog_ui();
+
     var a = 1;
     var b = 100;
     var randomnumber = (a+Math.floor(Math.random()*b));   
     $(".msgdlg" ).dialog( "destroy" );    
-    $("body").append( "<div id='messageconfirma"+randomnumber+"' class='msgdlg' title='"+title+"'>"+msg+"</div>");
+    $("body").append( "<div id='messageconfirma"+randomnumber+"' class='msgdlg'><div class='alert alert-info bigger-110'>"+msg+"</div></div>");
     if (parametro != undefined && parametro != '') {
         $("#messageconfirma"+randomnumber).dialog(
         {
+            title: "<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> "+title+"</h4></div>",
+            title_html: true,
             autoOpen: true,
             draggable: false,  
-            height: 200,
             modal: true,
             position: 'center',
             resizable: false,            
-            width: 300,
-            buttons: {
-                'Si': function() {
-                    try{
-                        funcion(parametro)
-                        $(this).dialog( 'close' );
-                    }catch(er){
-                        console.log(er);
+            width: 400,
+            buttons: [
+                {
+                    html: "<i class='icon-trash bigger-110'></i>&nbsp; Si",
+                    "class" : "btn btn-primary btn-xs",
+                    click: function() {
+                        try{
+                            funcion(parametro)
+                            $(this).dialog( 'close' );
+                        }catch(er){
+                            console.log(er);
+                        }
                     }
                 },
-                'No': function() {
-                    $(this).dialog( 'close' );
+                {
+                    html: "<i class='icon-remove bigger-110'></i>&nbsp; No",
+                    "class" : "btn btn-xs",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
                 }
-            },
+            ],
             close: function() {
                 $(this).dialog('destroy').remove();
                 $("#messageconfirma"+randomnumber).remove();
@@ -674,12 +698,12 @@ function initCleanTags(clase_icon){
 
 function popup_sms_exito(obj,obj_cerrar){
     
-//    if(accion == "ins"){
-        //$("#email_ingresado").html("<b>"+$("#txt_upd_recu_clave").val().toLowerCase()+"</b>");
-        $(obj).modal({
-            show:true,
-            animate:"fade"
-        });
+    //    if(accion == "ins"){
+    //$("#email_ingresado").html("<b>"+$("#txt_upd_recu_clave").val().toLowerCase()+"</b>");
+    $(obj).modal({
+        show:true,
+        animate:"fade"
+    });
         
 //        bootbox.dialog({
 //                        message: "Thank you! Your information was successfully saved!", 

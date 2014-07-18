@@ -106,32 +106,6 @@ class usuario_model extends Persona_model {
         }
     }
 
-//    function usuarioIns() {
-//        $parametros = array(
-//            $this->getPerNombres(),
-//            $this->getPerFechaNacimiento(),
-//            $this->getPerSexo(),
-//            $this->getPerTelefono(),
-//            $this->getPerCelular(),
-//            $this->getPerEmail(),
-//            $this->getPerFacebook(),
-//            $this->getPerSkype(),
-//            $this->getPerArea(),
-//            $this->getPerCargo(),
-//            $this->getUsuNick(),
-//            md5($this->getUsuClave()),
-//        );
-//
-//        $query = $this->db->query("CALL USP_GEN_I_PERSONA(?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
-//
-//        $this->db->close();
-//        if ($query) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-
     function getDatosUsuario($parametros) {
         $query = $this->db->query("CALL USP_GEN_S_PERSONA(?,?,?)", $parametros);
         $this->db->close();
@@ -151,34 +125,23 @@ class usuario_model extends Persona_model {
         }
     }
 
-    function getDataUserCreado($nick_user) {
-        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?)", array('USUARIO-CREADO', $nick_user, ''));
-        $this->db->close();
-        if ($query) {
-            $row = $query->row();
-            //CREANDO EL OBJETO
-            $this->setUsuNick($row->cUsuNick);
-            $this->setUsuClave($row->cUsuClave);
-            $this->setUsuID($row->nUsuID);
-            return $row;
-        } else {
-            return null;
-        }
-    }
+//    function getDataUserCreado($nick_user) {
+//        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?)", array('USUARIO-CREADO', $nick_user, ''));
+//        $this->db->close();
+//        if ($query) {
+//            $row = $query->row();
+//            //CREANDO EL OBJETO
+//            $this->setUsuNick($row->cUsuNick);
+//            $this->setUsuClave($row->cUsuClave);
+//            $this->setUsuID($row->nUsuID);
+//            return $row;
+//        } else {
+//            return null;
+//        }
+//    }
 
-    function usuarioDel($parametros) {
-        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?,?)", $parametros);
-
-        $this->db->close();
-        if ($query) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function usuarioOpcionesDel($parametros) {
-        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?,?)", $parametros);
+    function usuariosDel($parametros) {
+        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?)", $parametros);
 
         $this->db->close();
         if ($query) {
@@ -187,6 +150,17 @@ class usuario_model extends Persona_model {
             return false;
         }
     }
+
+//    function usuarioOpcionesDel($parametros) {
+//        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?,?)", $parametros);
+//
+//        $this->db->close();
+//        if ($query) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     function usuariosUpdClave() {
         $parametros = array(
@@ -204,20 +178,20 @@ class usuario_model extends Persona_model {
         }
     }
 
-    function activar_cuenta($id_user) {
-        $parametros = array(
-            'ACTIVAR-CUENTA',
-            $id_user,
-            ''
-        );
-
-        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES(?,?,?)", $parametros);
-        $this->db->close();
-        if ($query) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    function activar_cuenta($id_user) {
+//        $parametros = array(
+//            'ACTIVAR-CUENTA',
+//            $id_user,
+//            ''
+//        );
+//
+//        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES(?,?,?)", $parametros);
+//        $this->db->close();
+//        if ($query) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
 }

@@ -1,37 +1,44 @@
 $(function(){
+    
+    $('[data-rel=tooltip]').tooltip();
+    
     var dataTable = {
         tabla           : "TablaListUsuarios", 
         ordenaPor       : new Array([0, "desc" ]),
         filsXpag        : 10,
         desactOrdenaEn  : [0] ,
         functions       : [
-//        $(".view_photo").bind('click', function(event){   
-//            var id = $(this).attr("data-id");
-//            var estado = $(this).attr("data-estado");
-//            set_popup2('productos/vista_upload_foto_upd/'+id+'--'+estado,"Editar la foto seleccionada",'480','200','',''); 
-//        }),
-//        $(".edit_photo").bind('click', function(event){   
-//            var id = $(this).attr("data-id");
-//            set_popup2('productos/popupEditarDataFoto/'+id,"Actualizar la Información de la foto seleccionada",'480','200','',''); 
-//        }),
-//        $(".del_photo").bind('click', function(event){   
-//            var id = $(this).attr("data-id");
-//            var estado = $(this).attr("data-estado");
-//            confirmarDelete("Confirmar","¿Desea eliminar la foto seleccionada?",fotoProductoDel,id+'--'+estado);
-//        }),
-//        $(".cover_photo").bind('click', function(event){   
-//            var id = $(this).attr("data-id");
-//            var estado = $(this).attr("data-estado");
-//            if(estado == "P"){
-//                mensaje("La foto seleccionada ya se encuentra como foto de portada","a");          
-//            }else{
-//                confirmarDelete("Confirmar","¿La foto seleccionada debe ser la foto de portada?",fotoProductoPortada,id);
-//            }
-//        }),
+        //        $(".view_photo").bind('click', function(event){   
+        //            var id = $(this).attr("data-id");
+        //            var estado = $(this).attr("data-estado");
+        //            set_popup2('productos/vista_upload_foto_upd/'+id+'--'+estado,"Editar la foto seleccionada",'480','200','',''); 
+        //        }),
+        $(".ver-permisos").bind('click', function(event){  
+            //initEvtOpcId("pencil",userPermisosSelected,'');
+                    
+            var id = $(this).attr("data-id");
+            userPermisosSelected(id);
+        //                    
+        //                    var id = $(this).attr("data-id");
+        //                    set_popup2('productos/popupEditarDataFoto/'+id,"Actualizar la Información de la foto seleccionada",'480','200','',''); 
+        }),
+        $(".del-user").bind('click', function(event){   
+            var id = $(this).attr("data-id");
+            confirmarDelete("Confirmar","¿Desea eliminar la foto seleccionada?",eliminarUsuarios,id);
+        }),
+        //        $(".cover_photo").bind('click', function(event){   
+        //            var id = $(this).attr("data-id");
+        //            var estado = $(this).attr("data-estado");
+        //            if(estado == "P"){
+        //                mensaje("La foto seleccionada ya se encuentra como foto de portada","a");          
+        //            }else{
+        //                confirmarDelete("Confirmar","¿La foto seleccionada debe ser la foto de portada?",fotoProductoPortada,id);
+        //            }
+        //        }),
         $("#TablaFotosProductosT tr td:nth-child(3)").css({
             "text-align" : "center"
         }),
-        $(".tip").tooltip()                    
+        $('[data-rel=tooltip]').tooltip()                
         ]
     };
                                      
@@ -41,6 +48,29 @@ $(function(){
 //    $("#TablaFotosProductosT_filter").remove();
 //    $("#TablaFotosProductosT_length").html("<b>Fotos del Producto seleccionado</b>");
 });
+
+
+function eliminarUsuarios(nUsuID){
+    $.ajax({
+        type: "POST",
+        url: "usuarios/usuariosDel/"+nUsuID,
+        cache: false,
+        success: function(data) {
+            if(data == 1){
+                //mensaje("La foto seleccionada ha sido actualizada a foto de portada!","e");
+                alert("se ha eliminado el usuario seleccionado");
+                usuariosQry();
+            }else{
+                alert("Error de consulta");
+            //mensaje("Error Inesperado, no se puede colocar la foto seleccionada en foto de portada!, vuelva a intentarlo","r");  
+            }
+        },
+        error: function() { 
+            alert("error");
+        }              
+    });
+}
+
 
 
 // FUNCIÓN PARA ELIMINAR LA FOTO SELECCIONADA

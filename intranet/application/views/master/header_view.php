@@ -19,11 +19,16 @@
 
         <!-- page specific plugin styles -->
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>jquery-ui-1.10.3.custom.min.css" />
+
+        <link rel="stylesheet" href="<?php echo URL_CSS; ?>jquery.gritter.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>chosen.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>datepicker.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>bootstrap-timepicker.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>daterangepicker.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>colorpicker.css" />
+
+        <!-- jquery ui -->
+        <link rel="stylesheet" href="<?php echo URL_CSS; ?>jquery-ui-1.10.3.full.min.css" />
 
         <!-- fonts -->
 
@@ -34,7 +39,7 @@
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>ace.min.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>ace-rtl.min.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>ace-skins.min.css" />
-        
+
         <!-- Css Validate -->
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>validate/validation.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>estilos.css" />
@@ -68,16 +73,17 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
         </script>
         <script src="<?php echo URL_JS; ?>bootstrap.min.js"></script>
         <script src="<?php echo URL_JS; ?>typeahead-bs2.min.js"></script>
-        
-        
+
+
         <script src="<?php echo URL_JS; ?>jquery.dataTables.min.js"></script>
-<script src="<?php echo URL_JS; ?>jquery.dataTables.bootstrap.js"></script>
-        
-        
+        <script src="<?php echo URL_JS; ?>jquery.dataTables.bootstrap.js"></script>
+        <script src="<?php echo URL_JS; ?>jquery-ui-1.10.3.full.min.js"></script>
+
+
         <script src="<?php echo URL_JS; ?>validacion/jqueryvalidate.js"></script>
         <script src="<?php echo URL_JS; ?>jsGeneral.js"></script>
-        
-        
+
+
 
         <!-- page specific plugin scripts -->
 

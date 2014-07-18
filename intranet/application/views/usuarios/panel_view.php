@@ -29,6 +29,15 @@
 
                     <div class="tab-pane" id="listar">
                         <div id="cont_div_qry_usuarios"></div>
+
+                        <!-- Contenedor de Resultado de permisos al seleccionar un usuario -->
+                        <div id="cont_content_permisos" class="switchs">
+                            <a href="#" id="anc_back">
+                                <span><img src="<?php echo URL_IMG ?>iconos_regresar.png"></span>
+                            </a>
+                            <div id="cont_div_qry_permisos"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>

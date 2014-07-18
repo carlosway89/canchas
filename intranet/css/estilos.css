@@ -20,3 +20,14 @@
     height: 140px;
     background-position:center;
 }
+
+.cursor_pointer{
+    cursor: pointer;
+}
+
+#anc_back span{
+    margin-left: 880px;
+    margin-right: -50px;
+    z-index: 1000;
+    position: fixed;
+}
