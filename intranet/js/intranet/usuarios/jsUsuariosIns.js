@@ -6,6 +6,8 @@ $(function(){
     });
 
     // FUNCION VALIDACION DE CAMPOS DEL FORM DE ACCESO AL LOGIN
+    
+    
     $("#frm_ins_usuarios").validate({
         rules: {
             txt_ins_user_nombres: {
