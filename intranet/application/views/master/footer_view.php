@@ -40,16 +40,11 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
 
 
-
-
-
 <!-- ace scripts -->
-
 <script src="<?php echo URL_JS; ?>ace-elements.min.js"></script>
 <script src="<?php echo URL_JS; ?>ace.min.js"></script>
 
 <!-- inline scripts related to this page -->
-
 <script type="text/javascript">
     jQuery(function($) {
         
@@ -74,7 +69,5 @@
     })
 </script>
 
-
 </body>
-
 </html>
