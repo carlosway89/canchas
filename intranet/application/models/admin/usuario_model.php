@@ -115,6 +115,7 @@ class usuario_model extends Persona_model {
             //CREANDO EL OBJETO
             $this->setPerId($row->nPerID);
             $this->setPerNombres($row->cPerNombres);
+            $this->setPerApellidos($row->cPerApellidos);
             $this->setPerEmail($row->Correo);
             $this->setUsuID($row->nUsuID);
             $this->setUsuEstado($row->cUsuEstado);
@@ -124,21 +125,6 @@ class usuario_model extends Persona_model {
             return null;
         }
     }
-
-//    function getDataUserCreado($nick_user) {
-//        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?)", array('USUARIO-CREADO', $nick_user, ''));
-//        $this->db->close();
-//        if ($query) {
-//            $row = $query->row();
-//            //CREANDO EL OBJETO
-//            $this->setUsuNick($row->cUsuNick);
-//            $this->setUsuClave($row->cUsuClave);
-//            $this->setUsuID($row->nUsuID);
-//            return $row;
-//        } else {
-//            return null;
-//        }
-//    }
 
     function usuariosDel($parametros) {
         $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?)", $parametros);
@@ -151,16 +137,16 @@ class usuario_model extends Persona_model {
         }
     }
 
-//    function usuarioOpcionesDel($parametros) {
-//        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?,?)", $parametros);
-//
-//        $this->db->close();
-//        if ($query) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    function usuarioOpcionesDel($parametros) {
+        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?)", $parametros);
+
+        $this->db->close();
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     function usuariosUpdClave() {
         $parametros = array(

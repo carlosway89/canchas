@@ -10,60 +10,49 @@ class Canchas extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        //$this->load->model('admin/ubigeo_model');
-        //$this->load->model('admin/canchas_model');
-        //$this->load->model('admin/comentarios_canchas_model');
-        //$this->load->model('admin/noticias_model');
+        $this->load->model('admin/canchas_model');
     }
 
     public function index() {
         $data['main_content'] = 'canchas/panel_view';
         $data['title'] = '.: Panel de Administración - Módulo de Canchas :.';
         $data['breadcrumbs'] = 'Módulo de Canchas';
-        //$data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
-        //$data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
-        //$data['noticia_principal'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-PRINCIPAL',''));
         $this->load->view('master/template_view', $data);
     }
 
-    public function busqueda($criterio) {
-        $valor_criterio = explode("_", $criterio);
-        $texto_criterio = str_replace("-", " ", $valor_criterio[0]);
+    function canchasQry() {
+        $data['list_canchas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO','','','',''));
+        
+//        print_r($data);
+//        exit();
+        
+        $this->load->view('canchas/qry_view', $data);
+    }
 
-        $data['main_content'] = 'canchas/qry_view';
-        $data['title'] = '.: Solo Canchas - Busqueda de Canchas :.';
-        $data['menu_home'] = 'canchas';
-        $data['list_canchas'] = $this->canchas_model->canchasQry(
-                array(
-                    'LISTADO-CANCHAS-CRITERIO',
-                    $texto_criterio,
-                    $valor_criterio[1],
-                    $valor_criterio[2],
-                    $valor_criterio[3]
-                )
-        );
+    function canchasIns() {
+        $this->form_validation->set_rules('txt_ins_user_nombres', 'nombres', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_user_apellidos', 'apellidos', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_user_email', 'email', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_user_clave', 'clave', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_user_repeclave', 'repetir clave', '|trim|required');
+        $this->form_validation->set_message('required', 'El campo %s es requerido');
 
-        if (count($data['list_canchas']) == 1) {
-            foreach ($data['list_canchas'] as $row) {
-                $id_cancha = $row->nCanID;
-                $name_cancha = $row->cCanNombre;
+        if ($this->form_validation->run() == true) {
+            $this->canchas_model->setPerNombres($this->input->post('txt_ins_user_nombres'));
+            $this->canchas_model->setPerApellidos($this->input->post('txt_ins_user_apellidos'));
+            $this->canchas_model->setPerEmail($this->input->post('txt_ins_user_email'));
+            $this->canchas_model->setUsuClave($this->input->post('txt_ins_user_clave'));
+
+            $result = $this->canchas_model->canchasIns();
+
+            if ($result) {
+               $this->enviar_email('registro', 'luiggichirinos_p@outlook.com', $this->input->post('txt_ins_user_clave'));
+            } else {
+                echo 0;
             }
-            redirect("../index.php/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
         } else {
-            $this->load->view('master/template_view', $data);
+            echo "Error de validacion";
         }
-    }
-
-    public function informacion($nombre_cancha_id) {
-        $cadena = explode("_", $nombre_cancha_id);
-        $data = $this->canchasGet($cadena[1]);
-        $data['main_content'] = 'canchas/info_cancha_selected_view';
-        $data['title'] = '.: Solo Canchas - Información de la Cancha seleccionada :.';
-        $data['menu_home'] = 'canchas';
-        $data['list_otrascanchas'] = $this->canchas_model->canchasQryOtros(array('LISTADO-CANCHAS-OTROS', $cadena[1], '', '', ''));
-        $data['list_comentarios'] = $this->comentarios_canchas_model->comentarios_canchasQry(array('LISTADO-COMENTARIOS-CANCHAS-CRITERIO'));
-       
-        $this->load->view('master/template_view', $data);
     }
 
     function canchasGet($nCanId) {

@@ -6,8 +6,6 @@ $(function(){
     });
 
     // FUNCION VALIDACION DE CAMPOS DEL FORM DE ACCESO AL LOGIN
-    
-    
     $("#frm_ins_usuarios").validate({
         rules: {
             txt_ins_user_nombres: {
@@ -45,6 +43,7 @@ $(function(){
                     //alert(data);
                     if(data.trim() == 1){
                         alert("exito");
+                        //enviar_email();
                         //popup_sms_exito('#pop_reg_user','.close_popup')
                     }else{
                         alert("error");

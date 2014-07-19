@@ -1,7 +1,6 @@
 <?php
 $atributosForm = array('id ' => 'frm_ins_permisos', 'name ' => 'frm_ins_permisos', 'class' => 'form-horizontal');
 $hid_ins_usu_codigo = form_hidden("hid_ins_usu_codigo", $code_user, "hid_ins_usu_codigo", true);
-$btn_grb_permisos = form_button('btn_ins_permisos', 'Guardar permisos', 'id="btn_ins_permisos" class="btn btn-primary"');
 ?>
 
 <div class="page-content">
@@ -10,8 +9,7 @@ $btn_grb_permisos = form_button('btn_ins_permisos', 'Guardar permisos', 'id="btn
             PERMISOS
             <small>
                 <i class="icon-double-angle-right"></i>
-                LUIGGI CHIRINOS PLASENCIA
-<!--                 <h3>PERMISOS ► <?php echo strtoupper("luiggi"); ?></h3>-->
+                <?php echo strtoupper($nombreuser); ?>
             </small>
         </h1>
     </div><!-- /.page-header -->
@@ -42,15 +40,18 @@ $btn_grb_permisos = form_button('btn_ins_permisos', 'Guardar permisos', 'id="btn
             ?>
 
             <br />
-            <center><?php echo $btn_grb_permisos; ?> <span id="sms_ins_permisos"></span></center>
+            <center>
+                <?php echo $hid_ins_usu_codigo; ?>
+                <button class="btn btn-primary" id="btn_ins_permisos">
+                    <i class="icon-ok bigger-110"></i>
+                    Guardar permisos
+                </button> <span id="sms_ins_permisos"></span>
+            </center>
 
             <?php echo form_close(); ?>
         </div>
     </div>
 </div>
 
-
-
-
-<!--<script type="text/javascript" src='<?php echo URL_JS; ?>admin/mantenedores/permisos/jsPermisos_<?php echo $this->uri->segment(1); ?>.js'></script> -->
+<script type="text/javascript" src='<?php echo URL_JS; ?>intranet/usuarios/jsPermisosUsers.js'></script>
 

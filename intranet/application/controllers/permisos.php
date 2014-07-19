@@ -26,7 +26,7 @@ class Permisos extends CI_Controller {
                     array(
                         'nUsuID',
                         'nOpcID',
-                        'nParIDSede',
+                        //'nParIDSede',
                         'cUsoEstado'
             );
             for ($i = 0; $i < count($Data); $i++) {
@@ -34,7 +34,7 @@ class Permisos extends CI_Controller {
                     (
                     $nUsuID,
                     $Data[$i],
-                    13,
+                   // 13,
                     'H'
                 );
             }

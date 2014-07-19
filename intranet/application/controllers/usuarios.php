@@ -20,8 +20,8 @@ class Usuarios extends CI_Controller {
         $data['breadcrumbs'] = 'Módulo de Usuarios';
         $this->load->view('master/template_view', $data);
     }
-    
-    function usuariosQry(){
+
+    function usuariosQry() {
         $data['list_usuarios'] = $this->usuario_model->usuariosQry(array('LIST-PERSON-POR-CRITERIO', '', ''));
         $this->load->view('usuarios/qry_view', $data);
     }
@@ -43,7 +43,7 @@ class Usuarios extends CI_Controller {
             $result = $this->usuario_model->usuariosIns();
 
             if ($result) {
-                echo 1;
+               $this->enviar_email('registro', 'luiggichirinos_p@outlook.com', $this->input->post('txt_ins_user_clave'));
             } else {
                 echo 0;
             }
@@ -51,95 +51,76 @@ class Usuarios extends CI_Controller {
             echo "Error de validacion";
         }
     }
-    
+
     function getUserPermisos() {
         $id_user = $this->input->post('id_usuario');
-        //$nombreuser = $this->input->post('nombreuser');
+        $this->usuario_model->getDatosUsuario(array('LIST-PERSON-POR-CODE-PERSONA', $id_user, ''));
         $data["Opciones"] = $this->permisos_model->permisosQry(Array('LISTAR-PERMISOS-USER', $id_user, ''));
-        
-//        print_r($data["Opciones"]);
-//        exit();
-        
-//        print_r($data);
-//        exit();
-        
-        //$data["code_user"] = $id_user;
-        //$data["nombreuser"] = $nombreuser;
+
+        $data["code_user"] = $id_user;
+        $data["nombreuser"] = $this->usuario_model->getPerApellidos()." ".$this->usuario_model->getPerNombres();
         $this->load->view('usuarios/permisos/panel_view', $data);
     }
-    
-    function usuariosDel($nUsuID){
-      $query = $this->usuario_model->usuariosDel(array('DEL-USUARIOS', $nUsuID, ''));
-      if($query){
-          echo "1";
-      }else{
-          echo "2";
-      }
-    }
 
-//    public function busqueda($criterio) {
-//        $valor_criterio = explode("_", $criterio);
-//        $texto_criterio = str_replace("-", " ", $valor_criterio[0]);
-//
-//        $data['main_content'] = 'canchas/qry_view';
-//        $data['title'] = '.: Solo Canchas - Busqueda de Canchas :.';
-//        $data['menu_home'] = 'canchas';
-//        $data['list_canchas'] = $this->canchas_model->canchasQry(
-//                array(
-//                    'LISTADO-CANCHAS-CRITERIO',
-//                    $texto_criterio,
-//                    $valor_criterio[1],
-//                    $valor_criterio[2],
-//                    $valor_criterio[3]
-//                )
-//        );
-//
-//        if (count($data['list_canchas']) == 1) {
-//            foreach ($data['list_canchas'] as $row) {
-//                $id_cancha = $row->nCanID;
-//                $name_cancha = $row->cCanNombre;
-//            }
-//            redirect("../index.php/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
-//        } else {
-//            $this->load->view('master/template_view', $data);
-//        }
-//    }
-//
-//    public function informacion($nombre_cancha_id) {
-//        $cadena = explode("_", $nombre_cancha_id);
-//        $data = $this->canchasGet($cadena[1]);
-//        $data['main_content'] = 'canchas/info_cancha_selected_view';
-//        $data['title'] = '.: Solo Canchas - Información de la Cancha seleccionada :.';
-//        $data['menu_home'] = 'canchas';
-//        $data['list_otrascanchas'] = $this->canchas_model->canchasQryOtros(array('LISTADO-CANCHAS-OTROS', $cadena[1], '', '', ''));
-//        $data['list_comentarios'] = $this->comentarios_canchas_model->comentarios_canchasQry(array('LISTADO-COMENTARIOS-CANCHAS-CRITERIO'));
-//       
-//        $this->load->view('master/template_view', $data);
-//    }
-//
-//    function canchasGet($nCanId) {
-//        $query = $this->canchas_model->canchasGet(array('LISTADO-CANCHAS-CODIGO', $nCanId, '', '', ''));
-//
-//        if ($query) {
-//            $data['nCanID'] = $this->canchas_model->getCanID();
-//            $data['cCanNombre'] = $this->canchas_model->getCanNombre();
-//            $data['cCanDescripcion'] = $this->canchas_model->getCanDescripcion();
-//            $data['cCanLatitud'] = $this->canchas_model->getCanLatitud();
-//            $data['cCanLongitud'] = $this->canchas_model->getCanLongitud();
-//            $data['fecha_registro'] = $this->canchas_model->getCanFechaRegistro();
-//            $data['cCanDireccion'] = $this->canchas_model->getCanDireccion();
-//            $data['cCamTelefono'] = $this->canchas_model->getCanTelefono();
-//            $data['nCanNroCanchas'] = $this->canchas_model->getCanNroCanchas();
-//            $data['cCanFacebook'] = $this->canchas_model->getCanFacebook();
-//            $data['cCanEmail'] = $this->canchas_model->getCanEmail();
-//            $data['cCanSitioWeb'] = $this->canchas_model->getCanSitioWeb();
-//            $data['nCanVisitas'] = $this->canchas_model->getCanVisitas();
-//            $data['cCanEstado'] = $this->canchas_model->getCanEstado();
-//            return $data;
-//        } else {
-//            return false;
-//        }
-//    }
+    function usuariosDel($nUsuID) {
+        $this->usuario_model->getDatosUsuario(array('LIST-PERSON-POR-CODE-PERSONA', $nUsuID, ''));
+
+        if ($this->usuario_model->getUsuEstado() == "H") {
+            $estado = 'I';
+        } else {
+            $estado = 'H';
+        }
+
+        $query = $this->usuario_model->usuariosDel(array('DEL-USUARIOS', $nUsuID, $estado));
+        if ($query) {
+            echo "1";
+        } else {
+            echo "2";
+        }
+    }
+    
+    function enviar_email($accion, $email, $clave) {
+
+        //configuracion para gmail
+        $smtp_user = 'luipa1303@gmail.com';
+        $smtp_clave = 'lampard_lampard';
+        $identificacion = 'Web Master SoloCanchas.';
+
+        $configGmail = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_port' => 465,
+            'smtp_user' => $smtp_user,
+            'smtp_pass' => $smtp_clave,
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n"
+        );
+
+        $this->email->initialize($configGmail);
+
+        if ($accion == "registro") {
+            $asunto = 'SOLO CANCHAS. - REGISTRO DE NUEVO USUARIO';
+            $body_mensaje = '<p style="text-align:justify;padding:5px 8px 5px 8px;">
+                    Se ha generado una nueva clave de acceso a la Intranet. Tu nueva clave es 
+                    &nbsp;' . $clave . '</p>';
+        } 
+
+        $this->email->from($smtp_user, $identificacion);
+        $this->email->to($email);
+        $this->email->subject($asunto);
+
+        $estilo_css = '<style type="text/css">a {color: #003399;background-color: transparent;font-weight: normal;}h1 {color: #444;background-color: transparent;font-size: 24px;font-weight: bold;}code {font-family: Consolas, Monaco, Courier New, Courier, monospace;font-size: 12px;background-color: #f9f9f9;border: 1px solid #D0D0D0;color: #002166;display: block;margin: 14px 0 14px 0;padding: 12px 10px 12px 10px;}#body{margin: 0 15px 0 15px;}p.footer{text-align: right;font-size: 11px;border-top: 1px solid #D0D0D0;line-height: 32px;padding: 0 10px 0 10px;margin: 20px 0 0 0;}#container{width: 800px;margin: auto;border: 1px solid #D0D0D0;-webkit-box-shadow: 0 0 8px #D0D0D0;font: 13px/20px normal Helvetica, Arial, sans-serif;color: #4F5155;}#container img{float: left;margin: 5px 10px 0px 10px;width: 54px;height: 65px;}</style >';
+        $header_mensaje = '';
+
+        $this->email->message($estilo_css . $header_mensaje . $body_mensaje);
+
+        if ($this->email->send()) {
+            echo "1";
+        } else {
+            echo $this->email->print_debugger();
+        }
+    }
 }
 
 /* End of file welcome.php */

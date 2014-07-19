@@ -3,7 +3,7 @@ $(function(){
     $('[data-rel=tooltip]').tooltip();
     
     var dataTable = {
-        tabla           : "TablaListUsuarios", 
+        tabla           : "TablaListCanchas", 
         ordenaPor       : new Array([0, "desc" ]),
         filsXpag        : 10,
         desactOrdenaEn  : [0] ,
@@ -17,7 +17,7 @@ $(function(){
             confirmarDelete(
                 "Confirmar",
                 "¿Desea cambiar el estado del usuario seleccionado?",
-                eliminarUsuarios,
+                eliminarCanchas,
                 id
                 );
         }),
@@ -32,7 +32,7 @@ $(function(){
 });
 
 
-function eliminarUsuarios(nUsuID){
+function eliminarCanchas(nUsuID){
     $.ajax({
         type: "POST",
         url: "usuarios/usuariosDel/"+nUsuID,
