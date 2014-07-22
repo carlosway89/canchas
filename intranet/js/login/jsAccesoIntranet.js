@@ -1,4 +1,4 @@
-var ruta=window.location.host+"/canchas";
+var ruta=window.location.host;
 var pathname = window.location.pathname;
 
 $(function(){

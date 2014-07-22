@@ -46,45 +46,25 @@
 
                         </div>
 
-                        <script>
+                        <script type="text/javascript">
                             $(function(){   
-
                                 // ACCION COMBO DEPARTAMENTO -> BUSCAR PROVINCIAS Y DISTRITOS
                                 $("#btn_fnd_canchas_qry").bind('click', function(event){
                                     alert("buscando");
                                 }); 
-       
+           
                             });    
                         </script>
 
                     </div>
                 </div>
 
-
-
-
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="media-items row">
                         <?php $i = 1; ?>
                         <?php foreach ($list_canchas as $list_canchas) { ?>
                             <?php
-                            if ($i == 1) {
-                                $img_cancha = 'img-demo3.jpg';
-                            } else if ($i == 2) {
-                                $img_cancha = 'img-demo4.jpg';
-                            } else if ($i == 3) {
-                                $img_cancha = 'img-demo5.jpg';
-                            } else if ($i == 4) {
-                                $img_cancha = 'img-demo6.jpg';
-                            } else if ($i == 5) {
-                                $img_cancha = 'img-demo7.jpg';
-                            } else if ($i == 6) {
-                                $img_cancha = 'img-demo8.jpg';
-                            } else if ($i == 7) {
-                                $img_cancha = 'img-demo3.jpg';
-                            } else if ($i == 8) {
-                                $img_cancha = 'img-demo4.jpg';
-                            }
+                            $img_cancha = $list_canchas->cCanFotoPortada;
                             ?>
 
                             <div class="col-lg-3 col-md-4 col-sm-6 mix category-photos" data-nameorder="1" data-dateorder="3">

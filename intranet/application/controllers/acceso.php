@@ -84,7 +84,7 @@ class Acceso extends CI_Controller {
                 echo "2";
             }
         } else {
-            echo "2";
+            echo "3";
         }
     }
 

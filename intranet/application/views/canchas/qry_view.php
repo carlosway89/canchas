@@ -8,8 +8,9 @@
             <table id="TablaListCanchas" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>Nombres</th>
-                        <th>Usuario</th>
+                        <th>Foto</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
                         <th class="hidden-480">Estado</th>
                         <th></th>
                     </tr>
@@ -18,15 +19,7 @@
                 <tbody>    
                     <?php foreach ($list_canchas as $list_canchas) { ?>
                         <?php
-                        
-                        $text_cancha = substr($list_canchas->cCanDescripcion, 0, 120);
-                        
-                        if(strlen($text_cancha) >= 120){
-                            $descripcion_cancha = $text_cancha."...";
-                        }else{
-                            $descripcion_cancha = $text_cancha;
-                        }
-                        
+                       
                         if ($list_canchas->cCanEstado == "Habilitado") {
                             $css_estado = "label-success";
                             $css_opcion = "red";
@@ -36,8 +29,9 @@
                         }
                         ?>
                         <tr>
+                            <td style="text-align: center;"><img width="100" height="70" src="<?php echo URL_PORTAL ?>img/img-demo-canchas/<?php echo $list_canchas->cCanFotoPortada; ?>" /></td>
                             <td><?php echo $list_canchas->cCanNombre; ?></td>
-                            <td><?php echo $descripcion_cancha; ?></td>
+                            <td style="width: 50%;text-align: justify;"><?php echo $list_canchas->cCanDescripcion; ?></td>
                             <td class="hidden-480">
                                 <span class="label label-sm <?php echo $css_estado; ?>">
                                     <?php echo $list_canchas->cCanEstado; ?>

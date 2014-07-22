@@ -22,10 +22,6 @@ class Canchas extends CI_Controller {
 
     function canchasQry() {
         $data['list_canchas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO','','','',''));
-        
-//        print_r($data);
-//        exit();
-        
         $this->load->view('canchas/qry_view', $data);
     }
 
@@ -76,6 +72,23 @@ class Canchas extends CI_Controller {
             return $data;
         } else {
             return false;
+        }
+    }
+    
+    function canchasDel($nCanID) {
+        $this->canchas_model->canchasGet(array('LISTADO-CANCHAS-CODIGO', $nCanID, '','',''));
+
+        if ($this->canchas_model->getCanEstado() == "H") {
+            $estado = 'I';
+        } else {
+            $estado = 'H';
+        }
+
+        $query = $this->canchas_model->canchasDel(array('DEL-CANCHAS', $nCanID, $estado));
+        if ($query) {
+            echo "1";
+        } else {
+            echo "2";
         }
     }
 

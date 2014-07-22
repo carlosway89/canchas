@@ -47,9 +47,6 @@
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     jQuery(function($) {
-        
-        
-        
         var oTable1 = $('#sample-table-2').dataTable( {
             "aoColumns": [
                 { "bSortable": false },

@@ -18,7 +18,8 @@ define('FILE_WRITE_MODE', 0666);
 define('DIR_READ_MODE', 0755);
 define('DIR_WRITE_MODE', 0777);
 
-/* DEFINICION DE CONSTANTES */
+/* DEFINICION DE CONSTANTES LOCAL */
+
 define('SERVER_NAME', 'localhost/canchas');
 define('PROJECT_NAME', 'intranet');
 define('PROJECT_PORTAL', 'portal');
@@ -27,6 +28,17 @@ define('URL_JS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/js/');
 define('URL_IMG', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/img/');
 define('URL_MAIN', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/');
 define('URL_PORTAL', 'http://' . SERVER_NAME . '/' . PROJECT_PORTAL . '/');
+
+/* DEFINICION DE CONSTANTES SERVER */
+
+/*define('SERVER_NAME', 'www.solocanchas.com');
+define('PROJECT_NAME', 'intranet');
+define('PROJECT_PORTAL', 'portal');
+define('URL_CSS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/css/');
+define('URL_JS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/js/');
+define('URL_IMG', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/img/');
+define('URL_MAIN', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/');
+define('URL_PORTAL', 'http://' . SERVER_NAME . '/' . PROJECT_PORTAL . '/');*/
 
 /*
 |--------------------------------------------------------------------------

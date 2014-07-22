@@ -1,5 +1,4 @@
 
-
 <div class="row related-events">
 
     <div class="col-lg-12 col-md-12 col-sm-12 animate-onscroll">
@@ -11,13 +10,7 @@
     <?php $i = 1; ?>
     <?php foreach ($list_otrascanchas as $list_otrascanchas) { ?>
         <?php
-        if ($i == 1) {
-            $img_cancha = 'img-demo3.jpg';
-        } else if ($i == 2) {
-            $img_cancha = 'img-demo4.jpg';
-        } else if ($i == 3) {
-            $img_cancha = 'img-demo5.jpg';
-        }
+            $img_cancha = $list_otrascanchas->cCanFotoPortada;
         ?>
         <div class="col-lg-4 col-md-4 col-sm-4 animate-onscroll">
 

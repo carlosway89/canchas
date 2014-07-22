@@ -24,11 +24,6 @@
                 </div>
 
                 <h4 class="post-title"><a href="<?php echo URL_MAIN ?>canchas/informacion/Villasports-Precursores">VILLASPORTS PRECURSORES</a></h4>
-                <!--                                <div class="post-meta">
-                                                    <span>by <a href="#">admin</a></span>
-                                                    <span>October 01, 2013 11:28AM</span>
-                                                </div>-->
-                <!--                                <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel.</p>-->
 
                 <p>
                     <i class="icons icon-location"></i> Jr. Jose Aguilar Segura s/n

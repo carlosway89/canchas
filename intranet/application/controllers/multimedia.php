@@ -104,68 +104,58 @@ class Multimedia extends CI_Controller {
 
         }	
 
-		$this->load->view('multimedia_add', $this->data);   
-        //$this->template->load('content', 'multimedia_add', $this->data);
+		$this->data['main_content'] = 'multimedia/nueva_foto';
+        $this->data['title'] = '.: Solo Canchas - Intranet :.';
+        $this->data['menu_home'] = 'intranet';
+        $this->data['breadcrumbs'] = 'Noticias';
+        $this->load->view('master/template_view', $this->data);	
     }
-    function add_noticia(){        
-        $this->load->library('form_validation');    
+    function add_noticia(){   
+
+		$this->load->library('form_validation');    
 		$this->data['custom_error'] = '';
 		
-        if ($this->form_validation->run('multimedia') == false)
+        if ($this->form_validation->run('informacion') == false)
         {
              $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
 
         } else
-        {       
-
-
-			$config['upload_path'] = './uploads/';
-	        $config['allowed_types'] = 'gif|jpg|png';
-	        $config['max_size'] = '2000';
-	        $config['max_width'] = '2024';
-	        $config['max_height'] = '2008';
-
-	        $this->load->library('upload', $config);
-
-	        if (!$this->multimedia->add_foto()) {
-	            $error = array('error' => $this->upload->display_errors());
-	            $this->load->view('upload_view', $error);
-	        }
-	        else{
-	        	$data = array(
-                    'nMultTipoID' => set_value('nMultTipoID'),
-					'nMultCategID' => set_value('nMultCategID'),
-					'cMultLinkMiniatura' => set_value('cMultLinkMiniatura'),
-					'cMultLink' => set_value('cMultLink'),
-					'cMultTitulo' => set_value('cMultTitulo'),
-					'cMultDescripcion' => set_value('cMultDescripcion'),
-					'cMultFechaRegistro' => set_value('cMultFechaRegistro'),
-					'cMultFechaInicial' => set_value('cMultFechaInicial'),
-					'cMultFechaFinal' => set_value('cMultFechaFinal'),
+        {                            
+            $data = array(
+                    'nInfoTipoID' => set_value('nInfoTipoID'),
+					'cInfoTitulo' => set_value('cInfoTitulo'),
+					'cInfoSumilla' => set_value('cInfoSumilla'),
+					'cInfoDescripcion' => set_value('cInfoDescripcion'),
+					'dInfoFechaRegistro' => set_value('dInfoFechaRegistro'),
+					'dInfoFechaInicio' => set_value('dInfoFechaInicio'),
+					'dInfoFechaFinal' => set_value('dInfoFechaFinal'),
+					'cInfoLugar' => set_value('cInfoLugar'),
+					'cInfoAutor' => set_value('cInfoAutor'),
 					'nParID' => set_value('nParID'),
-					'cMultEstado' => set_value('cMultEstado'),
-					'cMultNumVisitas' => set_value('cMultNumVisitas')
-	            );
-	           
-				if ($this->codegen_model->add('multimedia',$data) == TRUE)
-				{
-					//$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
-					// or redirect
-					redirect(base_url().'index.php/multimedia/');
-				}
-				else
-				{
-					$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+					'nPcaID' => set_value('nPcaID'),
+					'nInfoVisitas' => set_value('nInfoVisitas'),
+					'cInfoEstado' => set_value('cInfoEstado'),
+					'nUsuID' => set_value('nUsuID')
+            );
+           
+			if ($this->codegen_model->add('informacion',$data) == TRUE)
+			{
+				//$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
+				// or redirect
+				redirect(base_url().'index.php/multimedia/noticias/');
+			}
+			else
+			{
+				$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
 
-				}
+			}
+		}	
+        $this->data['main_content'] = 'multimedia/nueva_noticia';
+        $this->data['title'] = '.: Solo Canchas - Intranet :.';
+        $this->data['menu_home'] = 'intranet';
+        $this->data['breadcrumbs'] = 'Noticias';
+        $this->load->view('master/template_view', $this->data);	
 
-
-	        } 
-
-        }	
-
-		$this->load->view('multimedia_add', $this->data);   
-        //$this->template->load('content', 'multimedia_add', $this->data);
     }
     function add_video(){        
         $this->load->library('form_validation');    
@@ -224,8 +214,11 @@ class Multimedia extends CI_Controller {
 
         }	
 
-		$this->load->view('multimedia_add', $this->data);   
-        //$this->template->load('content', 'multimedia_add', $this->data);
+		$this->data['main_content'] = 'multimedia/nuevo_video';
+        $this->data['title'] = '.: Solo Canchas - Intranet :.';
+        $this->data['menu_home'] = 'intranet';
+        $this->data['breadcrumbs'] = 'Noticias';
+        $this->load->view('master/template_view', $this->data);	
     }	
     
     function edit_noticia(){        

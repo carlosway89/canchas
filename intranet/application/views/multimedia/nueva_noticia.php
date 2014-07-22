@@ -1,81 +1,157 @@
-<?php     
+  
 
-echo form_open_multipart(current_url()); ?>
-<?php echo $custom_error; ?>
 
-                                    <p><label for="nMultTipoID">NMultTipoID<span class="required">*</span></label>                                
-                                    <input id="nMultTipoID" type="text" name="nMultTipoID" value="<?php echo set_value('nMultTipoID'); ?>"  />
-                                    <?php echo form_error('nMultTipoID','<div>','</div>'); ?>
-                                    </p>
+<div class="page-content">
+      <div class="page-header">
+            <h1>
+                  Nueva Noticia
+                  <small>
+                        <i class="icon-double-angle-right"></i>
+                        Crea y publica una noticia
+                  </small>
+            </h1>
+      </div><!-- /.page-header -->
+      <div class="row">
+            <div class="col-xs-12">
+                  <!-- PAGE CONTENT BEGINS -->
+                  <?php   
+                  $atributosForm = array('id ' => 'frm_nueva_noticia', "class" => 'form-horizontal');
+
+                  echo form_open(current_url(), $atributosForm); ?>
+                  
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Titulo de la Notcia </label>
+
+                              <div class="col-sm-9">
+                                    <input placeholder="Titulo" class="col-xs-10 col-sm-5" id="cInfoTitulo" type="text" name="cInfoTitulo" value="<?php echo set_value('cInfoTitulo'); ?>"  />
+                                    <?php echo form_error('cInfoTitulo','<div class="col-md-12 text-warning">','</div>'); ?>                              
+                              </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Sumilla de la Noticia </label>
+
+                              <div class="col-sm-9">
+                                    <input  placeholder="Sumilla" class="col-xs-10 col-sm-5" id="cInfoSumilla" type="text" name="cInfoSumilla" value="<?php echo set_value('cInfoSumilla'); ?>"  />      
+                                    <?php echo form_error('cEveDireccion','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
+                              </div>
+                        </div>
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Descripcion de la Noticia </label>
 
-                                    <p><label for="nMultCategID">NMultCategID<span class="required">*</span></label>                                
-                                    <input id="nMultCategID" type="text" name="nMultCategID" value="<?php echo set_value('nMultCategID'); ?>"  />
-                                    <?php echo form_error('nMultCategID','<div>','</div>'); ?>
-                                    </p>
+                              <div class="col-sm-9">
+                                    <textarea id="cInfoDescripcion" name="cInfoDescripcion" placeholder="Descripcion" class="col-xs-10 col-sm-5"><?php echo set_value('cInfoDescripcion'); ?></textarea>
+                                    <?php echo form_error('cInfoDescripcion','<div class="col-md-12 text-warning">','</div>'); ?>
+                              </div>
+                        </div>
+                        <div class="space-4"></div>
+                  
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Foto de la Noticia </label>
+                              <div class="col-xs-10 col-sm-3">
+                                    <input type="file" id="id-input-file-2" class="col-xs-10 col-sm-5" name="cInfoLinkFoto"  /> 
+                              </div>
+                        </div>
+
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Lugar de la Noticia </label>
+
+                              <div class="col-sm-5">
+                                    <input  placeholder="Lugar" class="col-xs-10 col-sm-5" id="cInfoLugar" type="text" name="cInfoLugar" value="<?php echo set_value('cInfoLugar'); ?>"   />      
+                                    <?php echo form_error('cInfoLugar','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
+                              </div>
+                        </div>
+                        <div class="space-4"></div>
 
-                                    <p><label for="cMultLinkMiniatura">CMultLinkMiniatura<span class="required">*</span></label>                                
-                                    <input id="cMultLinkMiniatura" type="text" name="cMultLinkMiniatura" value="<?php echo set_value('cMultLinkMiniatura'); ?>"  />
-                                    <?php echo form_error('cMultLinkMiniatura','<div>','</div>'); ?>
-                                    </p>
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Autor de la Noticia </label>
+
+                              <div class="col-sm-4">
+                                    <input  placeholder="Autor" class="col-xs-10 col-sm-5" id="cInfoAutor" type="text" name="cInfoAutor" value="<?php echo set_value('cInfoAutor'); ?>"  />      
+                                    <?php echo form_error('cInfoAutor','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
+                              </div>
+                        </div>
+                        <div class="space-4"></div>
 
-                                    <p><label for="cMultLink">CMultLink<span class="required">*</span></label>                                
-                                    <input id="cMultLink" type="text" name="cMultLink" value="<?php echo set_value('cMultLink'); ?>"  />
-                                    <?php echo form_error('cMultLink','<div>','</div>'); ?>
-                                    </p>
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> tipo de Noticia </label>
+
+                              <div class="col-sm-4">
                                     
-
-                                    <p><label for="cMultTitulo">CMultTitulo<span class="required">*</span></label>                                
-                                    <input id="cMultTitulo" type="text" name="cMultTitulo" value="<?php echo set_value('cMultTitulo'); ?>"  />
-                                    <?php echo form_error('cMultTitulo','<div>','</div>'); ?>
-                                    </p>
+                                    <select class="form-control" id="nParID" type="text" name="nParID" value="<?php echo set_value('nParID');?>">
+                                      <option value="24">Futbol Internacionl</option>
+                                      <option value="25">Futbol Peruano</option>
+                                    </select>    
+                                    <?php echo form_error('nParID','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
+                              </div>
+                        </div>
+                        <div class="hidden ">
+                              <input id="nInfoTipoID" type="text" name="nInfoTipoID" value="1"  />
+                              <input id="dInfoFechaRegistro" type="text" name="dInfoFechaRegistro" value="<?=date('Y-m-d');?>"  />
+                              <input id="cInfoEstado" type="text" name="cInfoEstado" value="H"  />
+                              <input id="nPcaID" type="text" name="nPcaID" value="23"  />
+                               <input id="nInfoVisitas" type="text" name="nInfoVisitas" value="0"  />
+                               <input id="nUsuID" type="text" name="nUsuID" value="1"  />
 
-                                    <p><label for="cMultDescripcion">CMultDescripcion<span class="required">*</span></label>                                
-                                    <input id="cMultDescripcion" type="text" name="cMultDescripcion" value="<?php echo set_value('cMultDescripcion'); ?>"  />
-                                    <?php echo form_error('cMultDescripcion','<div>','</div>'); ?>
-                                    </p>
-                                    
+                        </div>
+                        
+                        
 
-                                    <p><label for="cMultFechaRegistro">CMultFechaRegistro<span class="required">*</span></label>                                
-                                    <input id="cMultFechaRegistro" type="text" name="cMultFechaRegistro" value="<?php echo set_value('cMultFechaRegistro'); ?>"  />
-                                    <?php echo form_error('cMultFechaRegistro','<div>','</div>'); ?>
-                                    </p>
-                                    
+                        <div class="clearfix form-actions">
+                              <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info" type="submit" name="submit">
+                                          <i class="icon-ok bigger-110"></i>
+                                          Publicar
+                                    </button>
 
-                                    <p><label for="cMultFechaInicial">CMultFechaInicial<span class="required">*</span></label>                                
-                                    <input id="cMultFechaInicial" type="text" name="cMultFechaInicial" value="<?php echo set_value('cMultFechaInicial'); ?>"  />
-                                    <?php echo form_error('cMultFechaInicial','<div>','</div>'); ?>
-                                    </p>
-                                    
+                                    &nbsp; &nbsp; &nbsp;
+                                    <a href="<?=URL_MAIN?>eventos" class="btn">
+                                          <i class="icon-undo bigger-110"></i>
+                                          Cancelar
+                                    </a>
+                              </div>
+                        </div>
+                  <?php echo form_close(); ?>
+            </div>
+      </div>
 
-                                    <p><label for="cMultFechaFinal">CMultFechaFinal<span class="required">*</span></label>                                
-                                    <input id="cMultFechaFinal" type="text" name="cMultFechaFinal" value="<?php echo set_value('cMultFechaFinal'); ?>"  />
-                                    <?php echo form_error('cMultFechaFinal','<div>','</div>'); ?>
-                                    </p>
-                                    
 
-                                    <p><label for="nParID">NParID<span class="required">*</span></label>                                
-                                    <input id="nParID" type="text" name="nParID" value="<?php echo set_value('nParID'); ?>"  />
-                                    <?php echo form_error('nParID','<div>','</div>'); ?>
-                                    </p>
-                                    
+     
+</div>
 
-                                    <p><label for="cMultEstado">CMultEstado<span class="required">*</span></label>                                
-                                    <input id="cMultEstado" type="text" name="cMultEstado" value="<?php echo set_value('cMultEstado'); ?>"  />
-                                    <?php echo form_error('cMultEstado','<div>','</div>'); ?>
-                                    </p>
-                                    
+<script type="text/javascript">
 
-                                    <p><label for="cMultNumVisitas">CMultNumVisitas<span class="required">*</span></label>                                
-                                    <input id="cMultNumVisitas" type="text" name="cMultNumVisitas" value="<?php echo set_value('cMultNumVisitas'); ?>"  />
-                                    <?php echo form_error('cMultNumVisitas','<div>','</div>'); ?>
-                                    </p>
-                                    
-<p>
-        <?php echo form_submit( 'submit', 'Submit'); ?>
-</p>
+      if (document.addEventListener) {
+         document.addEventListener("DOMContentLoaded", loadScripts, false);
+      }
 
-<?php echo form_close(); ?>
+      
+      function loadScripts() {          
+
+            $('#id-input-file-1 , #id-input-file-2').ace_file_input({
+              no_file:'Ningun Archivo Seleccionado ...',
+              btn_choose:'Elegir',
+              btn_change:'Cambiar',
+              droppable:false,
+              onchange:null,
+              thumbnail:false, //| true | large
+              whitelist:'gif|png|jpg|jpeg',
+              blacklist:'exe|php|html'
+              //onchange:''
+              //
+            });
+
+      }  
+
+</script>
+
+
+
+
+

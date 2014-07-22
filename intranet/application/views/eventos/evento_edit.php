@@ -33,10 +33,17 @@
 
                         <div class="form-group">
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Direccion del Evento </label>
-
-                              <div class="col-sm-9">
-                                    <input id="cEveDireccion" type="text" placeholder="Direccion" class="col-xs-10 col-sm-5" name="cEveDireccion" value="<?php echo $result->cEveDireccion ?>"  />
-                                    <?php echo form_error('cEveDireccion','<div>','</div>'); ?>
+                              <div class="col-sm-4">
+                                    <div class="input-group">
+                                          <input id="cEveDireccion" type="text" placeholder="Direccion" class="form-control" name="cEveDireccion" value="<?php echo $result->cEveDireccion ?>"  />
+                                          <span class="input-group-btn">
+                                                <button id="pasar" class="btn btn-sm btn-default" type="button">
+                                                Buscar en el mapa
+                                                </button>
+                                          </span>
+                                    </div>
+                                     <?php echo form_error('cEveDireccion','<div class="col-md-12 text-warning">','</div>'); ?>
+                                    
                               </div>
                         </div>
                         <div class="space-4"></div>

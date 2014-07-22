@@ -12,7 +12,7 @@
 
     <div class="pull-left">
     	<div class="col-xs-12">
-    		<a class="btn btn-app btn-success btn-xs" href="<?=URL_MAIN?>eventos/add">
+    		<a class="btn btn-app btn-success btn-xs" href="<?=URL_MAIN?>multimedia/add_foto">
     			<i class="glyphicon glyphicon-plus "></i> Foto   			
     		</a>
 
