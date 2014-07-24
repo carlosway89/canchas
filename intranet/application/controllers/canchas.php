@@ -11,12 +11,14 @@ class Canchas extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('admin/canchas_model');
+        $this->load->model('admin/ubigeo_model');
     }
 
     public function index() {
         $data['main_content'] = 'canchas/panel_view';
         $data['title'] = '.: Panel de Administración - Módulo de Canchas :.';
         $data['breadcrumbs'] = 'Módulo de Canchas';
+        $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
         $this->load->view('master/template_view', $data);
     }
 
@@ -26,9 +28,9 @@ class Canchas extends CI_Controller {
     }
 
     function canchasIns() {
-        $this->form_validation->set_rules('txt_ins_user_nombres', 'nombres', '|trim|required');
-        $this->form_validation->set_rules('txt_ins_user_apellidos', 'apellidos', '|trim|required');
-        $this->form_validation->set_rules('txt_ins_user_email', 'email', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_nombre', 'nombre', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_descripcion', 'descripción', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_email', 'email', '|trim|required');
         $this->form_validation->set_rules('txt_ins_user_clave', 'clave', '|trim|required');
         $this->form_validation->set_rules('txt_ins_user_repeclave', 'repetir clave', '|trim|required');
         $this->form_validation->set_message('required', 'El campo %s es requerido');

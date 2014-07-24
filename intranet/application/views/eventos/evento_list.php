@@ -1,3 +1,4 @@
+<script src="<?php echo URL_JS; ?>intranet/eventos/jsEventosList.js"></script>
 <div class="page-content">
     <div class="page-header">
         <h1>
@@ -23,7 +24,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+            <table id="TablaListEventos" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
 
@@ -109,16 +110,3 @@
     </div>
 
 </div>
-
-<script type="text/javascript">
-    function deletechecked(link)
-    {
-        var answer = confirm('Esta seguro de Eliminar este evento?')
-        if (answer){
-            window.location = link;
-        }
-	    
-        return false;  
-    }
-
-</script>

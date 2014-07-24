@@ -39,19 +39,19 @@
                             </td>
                             <td>
                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                    <a data-rel="tooltip" data-original-title="Default" class="blue ver-permisos cursor_pointer" data-id = "<?php echo $list_canchas->nUsuID; ?>">
+                                    <a data-rel="tooltip" data-original-title="Default" class="blue ver-cancha cursor_pointer" data-id = "<?php echo $list_canchas->nCanID; ?>">
                                         <i class="icon-search bigger-130"></i>
                                     </a>
                                     
-                                    <a data-rel="tooltip" data-original-title="Default" class="orange ver-permisos cursor_pointer" data-id = "<?php echo $list_canchas->nUsuID; ?>">
+                                    <a data-rel="tooltip" data-original-title="Default" class="orange edit-cancha cursor_pointer" data-id = "<?php echo $list_canchas->nCanID; ?>">
                                         <i class="icon-edit bigger-130"></i>
                                     </a>
                                     
-                                    <a data-rel="tooltip" data-original-title="Default" class="purple ver-permisos cursor_pointer" data-id = "<?php echo $list_canchas->nUsuID; ?>">
+                                    <a data-rel="tooltip" data-original-title="Default" class="purple subir-foto cursor_pointer" data-id = "<?php echo $list_canchas->nCanID; ?>">
                                         <i class="icon-picture bigger-130"></i>
                                     </a>
 
-                                    <a data-rel="tooltip" data-original-title="Default" class="<?php echo $css_opcion; ?> cursor_pointer del-user" data-id = "<?php echo $list_canchas->nUsuID; ?>">
+                                    <a data-rel="tooltip" data-original-title="Default" class="<?php echo $css_opcion; ?> cursor_pointer del-cancha" data-id = "<?php echo $list_canchas->nCanID; ?>">
                                         <i class="icon-exchange  bigger-130"></i>
                                     </a>
                                 </div>

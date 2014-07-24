@@ -1,81 +1,85 @@
-<?php     
+  
 
-echo form_open(current_url()); ?>
-<?php echo $custom_error; ?>
 
-                                    <p><label for="nMultTipoID">NMultTipoID<span class="required">*</span></label>                                
-                                    <input id="nMultTipoID" type="text" name="nMultTipoID" value="<?php echo set_value('nMultTipoID'); ?>"  />
-                                    <?php echo form_error('nMultTipoID','<div>','</div>'); ?>
-                                    </p>
+<div class="page-content">
+      <div class="page-header">
+            <h1>
+                  Nuevo Video
+                  <small>
+                        <i class="icon-double-angle-right"></i>
+                        Sube y publica un video
+            </h1>
+      </div><!-- /.page-header -->
+      <div class="row">
+            <div class="col-xs-12">
+                  <!-- PAGE CONTENT BEGINS -->
+                  <?php   
+                  $atributosForm = array('id ' => 'frm_nuevo_video', "class" => 'form-horizontal');
+
+                  echo form_open('multimedia/guardar_video', $atributosForm); ?>
+                  
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Titulo del video </label>
+
+                              <div class="col-sm-9">
+                                    <input placeholder="Titulo" class="col-xs-10 col-sm-5" id="cMultTitulo" type="text" name="cMultTitulo" value="<?php echo set_value('cMultTitulo'); ?>"  />
+                                    <?php echo form_error('cMultTitulo','<div class="col-md-12 text-warning">','</div>'); ?>                              
+                              </div>
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Descripcion del video </label>
+
+                              <div class="col-sm-9">
+                                    <input  placeholder="Descripcion" class="col-xs-10 col-sm-5" id="cMultDescripcion" type="text" name="cMultDescripcion" value="<?php echo set_value('cMultDescripcion'); ?>"  />      
+                                    <?php echo form_error('cMultDescripcion','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
+                              </div>
+                        </div>
+                        <div class="space-4"></div>
+                  
+                        <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> insertar link del video </label>
+                              <div class="col-xs-10 col-sm-3">
+                                    <input type="url"  class="form-control" name="cMultLink" placeholder="link del video youtube o vimeo"  /> 
+                              </div>
+                        </div>
 
-                                    <p><label for="nMultCategID">NMultCategID<span class="required">*</span></label>                                
-                                    <input id="nMultCategID" type="text" name="nMultCategID" value="<?php echo set_value('nMultCategID'); ?>"  />
-                                    <?php echo form_error('nMultCategID','<div>','</div>'); ?>
-                                    </p>
-                                    
+                        
+                        <div class="hidden ">
+                              <input id="nMultiTipoID" type="hidden" name="nMultiTipoID" value="2"  />
+                              <input id="cMultiEstado" type="hidden" name="cMultiEstado" value="H"  />
+                              <input id="nMultCategID" type="hidden" name="nMultCategID" value="4"  />
+                               <input id="cMultNumVisitas" type="hidden" name="cMultNumVisitas" value="0"  />
+                        </div>
+                        
+                        
 
-                                    <p><label for="cMultLinkMiniatura">CMultLinkMiniatura<span class="required">*</span></label>                                
-                                    <input id="cMultLinkMiniatura" type="text" name="cMultLinkMiniatura" value="<?php echo set_value('cMultLinkMiniatura'); ?>"  />
-                                    <?php echo form_error('cMultLinkMiniatura','<div>','</div>'); ?>
-                                    </p>
-                                    
+                        <div class="clearfix form-actions">
+                              <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info" type="submit" name="submit">
+                                          <i class="icon-ok bigger-110"></i>
+                                          Publicar
+                                    </button>
 
-                                    <p><label for="cMultLink">CMultLink<span class="required">*</span></label>                                
-                                    <input id="cMultLink" type="text" name="cMultLink" value="<?php echo set_value('cMultLink'); ?>"  />
-                                    <?php echo form_error('cMultLink','<div>','</div>'); ?>
-                                    </p>
-                                    
+                                    &nbsp; &nbsp; &nbsp;
+                                    <a href="<?=URL_MAIN?>multimedia/videos" class="btn">
+                                          <i class="icon-undo bigger-110"></i>
+                                          Cancelar
+                                    </a>
+                              </div>
+                        </div>
+                  <?php echo form_close(); ?>
+            </div>
+      </div>
 
-                                    <p><label for="cMultTitulo">CMultTitulo<span class="required">*</span></label>                                
-                                    <input id="cMultTitulo" type="text" name="cMultTitulo" value="<?php echo set_value('cMultTitulo'); ?>"  />
-                                    <?php echo form_error('cMultTitulo','<div>','</div>'); ?>
-                                    </p>
-                                    
 
-                                    <p><label for="cMultDescripcion">CMultDescripcion<span class="required">*</span></label>                                
-                                    <input id="cMultDescripcion" type="text" name="cMultDescripcion" value="<?php echo set_value('cMultDescripcion'); ?>"  />
-                                    <?php echo form_error('cMultDescripcion','<div>','</div>'); ?>
-                                    </p>
-                                    
+     
+</div>
 
-                                    <p><label for="cMultFechaRegistro">CMultFechaRegistro<span class="required">*</span></label>                                
-                                    <input id="cMultFechaRegistro" type="text" name="cMultFechaRegistro" value="<?php echo set_value('cMultFechaRegistro'); ?>"  />
-                                    <?php echo form_error('cMultFechaRegistro','<div>','</div>'); ?>
-                                    </p>
-                                    
 
-                                    <p><label for="cMultFechaInicial">CMultFechaInicial<span class="required">*</span></label>                                
-                                    <input id="cMultFechaInicial" type="text" name="cMultFechaInicial" value="<?php echo set_value('cMultFechaInicial'); ?>"  />
-                                    <?php echo form_error('cMultFechaInicial','<div>','</div>'); ?>
-                                    </p>
-                                    
 
-                                    <p><label for="cMultFechaFinal">CMultFechaFinal<span class="required">*</span></label>                                
-                                    <input id="cMultFechaFinal" type="text" name="cMultFechaFinal" value="<?php echo set_value('cMultFechaFinal'); ?>"  />
-                                    <?php echo form_error('cMultFechaFinal','<div>','</div>'); ?>
-                                    </p>
-                                    
 
-                                    <p><label for="nParID">NParID<span class="required">*</span></label>                                
-                                    <input id="nParID" type="text" name="nParID" value="<?php echo set_value('nParID'); ?>"  />
-                                    <?php echo form_error('nParID','<div>','</div>'); ?>
-                                    </p>
-                                    
 
-                                    <p><label for="cMultEstado">CMultEstado<span class="required">*</span></label>                                
-                                    <input id="cMultEstado" type="text" name="cMultEstado" value="<?php echo set_value('cMultEstado'); ?>"  />
-                                    <?php echo form_error('cMultEstado','<div>','</div>'); ?>
-                                    </p>
-                                    
-
-                                    <p><label for="cMultNumVisitas">CMultNumVisitas<span class="required">*</span></label>                                
-                                    <input id="cMultNumVisitas" type="text" name="cMultNumVisitas" value="<?php echo set_value('cMultNumVisitas'); ?>"  />
-                                    <?php echo form_error('cMultNumVisitas','<div>','</div>'); ?>
-                                    </p>
-                                    
-<p>
-        <?php echo form_submit( 'submit', 'Submit'); ?>
-</p>
-
-<?php echo form_close(); ?>

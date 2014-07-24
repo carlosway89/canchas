@@ -17,13 +17,13 @@
                   <?php   
                   $atributosForm = array('id ' => 'frm_nueva_noticia', "class" => 'form-horizontal');
 
-                  echo form_open(current_url(), $atributosForm); ?>
+                  echo form_open('multimedia/guardar_noticia', $atributosForm); ?>
                   
                         <div class="form-group">
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Titulo de la Notcia </label>
 
                               <div class="col-sm-9">
-                                    <input placeholder="Titulo" class="col-xs-10 col-sm-5" id="cInfoTitulo" type="text" name="cInfoTitulo" value="<?php echo set_value('cInfoTitulo'); ?>"  />
+                                    <input placeholder="Titulo" class="col-xs-10 col-sm-5" id="cInfoTitulo" type="text" name="cInfoTitulo" value="<?php echo set_value('cInfoTitulo'); ?>" required />
                                     <?php echo form_error('cInfoTitulo','<div class="col-md-12 text-warning">','</div>'); ?>                              
                               </div>
                         </div>
@@ -34,7 +34,7 @@
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Sumilla de la Noticia </label>
 
                               <div class="col-sm-9">
-                                    <input  placeholder="Sumilla" class="col-xs-10 col-sm-5" id="cInfoSumilla" type="text" name="cInfoSumilla" value="<?php echo set_value('cInfoSumilla'); ?>"  />      
+                                    <input  placeholder="Sumilla" class="col-xs-10 col-sm-5" id="cInfoSumilla" type="text" name="cInfoSumilla" value="<?php echo set_value('cInfoSumilla'); ?>" required />      
                                     <?php echo form_error('cEveDireccion','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
                               </div>
@@ -43,7 +43,7 @@
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Descripcion de la Noticia </label>
 
                               <div class="col-sm-9">
-                                    <textarea id="cInfoDescripcion" name="cInfoDescripcion" placeholder="Descripcion" class="col-xs-10 col-sm-5"><?php echo set_value('cInfoDescripcion'); ?></textarea>
+                                    <textarea id="cInfoDescripcion" name="cInfoDescripcion" placeholder="Descripcion" class="col-xs-10 col-sm-5" required><?php echo set_value('cInfoDescripcion'); ?></textarea>
                                     <?php echo form_error('cInfoDescripcion','<div class="col-md-12 text-warning">','</div>'); ?>
                               </div>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="form-group">
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Foto de la Noticia </label>
                               <div class="col-xs-10 col-sm-3">
-                                    <input type="file" id="id-input-file-2" class="col-xs-10 col-sm-5" name="cInfoLinkFoto"  /> 
+                                    <input type="file" id="id-input-file-2" class="col-xs-10 col-sm-5" name="cInfoLinkFoto"  required/> 
                               </div>
                         </div>
 
@@ -60,7 +60,7 @@
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Lugar de la Noticia </label>
 
                               <div class="col-sm-5">
-                                    <input  placeholder="Lugar" class="col-xs-10 col-sm-5" id="cInfoLugar" type="text" name="cInfoLugar" value="<?php echo set_value('cInfoLugar'); ?>"   />      
+                                    <input  placeholder="Lugar" class="col-xs-10 col-sm-5" id="cInfoLugar" type="text" name="cInfoLugar" value="<?php echo set_value('cInfoLugar'); ?>" required  />      
                                     <?php echo form_error('cInfoLugar','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
                               </div>
@@ -71,7 +71,7 @@
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Autor de la Noticia </label>
 
                               <div class="col-sm-4">
-                                    <input  placeholder="Autor" class="col-xs-10 col-sm-5" id="cInfoAutor" type="text" name="cInfoAutor" value="<?php echo set_value('cInfoAutor'); ?>"  />      
+                                    <input  placeholder="Autor" class="col-xs-10 col-sm-5" id="cInfoAutor" type="text" name="cInfoAutor" value="<?php echo set_value('cInfoAutor'); ?>" required />      
                                     <?php echo form_error('cInfoAutor','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
                               </div>
@@ -93,7 +93,6 @@
                         </div>
                         <div class="hidden ">
                               <input id="nInfoTipoID" type="text" name="nInfoTipoID" value="1"  />
-                              <input id="dInfoFechaRegistro" type="text" name="dInfoFechaRegistro" value="<?=date('Y-m-d');?>"  />
                               <input id="cInfoEstado" type="text" name="cInfoEstado" value="H"  />
                               <input id="nPcaID" type="text" name="nPcaID" value="23"  />
                                <input id="nInfoVisitas" type="text" name="nInfoVisitas" value="0"  />
@@ -111,7 +110,7 @@
                                     </button>
 
                                     &nbsp; &nbsp; &nbsp;
-                                    <a href="<?=URL_MAIN?>eventos" class="btn">
+                                    <a href="<?=URL_MAIN?>multimedia/noticias" class="btn">
                                           <i class="icon-undo bigger-110"></i>
                                           Cancelar
                                     </a>
