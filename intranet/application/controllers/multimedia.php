@@ -59,54 +59,37 @@ class Multimedia extends CI_Controller {
     }
 
     function guardar_foto(){
-    		$this->data['custom_error'] = '';
+    	
+        $this->data['custom_error'] = '';
 
-    		$config['upload_path'] = '../portal/img/noticias/';
-	        $config['allowed_types'] = 'gif|jpg|png';
-	        $config['max_size'] = '2000';
-	        $config['max_width'] = '2024';
-	        $config['max_height'] = '2008';
 
-	        $this->load->library('upload', $config);
+        $data = array(
+            'nMultTipoID' => $this->input->post('nMultTipoID'),
+            'nMultCategID' => $this->input->post('nMultCategID'),
+            'cMultLinkMiniatura' => $_POST['foto_url'],
+            'cMultLink' => $_POST['foto_url'],
+            'cMultTitulo' => $this->input->post('cMultTitulo'),
+            'cMultDescripcion' => $this->input->post('cMultDescripcion'),
+            'cMultFechaRegistro' => date('Y-m-d'),
+            'cMultFechaInicial' => date('Y-m-d'),
+            'cMultFechaFinal' => date('Y-m-d'),
+            'cMultEstado' => 'H',
+            'cMultNumVisitas' => 0
+            );
 
-	        if ( !$this->upload->do_upload() ) {
-	            $error = array('error' => $this->upload->display_errors());
-	            echo 'error de subir foto';
-	            print_r($error);
-	            
-	        }
-	        else{
-
-	        	$file_data = $this->upload->data();
-
-	        	$data = array(
-                    'nMultTipoID' => $this->input->post('nMultTipoID'),
-					'nMultCategID' => $this->input->post('nMultCategID'),
-					'cMultLinkMiniatura' => $file_data['file_name'],
-					'cMultLink' => $file_data['file_name'],
-					'cMultTitulo' => $this->input->post('cMultTitulo'),
-					'cMultDescripcion' => $this->input->post('cMultDescripcion'),
-					'cMultFechaRegistro' => date('Y-m-d'),
-					'cMultFechaInicial' => date('Y-m-d'),
-					'cMultFechaFinal' => date('Y-m-d'),
-					'cMultEstado' => 'H',
-					'cMultNumVisitas' => 0
-	            );
-
-				if ($this->codegen_model->add('multimedia',$data) != 0)
-				{
+        if ($this->codegen_model->add('multimedia',$data) != 0)
+        {
 					//$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
 					// or redirect
-					redirect(base_url().'multimedia/fotos');
-				}
-				else
-				{
-					$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+         redirect(base_url().'multimedia/fotos');
+       }
+       else
+       {
+           $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
 
-				}
+       }
 
 
-	        } 
 
     }
 
@@ -142,14 +125,14 @@ class Multimedia extends CI_Controller {
     		'nInfoVisitas' => $_POST['nInfoVisitas'],
     		'cInfoEstado' => $_POST['cInfoEstado'],
     		'nUsuID' => $_POST['nUsuID'],
-    		'cInfoLinkFoto' => $_POST['cInfoLinkFoto'],
+    		'cInfoLinkFoto' => $_POST['foto_url'],
     		);
 
     	$data_multimedia = array(
     		'nMultTipoID' => 6,
     		'nMultCategID' =>1,
-    		'cMultLinkMiniatura' => $_POST['cInfoLinkFoto'],
-    		'cMultLink' => $_POST['cInfoLinkFoto'],
+    		'cMultLinkMiniatura' => $_POST['foto_url'],
+    		'cMultLink' => $_POST['foto_url'],
     		'cMultTitulo' => $_POST['cInfoTitulo'],
     		'cMultDescripcion' => $_POST['cInfoDescripcion'],
     		'cMultFechaRegistro' => date('Y-m-d'),
@@ -319,7 +302,7 @@ class Multimedia extends CI_Controller {
     function delete(){
             $ID =  $this->uri->segment(3);
             $this->codegen_model->delete('multimedia','nMultID',$ID);             
-            redirect(base_url().'multimedia/manage/');
+            redirect(base_url().'multimedia/noticias');
     }
 }
 

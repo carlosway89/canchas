@@ -33,7 +33,7 @@
 
 					<li>
 						<a href="#" data-rel="colorbox">
-							<img id="foto_list" alt="150x150" src="<?=URL_PORTAL?>img/noticias/<?= $list_multimedia[$i]['cMultLink']; ?>" />
+							<img id="foto_list" alt="150x150" src="<?= $list_multimedia[$i]['cMultLink']; ?>" />
 						</a>
 
 						<div class="tools tools-right">

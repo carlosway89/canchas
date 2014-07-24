@@ -43,26 +43,16 @@
 <!-- ace scripts -->
 <script src="<?php echo URL_JS; ?>ace-elements.min.js"></script>
 <script src="<?php echo URL_JS; ?>ace.min.js"></script>
+<script src="<?php echo URL_JS; ?>parse/parse.js"></script>
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     jQuery(function($) {
-        var oTable1 = $('#sample-table-2').dataTable( {
-            "aoColumns": [
-                { "bSortable": false },
-                null, null,null, null, null,
-                { "bSortable": false }
-            ] } );
-				
-        $('#table_eventos_list').dataTable( {
-            serverSide: true,
-            "sAjaxSource":'<?= URL_MAIN ?>eventos/list_json',
-            "aoColumns": [
-                { "bSortable": false },
-                null, null,null, null, null,
-                { "bSortable": false }
-            ]
-        } );
+        
+        // parse initialize for upload files into the server  (ApID,JavaKey);
+        Parse.initialize('xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW','KTFcdFGV9cfR6y7OLXy6xei6dxZ02H6coSXS9ucq');
+
+
     })
 </script>
 

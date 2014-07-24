@@ -61,7 +61,7 @@
 							<td><?=$list_noticias->nInfoVisitas?></td>
 
 							<td class="hidden-480 text-center">
-								<img src="<?=URL_PORTAL?>img/noticias/<?=$list_noticias->foto_noticia; ?>" class="lista_multimedia_foto">								
+								<img src="<?=$list_noticias->foto_noticia; ?>" class="lista_multimedia_foto">								
 							</td>
 
 							<td>
