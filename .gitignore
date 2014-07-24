@@ -217,3 +217,5 @@ pip-log.txt
 
 database.php
 constants.php
+intranet/application/config/database.php
+portal/application/config/database.php
