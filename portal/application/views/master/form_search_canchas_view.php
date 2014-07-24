@@ -32,6 +32,4 @@ $btn_fnd_canchas = form_button('btn_fnd_canchas', 'BUSCAR', 'id="btn_fnd_canchas
 <?php echo form_close(); ?>
 <?php echo validation_errors(); ?>
 
-
-
 <script type="text/javascript" src="<?php echo URL_JS; ?>jsBuscarCanchas.js"></script>

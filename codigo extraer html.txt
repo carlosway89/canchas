@@ -16,9 +16,3 @@
 
 
 $cadena = file_get_contents($url); 
-
-
-
-
-<div id="fixture_content"></div>
-<script type="text/javascript" src="<?php echo URL_JS; ?>fixture/jsFixtureGet.js"></script>
