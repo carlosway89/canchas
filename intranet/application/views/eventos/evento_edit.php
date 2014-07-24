@@ -18,13 +18,13 @@
                   <?php   
                   $atributosForm = array('id ' => 'frm_nuevo_evento', "class" => 'form-horizontal');
 
-                  echo form_open(current_url(), $atributosForm); ?>
+                  echo form_open('eventos/editar', $atributosForm); ?>
                   
                         <div class="form-group">
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Titulo del Evento </label>
 
                               <div class="col-sm-9">
-                                    <input id="cEveTitulo" placeholder="Titulo" class="col-xs-10 col-sm-5" type="text" name="cEveTitulo" value="<?php echo $result->cEveTitulo ?>"  />
+                                    <input id="cEveTitulo" placeholder="Titulo" class="col-xs-10 col-sm-5" type="text" name="cEveTitulo" value="<?php echo $result->cEveTitulo ?>"  required/>
                                     <?php echo form_error('cEveTitulo','<div>','</div>'); ?>                              
                               </div>
                         </div>
@@ -35,7 +35,7 @@
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Direccion del Evento </label>
                               <div class="col-sm-4">
                                     <div class="input-group">
-                                          <input id="cEveDireccion" type="text" placeholder="Direccion" class="form-control" name="cEveDireccion" value="<?php echo $result->cEveDireccion ?>"  />
+                                          <input id="cEveDireccion" type="text" placeholder="Direccion" class="form-control" name="cEveDireccion" value="<?php echo $result->cEveDireccion ?>" required />
                                           <span class="input-group-btn">
                                                 <button id="pasar" class="btn btn-sm btn-default" type="button">
                                                 Buscar en el mapa
@@ -59,7 +59,7 @@
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Descripcion del Evento </label>
 
                               <div class="col-sm-9">
-                                    <textarea id="cEveDescripcion" placeholder="Descripcion del evento" class="col-xs-10 col-sm-5" type="text" name="cEveDescripcion"><?php echo $result->cEveDescripcion ?></textarea>
+                                    <textarea id="cEveDescripcion" placeholder="Descripcion del evento" class="col-xs-10 col-sm-5" type="text" name="cEveDescripcion" required><?php echo $result->cEveDescripcion ?></textarea>
                                     <?php echo form_error('cEveDescripcion','<div>','</div>'); ?>
                               </div>
                         </div>
@@ -78,7 +78,7 @@
 
                               <div class="col-xs-5 col-sm-2">
                                     <div class="input-group">
-                                          <input id="dEveStartTime" type="text" name="dEveStartTime" value="<?=date('Y-m-d',strtotime($result->dEveStartTime));?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" />
+                                          <input id="dEveStartTime" type="text" name="dEveStartTime" value="<?=date('Y-m-d',strtotime($result->dEveStartTime));?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" required />
                                           <span class="input-group-addon">
                                                 <i class="icon-calendar bigger-110"></i>
                                           </span>
@@ -102,7 +102,7 @@
 
                               <div class="col-xs-5 col-sm-2">
                                     <div class="input-group">
-                                          <input id="dEveEndTime" type="text" name="dEveEndTime" value="<?=date('Y-m-d',strtotime($result->dEveEndTime));?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" />
+                                          <input id="dEveEndTime" type="text" name="dEveEndTime" value="<?=date('Y-m-d',strtotime($result->dEveEndTime));?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" required />
                                           <span class="input-group-addon">
                                                 <i class="icon-calendar bigger-110"></i>
                                           </span>

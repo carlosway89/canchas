@@ -17,13 +17,13 @@
                   <?php   
                   $atributosForm = array('id ' => 'frm_nuevo_evento', "class" => 'form-horizontal');
 
-                  echo form_open(current_url(), $atributosForm); ?>
+                  echo form_open('eventos/guardar', $atributosForm); ?>
                   
                         <div class="form-group">
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Titulo del Evento </label>
 
                               <div class="col-sm-9">
-                                    <input id="cEveTitulo" placeholder="Titulo" class="col-xs-10 col-sm-5" type="text" name="cEveTitulo" value="<?php echo set_value('cEveTitulo'); ?>"  />
+                                    <input id="cEveTitulo" placeholder="Titulo" class="col-xs-10 col-sm-5" type="text" name="cEveTitulo" value="<?php echo set_value('cEveTitulo'); ?>"  title="Ingrese Titulo del Evento" required />
                                     <?php echo form_error('cEveTitulo','<div class="col-md-12 text-warning">','</div>'); ?>                              
                               </div>
                         </div>
@@ -35,7 +35,7 @@
 
                               <div class="col-sm-4">
                                     <div class="input-group">
-                                          <input id="cEveDireccion" type="text" placeholder="Direccion" class="form-control" name="cEveDireccion" value="<?php echo set_value('cEveDireccion'); ?>"  />
+                                          <input id="cEveDireccion" type="text" placeholder="Direccion" class="form-control" name="cEveDireccion" value="<?php echo set_value('cEveDireccion'); ?>" title="Ingrese Direccion del Evento" required  />
                                           <span class="input-group-btn">
                                                 <button id="pasar" class="btn btn-sm btn-default" type="button">
                                                 Buscar en el mapa
@@ -58,7 +58,7 @@
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Descripcion del Evento </label>
 
                               <div class="col-sm-9">
-                                    <textarea id="cEveDescripcion" placeholder="Descripcion del evento" class="col-xs-10 col-sm-5" type="text" name="cEveDescripcion"><?php echo set_value('cEveDescripcion'); ?></textarea>
+                                    <textarea id="cEveDescripcion" placeholder="Descripcion del evento" class="col-xs-10 col-sm-5" type="text" name="cEveDescripcion" title="Ingrese Descripcion del Evento" required><?php echo set_value('cEveDescripcion'); ?></textarea>
                                     <?php echo form_error('cEveDescripcion','<div class="col-md-12 text-warning">','</div>'); ?>
                               </div>
                         </div>
@@ -77,7 +77,7 @@
 
                               <div class="col-xs-5 col-sm-2">
                                     <div class="input-group">
-                                          <input id="dEveStartTime" type="text" name="dEveStartTime" value="<?php echo set_value('dEveStartTime'); ?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" />
+                                          <input id="dEveStartTime" type="text" name="dEveStartTime" value="<?php echo set_value('dEveStartTime'); ?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" title="Ingrese Fecha Empiezo del Evento" required />
                                           <span class="input-group-addon">
                                                 <i class="icon-calendar bigger-110"></i>
                                           </span>
@@ -101,7 +101,7 @@
 
                               <div class="col-xs-5 col-sm-2">
                                     <div class="input-group">
-                                          <input id="dEveEndTime" type="text" name="dEveEndTime" value="<?php echo set_value('dEveEndTime'); ?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" />
+                                          <input id="dEveEndTime" type="text" name="dEveEndTime" value="<?php echo set_value('dEveEndTime'); ?>"  class="form-control date-picker " data-date-format="yyyy-mm-dd" title="Ingrese Fecha Termino del Evento" required />
                                           <span class="input-group-addon">
                                                 <i class="icon-calendar bigger-110"></i>
                                           </span>

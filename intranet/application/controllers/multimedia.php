@@ -11,7 +11,7 @@ class Multimedia extends CI_Controller {
 	}	
 	
 	function index(){
-		$this->noticia();
+		$this->noticias();
 	}
 
 	function fotos(){
@@ -48,18 +48,20 @@ class Multimedia extends CI_Controller {
 	}
 	
     function add_foto(){        
-        $this->load->library('form_validation');    
-		$this->data['custom_error'] = '';
-		
-        if ($this->form_validation->run('multimedia') == false)
-        {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
+        
+		$this->data['custom_error'] = '';	
 
-        } else
-        {       
+		$this->data['main_content'] = 'multimedia/nueva_foto';
+        $this->data['title'] = '.: Solo Canchas - Intranet :.';
+        $this->data['menu_home'] = 'intranet';
+        $this->data['breadcrumbs'] = 'Noticias';
+        $this->load->view('master/template_view', $this->data);	
+    }
 
+    function guardar_foto(){
+    		$this->data['custom_error'] = '';
 
-			$config['upload_path'] = './uploads/';
+    		$config['upload_path'] = '../portal/img/noticias/';
 	        $config['allowed_types'] = 'gif|jpg|png';
 	        $config['max_size'] = '2000';
 	        $config['max_width'] = '2024';
@@ -67,31 +69,35 @@ class Multimedia extends CI_Controller {
 
 	        $this->load->library('upload', $config);
 
-	        if (!$this->multimedia->add_foto()) {
+	        if ( !$this->upload->do_upload() ) {
 	            $error = array('error' => $this->upload->display_errors());
-	            $this->load->view('upload_view', $error);
+	            echo 'error de subir foto';
+	            print_r($error);
+	            
 	        }
 	        else{
+
+	        	$file_data = $this->upload->data();
+
 	        	$data = array(
-                    'nMultTipoID' => set_value('nMultTipoID'),
-					'nMultCategID' => set_value('nMultCategID'),
-					'cMultLinkMiniatura' => set_value('cMultLinkMiniatura'),
-					'cMultLink' => set_value('cMultLink'),
-					'cMultTitulo' => set_value('cMultTitulo'),
-					'cMultDescripcion' => set_value('cMultDescripcion'),
-					'cMultFechaRegistro' => set_value('cMultFechaRegistro'),
-					'cMultFechaInicial' => set_value('cMultFechaInicial'),
-					'cMultFechaFinal' => set_value('cMultFechaFinal'),
-					'nParID' => set_value('nParID'),
-					'cMultEstado' => set_value('cMultEstado'),
-					'cMultNumVisitas' => set_value('cMultNumVisitas')
+                    'nMultTipoID' => $this->input->post('nMultTipoID'),
+					'nMultCategID' => $this->input->post('nMultCategID'),
+					'cMultLinkMiniatura' => $file_data['file_name'],
+					'cMultLink' => $file_data['file_name'],
+					'cMultTitulo' => $this->input->post('cMultTitulo'),
+					'cMultDescripcion' => $this->input->post('cMultDescripcion'),
+					'cMultFechaRegistro' => date('Y-m-d'),
+					'cMultFechaInicial' => date('Y-m-d'),
+					'cMultFechaFinal' => date('Y-m-d'),
+					'cMultEstado' => 'H',
+					'cMultNumVisitas' => 0
 	            );
-	           
-				if ($this->codegen_model->add('multimedia',$data) == TRUE)
+
+				if ($this->codegen_model->add('multimedia',$data) != 0)
 				{
 					//$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
 					// or redirect
-					redirect(base_url().'index.php/multimedia/');
+					redirect(base_url().'multimedia/fotos');
 				}
 				else
 				{
@@ -102,59 +108,87 @@ class Multimedia extends CI_Controller {
 
 	        } 
 
-        }	
-
-		$this->data['main_content'] = 'multimedia/nueva_foto';
-        $this->data['title'] = '.: Solo Canchas - Intranet :.';
-        $this->data['menu_home'] = 'intranet';
-        $this->data['breadcrumbs'] = 'Noticias';
-        $this->load->view('master/template_view', $this->data);	
     }
+
     function add_noticia(){   
 
-		$this->load->library('form_validation');    
+		   
 		$this->data['custom_error'] = '';
 		
-        if ($this->form_validation->run('informacion') == false)
-        {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
-
-        } else
-        {                            
-            $data = array(
-                    'nInfoTipoID' => set_value('nInfoTipoID'),
-					'cInfoTitulo' => set_value('cInfoTitulo'),
-					'cInfoSumilla' => set_value('cInfoSumilla'),
-					'cInfoDescripcion' => set_value('cInfoDescripcion'),
-					'dInfoFechaRegistro' => set_value('dInfoFechaRegistro'),
-					'dInfoFechaInicio' => set_value('dInfoFechaInicio'),
-					'dInfoFechaFinal' => set_value('dInfoFechaFinal'),
-					'cInfoLugar' => set_value('cInfoLugar'),
-					'cInfoAutor' => set_value('cInfoAutor'),
-					'nParID' => set_value('nParID'),
-					'nPcaID' => set_value('nPcaID'),
-					'nInfoVisitas' => set_value('nInfoVisitas'),
-					'cInfoEstado' => set_value('cInfoEstado'),
-					'nUsuID' => set_value('nUsuID')
-            );
-           
-			if ($this->codegen_model->add('informacion',$data) == TRUE)
-			{
-				//$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
-				// or redirect
-				redirect(base_url().'index.php/multimedia/noticias/');
-			}
-			else
-			{
-				$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
-
-			}
-		}	
+        
         $this->data['main_content'] = 'multimedia/nueva_noticia';
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';
         $this->data['breadcrumbs'] = 'Noticias';
         $this->load->view('master/template_view', $this->data);	
+
+    }
+
+    function guardar_noticia(){
+  	
+    	                            
+    	$data_informacion = array(
+    		'nInfoTipoID' => $_POST['nInfoTipoID'],
+    		'cInfoTitulo' => $_POST['cInfoTitulo'],
+    		'cInfoSumilla' => $_POST['cInfoSumilla'],
+    		'cInfoDescripcion' => $_POST['cInfoDescripcion'],
+    		'dInfoFechaRegistro' => date('Y-m-d'),
+    		'dInfoFechaInicio' => date('Y-m-d'),
+    		'dInfoFechaFinal' => date('Y-m-d'),
+    		'cInfoLugar' => $_POST['cInfoLugar'],
+    		'cInfoAutor' => $_POST['cInfoAutor'],
+    		'nParID' => $_POST['nParID'],
+    		'nPcaID' => $_POST['nPcaID'],
+    		'nInfoVisitas' => $_POST['nInfoVisitas'],
+    		'cInfoEstado' => $_POST['cInfoEstado'],
+    		'nUsuID' => $_POST['nUsuID'],
+    		'cInfoLinkFoto' => $_POST['cInfoLinkFoto'],
+    		);
+
+    	$data_multimedia = array(
+    		'nMultTipoID' => 6,
+    		'nMultCategID' =>1,
+    		'cMultLinkMiniatura' => $_POST['cInfoLinkFoto'],
+    		'cMultLink' => $_POST['cInfoLinkFoto'],
+    		'cMultTitulo' => $_POST['cInfoTitulo'],
+    		'cMultDescripcion' => $_POST['cInfoDescripcion'],
+    		'cMultFechaRegistro' => date('Y-m-d'),
+    		'cMultFechaInicial' => date('Y-m-d'),
+    		'cMultFechaFinal' => date('Y-m-d'),
+    		'cMultEstado' => 'H',
+    		'cMultNumVisitas' => 0
+    		);
+	           
+    	
+
+    	$id_info=$this->codegen_model->add('informacion',$data_informacion);
+
+    	if ($id_info != 0)
+    	{
+    		$id_multimedia=$this->codegen_model->add('multimedia',$data_multimedia);
+
+			if ( $id_multimedia != 0)
+	    	{
+	    		$data_mul_info = array(
+	    			'nMultID' => $id_multimedia,
+	    			'nInfoID' =>$id_info ,
+	    			'cMultInfoEstado' => 'H'
+	    		);
+
+	    		if($this->codegen_model->add('multimedia_informacion',$data_mul_info) != 0){
+
+	    			redirect(base_url().'multimedia/noticias/');
+
+	    		}
+				
+	    	}    		
+    	}
+    	else
+    	{
+    		$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+
+    	}
+		
 
     }
     function add_video(){        
@@ -222,51 +256,70 @@ class Multimedia extends CI_Controller {
     }	
     
     function edit_noticia(){        
-        $this->load->library('form_validation');    
-		$this->data['custom_error'] = '';
-		
-        if ($this->form_validation->run('multimedia') == false)
-        {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
-
-        } else
-        {                            
-            $data = array(
-                    'nMultTipoID' => $this->input->post('nMultTipoID'),
-					'nMultCategID' => $this->input->post('nMultCategID'),
-					'cMultLinkMiniatura' => $this->input->post('cMultLinkMiniatura'),
-					'cMultLink' => $this->input->post('cMultLink'),
-					'cMultTitulo' => $this->input->post('cMultTitulo'),
-					'cMultDescripcion' => $this->input->post('cMultDescripcion'),
-					'cMultFechaRegistro' => $this->input->post('cMultFechaRegistro'),
-					'cMultFechaInicial' => $this->input->post('cMultFechaInicial'),
-					'cMultFechaFinal' => $this->input->post('cMultFechaFinal'),
-					'nParID' => $this->input->post('nParID'),
-					'cMultEstado' => $this->input->post('cMultEstado'),
-					'cMultNumVisitas' => $this->input->post('cMultNumVisitas')
-            );
-           
-			if ($this->codegen_model->edit('multimedia',$data,'nMultID',$this->input->post('nMultID')) == TRUE)
-			{
-				redirect(base_url().'index.php/multimedia/manage/');
-			}
-			else
-			{
-				$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
-
-			}
-		}
+        
 
 		$this->data['result'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultFechaRegistro,cMultFechaInicial,cMultFechaFinal,nParID,cMultEstado,cMultNumVisitas','nMultID = '.$this->uri->segment(3),NULL,NULL,true);
 		
-		$this->load->view('multimedia_edit', $this->data);		
+		$this->data['main_content'] = 'multimedia/editar_noticia';
+        $this->data['title'] = '.: Solo Canchas - Intranet :.';
+        $this->data['menu_home'] = 'intranet';
+        $this->data['breadcrumbs'] = 'Noticias';
+        $this->load->view('master/template_view', $this->data);		
         //$this->template->load('content', 'multimedia_edit', $this->data);
+    }
+
+    function editar_noticia(){
+    	$data = array(
+    		'nMultTipoID' => $this->input->post('nMultTipoID'),
+    		'nMultCategID' => $this->input->post('nMultCategID'),
+    		'cMultLinkMiniatura' => $this->input->post('cMultLinkMiniatura'),
+    		'cMultLink' => $this->input->post('cMultLink'),
+    		'cMultTitulo' => $this->input->post('cMultTitulo'),
+    		'cMultDescripcion' => $this->input->post('cMultDescripcion'),
+    		'cMultFechaRegistro' => $this->input->post('cMultFechaRegistro'),
+    		'cMultFechaInicial' => $this->input->post('cMultFechaInicial'),
+    		'cMultFechaFinal' => $this->input->post('cMultFechaFinal'),
+    		'nParID' => $this->input->post('nParID'),
+    		'cMultEstado' => $this->input->post('cMultEstado'),
+    		'cMultNumVisitas' => $this->input->post('cMultNumVisitas')
+    		);
+
+    	if ($this->codegen_model->edit('multimedia',$data,'nMultID',$this->input->post('nMultID')) == TRUE)
+    	{
+    		redirect(base_url().'multimedia/noticias');
+    	}
+    	else
+    	{
+    		$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
+
+    	}
+
+
+    }
+    function delete_foto(){
+    	$ID =  $this->uri->segment(3);
+    	$foto =  $this->uri->segment(4);
+
+    	if (unlink('../portal/img/noticias/'.$foto)) {
+
+    		$action=$this->codegen_model->delete('multimedia','nMultID',$ID); 
+
+	        if ($action==TRUE) {
+	        	
+	        	redirect(base_url().'multimedia/fotos/');  
+	        } 
+    	}
+    	else{
+    		echo 'error';
+    	}
+                         
+        
     }
 	
     function delete(){
             $ID =  $this->uri->segment(3);
             $this->codegen_model->delete('multimedia','nMultID',$ID);             
-            redirect(base_url().'index.php/multimedia/manage/');
+            redirect(base_url().'multimedia/manage/');
     }
 }
 
