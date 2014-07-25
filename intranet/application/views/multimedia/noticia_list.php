@@ -67,7 +67,7 @@
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 									
-									<a class="green" href="<?=URL_MAIN?>multimedia/edit_noticia/<?=$list_noticias->nMultID;?>">
+									<a class="green" href="<?=URL_MAIN?>multimedia/edit_noticia/<?=$list_noticias->nInfoID;?>">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 
@@ -85,7 +85,7 @@
 										<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
 											
 											<li>
-												<a href="<?=URL_MAIN?>multimedia/edit_noticia/<?=$list_noticias->nMultID;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+												<a href="<?=URL_MAIN?>multimedia/edit_noticia/<?=$list_noticias->nInfoID;?>" class="tooltip-success" data-rel="tooltip" title="Edit">
 													<span class="green">
 														<i class="icon-edit bigger-120"></i>
 													</span>
