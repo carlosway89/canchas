@@ -66,7 +66,7 @@
                         <div class="form-group">
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Lugar de la Noticia </label>
 
-                              <div class="col-sm-5">
+                              <div class="col-sm-6">
                                     <input  placeholder="Lugar" class="col-xs-10 col-sm-5" id="cInfoLugar" type="text" name="cInfoLugar" value="<?php echo set_value('cInfoLugar'); ?>" required  />      
                                     <?php echo form_error('cInfoLugar','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
@@ -77,7 +77,7 @@
                         <div class="form-group">
                               <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Autor de la Noticia </label>
 
-                              <div class="col-sm-4">
+                              <div class="col-sm-6">
                                     <input  placeholder="Autor" class="col-xs-10 col-sm-5" id="cInfoAutor" type="text" name="cInfoAutor" value="<?php echo set_value('cInfoAutor'); ?>" required />      
                                     <?php echo form_error('cInfoAutor','<div class="col-md-12 text-warning">','</div>'); ?>
                                     
@@ -91,7 +91,7 @@
                               <div class="col-sm-4">
                                     
                                     <select class="form-control" id="nParID" type="text" name="nParID" value="<?php echo set_value('nParID');?>">
-                                      <option value="24">Futbol Internacionl</option>
+                                      <option value="24">Futbol Internacional</option>
                                       <option value="25">Futbol Peruano</option>
                                     </select>    
                                     <?php echo form_error('nParID','<div class="col-md-12 text-warning">','</div>'); ?>

@@ -240,9 +240,8 @@ class Multimedia extends CI_Controller {
     
     function edit_noticia(){        
         
-
-		$this->data['result'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultFechaRegistro,cMultFechaInicial,cMultFechaFinal,nParID,cMultEstado,cMultNumVisitas','nMultID = '.$this->uri->segment(3),NULL,NULL,true);
-		
+        $id_noticia=$this->uri->segment(3);
+		$this->data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CODIGO',$id_noticia));
 		$this->data['main_content'] = 'multimedia/editar_noticia';
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';
@@ -252,46 +251,64 @@ class Multimedia extends CI_Controller {
     }
 
     function editar_noticia(){
-    	$data = array(
-    		'nMultTipoID' => $this->input->post('nMultTipoID'),
-    		'nMultCategID' => $this->input->post('nMultCategID'),
-    		'cMultLinkMiniatura' => $this->input->post('cMultLinkMiniatura'),
-    		'cMultLink' => $this->input->post('cMultLink'),
-    		'cMultTitulo' => $this->input->post('cMultTitulo'),
-    		'cMultDescripcion' => $this->input->post('cMultDescripcion'),
-    		'cMultFechaRegistro' => $this->input->post('cMultFechaRegistro'),
-    		'cMultFechaInicial' => $this->input->post('cMultFechaInicial'),
-    		'cMultFechaFinal' => $this->input->post('cMultFechaFinal'),
-    		'nParID' => $this->input->post('nParID'),
-    		'cMultEstado' => $this->input->post('cMultEstado'),
-    		'cMultNumVisitas' => $this->input->post('cMultNumVisitas')
-    		);
 
-    	if ($this->codegen_model->edit('multimedia',$data,'nMultID',$this->input->post('nMultID')) == TRUE)
-    	{
-    		redirect(base_url().'multimedia/noticias');
-    	}
-    	else
-    	{
-    		$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
+        $data_informacion = array(
+            'nInfoTipoID' => $_POST['nInfoTipoID'],
+            'cInfoTitulo' => $_POST['cInfoTitulo'],
+            'cInfoSumilla' => $_POST['cInfoSumilla'],
+            'cInfoDescripcion' => $_POST['cInfoDescripcion'],
+            'dInfoFechaRegistro' => date('Y-m-d'),
+            'dInfoFechaInicio' => date('Y-m-d'),
+            'dInfoFechaFinal' => date('Y-m-d'),
+            'cInfoLugar' => $_POST['cInfoLugar'],
+            'cInfoAutor' => $_POST['cInfoAutor'],
+            'nParID' => $_POST['nParID'],
+            'nPcaID' => $_POST['nPcaID'],
+            'nInfoVisitas' => $_POST['nInfoVisitas'],
+            'cInfoEstado' => $_POST['cInfoEstado'],
+            'nUsuID' => $_POST['nUsuID'],
+            'cInfoLinkFoto' => $_POST['foto_url'],
+            );
 
-    	}
+        $data_multimedia = array(
+            'nMultTipoID' => 6,
+            'nMultCategID' =>1,
+            'cMultLinkMiniatura' => $_POST['foto_url'],
+            'cMultLink' => $_POST['foto_url'],
+            'cMultTitulo' => $_POST['cInfoTitulo'],
+            'cMultDescripcion' => $_POST['cInfoDescripcion'],
+            'cMultFechaRegistro' => date('Y-m-d'),
+            'cMultFechaInicial' => date('Y-m-d'),
+            'cMultFechaFinal' => date('Y-m-d'),
+            'cMultEstado' => 'H',
+            'cMultNumVisitas' => 0
+            );
+               
+        
+        if ($this->codegen_model->edit('informacion',$data_informacion,'nInfoID',$this->input->post('nInfoID')) == TRUE)
+        {
+
+            if ( $this->codegen_model->edit('multimedia',$data_multimedia,'nMultID',$this->input->post('nMultID')) == TRUE)
+            {
+                redirect(base_url().'multimedia/noticias/');                
+            }           
+        }
+        else
+        {
+            echo 'error';
+
+        }
 
 
     }
+
     function delete_foto(){
     	$ID =  $this->uri->segment(3);
-    	$foto =  $this->uri->segment(4);
-
-    	if (unlink('../portal/img/noticias/'.$foto)) {
-
-    		$action=$this->codegen_model->delete('multimedia','nMultID',$ID); 
-
-	        if ($action==TRUE) {
-	        	
-	        	redirect(base_url().'multimedia/fotos/');  
-	        } 
-    	}
+		$action=$this->codegen_model->delete('multimedia','nMultID',$ID); 
+        if ($action==TRUE) {
+        	
+        	redirect(base_url().'multimedia/fotos/');  
+        } 
     	else{
     		echo 'error';
     	}
