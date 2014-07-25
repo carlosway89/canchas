@@ -1,10 +1,12 @@
 $(function(){
+    
+    loadScript();
    
    $('#txt_ins_can_nrocanchas').ace_spinner({
        value:0,
        min:0,
        max:100,
-       step:10, 
+       step:1, 
        on_sides: true, 
        icon_up:'icon-caret-up', 
        icon_down:'icon-caret-down'
@@ -128,4 +130,65 @@ function get_distritos(){
             alert("error");
         }              
     });
+}
+
+
+// FUNCIÓN PARA CARGAR MAPA DE REGISTRO DE LATITUD Y LONGITUD DE UNA CANCHA
+function initialize_mapscanchas(){
+    var popup;
+    var markersArray = [];
+    var myOptions = {
+        center: new google.maps.LatLng( -7.7001724,-79.43381879999998),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    
+    var map = new google.maps.Map(document.getElementById("mapa_canchas"),myOptions);       
+    google.maps.event.addListener(map, 'click', function(event) {
+        placeMarker(event.latLng);
+        $("#txt_ins_can_longitud").val(event.latLng.lng());
+        $("#txt_ins_can_longitud").focus();
+        //document.getElementById('txt_ins_obra_empresagana').scrollIntoView(true);
+        $("#txt_ins_can_latitud").val(event.latLng.lat());
+    });
+    
+    function placeMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: 'Longitud: '+location.lng()+' Latitud: '+location.lat()
+        });
+        
+        deleteOverlays();
+        markersArray.push(marker);
+            
+        google.maps.event.addListener(marker, 'click', function(){
+            if(!popup){
+                popup = new google.maps.InfoWindow();
+            }
+
+            var note="<b style=\'color: #990000;text-align:center;\'>:: Coordenada ::</b><hr><b style=\'color: #990000;\'> Latitud: </b><b style=\'color: #000;\'>"+location.lat()+ "</b> <br><b style=\'color: #990000;\'> Longitud: </b><b style=\'color: #000;\'> "  +location.lng()+" </b>";
+
+            popup.setContent(note);
+            popup.open(map, this);
+        }) 
+
+    }
+    
+    function deleteOverlays() {
+        if (markersArray) {
+            for (i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+            markersArray.length = 0;
+        }
+    } 
+}
+
+function loadScript() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'http://maps.google.com/maps/api/js?sensor=false&' +
+    'callback=initialize_mapscanchas';
+    document.body.appendChild(script);
 }

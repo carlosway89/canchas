@@ -56,6 +56,16 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
             </div>
 
             <div class="space-4"></div>
+            
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="txt_ins_can_descripcion"> Descripción </label>
+
+                <div class="col-sm-9">
+                    <div id="mapa_canchas" class="col-xs-10 col-sm-5" style="height: 250px;"></div>
+                </div>
+            </div>
+
+            <div class="space-4"></div>
 
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="cbo_ins_can_departamentos"> Departamento </label>

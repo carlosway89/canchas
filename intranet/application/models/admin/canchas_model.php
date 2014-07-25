@@ -7,6 +7,9 @@ class Canchas_model extends CI_Model {
     private $CanDescripcion;
     private $CanLatitud;
     private $CanLongitud;
+    private $CanDepartamento;
+    private $CanProvincia;
+    private $CanDistrito;
     private $CanFechaRegistro;
     private $CanDireccion;
     private $CanTelefono;
@@ -60,6 +63,30 @@ class Canchas_model extends CI_Model {
 
     public function setCanLongitud($CanLongitud) {
         $this->CanLongitud = $CanLongitud;
+    }
+
+    public function getCanDepartamento() {
+        return $this->CanDepartamento;
+    }
+
+    public function setCanDepartamento($CanDepartamento) {
+        $this->CanDepartamento = $CanDepartamento;
+    }
+
+    public function getCanProvincia() {
+        return $this->CanProvincia;
+    }
+
+    public function setCanProvincia($CanProvincia) {
+        $this->CanProvincia = $CanProvincia;
+    }
+
+    public function getCanDistrito() {
+        return $this->CanDistrito;
+    }
+
+    public function setCanDistrito($CanDistrito) {
+        $this->CanDistrito = $CanDistrito;
     }
 
     public function getCanFechaRegistro() {
@@ -141,18 +168,28 @@ class Canchas_model extends CI_Model {
     public function setCanEstado($CanEstado) {
         $this->CanEstado = $CanEstado;
     }
-
     
     function canchasIns() {
         $parametros = array(
             'INS-CANCHAS',
             $this->getCanNombre(),
             $this->getCanDescripcion(),
-            $this->getCanLatitud(),
-            $this->getCanLongitud(),
+//            $this->getCanLatitud(),
+//            $this->getCanLongitud(),
+            '123456',
+            '-123456',
+            $this->getCanDepartamento(),
+            $this->getCanProvincia(),
+            $this->getCanDistrito(),
+            $this->getCanDireccion(),
+            $this->getCanTelefono(),
+            $this->getCanFacebook(),
+            $this->getCanEmail(),
+            $this->getCanSitioWeb(),
+            $this->getCanNroCanchas(),
         );
 
-        $query = $this->db->query("CALL USP_GEN_I_USUARIOS(?,?,?,?,?)", $parametros);
+        $query = $this->db->query("CALL USP_GEN_I_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
         $this->db->close();
         if ($query) {
             return true;
