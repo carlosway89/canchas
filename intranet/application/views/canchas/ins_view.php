@@ -1,5 +1,5 @@
 <?php
-$atributosForm = array('id ' => 'frm_ins_usuarios', 'name ' => 'frm_ins_usuarios', "class" => 'form-horizontal');
+$atributosForm = array('id ' => 'frm_ins_canchas', 'name ' => 'frm_ins_canchas', "class" => 'form-horizontal');
 $txt_ins_can_nombre = form_input(array('name' => 'txt_ins_can_nombre', 'id' => 'txt_ins_can_nombre', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
 $txt_ins_can_descripcion = form_textarea(array('name' => 'txt_ins_can_descripcion', 'id' => 'txt_ins_can_descripcion', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '500', 'rows' => 2));
 $txt_ins_can_direccion = form_input(array('name' => 'txt_ins_can_direccion', 'id' => 'txt_ins_can_direccion', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '200'));
@@ -58,7 +58,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
             <div class="space-4"></div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="txt_ins_can_direccion"> Departamento </label>
+                <label class="col-sm-3 control-label no-padding-right" for="cbo_ins_can_departamentos"> Departamento </label>
 
                 <div class="col-sm-9">
                         <?php echo form_dropdown('cbo_ins_can_departamentos', $cbo_ins_can_departamentos, '', 'id="cbo_ins_can_departamentos" class="col-sm-3"'); ?>
@@ -68,7 +68,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
             <div class="space-4"></div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="txt_ins_can_direccion"> Provincia </label>
+                <label class="col-sm-3 control-label no-padding-right" for="cbo_ins_can_provincias"> Provincia </label>
 
                 <div class="col-sm-9">
                     <div id="cont_ins_can_provincias">
@@ -80,7 +80,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
             <div class="space-4"></div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="txt_ins_can_direccion"> Distrito </label>
+                <label class="col-sm-3 control-label no-padding-right" for="cbo_ins_can_distritos"> Distrito </label>
 
                 <div class="col-sm-9">
                     <div id="cont_ins_can_distritos">
@@ -173,12 +173,5 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
     </div>
 </div>
 
-<script type="text/javascript">
-
-      
-
-</script>
-
-
-<!--<script type="text/javascript" src="<?php echo URL_JS; ?>intranet/usuarios/jsUsuariosIns.js"></script>-->
+<script type="text/javascript" src="<?php echo URL_JS; ?>intranet/canchas/jsCanchasIns.js"></script>
 

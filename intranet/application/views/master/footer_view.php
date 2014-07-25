@@ -43,18 +43,8 @@
 <!-- ace scripts -->
 <script src="<?php echo URL_JS; ?>ace-elements.min.js"></script>
 <script src="<?php echo URL_JS; ?>ace.min.js"></script>
-<script src="<?php echo URL_JS; ?>parse/parse.js"></script>
 
 <!-- inline scripts related to this page -->
-<script type="text/javascript">
-    jQuery(function($) {
-        
-        // parse initialize for upload files into the server  (ApID,JavaKey);
-        Parse.initialize('xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW','KTFcdFGV9cfR6y7OLXy6xei6dxZ02H6coSXS9ucq');
-
-
-    })
-</script>
 
 </body>
 </html>
