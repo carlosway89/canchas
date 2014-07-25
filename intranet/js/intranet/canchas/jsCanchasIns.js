@@ -22,7 +22,7 @@ $(function(){
         $("#frm_ins_canchas").data('validator').resetForm();
     });
 
-    // FUNCION VALIDACION DE CAMPOS DEL FORM DE ACCESO AL LOGIN
+    // FUNCION VALIDACION DE CAMPOS DEL FORM DE REGISTRO DE CANCHAS
     $("#frm_ins_canchas").validate({
         rules: {
             txt_ins_can_nombre: {
@@ -54,22 +54,23 @@ $(function(){
             }
         },
         submitHandler: function(form){
-            msgLoadSave("#sms_ins_can_add","#btn_ins_user_add");
+            //msgLoadSave("#sms_ins_can_add","#btn_ins_can_add");
             $.ajax({
                 type: "POST",
                 url: $(form).attr('action'),
                 cache: false,
                 data: $(form).serialize(),
                 success: function(data) {
-                    msgLoadSaveRemove("#btn_ins_user_add");
+                    alert(data);
+                   // msgLoadSaveRemove("#btn_ins_can_add");
                     //alert(data);
-                    if(data.trim() == 1){
-                        alert("exito");
-                        //enviar_email();
-                        //popup_sms_exito('#pop_reg_user','.close_popup')
-                    }else{
-                        alert("error");
-                    }
+//                    if(data.trim() == 1){
+//                        alert("exito");
+//                        //enviar_email();
+//                        //popup_sms_exito('#pop_reg_user','.close_popup')
+//                    }else{
+//                        alert("error");
+//                    }
                 },
                 error: function() { 
                     alert("Error code");

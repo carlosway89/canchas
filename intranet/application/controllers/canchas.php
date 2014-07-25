@@ -23,28 +23,32 @@ class Canchas extends CI_Controller {
     }
 
     function canchasQry() {
-        $data['list_canchas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO','','','',''));
+        $data['list_canchas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO', '', '', '', ''));
         $this->load->view('canchas/qry_view', $data);
     }
 
     function canchasIns() {
         $this->form_validation->set_rules('txt_ins_can_nombre', 'nombre', '|trim|required');
         $this->form_validation->set_rules('txt_ins_can_descripcion', 'descripción', '|trim|required');
+        $this->form_validation->set_rules('cbo_ins_can_departamentos', 'departamento', '|trim|required');
+        $this->form_validation->set_rules('cbo_ins_can_provincias', 'provincia', '|trim|required');
+        $this->form_validation->set_rules('cbo_ins_can_distritos', 'distrito', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_direccion', 'direccion', '|trim|required');
         $this->form_validation->set_rules('txt_ins_can_email', 'email', '|trim|required');
-        $this->form_validation->set_rules('txt_ins_user_clave', 'clave', '|trim|required');
-        $this->form_validation->set_rules('txt_ins_user_repeclave', 'repetir clave', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_telefono', 'telefono', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_nrocanchas', 'número de canchas', '|trim|required');
         $this->form_validation->set_message('required', 'El campo %s es requerido');
 
         if ($this->form_validation->run() == true) {
-            $this->canchas_model->setPerNombres($this->input->post('txt_ins_user_nombres'));
-            $this->canchas_model->setPerApellidos($this->input->post('txt_ins_user_apellidos'));
-            $this->canchas_model->setPerEmail($this->input->post('txt_ins_user_email'));
+            $this->canchas_model->setCanNombre($this->input->post('txt_ins_user_nombres'));
+            $this->canchas_model->setCanDescripcion($this->input->post('txt_ins_user_apellidos'));
+            $this->canchas_model->setCan($this->input->post('txt_ins_user_email'));
             $this->canchas_model->setUsuClave($this->input->post('txt_ins_user_clave'));
 
             $result = $this->canchas_model->canchasIns();
 
             if ($result) {
-               $this->enviar_email('registro', 'luiggichirinos_p@outlook.com', $this->input->post('txt_ins_user_clave'));
+                echo 1;
             } else {
                 echo 0;
             }
@@ -76,9 +80,9 @@ class Canchas extends CI_Controller {
             return false;
         }
     }
-    
+
     function canchasDel($nCanID) {
-        $this->canchas_model->canchasGet(array('LISTADO-CANCHAS-CODIGO', $nCanID, '','',''));
+        $this->canchas_model->canchasGet(array('LISTADO-CANCHAS-CODIGO', $nCanID, '', '', ''));
 
         if ($this->canchas_model->getCanEstado() == "H") {
             $estado = 'I';

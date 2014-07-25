@@ -142,6 +142,25 @@ class Canchas_model extends CI_Model {
         $this->CanEstado = $CanEstado;
     }
 
+    
+    function canchasIns() {
+        $parametros = array(
+            'INS-CANCHAS',
+            $this->getCanNombre(),
+            $this->getCanDescripcion(),
+            $this->getCanLatitud(),
+            $this->getCanLongitud(),
+        );
+
+        $query = $this->db->query("CALL USP_GEN_I_USUARIOS(?,?,?,?,?)", $parametros);
+        $this->db->close();
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     function canchasQry($Parametros) {
         $query = $this->db->query("CALL USP_GEN_S_CANCHAS (?,?,?,?,?)", $Parametros);
         $this->db->close();

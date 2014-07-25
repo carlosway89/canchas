@@ -1,11 +1,11 @@
 <?php
 $atributosForm = array('id ' => 'frm_ins_canchas', 'name ' => 'frm_ins_canchas', "class" => 'form-horizontal');
-$txt_ins_can_nombre = form_input(array('name' => 'txt_ins_can_nombre', 'id' => 'txt_ins_can_nombre', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
-$txt_ins_can_descripcion = form_textarea(array('name' => 'txt_ins_can_descripcion', 'id' => 'txt_ins_can_descripcion', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '500', 'rows' => 2));
-$txt_ins_can_direccion = form_input(array('name' => 'txt_ins_can_direccion', 'id' => 'txt_ins_can_direccion', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '200'));
-$txt_ins_can_telefono = form_input(array('name' => 'txt_ins_can_telefono', 'id' => 'txt_ins_can_telefono', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '20'));
+$txt_ins_can_nombre = form_input(array('name' => 'txt_ins_can_nombre', 'id' => 'txt_ins_can_nombre', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100', "required" => "required"));
+$txt_ins_can_descripcion = form_textarea(array('name' => 'txt_ins_can_descripcion', 'id' => 'txt_ins_can_descripcion', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '500', 'rows' => 2,"required" => "required"));
+$txt_ins_can_direccion = form_input(array('name' => 'txt_ins_can_direccion', 'id' => 'txt_ins_can_direccion', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '200',"required" => "required"));
+$txt_ins_can_telefono = form_input(array('name' => 'txt_ins_can_telefono', 'id' => 'txt_ins_can_telefono', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '20',"required" => "required"));
 $txt_ins_can_facebook = form_input(array('name' => 'txt_ins_can_facebook', 'id' => 'txt_ins_can_facebook', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
-$txt_ins_can_email = form_input(array('name' => 'txt_ins_can_email', 'id' => 'txt_ins_can_email', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
+$txt_ins_can_email = form_input(array('name' => 'txt_ins_can_email', 'id' => 'txt_ins_can_email', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100',"required" => "required"));
 $txt_ins_can_web = form_input(array('name' => 'txt_ins_can_web', 'id' => 'txt_ins_can_web', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
 
 
@@ -61,7 +61,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
                 <label class="col-sm-3 control-label no-padding-right" for="cbo_ins_can_departamentos"> Departamento </label>
 
                 <div class="col-sm-9">
-                        <?php echo form_dropdown('cbo_ins_can_departamentos', $cbo_ins_can_departamentos, '', 'id="cbo_ins_can_departamentos" class="col-sm-3"'); ?>
+                        <?php echo form_dropdown('cbo_ins_can_departamentos', $cbo_ins_can_departamentos, '', 'id="cbo_ins_can_departamentos" required = "required" class="col-sm-3"'); ?>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
 
                 <div class="col-sm-9">
                     <div id="cont_ins_can_provincias">
-                        <?php echo form_dropdown('cbo_ins_can_provincias', $cbo_ins_can_provincias, '', 'id="cbo_ins_can_provincias" class="col-sm-3"'); ?>
+                        <?php echo form_dropdown('cbo_ins_can_provincias', $cbo_ins_can_provincias, '', 'id="cbo_ins_can_provincias" required = "required" class="col-sm-3"'); ?>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
 
                 <div class="col-sm-9">
                     <div id="cont_ins_can_distritos">
-                        <?php echo form_dropdown('cbo_ins_can_distritos', $cbo_ins_can_distritos, '', 'id="cbo_ins_can_distritos" class="col-sm-3"'); ?>
+                        <?php echo form_dropdown('cbo_ins_can_distritos', $cbo_ins_can_distritos, '', 'id="cbo_ins_can_distritos" required = "required" class="col-sm-3"'); ?>
                     </div>
                 </div>
             </div>
@@ -146,7 +146,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
                 <label class="col-sm-3 control-label no-padding-right" for="txt_ins_can_nrocanchas"> Nro de Canchas </label>
 
                 <div class="col-sm-9">
-                    <input class="input-mini" id="txt_ins_can_nrocanchas" type="text" placeholder="Nro de Canchas"  name="txt_ins_can_nrocanchas" />
+                    <input class="input-mini" id="txt_ins_can_nrocanchas" type="text" placeholder="Nro de Canchas" required="required"  name="txt_ins_can_nrocanchas" />
                 </div>
             </div>
 
