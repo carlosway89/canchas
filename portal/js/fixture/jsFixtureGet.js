@@ -10,11 +10,13 @@ function get_fixture(){
         url: link_host,
         cache: false,
         success: function(data) {
+            $('#fixture_content').empty();
             $('#fixture_content').html(data);
             data_process();
         },
         error: function() { 
-            alert("error");
+            $('#fixture_content').html('<div class="text-warning"><h4>Disculpe!!</h4><br>No hay informacion por el momento</div>');
+            
         }              
     });
 }
