@@ -37,7 +37,7 @@
 <script src="<?php echo URL_JS; ?>jquery.maskedinput.min.js"></script>
 <script src="<?php echo URL_JS; ?>bootstrap-tag.min.js"></script>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 
 
 <!-- ace scripts -->

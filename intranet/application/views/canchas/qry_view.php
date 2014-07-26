@@ -29,7 +29,10 @@
                         }
                         ?>
                         <tr>
-                            <td style="text-align: center;"><img width="100" height="70" src="<?php echo URL_PORTAL ?>img/img-demo-canchas/<?php echo $list_canchas->cCanFotoPortada; ?>" /></td>
+                            <td style="text-align: center;">
+                                <img width="100" height="70" src="<?php echo $list_canchas->cCanFotoPortada; ?>" />
+<!--                                <img width="100" height="70" src="<?php echo URL_PORTAL ?>img/img-demo-canchas/<?php echo $list_canchas->cCanFotoPortada; ?>" />-->
+                            </td>
                             <td><?php echo $list_canchas->cCanNombre; ?></td>
                             <td style="width: 50%;text-align: justify;"><?php echo $list_canchas->cCanDescripcion; ?></td>
                             <td class="hidden-480">

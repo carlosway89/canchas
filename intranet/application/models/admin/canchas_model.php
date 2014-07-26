@@ -174,10 +174,8 @@ class Canchas_model extends CI_Model {
             'INS-CANCHAS',
             $this->getCanNombre(),
             $this->getCanDescripcion(),
-//            $this->getCanLatitud(),
-//            $this->getCanLongitud(),
-            '123456',
-            '-123456',
+            $this->getCanLatitud(),
+            $this->getCanLongitud(),
             $this->getCanDepartamento(),
             $this->getCanProvincia(),
             $this->getCanDistrito(),
@@ -187,9 +185,10 @@ class Canchas_model extends CI_Model {
             $this->getCanEmail(),
             $this->getCanSitioWeb(),
             $this->getCanNroCanchas(),
+            $this->getCanFotoPortada()
         );
 
-        $query = $this->db->query("CALL USP_GEN_I_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
+        $query = $this->db->query("CALL USP_GEN_I_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
         $this->db->close();
         if ($query) {
             return true;

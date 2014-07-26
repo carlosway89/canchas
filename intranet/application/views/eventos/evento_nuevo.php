@@ -248,6 +248,9 @@
               //onchange:''
               //
             });
+            
+            
+            
           $('#id-input-file-2').on('change',function(e){
 
                 e=e?e:window.event;

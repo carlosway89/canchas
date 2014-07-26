@@ -1,18 +1,20 @@
 $(function(){
     
-    loadScript();
+    initialize_mapscanchas(); // Carga el mapa de google maps
+    
+    upload_foto_cancha() // Configuración para subir fotos de las canchas
    
-   $('#txt_ins_can_nrocanchas').ace_spinner({
-       value:0,
-       min:0,
-       max:100,
-       step:1, 
-       on_sides: true, 
-       icon_up:'icon-caret-up', 
-       icon_down:'icon-caret-down'
-   });
+    $('#txt_ins_can_nrocanchas').ace_spinner({
+        value:0,
+        min:0,
+        max:100,
+        step:1, 
+        on_sides: true, 
+        icon_up:'icon-caret-up', 
+        icon_down:'icon-caret-down'
+    });
    
-   // ACCION COMBO DEPARTAMENTO -> BUSCAR PROVINCIAS Y DISTRITOS
+    // ACCION COMBO DEPARTAMENTO -> BUSCAR PROVINCIAS Y DISTRITOS
     $("#cbo_ins_can_departamentos").bind('change', function(event){
         get_provincias();
         get_distritos();
@@ -56,23 +58,19 @@ $(function(){
             }
         },
         submitHandler: function(form){
-            //msgLoadSave("#sms_ins_can_add","#btn_ins_can_add");
+            msgLoadSave("#sms_ins_can_add","#btn_ins_can_add");
             $.ajax({
                 type: "POST",
                 url: $(form).attr('action'),
                 cache: false,
                 data: $(form).serialize(),
                 success: function(data) {
-                    alert(data);
-                   // msgLoadSaveRemove("#btn_ins_can_add");
-                    //alert(data);
-//                    if(data.trim() == 1){
-//                        alert("exito");
-//                        //enviar_email();
-//                        //popup_sms_exito('#pop_reg_user','.close_popup')
-//                    }else{
-//                        alert("error");
-//                    }
+                    msgLoadSaveRemove("#btn_ins_can_add");
+                    if(data.trim() == 1){
+                        alert("exito");
+                    }else{
+                        alert("error");
+                    }
                 },
                 error: function() { 
                     alert("Error code");
@@ -132,63 +130,173 @@ function get_distritos(){
     });
 }
 
+function upload_foto_cancha(){
+    $('#id-input-file-1 , #id-input-file-2').ace_file_input({
+        no_file:'Ningun Archivo Seleccionado ...',
+        btn_choose:'Elegir',
+        btn_change:'Cambiar',
+        droppable:false,
+        onchange:null,
+        thumbnail:false, // | true | large
+        whitelist:'gif|png|jpg|jpeg',
+        blacklist:'exe|php|html'
+    });
+            
+    $('#id-input-file-2').on('change',function(e){
+        e=e?e:window.event;
+        var files = e.target.files || e.dataTransfer.files;
+
+        $('#btn_ins_can_add').addClass('disabled');
+        $('#loader_image').show();               
+        $('div.ace-file-input').hide();
+        $('div#image_uploaded').hide();
+
+        var img=files[0];
+
+        var serverUrl = 'https://api.parse.com/1/files/' + img.name;
+
+        $.ajax({
+            type: "POST",
+            beforeSend: function(request) {
+                request.setRequestHeader("X-Parse-Application-Id", 'xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW');
+                request.setRequestHeader("X-Parse-REST-API-Key", 'glPBhAwIPdKBq9BRVcXFAiJkJEg5wtqycL0idMzW');
+                request.setRequestHeader("Content-Type", img.type);
+            },
+            url: serverUrl,
+            data: img,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                // muestra y desahbilita div y botones
+                $('#btn_ins_can_add').removeClass('disabled');
+                $('#loader_image').hide();               
+                $('div.ace-file-input').show();
+                $('div.ace-file-input').find('.remove').hide();
+
+                // pone los valores en los input para enviar por post
+                $('#txt_ins_can_foto').val(data.url);
+
+                // muestra la imagen subida
+                $('.img_up').attr('src',data.url);
+                $('div#image_uploaded').show();
+            },
+            error: function(data) {
+                $('#btn_ins_can_add').removeClass('disabled');
+                $('#loader_image').hide();               
+                $('div.ace-file-input').show();
+            }
+        });
+    });
+}
+
 
 // FUNCIÓN PARA CARGAR MAPA DE REGISTRO DE LATITUD Y LONGITUD DE UNA CANCHA
 function initialize_mapscanchas(){
-    var popup;
-    var markersArray = [];
+    var lat,lng;
+    var geocoder = new google.maps.Geocoder();
+    
+    //obtenemos los valores en caso de tenerlos en un formulario ya guardado en la base de datos
+    lat = $('#hid_ins_can_latitud').val();
+    lng = $('#hid_ins_can_longitud').val();
+    
+    //Si hay valores creamos un objeto Latlng
+    if(lat !='' && lng != '')
+    {
+        var latLng = new google.maps.LatLng(lat,lng);
+    }
+    else
+    {
+        var latLng = new google.maps.LatLng(-8.111729024852341,-79.02822839370117);
+    }
+    
+    
     var myOptions = {
-        center: new google.maps.LatLng( -7.7001724,-79.43381879999998),
+        center: latLng,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     
-    var map = new google.maps.Map(document.getElementById("mapa_canchas"),myOptions);       
-    google.maps.event.addListener(map, 'click', function(event) {
-        placeMarker(event.latLng);
-        $("#txt_ins_can_longitud").val(event.latLng.lng());
-        $("#txt_ins_can_longitud").focus();
-        //document.getElementById('txt_ins_obra_empresagana').scrollIntoView(true);
-        $("#txt_ins_can_latitud").val(event.latLng.lat());
+    var map = new google.maps.Map(document.getElementById("mapa_canchas"),myOptions);      
+    
+    //creamos el marcador en el mapa
+    marker = new google.maps.Marker({
+        map: map,//el mapa creado en el paso anterior
+        position: latLng,//objeto con latitud y longitud
+        draggable: true //que el marcador se pueda arrastrar
     });
     
-    function placeMarker(location) {
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            title: 'Longitud: '+location.lng()+' Latitud: '+location.lat()
-        });
+    //función que actualiza los input del formulario con las nuevas latitudes
+    //Estos campos suelen ser hidden
+    updatePosition(latLng);
         
-        deleteOverlays();
-        markersArray.push(marker);
-            
-        google.maps.event.addListener(marker, 'click', function(){
-            if(!popup){
-                popup = new google.maps.InfoWindow();
+    // Create the search box and link it to the UI element.
+    var input = (
+        document.getElementById('txt_ins_can_ubicacion'));
+
+    
+    var options = {
+        componentRestrictions: {
+            country: "pe"
+        }
+    };
+    
+    var searchBox =  new google.maps.places.Autocomplete(input, options);
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+            return;
+        }
+    });
+        
+    //Asignamos al evento click del boton la funcion codeAddress
+    $('#pasar').click(function(){
+        codeAddress();
+        return false;
+    });
+    $('#txt_ins_can_ubicacion').on('',function(){
+        codeAddress();
+        return false;
+    });
+    
+    
+    //funcion que traduce la direccion en coordenadas
+    function codeAddress() {
+               
+        //obtengo la direccion del formulario
+        var address = document.getElementById("txt_ins_can_ubicacion").value;
+        //hago la llamada al geodecoder
+        geocoder.geocode( {
+            'address': address
+        }, function(results, status) {
+               
+            //si el estado de la llamado es OK
+            if (status == google.maps.GeocoderStatus.OK) {
+                //centro el mapa en las coordenadas obtenidas
+                map.setCenter(results[0].geometry.location);
+                //coloco el marcador en dichas coordenadas
+                marker.setPosition(results[0].geometry.location);
+                //actualizo el formulario      
+                updatePosition(results[0].geometry.location);
+                   
+                //Añado un listener para cuando el markador se termine de arrastrar
+                //actualize el formulario con las nuevas coordenadas
+                google.maps.event.addListener(marker, 'dragend', function(){
+                    updatePosition(marker.getPosition());
+                });
+            } else {
+                //si no es OK devuelvo error
+                alert("No podemos encontrar la direccion porfavor ubiquelo en el mapa");
             }
-
-            var note="<b style=\'color: #990000;text-align:center;\'>:: Coordenada ::</b><hr><b style=\'color: #990000;\'> Latitud: </b><b style=\'color: #000;\'>"+location.lat()+ "</b> <br><b style=\'color: #990000;\'> Longitud: </b><b style=\'color: #000;\'> "  +location.lng()+" </b>";
-
-            popup.setContent(note);
-            popup.open(map, this);
-        }) 
-
+        });
     }
     
-    function deleteOverlays() {
-        if (markersArray) {
-            for (i in markersArray) {
-                markersArray[i].setMap(null);
-            }
-            markersArray.length = 0;
-        }
-    } 
+    
+    //funcion que simplemente actualiza los campos del formulario
+    function updatePosition(latLng)
+    {          
+        $('#hid_ins_can_latitud').val(latLng.lat());
+        $('#hid_ins_can_longitud').val(latLng.lng());
+    }
 }
-
-function loadScript() {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'http://maps.google.com/maps/api/js?sensor=false&' +
-    'callback=initialize_mapscanchas';
-    document.body.appendChild(script);
-}
+    

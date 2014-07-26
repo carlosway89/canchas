@@ -43,8 +43,8 @@ class Canchas extends CI_Controller {
         if ($this->form_validation->run() == true) {
             $this->canchas_model->setCanNombre($this->input->post('txt_ins_can_nombre'));
             $this->canchas_model->setCanDescripcion($this->input->post('txt_ins_can_descripcion'));
-//            $this->canchas_model->setCanLatitud($this->input->post('txt_ins_user_email'));
-//            $this->canchas_model->setCanLongitud($this->input->post('txt_ins_user_email'));
+            $this->canchas_model->setCanLatitud($this->input->post('hid_ins_can_latitud'));
+            $this->canchas_model->setCanLongitud($this->input->post('hid_ins_can_longitud'));
             $this->canchas_model->setCanDepartamento($this->input->post('cbo_ins_can_departamentos'));
             $this->canchas_model->setCanProvincia($this->input->post('cbo_ins_can_provincias'));
             $this->canchas_model->setCanDistrito($this->input->post('cbo_ins_can_distritos'));
@@ -54,6 +54,14 @@ class Canchas extends CI_Controller {
             $this->canchas_model->setCanEmail($this->input->post('txt_ins_can_email'));
             $this->canchas_model->setCanSitioWeb($this->input->post('txt_ins_can_web'));
             $this->canchas_model->setCanNroCanchas($this->input->post('txt_ins_can_nrocanchas'));
+            
+            if($this->input->post('txt_ins_can_foto') == ""){
+                $foto_cancha = "nofoto.jpg";
+            }else{
+                $foto_cancha = $this->input->post('txt_ins_can_foto');
+            }
+            
+            $this->canchas_model->setCanFotoPortada($foto_cancha);
             
             $result = $this->canchas_model->canchasIns();
 
