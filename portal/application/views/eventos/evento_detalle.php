@@ -16,11 +16,11 @@ error_reporting(0);
 	
 	
 	<!-- Event Map -->
-	<section class="section full-width full-width-map animate-onscroll">
-	
-		<iframe width="900" height="480" src="https://maps.google.rs/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=marmora+road&amp;sll=44.210767,20.922416&amp;sspn=4.606139,10.821533&amp;ie=UTF8&amp;hq=&amp;hnear=Marmora+Rd,+London+SE22+0RX,+United+Kingdom&amp;t=m&amp;z=14&amp;ll=51.451955,-0.055755&amp;output=embed"></iframe>
+	<div class="section full-width full-width-map animate-onscroll">
+		<div id="evento_detalle_map" width="900" height="480" >
+		</div>
 		
-	</section>
+	</div>
 	<!-- /Event Map -->
 	
 	
@@ -37,14 +37,16 @@ error_reporting(0);
 					<div class="row">
 						
 						<div class="col-lg-9 col-md-9 col-sm-8 animate-onscroll">
+							<div class="col-md-6">
+								<h6>Description</h6>
 							
-							<div class="event-image">
-								<img src="img/events/event1.jpg" alt="">
+								<p><?=$result[0]['cEveDescripcion']?> </p>
 							</div>
-							
-							<h6>Description</h6>
-							
-							<p><?=$result[0]['cEveDescripcion']?> </p>
+							<div class="col-md-6">
+								<div class="event-image">
+									<img src="<?=$result[0]['cEveLinkFoto']?>" alt="">
+								</div>
+							</div>
 							
 						</div>
 						
@@ -90,7 +92,7 @@ error_reporting(0);
 									<i class="icons icon-share"></i>
 									<p class="title">Share This</p>
 									<ul class="social-share">
-										<li class="facebook"><a href="<?=$result[0]['cEveLinkFacebook']?>" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>
+										<li class="facebook"><a href="#" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>
 										<li class="email"><a href="#" class="tooltip-ontop" title="Email"><i class="icons icon-mail"></i></a></li>
 									</ul>
 									
@@ -129,3 +131,73 @@ error_reporting(0);
 						
 	</section>
 </section>
+<script type="text/javascript">
+
+      if (document.addEventListener) {
+         document.addEventListener("DOMContentLoaded", loadScripts, false);
+      }
+
+      //Declaramos las variables que vamos a user
+      var lat = null;
+      var lng = null;
+      var map = null;
+      var geocoder = null;
+      var marker = null;
+      
+      function loadScripts() {
+
+             //obtenemos los valores en caso de tenerlos en un formulario ya guardado en la base de datos
+           lat = <?=$result[0]['cEveLatitud']?>;
+           lng = <?=$result[0]['cEveLongitud']?>;
+             
+
+           //Inicializamos la función de google maps una vez el DOM este cargado
+          initialize();
+
+      }  
+           
+      function initialize() {
+           
+            geocoder = new google.maps.Geocoder();
+              
+             //Si hay valores creamos un objeto Latlng
+             if(lat !='' && lng != '')
+            {
+               var latLng = new google.maps.LatLng(lat,lng);
+            }
+            else
+            {
+               var latLng = new google.maps.LatLng(-8.111729024852341,-79.02822839370117);
+            }
+            //Definimos algunas opciones del mapa a crear
+             var myOptions = {
+                center: latLng,//centro del mapa
+                zoom: 15,//zoom del mapa
+                mapTypeId: google.maps.MapTypeId.ROADMAP //tipo de mapa, carretera, híbrido,etc
+              };
+              //creamos el mapa con las opciones anteriores y le pasamos el elemento div
+              map = new google.maps.Map(document.getElementById("evento_detalle_map"), myOptions);
+
+
+
+              //creamos el marcador en el mapa
+              marker = new google.maps.Marker({
+                  map: map,//el mapa creado en el paso anterior
+                  position: latLng,//objeto con latitud y longitud
+                  title: 'Ubicación de <?=$result[0][cEveTitulo]?>',
+                  draggable: false //que el marcador se pueda arrastrar
+              });
+
+              popupinicial = new google.maps.InfoWindow();
+               var contenido='<?=$result[0][cEveTitulo]?>';
+        		popupinicial.setContent(contenido);
+
+        		popupinicial.open(map, marker);
+                             
+               
+          }
+           
+          //funcion que traduce la direccion en coordenadas
+    
+
+</script>

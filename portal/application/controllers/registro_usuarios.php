@@ -24,6 +24,8 @@ class Registro_Usuarios extends CI_Controller {
         $this->form_validation->set_rules('txt_ins_user_clave', 'clave', '|trim|required');
         $this->form_validation->set_rules('txt_ins_user_repeclave', 'repetir clave', '|trim|required');
         $this->form_validation->set_message('required', 'El campo %s es requerido');
+
+
         
         if ($this->form_validation->run() == true) {
             $this->usuarios_model->setNombres($this->input->post('txt_ins_user_nombres'));

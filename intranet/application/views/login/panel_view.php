@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Login Page - Ace Admin</title>
+        <title><?php echo $title; ?></title>
 
         <meta name="description" content="User login page" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,11 +24,36 @@
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>ace.min.css" />
         <link rel="stylesheet" href="<?php echo URL_CSS; ?>ace-rtl.min.css" />
 
+        <!-- Css Validate -->
+        <link rel="stylesheet" href="<?php echo URL_CSS; ?>validate/validation.css" />
+        <link rel="stylesheet" href="<?php echo URL_CSS; ?>estilos.css" />
+
         <!--[if lte IE 8]>
           <link rel="stylesheet" href="<?php echo URL_CSS; ?>ace-ie.min.css" />
         <![endif]-->
 
         <!-- inline styles related to this page -->
+
+
+        <!-- BASIC SCRIPTS -->
+        <!--[if !IE]> -->
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='<?php echo URL_JS; ?>jquery-2.0.3.min.js'>"+"<"+"/script>");
+        </script>
+
+        <!-- <![endif]-->
+        
+        <script type="text/javascript" src='<?php echo URL_JS ?>bootstrap.min.js'></script>
+        <script type="text/javascript" src='<?php echo URL_JS; ?>bootbox.min.js'></script>
+        <script src="<?php echo URL_JS; ?>validacion/jqueryvalidate.js"></script>
+        <script src="<?php echo URL_JS; ?>jsGeneral.js"></script>
+        <script type="text/javascript" src="<?php echo URL_JS; ?>login/jsLogin.js"></script>
+
+        <!--[if IE]>
+<script type="text/javascript">
+window.jQuery || document.write("<script src='<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
@@ -63,26 +88,14 @@
                 </div><!-- /.row -->
             </div>
         </div><!-- /.main-container -->
+        
+        <?php $this->load->view("login/popup_view"); ?>
 
-        <!-- basic scripts -->
-        <!--[if !IE]> -->
-        <script type="text/javascript">
-            window.jQuery || document.write("<script src='<?php echo URL_JS; ?>jquery-2.0.3.min.js'>"+"<"+"/script>");
-        </script>
-
-        <!-- <![endif]-->
-
-        <!--[if IE]>
-<script type="text/javascript">
-window.jQuery || document.write("<script src='<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<"+"/script>");
-</script>
-<![endif]-->
+        <div id="mensajecarga" class="message_loading"></div> 
 
         <script type="text/javascript">
             if("ontouchend" in document) document.write("<script src='<?php echo URL_JS; ?>jquery.mobile.custom.min.js'>"+"<"+"/script>");
         </script>
 
-        <!-- inline scripts related to this page -->
-        <script type="text/javascript" src="<?php echo URL_MAIN; ?>login/jsLogin.js"></script>
     </body>
 </html>

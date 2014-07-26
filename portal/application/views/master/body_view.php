@@ -21,17 +21,6 @@
                 </div>											
             </div>
 
-
-
-            <div class="col-lg-12 col-md-12 col-sm-12 users">
-
-                <a href="#inline-1" rel="prettyPhoto" >probando probando</a>
-                <div id="inline-1" style="display: none;">
-                    <?php $this->load->view("registro_usuarios/panel_view"); ?>
-                </div>
-            </div>    
-
-
             <div class="col-lg-12 col-md-12 col-sm-12">
 
                 <div class="banners-inline">
@@ -45,7 +34,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>eventos/registrar">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>eventos/add" target="_blank">
                             <i class="icons icon-check margen_ico"></i>
                             <h4 class="letra-h4">Registra tu evento</h4>
                             <p>Registra tus eventos importantes</p>
@@ -53,7 +42,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>multimedia/publica">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>multimedia/add_foto">
                             <i class="icons icon-picture margen_ico"></i>
                             <h4 class="letra-h4">Publica Multimedia</h4>
                             <p>Publica tus Fotos y Videos</p>
@@ -61,7 +50,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="<?php echo URL_MAIN ?>noticias/publica">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>torneos/add">
                             <i class="icons icon-picture margen_ico"></i>
                             <h4 class="letra-h4">Torneos</h4>
                             <p>Crea tu torne de tu club</p>
@@ -82,15 +71,15 @@
                 </div>
 
                 <!-- SECCION NOTICIA PRINCIPAL -->
-                <?php $this->load->view("master/noticia_principal_view") ?>
+                <?php $this->load->view("noticias/noticia_principal_view") ?>
                 <!-- END -->	
 
                 <!-- SECCION NOTICIAS IMPORTANTES -->
-                <?php $this->load->view("master/noticias_importantes_view"); ?>
+                <?php $this->load->view("noticias/noticias_importantes_view"); ?>
                 <!-- END -->	
 
                 <!-- SECCION CANCHAS FAVORITAS -->
-                <?php $this->load->view("master/canchas_favoritas_view"); ?>
+                <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
                 <!-- END -->	
 
 
@@ -136,7 +125,7 @@
                 <!-- /Banner Rotator -->						
             </div>
 
-
+            
             <!-- Sidebar -->
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
 

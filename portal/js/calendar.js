@@ -881,6 +881,7 @@ if(!String.prototype.formatNum) {
 						if(existe!=-1){
 							url_json='../'+url_json;
 						}*/
+						var url_json="index.php/"+url_json;
 						
 						
 						$.ajax({

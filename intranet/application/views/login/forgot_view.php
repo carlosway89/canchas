@@ -11,23 +11,28 @@
                 Ingrese su correo electrónico
             </p>
 
-            <form>
-                <fieldset>
-                    <label class="block clearfix">
-                        <span class="block input-icon input-icon-right">
-                            <input type="email" class="form-control" placeholder="Email" />
-                            <i class="icon-envelope"></i>
-                        </span>
-                    </label>
+            <?php
+            $atributosForm = array('id' => 'frm_upd_recu_clave', 'name' => 'frm_upd_recu_clave');
+            echo form_open('acceso/recuperar_clave', $atributosForm);
+            $txt_upd_recu_clave = array('name' => 'txt_upd_recu_clave', 'id' => 'txt_upd_recu_clave', 'class' => 'form-control', 'placeholder' => 'Correo electrónico', 'required' => 'required');
+            ?>
+            <fieldset>
+                <label class="block clearfix">
+                    <span class="block input-icon input-icon-right">
+                        <?php echo form_input($txt_upd_recu_clave); ?>
+                        <i class="icon-envelope"></i>
+                    </span>
+                </label>
 
-                    <div class="clearfix">
-                        <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
-                            <i class="icon-lightbulb"></i>
-                            Enviar
-                        </button>
-                    </div>
-                </fieldset>
-            </form>
+                <div class="clearfix">
+                    <button type="submit" class="width-35 pull-right btn btn-sm btn-danger">
+                        <i class="icon-lightbulb"></i>
+                        Enviar
+                    </button>
+                </div>
+            </fieldset>
+            <?php echo form_close(); ?>
+            <?php echo validation_errors(); ?>
         </div><!-- /widget-main -->
 
         <div class="toolbar center">
@@ -38,3 +43,4 @@
         </div>
     </div><!-- /widget-body -->
 </div><!-- /forgot-box -->
+<script type="text/javascript" src='<?php echo URL_JS; ?>login/jsRecuperarClave.js'></script>

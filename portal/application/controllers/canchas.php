@@ -23,6 +23,7 @@ class Canchas extends CI_Controller {
         $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
         $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
         $data['noticia_principal'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-PRINCIPAL',''));
+        $data['list_canchas_favoritas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-FAVORITAS','','','',''));
         $this->load->view('master/template_view', $data);
     }
 

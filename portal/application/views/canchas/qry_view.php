@@ -9,8 +9,6 @@
     </section>
     <!-- Page Heading -->
 
-
-
     <!-- Section -->
     <section class="section full-width-bg gray-bg">
 
@@ -46,45 +44,26 @@
 
                         </div>
 
-                        <script>
+                        <script type="text/javascript">
                             $(function(){   
-
                                 // ACCION COMBO DEPARTAMENTO -> BUSCAR PROVINCIAS Y DISTRITOS
                                 $("#btn_fnd_canchas_qry").bind('click', function(event){
                                     alert("buscando");
                                 }); 
-       
+           
                             });    
                         </script>
 
                     </div>
                 </div>
 
-
-
-
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="media-items row">
                         <?php $i = 1; ?>
                         <?php foreach ($list_canchas as $list_canchas) { ?>
                             <?php
-                            if ($i == 1) {
-                                $img_cancha = 'img-demo3.jpg';
-                            } else if ($i == 2) {
-                                $img_cancha = 'img-demo4.jpg';
-                            } else if ($i == 3) {
-                                $img_cancha = 'img-demo5.jpg';
-                            } else if ($i == 4) {
-                                $img_cancha = 'img-demo6.jpg';
-                            } else if ($i == 5) {
-                                $img_cancha = 'img-demo7.jpg';
-                            } else if ($i == 6) {
-                                $img_cancha = 'img-demo8.jpg';
-                            } else if ($i == 7) {
-                                $img_cancha = 'img-demo3.jpg';
-                            } else if ($i == 8) {
-                                $img_cancha = 'img-demo4.jpg';
-                            }
+                            $img_cancha = $list_canchas->cCanFotoPortada;
+                            $url_nombre_cancha = replace_caracteres_raros($list_canchas->cCanNombre);
                             ?>
 
                             <div class="col-lg-3 col-md-4 col-sm-6 mix category-photos" data-nameorder="1" data-dateorder="3">
@@ -92,11 +71,11 @@
                                 <!-- Media Item -->
                                 <div class="media-item animate-onscroll ">
                                     <div class="media-image">
-                                        <img src="<?php echo URL_IMG; ?>img-demo-canchas/<?php echo $img_cancha; ?>" alt="">
+                                        <img src="<?php echo $img_cancha; ?>" alt="">
                                         <div class="media-hover">
                                             <div class="media-icons">
-                                                <a href="<?php echo URL_IMG; ?>img-demo-canchas/<?php echo $img_cancha; ?>" data-group="media-jackbox" data-thumbnail="img/media/media1.jpg" class="jackbox media-icon"><i class="icons icon-zoom-in"></i></a>
-                                                <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo str_replace(" ", "-", $list_canchas->cCanNombre) . "_" . $list_canchas->nCanID; ?>" target="_blank" class="media-icon"><i class="icons icon-link"></i></a>
+                                                <a class="media-icon" rel="prettyPhoto[gallery1]" href="<?php echo $img_cancha; ?>"><i class="icons icon-eye"></i></a>
+                                                <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha. "_" . $list_canchas->nCanID; ?>" class="media-icon"><i class="icons icon-link"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -104,27 +83,27 @@
                                     <div class="media-info">
                                         <div class="media-header">
                                             <div class="media-caption">
-                                                <h2><a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo str_replace(" ", "-", $list_canchas->cCanNombre) . "_" . $list_canchas->nCanID; ?>" target="_blank"><?php echo $list_canchas->cCanNombre; ?></a></h2>
+                                                <h2><a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas->nCanID; ?>"><?php echo $list_canchas->cCanNombre; ?></a></h2>
                                             </div>
                                         </div>
 
                                         <div class="media-description">
                                             <p>
-                                                <i class="icons icon-location"></i> <?php echo $list_canchas->direccion; ?>
+                                                <i class="icons icon-location"></i> Dirección: <?php echo $list_canchas->direccion; ?>
                                             </p>
                                             <p>
                                                 <i class="icons icon-home"></i> <?php echo $list_canchas->distrito; ?>, <?php echo $list_canchas->departamento; ?>
                                             </p>
                                             <p>
-                                                <i class="icons icon-phone"></i> <?php echo $list_canchas->telefono; ?>
+                                                <i class="icons icon-phone"></i> Teléfono: <?php echo $list_canchas->telefono; ?>
                                             </p>
                                             <p>
-                                                <i class="icons icon-flag-1"></i> <?php echo $list_canchas->nro_canchas; ?>
+                                                <i class="icons icon-flag-1"></i> Canchas: <?php echo $list_canchas->nro_canchas; ?>
                                             </p>
                                         </div>
 
                                         <div class="media-button">
-                                            <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo str_replace(" ", "-", $list_canchas->cCanNombre) . "_" . $list_canchas->nCanID; ?>" target="_blank" class="button big button-arrow">Ver detalle</a>									</div>
+                                            <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas->nCanID; ?>" class="button big button-arrow">Ver detalle</a>									</div>
 
                                     </div>
                                 </div>

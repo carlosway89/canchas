@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No esta permitido el acceso');
 
-class usuario extends CI_Controller {
+class Acceso extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -14,10 +14,13 @@ class usuario extends CI_Controller {
         $this->load->model('admin/persona_model');
     }
 
+    function index() {
+        $data['title'] = '.: SoloCanchas - Acceso a la Intranet :.';
+        $this->load->view("login/panel_view", $data);
+    }
+
     function login() {
-        $data['title'] = '.: Favarato Express Inc. - '. lang('idioma.form-login-titlenavega') .' :.';
-        $data['ruta_es'] = URL_MAIN.'es/usuario/login';
-        $data['ruta_en'] = URL_MAIN.'en/usuario/login';
+        $data['title'] = '.: SoloCanchas - Acceso a la Intranet :.';
         $this->load->view("login/panel_view", $data);
     }
 
@@ -26,36 +29,36 @@ class usuario extends CI_Controller {
         redirect("usuario/login");
     }
 
-    function user_registration_from_login() {
-        $this->form_validation->set_rules('txt_ins_usu_email', 'email', '|trim|required');
-        $this->form_validation->set_rules('txt_ins_usu_usuario', 'usuario', '|trim|required');
-        $this->form_validation->set_rules('txt_ins_usu_password', 'contraseña', '|trim|required');
-        $this->form_validation->set_rules('txt_ins_usu_repeatpass', 'repetir contraseña', '|trim|required');
+//    function user_registration_from_login() {
+//        $this->form_validation->set_rules('txt_ins_usu_email', 'email', '|trim|required');
+//        $this->form_validation->set_rules('txt_ins_usu_usuario', 'usuario', '|trim|required');
+//        $this->form_validation->set_rules('txt_ins_usu_password', 'contraseña', '|trim|required');
+//        $this->form_validation->set_rules('txt_ins_usu_repeatpass', 'repetir contraseña', '|trim|required');
+//
+//        $this->form_validation->set_message('required', 'El campo %s es requerido');
+//
+//        if ($this->form_validation->run() == true) {
+//            $this->persona_model->setPerEmail($this->input->post('txt_ins_usu_email'));
+//            $this->usuario_model->setUsuNick($this->input->post('txt_ins_usu_usuario'));
+//            $this->usuario_model->setUsuClave($this->input->post('txt_ins_usu_password'));
+//            $resul = $this->usuario_model->user_registration();
+//
+//            print_r($resul);
+//            exit();
+//
+//            if ($resul) {
+//                echo 1;
+//                exit;
+//            } else {
+//                echo 0;
+//                exit;
+//            }
+//        } else {
+//            $this->index();
+//        }
+//    }
 
-        $this->form_validation->set_message('required', 'El campo %s es requerido');
-
-        if ($this->form_validation->run() == true) {
-            $this->persona_model->setPerEmail($this->input->post('txt_ins_usu_email'));
-            $this->usuario_model->setUsuNick($this->input->post('txt_ins_usu_usuario'));
-            $this->usuario_model->setUsuClave($this->input->post('txt_ins_usu_password'));
-            $resul = $this->usuario_model->user_registration();
-
-            print_r($resul);
-            exit();
-
-            if ($resul) {
-                echo 1;
-                exit;
-            } else {
-                echo 0;
-                exit;
-            }
-        } else {
-            $this->index();
-        }
-    }
-
-    function user_autentication() {
+    function autentication() {
         $this->form_validation->set_rules('txt_ins_login_user', 'Nick', 'required|trim');
         $this->form_validation->set_rules('txt_ins_login_clave', 'clave', 'required|trim|md5');
         $this->form_validation->set_message('required', 'El %s es requerido');
@@ -64,7 +67,8 @@ class usuario extends CI_Controller {
             $clave = $this->input->post('txt_ins_login_clave');
             $this->usuario_model->setUsuNick($user);
             $this->usuario_model->setUsuClave($clave);
-            $login = $this->usuario_model->user_autentication();
+
+            $login = $this->usuario_model->autentication();
 
             if ($login) {
                 $data = array(
@@ -75,41 +79,44 @@ class usuario extends CI_Controller {
                     'nUsuID' => $login[0]->nUsuID
                 );
                 $this->session->set_userdata($data);
+                echo "1";
             } else {
-                $this->login();
+                echo "2";
             }
         } else {
-            $this->login();
+            echo "3";
         }
     }
 
-    function activar_cuenta($id_user) {
-        $query = $this->usuario_model->activar_cuenta($id_user);
-        if ($query) {
-            redirect("usuario/login");
-        }
-    }
+//    function activar_cuenta($id_user) {
+//        $query = $this->usuario_model->activar_cuenta($id_user);
+//        if ($query) {
+//            redirect("usuario/login");
+//        }
+//    }
 
     function recuperar_clave() {
         $email = $this->input->post('txt_upd_recu_clave');
 
         // OBTENER DATOS DEL USUARIO (ID del Usuario)
-        $this->usuario_model->getDatosUsuario(array('LIST-PERSON-POR-VALOR-CRITERIO', $email, '55'));
+        $this->usuario_model->getDatosUsuario(array('LIST-PERSON-POR-VALOR-CRITERIO', $email, '9'));
 
         // GENERAR Y ACTUALIZAR NUEVA CLAVE
         $new_clave = rand(1000000, 9999999);
+
         $this->usuario_model->setUsuClave($new_clave);
         $this->usuario_model->usuariosUpdClave();
 
         // ENVIAR EMAIL
-        $this->envio_email("recuperar", $email, $new_clave);
+        $this->enviar_email("recuperar", $email, $new_clave);
     }
 
-    function envio_email($accion, $email, $clave) {
+    function enviar_email($accion, $email, $clave) {
+
         //configuracion para gmail
         $smtp_user = 'luipa1303@gmail.com';
         $smtp_clave = 'lampard_lampard';
-        $identificacion = 'Web Master Favarato Express Inc.';
+        $identificacion = 'Web Master SoloCanchas.';
 
         $configGmail = array(
             'protocol' => 'smtp',
@@ -125,14 +132,14 @@ class usuario extends CI_Controller {
         $this->email->initialize($configGmail);
 
         if ($accion == "registro") {
-            $asunto = 'FAVARATO EXPRESS INC. - REGISTRO DE NUEVO USUARIO';
+            $asunto = 'SOLO CANCHAS. - REGISTRO DE NUEVO USUARIO';
         } else if ($accion == "actualizacion") {
-            $asunto = 'FAVARATO EXPRESS INC. - ACTUALIZACIÓN DE CONTRASEÑA';
+            $asunto = 'SOLO CANCHAS. - ACTUALIZACIÓN DE CONTRASEÑA';
         } else {
             $new_clave = $clave;
-            $asunto = 'FAVARATO EXPRESS INC. - RECUPERAR CONTRASEÑA';
+            $asunto = 'SOLO CANCHAS. - RECUPERAR CONTRASEÑA';
             $body_mensaje = '<p style="text-align:justify;padding:5px 8px 5px 8px;">
-                    Se ha generado una nueva clave de acceso al Panel de Administración. Tu nueva clave es 
+                    Se ha generado una nueva clave de acceso a la Intranet. Tu nueva clave es 
                     &nbsp;' . $new_clave . '</p>';
         }
 
@@ -141,27 +148,9 @@ class usuario extends CI_Controller {
         $this->email->subject($asunto);
 
         $estilo_css = '<style type="text/css">a {color: #003399;background-color: transparent;font-weight: normal;}h1 {color: #444;background-color: transparent;font-size: 24px;font-weight: bold;}code {font-family: Consolas, Monaco, Courier New, Courier, monospace;font-size: 12px;background-color: #f9f9f9;border: 1px solid #D0D0D0;color: #002166;display: block;margin: 14px 0 14px 0;padding: 12px 10px 12px 10px;}#body{margin: 0 15px 0 15px;}p.footer{text-align: right;font-size: 11px;border-top: 1px solid #D0D0D0;line-height: 32px;padding: 0 10px 0 10px;margin: 20px 0 0 0;}#container{width: 800px;margin: auto;border: 1px solid #D0D0D0;-webkit-box-shadow: 0 0 8px #D0D0D0;font: 13px/20px normal Helvetica, Arial, sans-serif;color: #4F5155;}#container img{float: left;margin: 5px 10px 0px 10px;width: 54px;height: 65px;}</style >';
-        $header_mensaje = '<center>
-        <div id="container" style="text-align:justify;">
-            <table style="width:100%;border-bottom:1px solid #D0D0D0;">
-                <tbody>
-                    <tr>
-                        <td style="width:9%;">
-                            <img src="http://www.munirazuri.gob.pe/mdr/img/logo_razuri.png" /> 
-                        </td>
-                        <td>
-                            <h1>Favarato Express Inc.</h1>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="body">';
+        $header_mensaje = '';
 
-        $footer_mensaje = '</div>
-        </div>
-        <center>';
-
-        $this->email->message($estilo_css . $header_mensaje . $body_mensaje . $footer_mensaje);
+        $this->email->message($estilo_css . $header_mensaje . $body_mensaje);
 
         if ($this->email->send()) {
             echo "1";
@@ -182,6 +171,5 @@ class usuario extends CI_Controller {
             echo "true";
         }
     }
-
 }
 

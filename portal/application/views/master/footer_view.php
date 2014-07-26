@@ -153,6 +153,8 @@
 <!-- Main Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>script.js"></script>
 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
 <!-- UnderScore Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>underscore-min.js"></script>
 <!-- Calendar Script -->

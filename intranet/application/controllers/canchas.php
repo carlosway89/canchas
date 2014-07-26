@@ -1,122 +1,183 @@
 <?php
 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 class Canchas extends CI_Controller {
-    
+
     function __construct() {
         parent::__construct();
-		$this->load->library('form_validation');		
-		$this->load->helper(array('form','url','codegen_helper'));
-		$this->load->model('codegen_model','',TRUE);
-	}	
-	
-	function index(){
-		$this->manage();
-	}
-
-	function manage(){
-        $this->load->library('table');
-        $this->load->library('pagination');
-        
-        //paging
-        $config['base_url'] = base_url().'index.php/canchas/manage/';
-        $config['total_rows'] = $this->codegen_model->count('canchas');
-        $config['per_page'] = 3;	
-        $this->pagination->initialize($config); 	
-        // make sure to put the primarykey first when selecting , 
-		//eg. 'userID,name as Name , lastname as Last_Name' , Name and Last_Name will be use as table header.
-		// Last_Name will be converted into Last Name using humanize() function, under inflector helper of the CI core.
-		$this->data['results'] = $this->codegen_model->get('canchas','nCanID,cCanNombre,cCanDescripcion,cCanLatitud,cCanLongitud,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dCanFechaRegistro,nCanVisitas,cCanEstado','',$config['per_page'],$this->uri->segment(3));
-       
-	   $this->load->view('canchas_list', $this->data); 
-       //$this->template->load('content', 'canchas_list', $this->data); // if have template library , http://maestric.com/doc/php/codeigniter_template
-		
+        $this->load->library('session');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->model('admin/canchas_model');
+        $this->load->model('admin/ubigeo_model');
     }
-	
-    function add(){        
-        $this->load->library('form_validation');    
-		$this->data['custom_error'] = '';
-		
-        if ($this->form_validation->run('canchas') == false)
-        {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
 
-        } else
-        {                            
-            $data = array(
-                    'cCanNombre' => set_value('cCanNombre'),
-					'cCanDescripcion' => set_value('cCanDescripcion'),
-					'cCanLatitud' => set_value('cCanLatitud'),
-					'cCanLongitud' => set_value('cCanLongitud'),
-					'nUbiDepartamento' => set_value('nUbiDepartamento'),
-					'nUbiProvincia' => set_value('nUbiProvincia'),
-					'nUbiDistrito' => set_value('nUbiDistrito'),
-					'dCanFechaRegistro' => set_value('dCanFechaRegistro'),
-					'nCanVisitas' => set_value('nCanVisitas'),
-					'cCanEstado' => set_value('cCanEstado')
-            );
-           
-			if ($this->codegen_model->add('canchas',$data) == TRUE)
-			{
-				//$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
-				// or redirect
-				redirect(base_url().'index.php/canchas/manage/');
-			}
-			else
-			{
-				$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+    public function index() {
+        $data['main_content'] = 'canchas/panel_view';
+        $data['title'] = '.: Panel de Administración - Módulo de Canchas :.';
+        $data['breadcrumbs'] = 'Módulo de Canchas';
+        $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
+        $this->load->view('master/template_view', $data);
+    }
 
-			}
-		}		   
-		$this->load->view('canchas_add', $this->data);   
-        //$this->template->load('content', 'canchas_add', $this->data);
-    }	
+    function canchasQry() {
+        $data['list_canchas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO', '', '', '', ''));
+        $this->load->view('canchas/qry_view', $data);
+    }
+
+    function canchasIns() {
+        $this->form_validation->set_rules('txt_ins_can_nombre', 'nombre', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_descripcion', 'descripción', '|trim|required');
+        $this->form_validation->set_rules('cbo_ins_can_departamentos', 'departamento', '|trim|required');
+        $this->form_validation->set_rules('cbo_ins_can_provincias', 'provincia', '|trim|required');
+        $this->form_validation->set_rules('cbo_ins_can_distritos', 'distrito', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_direccion', 'direccion', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_email', 'email', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_telefono', 'telefono', '|trim|required');
+        $this->form_validation->set_rules('txt_ins_can_nrocanchas', 'número de canchas', '|trim|required');
+        $this->form_validation->set_message('required', 'El campo %s es requerido');
+
+
+        if ($this->form_validation->run() == true) {
+            $this->canchas_model->setCanNombre($this->input->post('txt_ins_can_nombre'));
+            $this->canchas_model->setCanDescripcion($this->input->post('txt_ins_can_descripcion'));
+            $this->canchas_model->setCanLatitud($this->input->post('hid_ins_can_latitud'));
+            $this->canchas_model->setCanLongitud($this->input->post('hid_ins_can_longitud'));
+            $this->canchas_model->setCanDepartamento($this->input->post('cbo_ins_can_departamentos'));
+            $this->canchas_model->setCanProvincia($this->input->post('cbo_ins_can_provincias'));
+            $this->canchas_model->setCanDistrito($this->input->post('cbo_ins_can_distritos'));
+            $this->canchas_model->setCanDireccion($this->input->post('txt_ins_can_direccion'));
+            $this->canchas_model->setCanTelefono($this->input->post('txt_ins_can_telefono'));
+            $this->canchas_model->setCanFacebook($this->input->post('txt_ins_can_facebook'));
+            $this->canchas_model->setCanEmail($this->input->post('txt_ins_can_email'));
+            $this->canchas_model->setCanSitioWeb($this->input->post('txt_ins_can_web'));
+            $this->canchas_model->setCanNroCanchas($this->input->post('txt_ins_can_nrocanchas'));
+            
+            if($this->input->post('txt_ins_can_foto') == ""){
+                $foto_cancha = "http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-6187969c-af55-4b3f-b4c6-ae8ccdb28a65-nofoto.jpg";
+            }else{
+                $foto_cancha = $this->input->post('txt_ins_can_foto');
+            }
+            
+            $this->canchas_model->setCanFotoPortada($foto_cancha);
+            
+            $result = $this->canchas_model->canchasIns();
+
+            if ($result) {
+                echo 1;
+            } else {
+                echo 0;
+            }
+        } else {
+            echo "Error de validacion";
+        }
+    }
+
+    function canchasGet($nCanId) {
+        $query = $this->canchas_model->canchasGet(array('LISTADO-CANCHAS-CODIGO', $nCanId, '', '', ''));
+
+        if ($query) {
+            $data['nCanID'] = $this->canchas_model->getCanID();
+            $data['cCanNombre'] = $this->canchas_model->getCanNombre();
+            $data['cCanDescripcion'] = $this->canchas_model->getCanDescripcion();
+            $data['cCanLatitud'] = $this->canchas_model->getCanLatitud();
+            $data['cCanLongitud'] = $this->canchas_model->getCanLongitud();
+            $data['nDepaID'] = $this->canchas_model->getCanDepartamento();
+            $data['nProvID'] = $this->canchas_model->getCanProvincia();
+            $data['nDisID'] = $this->canchas_model->getCanDistrito();
+            $data['fecha_registro'] = $this->canchas_model->getCanFechaRegistro();
+            $data['cCanDireccion'] = $this->canchas_model->getCanDireccion();
+            $data['cCanTelefono'] = $this->canchas_model->getCanTelefono();
+            $data['nCanNroCanchas'] = $this->canchas_model->getCanNroCanchas();
+            $data['cCanFacebook'] = $this->canchas_model->getCanFacebook();
+            $data['cCanEmail'] = $this->canchas_model->getCanEmail();
+            $data['cCanSitioWeb'] = $this->canchas_model->getCanSitioWeb();
+            $data['nCanVisitas'] = $this->canchas_model->getCanVisitas();
+            $data['cCanEstado'] = $this->canchas_model->getCanEstado();
+            $data['cCanFotoPortada'] = $this->canchas_model->getCanFotoPortada();
+            return $data;
+        } else {
+            return false;
+        }
+    }
     
-    function edit(){        
-        $this->load->library('form_validation');    
-		$this->data['custom_error'] = '';
-		
-        if ($this->form_validation->run('canchas') == false)
-        {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
-
-        } else
-        {                            
-            $data = array(
-                    'cCanNombre' => $this->input->post('cCanNombre'),
-					'cCanDescripcion' => $this->input->post('cCanDescripcion'),
-					'cCanLatitud' => $this->input->post('cCanLatitud'),
-					'cCanLongitud' => $this->input->post('cCanLongitud'),
-					'nUbiDepartamento' => $this->input->post('nUbiDepartamento'),
-					'nUbiProvincia' => $this->input->post('nUbiProvincia'),
-					'nUbiDistrito' => $this->input->post('nUbiDistrito'),
-					'dCanFechaRegistro' => $this->input->post('dCanFechaRegistro'),
-					'nCanVisitas' => $this->input->post('nCanVisitas'),
-					'cCanEstado' => $this->input->post('cCanEstado')
-            );
-           
-			if ($this->codegen_model->edit('canchas',$data,'nCanID',$this->input->post('nCanID')) == TRUE)
-			{
-				redirect(base_url().'index.php/canchas/manage/');
-			}
-			else
-			{
-				$this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
-
-			}
-		}
-
-		$this->data['result'] = $this->codegen_model->get('canchas','nCanID,cCanNombre,cCanDescripcion,cCanLatitud,cCanLongitud,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dCanFechaRegistro,nCanVisitas,cCanEstado','nCanID = '.$this->uri->segment(3),NULL,NULL,true);
-		
-		$this->load->view('canchas_edit', $this->data);		
-        //$this->template->load('content', 'canchas_edit', $this->data);
+    function panelEditar($nCanId){
+        $data = $this->canchasGet($nCanId);
+        $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
+        $data['list_provincias'] = $this->ubigeo_model->ubigeoQry(array('L-U-PRO', $data['nDepaID'], ''));
+        $data['list_distritos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DIS', $data['nDepaID'], $data['nProvID']));
+        $this->load->view('canchas/upd_view', $data);
     }
-	
-    function delete(){
-            $ID =  $this->uri->segment(3);
-            $this->codegen_model->delete('canchas','nCanID',$ID);             
-            redirect(base_url().'index.php/canchas/manage/');
+    
+    function canchasUpd($nCanID) {
+        $this->form_validation->set_rules('txt_upd_can_nombre', 'nombre', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_can_descripcion', 'descripción', '|trim|required');
+        $this->form_validation->set_rules('cbo_upd_can_departamentos', 'departamento', '|trim|required');
+        $this->form_validation->set_rules('cbo_upd_can_provincias', 'provincia', '|trim|required');
+        $this->form_validation->set_rules('cbo_upd_can_distritos', 'distrito', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_can_direccion', 'direccion', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_can_email', 'email', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_can_telefono', 'telefono', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_can_nrocanchas', 'número de canchas', '|trim|required');
+        $this->form_validation->set_message('required', 'El campo %s es requerido');
+
+
+        if ($this->form_validation->run() == true) {
+            $this->canchas_model->setCanID($nCanID);
+            $this->canchas_model->setCanNombre($this->input->post('txt_upd_can_nombre'));
+            $this->canchas_model->setCanDescripcion($this->input->post('txt_upd_can_descripcion'));
+            $this->canchas_model->setCanLatitud($this->input->post('hid_upd_can_latitud'));
+            $this->canchas_model->setCanLongitud($this->input->post('hid_upd_can_longitud'));
+            $this->canchas_model->setCanDepartamento($this->input->post('cbo_upd_can_departamentos'));
+            $this->canchas_model->setCanProvincia($this->input->post('cbo_upd_can_provincias'));
+            $this->canchas_model->setCanDistrito($this->input->post('cbo_upd_can_distritos'));
+            $this->canchas_model->setCanDireccion($this->input->post('txt_upd_can_direccion'));
+            $this->canchas_model->setCanTelefono($this->input->post('txt_upd_can_telefono'));
+            $this->canchas_model->setCanFacebook($this->input->post('txt_upd_can_facebook'));
+            $this->canchas_model->setCanEmail($this->input->post('txt_upd_can_email'));
+            $this->canchas_model->setCanSitioWeb($this->input->post('txt_upd_can_web'));
+            $this->canchas_model->setCanNroCanchas($this->input->post('txt_upd_can_nrocanchas'));
+            
+            if($this->input->post('txt_upd_can_foto') == ""){
+                $foto_cancha = "http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-6187969c-af55-4b3f-b4c6-ae8ccdb28a65-nofoto.jpg";
+            }else{
+                $foto_cancha = $this->input->post('txt_upd_can_foto');
+            }
+            
+            $this->canchas_model->setCanFotoPortada($foto_cancha);
+            
+            $result = $this->canchas_model->canchasUpd();
+
+            if ($result) {
+                echo 1;
+            } else {
+                echo 0;
+            }
+        } else {
+            echo "Error de validacion";
+        }
     }
+
+    function canchasDel($nCanID) {
+        $this->canchas_model->canchasGet(array('LISTADO-CANCHAS-CODIGO', $nCanID, '', '', ''));
+
+        if ($this->canchas_model->getCanEstado() == "H") {
+            $estado = 'I';
+        } else {
+            $estado = 'H';
+        }
+
+        $query = $this->canchas_model->canchasDel(array('DEL-CANCHAS', $nCanID, $estado,'','','','','','','','','','','','',''));
+        if ($query) {
+            echo "1";
+        } else {
+            echo "2";
+        }
+    }
+
 }
 
-/* End of file canchas.php */
-/* Location: ./system/application/controllers/canchas.php */
+/* End of file welcome.php */
+/* Location: ./application/controllers/welcome.php */
