@@ -236,6 +236,7 @@ class Canchas_model extends CI_Model {
             $this->setCanEmail($row->email);
             $this->setCanSitioWeb($row->sitio_web);
             $this->setCanVisitas($row->nCanVisitas);
+            $this->setCanFotoPortada($row->cCanFotoPortada);
             $this->setCanEstado($row->cCanEstado);
             return $row;
         } else {

@@ -16,7 +16,6 @@ $(function(){
     $("#anc_back").click(function(evt){
         evt.preventDefault();
         MostrarOcultarCapas('#cont_content_permisos','#cont_div_qry_usuarios');
-    //$('#frm_fnd_users').show();
     });
     
 });

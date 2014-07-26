@@ -86,17 +86,24 @@ class Canchas extends CI_Controller {
             $data['cCanLongitud'] = $this->canchas_model->getCanLongitud();
             $data['fecha_registro'] = $this->canchas_model->getCanFechaRegistro();
             $data['cCanDireccion'] = $this->canchas_model->getCanDireccion();
-            $data['cCamTelefono'] = $this->canchas_model->getCanTelefono();
+            $data['cCanTelefono'] = $this->canchas_model->getCanTelefono();
             $data['nCanNroCanchas'] = $this->canchas_model->getCanNroCanchas();
             $data['cCanFacebook'] = $this->canchas_model->getCanFacebook();
             $data['cCanEmail'] = $this->canchas_model->getCanEmail();
             $data['cCanSitioWeb'] = $this->canchas_model->getCanSitioWeb();
             $data['nCanVisitas'] = $this->canchas_model->getCanVisitas();
             $data['cCanEstado'] = $this->canchas_model->getCanEstado();
+            $data['cCanFotoPortada'] = $this->canchas_model->getCanFotoPortada();
             return $data;
         } else {
             return false;
         }
+    }
+    
+    function panelEditar($nCanId){
+        $data = $this->canchasGet($nCanId);
+        $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
+        $this->load->view('canchas/upd_view', $data);
     }
 
     function canchasDel($nCanID) {

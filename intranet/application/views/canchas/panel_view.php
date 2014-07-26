@@ -29,6 +29,14 @@
 
                     <div class="tab-pane" id="listar">
                         <div id="cont_div_qry_canchas"></div>
+                        
+                        <!-- Contenedor de formulario para editar canchas -->
+                        <div id="cont_content_edit_canchas" class="switchs">
+                            <a href="#" id="anc_back">
+                                <span><img src="<?php echo URL_IMG ?>iconos_regresar.png"></span>
+                            </a>
+                            <div id="cont_div_form_edit_canchas"></div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,9 +8,9 @@ $(function(){
         filsXpag        : 10,
         desactOrdenaEn  : [0] ,
         functions       : [
-        $(".ver-cancha").bind('click', function(event){        
+        $(".edit-cancha").bind('click', function(event){        
             var id = $(this).attr("data-id");
-            alert(id);
+            select_cancha_editar(id);
             //userPermisosSelected(id);
         }),
         $(".del-cancha").bind('click', function(event){   
