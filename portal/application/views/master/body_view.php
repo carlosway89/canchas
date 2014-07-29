@@ -67,8 +67,26 @@
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-8">
                 <div class="side-segment">
+                    <h3 class="animate-onscroll no-margin-top"><i class="icons icon-news"></i> Fixture</h3>
+                </div>
+                <div class="option-select">
+                    <a id="link-posiciones" href="#posiciones">Posiciones</a>
+                    <a id="link-resultados" href="#resultados">Resultados</a>
+                    <a id="link-calendario" href="#calendario">Calendario</a>
+                    <a id="link-goleadores" href="#goleadores">Goledares</a>
+                </div>
+                <br>
+                <div id="fixture_content_show">
+                    <!--fixture content -->
+                </div>
+                <link href="<?=URL_CSS?>externo/externo.css" rel="stylesheet" type="text/css" />
+                <script type="text/javascript" src="<?php echo URL_JS; ?>fixture/jsFixtureGet.js"></script>
+                <br></br>
+                <div class="side-segment">
                     <h3 class="animate-onscroll no-margin-top"><i class="icons icon-news"></i> Últimas noticias</h3>
                 </div>
+
+                
 
                 <!-- SECCION NOTICIA PRINCIPAL -->
                 <?php $this->load->view("master/noticia_principal_view") ?>

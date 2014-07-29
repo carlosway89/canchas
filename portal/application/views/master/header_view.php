@@ -30,6 +30,7 @@
         <link href="<?php echo URL_CSS; ?>colorpicker.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>prettyPhoto.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>style.css" rel="stylesheet" type="text/css">
+        
 
 
         <!--[if IE 9]>

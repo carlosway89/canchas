@@ -1,1 +1,48 @@
 /*CSS PARA FIXTURE EXTERNO*/
+
+
+ul.paginador-fixture{
+	height:50px;
+}
+ul.paginador-fixture>li{
+	height:50px;
+	width:33%;
+	text-align: center;
+	padding-top: 13px;
+}
+ul.paginador-fixture>.titulo{
+	font-size: 20px;
+	font-weight: bold;
+	width:73%;
+}
+ul.paginador-fixture>.previous{
+	color: white !important;
+	background-color: #556B2F;
+	border-bottom: 4px solid white;
+	width:13%;
+
+}
+
+ul.paginador-fixture>.next{
+	color: white !important;
+	background-color: #556B2F;
+	border-bottom: 4px solid white;
+	width:13%;
+}
+ul.paginador-fixture>.previous>a{
+	color: white !important;
+	font-size: 16px;
+	font-weight: bold;
+
+}
+ul.paginador-fixture>.next>a{
+	color: white !important;
+	font-size: 16px;
+	font-weight: bold;
+}
+ul.paginador-fixture>.previous:before{
+	content: "< ";
+}
+ul.paginador-fixture>.next:after{
+	content: " >";
+}
