@@ -7,12 +7,13 @@ class Eventos extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url', 'codegen_helper'));
         $this->load->model('codegen_model', '', TRUE);
+
         $this->loaders->verificaAcceso('W');
         
     }
 
+
     function index() {
-        
         $this->data['main_content'] = 'eventos/evento_list';
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';

@@ -1,12 +1,15 @@
 $(function(){
     
     $('[data-rel=tooltip]').tooltip();
+<<<<<<< HEAD
     $( "#show-tooltip" ).tooltip({
         show: {
             effect: "slideDown",
             delay: 250
         }
     });  
+=======
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
     
     var dataTable = {
         tabla           : "TablaListCanchas", 

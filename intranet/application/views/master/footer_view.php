@@ -7,9 +7,15 @@
     <i class="icon-double-angle-up icon-only bigger-110"></i>
 </a>
 </div><!-- /.main-container -->
+<<<<<<< HEAD
 
 
 
+=======
+<div id="mensajecarga" class="message_loading"></div>
+
+
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
 <!--[if lte IE 8]>
   <script src="<?php echo URL_JS; ?>excanvas.min.js"></script>
 <![endif]-->

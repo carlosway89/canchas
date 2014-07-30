@@ -91,7 +91,11 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
 
     </head>
 
+<<<<<<< HEAD
     <body>
+=======
+    <body onUnload="msjCargando();">
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
         <div class="navbar navbar-default" id="navbar">
             <script type="text/javascript">
                 try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -109,7 +113,11 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
 
                 <div class="navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
+<<<<<<< HEAD
                         <li class="grey">
+=======
+<!--                        <li class="grey">
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="icon-tasks"></i>
                                 <span class="badge badge-grey">4</span>
@@ -180,7 +188,11 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
                                     </a>
                                 </li>
                             </ul>
+<<<<<<< HEAD
                         </li>
+=======
+                        </li>-->
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
 
                         <li class="purple">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -322,8 +334,13 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                                 <img class="nav-user-photo" src="<?= URL_IMG ?>avatars/user.jpg" alt="Jason's Photo" />
                                 <span class="user-info">
+<<<<<<< HEAD
                                     <small>Welcome,</small>
                                     Jason
+=======
+                                    <small>Bienvenido,</small>
+                                    <?php echo $this->session->userdata('Nombres'); ?>
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                                 </span>
 
                                 <i class="icon-caret-down"></i>
@@ -331,25 +348,50 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
 
                             <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
+<<<<<<< HEAD
                                     <a href="#">
                                         <i class="icon-cog"></i>
                                         Settings
+=======
+                                    <a href="<?php echo URL_MAIN; ?>cambiar_clave">
+                                        <i class="icon-cog"></i>
+                                        Cambiar Clave
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                                     </a>
                                 </li>
 
                                 <li>
+<<<<<<< HEAD
                                     <a href="#">
                                         <i class="icon-user"></i>
                                         Profile
+=======
+                                    <a href="<?php echo URL_MAIN; ?>actualizar_datos">
+                                        <i class="icon-user"></i>
+                                        Actualizar Datos
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                                     </a>
                                 </li>
 
                                 <li class="divider"></li>
 
                                 <li>
+<<<<<<< HEAD
                                     <a href="#">
                                         <i class="icon-off"></i>
                                         Logout
+=======
+                                    <?php 
+                                    if ($this->session->userdata('dedonde') == "portal"){
+                                        $ruta_logout = URL_PORTAL."acceso/logout";
+                                    }else{
+                                        $ruta_logout = URL_MAIN."acceso/logout";
+                                    } 
+                                    ?>
+                                    <a href="<?php echo $ruta_logout ?>">
+                                        <i class="icon-off"></i>
+                                        Cerrar Sesión
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                                     </a>
                                 </li>
                             </ul>
@@ -369,7 +411,11 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
+<<<<<<< HEAD
                         <a href="#">Home</a>
+=======
+                        <a href="<?php echo URL_MAIN ?>manage">Inicio</a>
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                     </li>
                     <li class="active"><?= $breadcrumbs ?></li>
                 </ul><!-- .breadcrumb -->

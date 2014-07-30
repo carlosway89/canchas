@@ -15,12 +15,16 @@ class Canchas extends CI_Controller {
     }
 
     public function index() {
+
+        $this->loaders->verificaAcceso('W');
+
         $data['main_content'] = 'canchas/panel_view';
         $data['title'] = '.: Panel de Administración - Módulo de Canchas :.';
         $data['breadcrumbs'] = 'Módulo de Canchas';
         $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
         $this->load->view('master/template_view', $data);
     }
+
     function galeria($id_cancha){
 
         $data['main_content'] = 'canchas/galeria_view';
@@ -30,7 +34,7 @@ class Canchas extends CI_Controller {
         $this->load->view('master/template_view', $data);
 
     }
-    
+
     function canchasQry() {
         $data['list_canchas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO', '', '', '', ''));
         $this->load->view('canchas/qry_view', $data);
@@ -111,7 +115,10 @@ class Canchas extends CI_Controller {
         } else {
             return false;
         }
+
     }
+    
+
     
     function panelEditar($nCanId){
         $data = $this->canchasGet($nCanId);

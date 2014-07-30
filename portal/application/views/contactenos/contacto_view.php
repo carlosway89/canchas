@@ -8,8 +8,6 @@
     </section>
     <!-- Page Heading -->
 
-
-
     <!-- Section -->
     <section class="section full-width-bg gray-bg">
 

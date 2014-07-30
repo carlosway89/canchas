@@ -84,16 +84,20 @@ class Ubigeo_model extends CI_Model {
                 foreach ($array as $Ubigeo) {
                     $cbo_ubigeo[$Ubigeo->nUbiProvincia] = ucwords(strtolower($Ubigeo->cUbiDescripcion));
                 }
-                echo form_dropdown('cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor, $cbo_ubigeo,'', 'id="cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor . '" class="col-sm-3" required = "required"');
+
+                echo form_dropdown('cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor, $cbo_ubigeo,'', 'id="cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor . '" class="col-sm-4" required = "required"');
+
             } else if ($nom_mantenedor == "distritos") {
                 foreach ($array as $Ubigeo) {
                     $cbo_ubigeo[$Ubigeo->nUbiID] = ucwords(strtolower($Ubigeo->cUbiDescripcion));
                 }
-                echo form_dropdown('cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor, $cbo_ubigeo, '', 'id="cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor . '" class="col-sm-3" required = "required"');
+
+                echo form_dropdown('cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor, $cbo_ubigeo, '', 'id="cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor . '" class="col-sm-4" required = "required"');
             }
         } else {
             $cbo_ubigeo[''] = "Seleccionar " . $nom_mantenedor . "";
-            echo form_dropdown('cbo_' . $mantenedor . '_' . $tipo_accion . '_' . $nom_mantenedor, $cbo_ubigeo, '', 'id="cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor . '"  class="col-sm-3" required = "required"');
+            echo form_dropdown('cbo_' . $mantenedor . '_' . $tipo_accion . '_' . $nom_mantenedor, $cbo_ubigeo, '', 'id="cbo_'.$tipo_accion.'_'.$mantenedor.'_'.$nom_mantenedor . '"  class="col-sm-4" required = "required"');
+
         }
     }
 

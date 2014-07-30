@@ -15,6 +15,7 @@
                 try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
             </script>
 
+<<<<<<< HEAD
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
                     <button class="btn btn-success">
@@ -47,12 +48,55 @@
 
             <ul class="nav nav-list">
                 <li class="active">
+=======
+            <!--            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                            <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                                <button class="btn btn-success">
+                                    <i class="icon-signal"></i>
+                                </button>
+            
+                                <button class="btn btn-info">
+                                    <i class="icon-pencil"></i>
+                                </button>
+            
+                                <button class="btn btn-warning">
+                                    <i class="icon-group"></i>
+                                </button>
+            
+                                <button class="btn btn-danger">
+                                    <i class="icon-cogs"></i>
+                                </button>
+                            </div>
+            
+                            <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                                <span class="btn btn-success"></span>
+            
+                                <span class="btn btn-info"></span>
+            
+                                <span class="btn btn-warning"></span>
+            
+                                <span class="btn btn-danger"></span>
+                            </div>
+                        </div> #sidebar-shortcuts -->
+
+            <ul class="nav nav-list">
+                <li>
+                    <?php
+                    if ($this->uri->segment(1) == "manage") {
+                        $clase_inicial = 'class="active"';
+                    } else {
+                        $clase_inicial = '';
+                    }
+                    ?>
+                <li <?php echo $clase_inicial; ?>>
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                     <a href="<?= URL_MAIN ?>manage">
                         <i class="icon-dashboard"></i>
                         <span class="menu-text"> PANEL </span>
                     </a>
                 </li>
 
+<<<<<<< HEAD
                 <li>
                     <a href="<?= URL_MAIN ?>usuarios">
                         <i class=" icon-group "></i>
@@ -166,6 +210,36 @@
                 </li>
 
 
+=======
+                <?php
+                $opciones = $this->loaders->get_menu();
+                $count = count($opciones);
+                for ($i = 0; $i < $count; $i++) {
+                    ?>
+                    <li <?php echo $opciones[$i]["active"]; ?>>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="<?php echo $opciones[$i]["icon"]; ?>"></i>
+                            <span class="menu-text"> <?php echo $opciones[$i]["menu"]; ?> </span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <?php
+                        $count2 = count($opciones[$i]["datos"]);
+                        echo '<ul ' . $opciones[$i]["ul"] . '>';
+                        for ($j = 0; $j < $count2; $j++) {
+                            ?>                              
+                        <li <?php echo $opciones[$i]["datos"][$j]["li"]; ?>>
+                            <a href="<?php echo URL_MAIN . $opciones[$i]["datos"][$j]["url"]; ?>">
+                                <i class="icon-double-angle-right"></i>
+                                <?php echo $opciones[$i]["datos"][$j]["value"]; ?>
+                            </a>
+                        </li>
+                        <?php
+                    }
+                    echo '</ul>';
+                    echo "</li>";
+                }
+                ?>
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
             </ul><!-- /.nav-list -->
 
             <div class="sidebar-collapse" id="sidebar-collapse">

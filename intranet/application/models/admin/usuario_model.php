@@ -106,6 +106,25 @@ class usuario_model extends Persona_model {
         }
     }
 
+    function usuariosUpd() {
+        $parametros = array(
+            'UPD-USUARIOS',
+            $this->getPerId(),
+            $this->getPerNombres(),
+            $this->getPerApellidos(),
+            $this->getPerEmail()
+        );
+
+        $query = $this->db->query("CALL USP_GEN_U_USUARIOS(?,?,?,?,?)", $parametros);
+        $this->db->close();
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     function getDatosUsuario($parametros) {
         $query = $this->db->query("CALL USP_GEN_S_PERSONA(?,?,?)", $parametros);
         $this->db->close();

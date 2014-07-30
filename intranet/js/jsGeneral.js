@@ -7,6 +7,16 @@ function msjCargando(){
     document.getElementById("mensajecarga").style.background="white";  
     document.getElementById("mensajecarga").style.visibility="visible";
 }
+<<<<<<< HEAD
+=======
+ 
+$(function(){
+    document.getElementById("mensajecarga").style.visibility="hidden";
+    $(".submenu > li > a").click(function(e){
+        msjCargando();
+    });
+});
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
 
 function initEvtDel(funcion,clas){ 
     $(".ui-icon-"+clas).on("click",function(e){
@@ -145,6 +155,36 @@ function funciones_dialog_ui(){
     }));
 }
 
+<<<<<<< HEAD
+=======
+function confirmarOperacion(div,title,funcion){
+    funciones_dialog_ui();
+    var dialog = $( "#"+div ).removeClass('hide').dialog({
+        modal: true,
+        title: "<div class='widget-header widget-header-small'><h4 class='smaller'><i class='icon-ok'></i> "+title+"</h4></div>",
+        title_html: true,
+        draggable: false, 
+        width:400,
+        closeOnEscape:false,
+        buttons: [ 
+        {
+            text: "OK",
+            "class" : "btn btn-primary btn-xs",
+            click: function() {
+                funcion();
+                $( this ).dialog( "close" ); 
+            } 
+        }
+        ]
+       
+    });
+    
+    $(".ui-dialog-titlebar-close").bind('click', function(event){   
+        funcion();
+    });
+    
+}
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
 
 function confirmarDelete(title,msg,funcion,parametro){
     funciones_dialog_ui();
@@ -166,6 +206,7 @@ function confirmarDelete(title,msg,funcion,parametro){
             resizable: false,            
             width: 400,
             buttons: [
+<<<<<<< HEAD
                 {
                     html: "<i class='icon-trash bigger-110'></i>&nbsp; Si",
                     "class" : "btn btn-primary btn-xs",
@@ -185,6 +226,27 @@ function confirmarDelete(title,msg,funcion,parametro){
                         $( this ).dialog( "close" );
                     }
                 }
+=======
+            {
+                html: "<i class='icon-trash bigger-110'></i>&nbsp; Si",
+                "class" : "btn btn-primary btn-xs",
+                click: function() {
+                    try{
+                        funcion(parametro)
+                        $(this).dialog( 'close' );
+                    }catch(er){
+                        console.log(er);
+                    }
+                }
+            },
+            {
+                html: "<i class='icon-remove bigger-110'></i>&nbsp; No",
+                "class" : "btn btn-xs",
+                click: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
             ],
             close: function() {
                 $(this).dialog('destroy').remove();
@@ -696,6 +758,7 @@ function initCleanTags(clase_icon){
     }); 
 }
 
+<<<<<<< HEAD
 function popup_sms_exito(obj,obj_cerrar){
     
     //    if(accion == "ins"){
@@ -726,4 +789,6 @@ function popup_sms_exito(obj,obj_cerrar){
 //    }
                
 }
+=======
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
           

@@ -1,6 +1,9 @@
 $(function(){
                                          
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
     get_fixture(); 
 });
 
@@ -11,11 +14,15 @@ function get_fixture(){
         url: link_host,
         cache: false,
         success: function(data) {
+<<<<<<< HEAD
             $('#fixture_content').empty();
+=======
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
             $('#fixture_content').html(data);
             data_process();
         },
         error: function() { 
+<<<<<<< HEAD
             $('#fixture_content').html('<div class="text-warning"><h4>Disculpe!!</h4><br>No hay informacion por el momento</div>');
             
 =======
@@ -116,11 +123,17 @@ function get_posiciones(){
         error: function() { 
             alert("error");
 >>>>>>> 69bd3abe4025d8fa347d2197f9abfba333ed7a09
+=======
+            alert("error");
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
         }              
     });
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
 function data_process(){
     var fixture=$('#fixture_content');
     fixture.find('div.ui-arrows').remove();
@@ -142,6 +155,7 @@ function data_process(){
     
 
 }
+<<<<<<< HEAD
 =======
 function get_calendario(id_fecha){
     carga_loader();
@@ -289,3 +303,5 @@ function data_process_calendario(){
 
 
 >>>>>>> 69bd3abe4025d8fa347d2197f9abfba333ed7a09
+=======
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188

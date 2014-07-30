@@ -225,6 +225,7 @@ class Canchas_model extends CI_Model {
             return false;
         }
     }
+<<<<<<< HEAD
     function canchasGaleria($Parametros){
         $query = $this->db->query("CALL USP_GEN_S_GALERIA (?,?,?,?,?)", $Parametros);
         $this->db->close();
@@ -234,6 +235,9 @@ class Canchas_model extends CI_Model {
             return null;
         }
     }
+=======
+    
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
     function canchasQry($Parametros) {
         $query = $this->db->query("CALL USP_GEN_S_CANCHAS (?,?,?,?,?)", $Parametros);
         $this->db->close();

@@ -19,6 +19,14 @@ $(function(){
         get_provincias();
         get_distritos();
     });  
+<<<<<<< HEAD
+=======
+    
+    // ACCION COMBO PROVINCIA -> BUSCAR DISTRITOS
+    $("#cbo_ins_can_provincias").bind('change', function(event){
+        get_distritos();
+    });
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
    
    
     // ACCION DEL BOTON CANCELAR

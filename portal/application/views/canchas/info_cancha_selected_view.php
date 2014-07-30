@@ -5,7 +5,7 @@
     <section class="section page-heading animate-onscroll">
 
         <h1><?php echo $cCanNombre; ?></h1>
-        <p class="breadcrumb"><a href="<?php echo URL_MAIN ?>">Inicio</a> / Cancha seleccionada</p>
+        <p class="breadcrumb"><a href="<?php echo URL_MAIN ?>">Inicio</a> / <a href="<?php echo URL_MAIN ?>canchas/busqueda">Búsqueda de Canchas</a> / Información de la Cancha seleccionada</p>
 
     </section>
     <!-- Page Heading -->
@@ -13,7 +13,7 @@
 
     <!-- Event Map -->
     <section class="section full-width full-width-image animate-onscroll">
-        <img src="<?php echo URL_IMG; ?>portada.jpg" alt="">
+        <img src="<?php echo URL_IMG; ?>portada.jpg" alt="" style="width: 100%;">
     </section>
     <!-- /Event Map -->
 
@@ -57,9 +57,9 @@
 
                             <ul class="slides">
 
-                                <li><a class="jackbox media-icon" data-group="image-jackbox" href="<?php echo URL_IMG; ?>galley1.jpg"><img src="<?php echo URL_IMG; ?>galley1.jpg" alt=""></a></li>
-                                <li><a class="jackbox media-icon" data-group="image-jackbox" href="<?php echo URL_IMG; ?>galley2.jpg"><img src="<?php echo URL_IMG; ?>galley2.jpg" alt=""></a></li>
-                                <li><a class="jackbox media-icon" data-group="image-jackbox" href="<?php echo URL_IMG; ?>galley3.jpg"><img src="<?php echo URL_IMG; ?>galley3.jpg" alt=""></a></li>												
+                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley1.jpg"><img src="<?php echo URL_IMG; ?>galley1.jpg" alt=""></a></li>
+                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley2.jpg"><img src="<?php echo URL_IMG; ?>galley2.jpg" alt=""></a></li>
+                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley3.jpg"><img src="<?php echo URL_IMG; ?>galley3.jpg" alt=""></a></li>												
                             </ul>
 
                         </div>
@@ -96,11 +96,10 @@
 
 </section>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         setTimeout(function(){
-            loadScriptmapa()
+            initialize_maps()
         }, 500);
     });
     
@@ -127,14 +126,6 @@
         var contenido='<?php echo $cCanNombre; ?>';
         popupinicial.setContent(contenido);
         popupinicial.open(map, marker);
-    }
-
-    function loadScriptmapa() {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'http://maps.google.com/maps/api/js?sensor=false&' +
-            'callback=initialize_maps';
-        document.body.appendChild(script);
     }
 </script>
 

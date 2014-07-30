@@ -19,6 +19,10 @@ $hid_ins_usu_codigo = form_hidden("hid_ins_usu_codigo", $code_user, "hid_ins_usu
             <?php echo $hid_ins_usu_codigo; ?>
             <?php
             $i = 1;
+<<<<<<< HEAD
+=======
+            $AplicacionAnterior = '';
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
             foreach ($Opciones as $Opciones) {
                 if ($Opciones->nAplID != $AplicacionAnterior) {
                     ?>

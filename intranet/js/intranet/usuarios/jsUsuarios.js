@@ -10,6 +10,10 @@ $(function(){
     // TAB USUARIOS -> LISTADO
     $("#tab_user_listar").bind('click', function(event){   
         usuariosQry();
+<<<<<<< HEAD
+=======
+        MostrarOcultarCapas('#cont_content_permisos','#cont_div_qry_usuarios');
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
     });
     
     // Evento Regresar Pantalla Anterior
@@ -28,6 +32,11 @@ function usuariosQry(){
 
 // MOSTRAR LOS PERMISOS DEL USUARIO SELECCIONADO
 function userPermisosSelected(id){
+<<<<<<< HEAD
+=======
+    $("#mensajecarga").show();
+    msjCargando();
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
     $.ajax({
         type: "POST",
         url: "usuarios/getUserPermisos",
@@ -39,6 +48,10 @@ function userPermisosSelected(id){
             $("#anc_back").show()
             MostrarOcultarCapas('#cont_div_qry_usuarios','#cont_content_permisos');
             $("#cont_div_qry_permisos").html(data);
+<<<<<<< HEAD
+=======
+            $("#mensajecarga").hide();
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
         },
         error: function() { 
             alert("error");

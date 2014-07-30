@@ -10,12 +10,21 @@ $(function(){
                 hid_ins_usu_codigo:$("#hid_ins_usu_codigo").val()  
             },
             success: function(data) {
+<<<<<<< HEAD
                 //alert(data);
+=======
+                
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                 data = data.trim();       
                 if(data=="1"){
                     alert("Los permisos del usuario seleccionado se han registrado correctamente !");
                     //mensaje("Los permisos del usuario seleccionado se han registrado correctamente !","e");
+<<<<<<< HEAD
                     //msjCargando();
+=======
+                    $("#mensajecarga").show();
+                    msjCargando();
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
                     setTimeout(function(){
                         location.reload();
                         msgLoadSaveRemove("#btn_ins_permisos");

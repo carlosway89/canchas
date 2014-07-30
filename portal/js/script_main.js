@@ -1273,9 +1273,6 @@ $(document).ready(function(){
 		
     }	
 	
-	
-	
-	
     /* AJAX Newsletter Form */
     function enableNewsletterForm(){
 	
@@ -1337,38 +1334,24 @@ $(document).ready(function(){
             }else{
                 form.find('.newsletter-zip input').tooltip('hide');
             }
-			
-			
+					
             if(!error){
                 $.ajax({
                     type: "POST",
                     url: action,
                     data: data, 
-                    beforeSend: function(){
-                        form.css('opacity', '0.5');
-                    },
                     success: function(data){
-						
-                        // Display returned data
-                        form.css('opacity', '1');
-                        form.find('.form-report').html(data);
-						
-                        // Hide Form on Success
-                        if (data.indexOf('class="success"') >= 0){
-                            form.find('.form-content').slideUp(300);
+                        var ruta = window.location.host+"/canchas";
+                        if(data.trim() == 1){
+                            window.open("http://"+ruta+"/intranet/manage", "_self");
+                        }else{
+                            window.open("http://"+ruta+"/portal/", "_self");
                         }
                     }
                 });
             }
-			
         });
-		
     }
-	
-	
-	
-	
-	
 	
     /* ClouZoom Products Slider */
     function enableProductSlider(){
