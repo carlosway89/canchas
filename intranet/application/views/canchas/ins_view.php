@@ -63,7 +63,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
 
                 <div class="col-xs-10 col-sm-4">
                     <?= $txt_ins_can_foto; ?>
-                    <input type="file" id="id-input-file-2" class="col-xs-10 col-sm-5" name="userfile" required="required" />
+                    <input type="file" id="id-input-file-2" class="col-xs-10 col-sm-5" name="userfile" />
                     <div id="image_uploaded" class="text-center" style="display:none">
                         <img src="" class="img_up">
                     </div>
@@ -105,7 +105,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
                 <label class="col-sm-3 control-label no-padding-right" for="cbo_ins_can_departamentos"> Departamento </label>
 
                 <div class="col-sm-9">
-                    <?php echo form_dropdown('cbo_ins_can_departamentos', $cbo_ins_can_departamentos, '', 'id="cbo_ins_can_departamentos" required = "required" class="col-sm-3"'); ?>
+                    <?php echo form_dropdown('cbo_ins_can_departamentos', $cbo_ins_can_departamentos, '', 'id="cbo_ins_can_departamentos" required = "required" class="col-sm-4"'); ?>
                 </div>
             </div>
 
@@ -116,7 +116,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
 
                 <div class="col-sm-9">
                     <div id="cont_ins_can_provincias">
-                        <?php echo form_dropdown('cbo_ins_can_provincias', $cbo_ins_can_provincias, '', 'id="cbo_ins_can_provincias" required = "required" class="col-sm-3"'); ?>
+                        <?php echo form_dropdown('cbo_ins_can_provincias', $cbo_ins_can_provincias, '', 'id="cbo_ins_can_provincias" required = "required" class="col-sm-4"'); ?>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
 
                 <div class="col-sm-9">
                     <div id="cont_ins_can_distritos">
-                        <?php echo form_dropdown('cbo_ins_can_distritos', $cbo_ins_can_distritos, '', 'id="cbo_ins_can_distritos" required = "required" class="col-sm-3"'); ?>
+                        <?php echo form_dropdown('cbo_ins_can_distritos', $cbo_ins_can_distritos, '', 'id="cbo_ins_can_distritos" required = "required" class="col-sm-4"'); ?>
                     </div>
                 </div>
             </div>

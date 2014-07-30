@@ -197,6 +197,43 @@ class Canchas_model extends CI_Model {
         }
     }
     
+    function canchasUpd() {
+        $parametros = array(
+            'UPD-CANCHAS',
+            $this->getCanID(),
+            $this->getCanNombre(),
+            $this->getCanDescripcion(),
+            $this->getCanLatitud(),
+            $this->getCanLongitud(),
+            $this->getCanDepartamento(),
+            $this->getCanProvincia(),
+            $this->getCanDistrito(),
+            $this->getCanDireccion(),
+            $this->getCanTelefono(),
+            $this->getCanFacebook(),
+            $this->getCanEmail(),
+            $this->getCanSitioWeb(),
+            $this->getCanNroCanchas(),
+            $this->getCanFotoPortada()
+        );
+
+        $query = $this->db->query("CALL USP_GEN_U_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
+        $this->db->close();
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function canchasGaleria($Parametros){
+        $query = $this->db->query("CALL USP_GEN_S_GALERIA (?,?,?,?,?)", $Parametros);
+        $this->db->close();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
     function canchasQry($Parametros) {
         $query = $this->db->query("CALL USP_GEN_S_CANCHAS (?,?,?,?,?)", $Parametros);
         $this->db->close();
@@ -228,6 +265,9 @@ class Canchas_model extends CI_Model {
             $this->setCanDescripcion($row->cCanDescripcion);
             $this->setCanLatitud($row->cCanLatitud);
             $this->setCanLongitud($row->cCanLongitud);
+            $this->setCanDepartamento($row->id_depa);
+            $this->setCanProvincia($row->id_prov);
+            $this->setCanDistrito($row->id_dis);
             $this->setCanFechaRegistro($row->fecha_registro);
             $this->setCanDireccion($row->direccion);
             $this->setCanTelefono($row->telefono);
@@ -245,7 +285,7 @@ class Canchas_model extends CI_Model {
     }
     
     function canchasDel($parametros) {
-        $query = $this->db->query("CALL USP_GEN_U_CANCHAS (?,?,?)", $parametros);
+        $query = $this->db->query("CALL USP_GEN_U_CANCHAS (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
 
         $this->db->close();
         if ($query) {
