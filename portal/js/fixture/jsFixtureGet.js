@@ -1,19 +1,27 @@
 $(function(){
                                          
     
-    get_posiciones();
 
     $('#link-posiciones').on('click',function(){
         get_posiciones();
+        $('[id^=link-]').removeClass('active');
+        $(this).addClass('active');
+
     });
     $('#link-goleadores').on('click',function(){
         get_goleadores();
+        $('[id^=link-]').removeClass('active');
+        $(this).addClass('active');
     });
     $('#link-calendario').on('click',function(){
         get_calendario(9); 
+        $('[id^=link-]').removeClass('active');
+        $(this).addClass('active');
     });
     $('#link-resultados').on('click',function(){
         get_resultados(9);
+        $('[id^=link-]').removeClass('active');
+        $(this).addClass('active');
     });
 
     
@@ -27,9 +35,8 @@ function acciones(){
 
 
     $('a#previo-paginador,a#next-paginador').on('click',function(){
-        var id=$(this).attr('href');
+        var id=$(this).attr('value-data');
         
-        id=id.replace('#','');
         console.log(id);
         if (window.location.hash=='#resultados') {
             get_resultados(id);
@@ -141,7 +148,7 @@ function data_process_posiciones(){
 
     
     var data=tabla.html();
-    $('#fixture_content_show').html("<table class='tabla-fixture'>"+data+"</table>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Posiciones</h3></div><table class='tabla-fixture'>"+data+"</table>");
 
 
 }
@@ -152,7 +159,7 @@ function data_process_goleadores(){
     var select=fixture.find('div.pull-right').html();
 
     var data=tabla.html();
-    $('#fixture_content_show').html("<table class='tabla-fixture'>"+data+"</table>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Goleadores</h3></div><table class='tabla-fixture'>"+data+"</table>");
     
 
 }
@@ -173,20 +180,24 @@ function data_process_resultados(){
 
     var data=tabla.html();
 
-    $('#fixture_content_show').html("<ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Resultados</h3></div><ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div>");
 
     var uri='http://depor.pe/estadisticas/peru/resultados/';
     var link_prv=fixture.find('.previous>a');
     var link_next=fixture.find('.next>a');
-
+    
     var href_link=link_prv.attr('href');
-    href_link=href_link.replace(uri,'#');
-    link_prv.attr('href',href_link);
+    href_link=href_link.replace(uri,'');
+
+    link_prv.attr('value-data',href_link);
+    link_prv.attr('href','javascript:;');
     link_prv.attr('id','previo-paginador');
 
     href_link=link_next.attr('href');
-    href_link=href_link.replace(uri,'#');
-    link_next.attr('href',href_link);
+    href_link=href_link.replace(uri,'');
+
+    link_next.attr('value-data',href_link);
+    link_next.attr('href','javascript:;');
     link_next.attr('id','next-paginador');
 
     acciones();
@@ -207,20 +218,24 @@ function data_process_calendario(){
 
     var data=tabla.html();
 
-    $('#fixture_content_show').html("<ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Calendario</h3></div><ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div>");
 
     var uri='http://depor.pe/estadisticas/peru/calendario/';
     var link_prv=fixture.find('.previous>a');
     var link_next=fixture.find('.next>a');
 
     var href_link=link_prv.attr('href');
-    href_link=href_link.replace(uri,'#');
-    link_prv.attr('href',href_link);
+    href_link=href_link.replace(uri,'');
+
+    link_prv.attr('value-data',href_link);
+    link_prv.attr('href','javascript:;');
     link_prv.attr('id','previo-paginador');
 
     href_link=link_next.attr('href');
-    href_link=href_link.replace(uri,'#');
-    link_next.attr('href',href_link);
+    href_link=href_link.replace(uri,'');
+
+    link_next.attr('value-data',href_link);
+    link_next.attr('href','javascript:;');
     link_next.attr('id','next-paginador');
 
 

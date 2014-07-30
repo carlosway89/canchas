@@ -66,16 +66,17 @@
     <section class="section full-width-bg gray-bg">
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-8">
-                <div class="side-segment">
+                <!-- <div class="side-segment">
                     <h3 class="animate-onscroll no-margin-top"><i class="icons icon-news"></i> Fixture</h3>
+                </div> -->
+                <div class="option-select text-center">
+
+                    <a id="link-resultados" class="fixture-navegador" href="#resultados">FUTBOL PERUANO</a>
+                    <a id="link-posiciones" class="fixture-navegador" href="#posiciones">POSICIONES</a>
+                    <a id="link-calendario" class="fixture-navegador" href="#calendario">CALENDARIO</a>
+                    <a id="link-goleadores" class="fixture-navegador" href="#goleadores">GOLEADORES</a>
                 </div>
-                <div class="option-select">
-                    <a id="link-posiciones" href="#posiciones">Posiciones</a>
-                    <a id="link-resultados" href="#resultados">Resultados</a>
-                    <a id="link-calendario" href="#calendario">Calendario</a>
-                    <a id="link-goleadores" href="#goleadores">Goledares</a>
-                </div>
-                <br>
+                
                 <div id="fixture_content_show">
                     <!--fixture content -->
                 </div>
@@ -156,89 +157,11 @@
                     <a href="#" class="button transparent button-arrow">Más Videos</a>
                 </div>
                 <!-- /Featured Video -->						<!-- Upcoming Events -->
-                <div class="sidebar-box white animate-onscroll">
-                    <div class="side-segment">
-                        <h3><i class="icons icon-calendar"></i> Últimos Eventos</h3>
-                    </div>
-                    <ul class="upcoming-events">
 
-                        <!-- Event -->
-                        <li>
-                            <div class="date">
-                                <span>
-                                    <span class="day">25</span>
-                                    <span class="month">DEC</span>
-                                </span>
-                            </div>
-
-                            <div class="event-content">
-                                <h6><a href="event-post-v2.html">Sed in lacus ut enim</a></h6>
-                                <ul class="event-meta">
-                                    <li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-                                    <li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- /Event -->
-
-                        <!-- Event -->
-                        <li>
-                            <div class="date">
-                                <span>
-                                    <span class="day">5</span>
-                                    <span class="month">JAN</span>
-                                </span>
-                            </div>
-
-                            <div class="event-content">
-                                <h6><a href="event-post-v2.html">Sed in lacus ut enim</a></h6>
-                                <ul class="event-meta">
-                                    <li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-                                    <li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- /Event -->
-
-                        <!-- Event -->
-                        <li>
-                            <div class="date">
-                                <span>
-                                    <span class="day">8</span>
-                                    <span class="month">JAN</span>
-                                </span>
-                            </div>
-
-                            <div class="event-content">
-                                <h6><a href="event-post-v2.html">Sed in lacus ut enim</a></h6>
-                                <ul class="event-meta">
-                                    <li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-                                    <li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- /Event -->
-
-                    </ul>
-                    <a href="#" class="button transparent button-arrow">Más eventos</a>
-                </div>
-                <!-- /Upcoming Events -->						<!-- Image Banner -->
-                <!--                <div class="sidebar-box image-banner animate-onscroll">
-                                    <a href="issues.html">
-                                        <img src="<?php echo URL_IMG; ?>main-issues.jpg" alt="">
-                                        <h3>The main issues</h3>
-                                        <span class="button transparent button-arrow">Find out more</span>
-                                    </a>
-                                </div>
-                                 /Image Banner 						 Flickr Photos 
-                                <div class="sidebar-box white flickr-photos animate-onscroll">
-                                    <div class="side-segment">
-                                        <h3><i class="icons icon-picture"></i> Flickr Photos</h3>
-                                    </div>
-                                    <ul class="flickr-feed">
-                                    </ul>
-                                </div>-->
-                <!-- /Flickr Photos -->	
+                <!-- SECCION ULTIMOS EVENTOS -->
+                <?php $this->load->view("master/ultimo_eventos_view"); ?>
+                <!-- END -->    
+                
 
 
                 <div class="sidebar-box white animate-onscroll">
