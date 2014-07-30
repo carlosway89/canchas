@@ -1,0 +1,96 @@
+.message_loading{
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    display:table;
+}
+
+.sms_carga{
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+}
+
+.sms_carga .icon-preloader-page{
+    background: url("../img/cargando.gif") no-repeat;
+    width: 200px;
+    height: 140px;
+    background-position:center;
+}
+
+.cursor_pointer{
+    cursor: pointer;
+}
+
+#anc_back span{
+    margin-left: 880px;
+    margin-right: -50px;
+    z-index: 1000;
+    position: fixed;
+<<<<<<< HEAD
+}
+=======
+}
+
+/* CSS PARA LA SEGURIDAD DE LA CONTRASEÑA */
+.fuerza_contraseña {
+    padding-bottom: 5px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    font-size: 10px;
+    font-family:Verdana, Geneva, sans-serif;
+    border-bottom: 2px solid #888;
+    text-align: justify;
+    font-weight:normal;
+}
+
+#pswd_info_clave {
+    position:absolute;
+    margin-left:8%;
+    margin-top: 35px;
+    width:255px;
+    padding:12px;
+    background:#fefefe; 
+    font-size:.875em;
+    border-radius:5px;
+    box-shadow:0 1px 3px #ccc;
+    border:1px solid #ddd;
+    display:none;
+    z-index: 1200;
+
+}
+
+#pswd_info_clave::before {
+    content: "\25B2";
+    position:absolute;
+    top:-12px;
+    left:12%;
+    font-size:14px;
+    line-height:14px;
+    color:#ddd;
+    text-shadow:none;
+    display:block;
+}
+
+#pswd_info_clave h4 {
+    margin:0 5px 0 0; 
+    padding:0;
+    font-size: 13px;
+    font-weight:normal;
+}
+
+.pass_correct{
+    font-size: 11px;
+    color:#26a61a;
+}
+
+.pass_incorrect{
+    font-size: 11px;
+    color:red;
+}
+/* END CONTRASEÑA*/
+>>>>>>> 6166291aa383f72ce80be0ef2330a26fa86e2188
