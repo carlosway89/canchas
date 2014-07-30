@@ -1,6 +1,12 @@
 $(function(){
     
     $('[data-rel=tooltip]').tooltip();
+    $( "#show-tooltip" ).tooltip({
+        show: {
+            effect: "slideDown",
+            delay: 250
+        }
+    });  
     
     var dataTable = {
         tabla           : "TablaListCanchas", 
@@ -8,15 +14,16 @@ $(function(){
         filsXpag        : 10,
         desactOrdenaEn  : [0] ,
         functions       : [
-        $(".ver-permisos").bind('click', function(event){        
+        $(".edit-cancha").bind('click', function(event){        
             var id = $(this).attr("data-id");
-            userPermisosSelected(id);
+            select_cancha_editar(id);
+            //userPermisosSelected(id);
         }),
-        $(".del-user").bind('click', function(event){   
+        $(".del-cancha").bind('click', function(event){   
             var id = $(this).attr("data-id");
             confirmarDelete(
                 "Confirmar",
-                "¿Desea cambiar el estado del usuario seleccionado?",
+                "¿Desea cambiar el estado de la cancha seleccionada?",
                 eliminarCanchas,
                 id
                 );
@@ -32,16 +39,16 @@ $(function(){
 });
 
 
-function eliminarCanchas(nUsuID){
+function eliminarCanchas(nCanID){
     $.ajax({
         type: "POST",
-        url: "usuarios/usuariosDel/"+nUsuID,
+        url: "canchas/canchasDel/"+nCanID,
         cache: false,
         success: function(data) {
             if(data == 1){
                 //mensaje("La foto seleccionada ha sido actualizada a foto de portada!","e");
-                alert("se ha cambiado el usuario seleccionado");
-                usuariosQry();
+                alert("se ha cambiado el estado de la cancha seleccionada");
+                canchasQry();
             }else{
                 alert("Error de consulta");
             //mensaje("Error Inesperado, no se puede colocar la foto seleccionada en foto de portada!, vuelva a intentarlo","r");  

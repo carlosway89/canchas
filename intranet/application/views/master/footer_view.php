@@ -37,7 +37,7 @@
 <script src="<?php echo URL_JS; ?>jquery.maskedinput.min.js"></script>
 <script src="<?php echo URL_JS; ?>bootstrap-tag.min.js"></script>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 
 
 <!-- ace scripts -->
@@ -45,26 +45,6 @@
 <script src="<?php echo URL_JS; ?>ace.min.js"></script>
 
 <!-- inline scripts related to this page -->
-<script type="text/javascript">
-    jQuery(function($) {
-        var oTable1 = $('#sample-table-2').dataTable( {
-            "aoColumns": [
-                { "bSortable": false },
-                null, null,null, null, null,
-                { "bSortable": false }
-            ] } );
-				
-        $('#table_eventos_list').dataTable( {
-            serverSide: true,
-            "sAjaxSource":'<?= URL_MAIN ?>eventos/list_json',
-            "aoColumns": [
-                { "bSortable": false },
-                null, null,null, null, null,
-                { "bSortable": false }
-            ]
-        } );
-    })
-</script>
 
 </body>
 </html>

@@ -17,6 +17,7 @@ class Permisos extends CI_Controller {
 
     function permisosIns() {
         $nUsuID = $this->input->post("hid_ins_usu_codigo");
+        
         $delete = $this->usuario_model->usuarioOpcionesDel(array('DELETE-USUARIOS-OPCIONES','', $nUsuID, ''));
 
         if ($delete) {

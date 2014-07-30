@@ -31,10 +31,10 @@ class Codegen_model extends CI_Model {
         $this->db->insert($table, $data);         
         if ($this->db->affected_rows() == '1')
         {
-            return TRUE;
+            return $this->db->insert_id();
         }
         
-        return FALSE;       
+        return 0;       
     }
     
     function edit($table,$data,$fieldID,$ID){

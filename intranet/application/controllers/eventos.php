@@ -7,9 +7,12 @@ class Eventos extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url', 'codegen_helper'));
         $this->load->model('codegen_model', '', TRUE);
+        $this->loaders->verificaAcceso('W');
+        
     }
 
     function index() {
+        
         $this->data['main_content'] = 'eventos/evento_list';
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';
@@ -67,11 +70,24 @@ class Eventos extends CI_Controller {
     }
 
     function add() {
-        
+        $this->data['errorfecha'] = '';
+        $this->data['custom_error'] = '';
+
+        $this->data['main_content'] = 'eventos/evento_nuevo';
+        $this->data['title'] = '.: Solo Canchas - Intranet :.';
+        $this->data['menu_home'] = 'intranet';
+        $this->data['breadcrumbs'] = 'Eventos';
+        $this->load->view('master/template_view', $this->data);
+
+        //$this->template->load('content', 'eventos_add', $this->data);
+    }
+
+    function guardar(){
+
         $this->data['custom_error'] = '';
         $this->data['errorfecha'] = '';
 
-        $this->form_validation->set_rules('cEveTitulo', 'Titulo', '|trim|required');
+        /*$this->form_validation->set_rules('cEveTitulo', 'Titulo', '|trim|required');
         $this->form_validation->set_rules('cEveDireccion', 'Direccion', '|trim|required');
         $this->form_validation->set_rules('cEveDescripcion', 'Description', '|trim|required');
         $this->form_validation->set_rules('dEveStartTime', 'Empiezo', '|trim|required');
@@ -81,7 +97,7 @@ class Eventos extends CI_Controller {
 
         if ($this->form_validation->run() == false) {
             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);            
-        } else {
+        } else {*/
             $endHora = $_POST['EndHora'];
             $startHora = $_POST['StartHora'];
 
@@ -94,40 +110,37 @@ class Eventos extends CI_Controller {
 
 
                 $data = array(
-                    'cEveLatitud' => set_value('cEveLatitud'),
-                    'cEveLongitud' => set_value('cEveLongitud'),
-                    'cEveTitulo' => set_value('cEveTitulo'),
-                    'cEveDescripcion' => set_value('cEveDescripcion'),
-                    'cEveLinkFoto' => set_value('cEveLinkFoto'),
-                    'cEveLinkFacebook' => set_value('cEveLinkFacebook'),
-                    'cEveDireccion' => set_value('cEveDireccion'),
-                    'dEveStartTime' => set_value('dEveStartTime') . ' ' . $startHora,
-                    'dEveEndTime' => set_value('dEveEndTime') . ' ' . $endHora,
-                    'nUbiDepartamento' => set_value('nUbiDepartamento'),
-                    'nUbiProvincia' => set_value('nUbiProvincia'),
-                    'nUbiDistrito' => set_value('nUbiDistrito'),
-                    'dEveFechaRegistro' => set_value('dEveFechaRegistro'),
-                    'cEveEstado' => set_value('cEveEstado'),
-                    'nEveCosto' => set_value('nEveCosto'),
-                    'nUsuario' => set_value('nUsuario')
+                    'cEveLatitud' => $_POST['cEveLatitud'],
+                    'cEveLongitud' => $_POST['cEveLongitud'],
+                    'cEveTitulo' => $_POST['cEveTitulo'],
+                    'cEveDescripcion' => $_POST['cEveDescripcion'],
+                    'cEveLinkFoto' => $_POST['foto_url'],
+                    'cEveLinkFacebook' => $_POST['cEveLinkFacebook'],
+                    'cEveDireccion' => $_POST['cEveDireccion'],
+                    'dEveStartTime' => $_POST['dEveStartTime'] . ' ' . $startHora,
+                    'dEveEndTime' => $_POST['dEveEndTime'] . ' ' . $endHora,
+                    'nUbiDepartamento' => $_POST['nUbiDepartamento'],
+                    'nUbiProvincia' => $_POST['nUbiProvincia'],
+                    'nUbiDistrito' => $_POST['nUbiDistrito'],
+                    'dEveFechaRegistro' => $_POST['dEveFechaRegistro'],
+                    'cEveEstado' => $_POST['cEveEstado'],
+                    'nEveCosto' => $_POST['nEveCosto'],
+                    'nUsuario' => $_POST['nUsuario']
                 );
 
 
-                if ($this->codegen_model->add('eventos', $data) == TRUE) {
+                if ($this->codegen_model->add('eventos', $data) != 0) {
                     //$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
                     // or redirect
                     redirect(base_url() . 'eventos/');
                 } else {
+                    echo 'error 2';
                     $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
                 }
             }
-        }
-        $this->data['main_content'] = 'eventos/evento_nuevo';
-        $this->data['title'] = '.: Solo Canchas - Intranet :.';
-        $this->data['menu_home'] = 'intranet';
-        $this->data['breadcrumbs'] = 'Eventos';
-        $this->load->view('master/template_view', $this->data);
-        //$this->template->load('content', 'eventos_add', $this->data);
+        //}
+
+
     }
 
     function edit() {
@@ -135,53 +148,6 @@ class Eventos extends CI_Controller {
         $this->data['custom_error'] = '';
         $this->data['errorfecha'] = '';
 
-        $this->form_validation->set_rules('cEveTitulo', 'Titulo', '|trim|required');
-        $this->form_validation->set_rules('cEveDireccion', 'Direccion', '|trim|required');
-        $this->form_validation->set_rules('cEveDescripcion', 'Description', '|trim|required');
-        $this->form_validation->set_rules('dEveStartTime', 'Empiezo', '|trim|required');
-        $this->form_validation->set_rules('dEveEndTime', 'Termino', '|trim|required');
-        $this->form_validation->set_message('required', 'El campo %s es requerido');
-
-        if ($this->form_validation->run() == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
-        } else {
-            $endHora = $_POST['EndHora'];
-            $startHora = $_POST['StartHora'];
-
-            $dEveStartTime = $_POST['dEveStartTime'];
-            $dEveEndTime = $_POST['dEveEndTime'];
-
-            if (strtotime($dEveStartTime) > strtotime($dEveEndTime)) {
-                $this->data['errorfecha'] = '<br><div class="text-warning">La fecha de empiezo debe ser menor a la de termino</div>';
-            } else {
-
-                $data = array(
-                    'cEveLatitud' => $this->input->post('cEveLatitud'),
-                    'cEveLongitud' => $this->input->post('cEveLongitud'),
-                    'cEveTitulo' => $this->input->post('cEveTitulo'),
-                    'cEveDescripcion' => $this->input->post('cEveDescripcion'),
-                    'cEveLinkFoto' => $this->input->post('cEveLinkFoto'),
-                    'cEveLinkFacebook' => $this->input->post('cEveLinkFacebook'),
-                    'cEveDireccion' => $this->input->post('cEveDireccion'),
-                    'dEveStartTime' => set_value('dEveStartTime') . ' ' . $startHora,
-                    'dEveEndTime' => set_value('dEveEndTime') . ' ' . $endHora,
-                    'nUbiDepartamento' => $this->input->post('nUbiDepartamento'),
-                    'nUbiProvincia' => $this->input->post('nUbiProvincia'),
-                    'nUbiDistrito' => $this->input->post('nUbiDistrito'),
-                    'dEveFechaRegistro' => $this->input->post('dEveFechaRegistro'),
-                    'cEveEstado' => $this->input->post('cEveEstado'),
-                    'nEveCosto' => $this->input->post('nEveCosto'),
-                    'nUsuario' => $this->input->post('nUsuario')
-                );
-
-
-                if ($this->codegen_model->edit('eventos', $data, 'nEveID', $this->input->post('nEveID')) == TRUE) {
-                    redirect(base_url() . 'eventos/');
-                } else {
-                    $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
-                }
-            }
-        }
 
         $this->data['result'] = $this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto,nUsuario', 'nEveID = ' . $this->uri->segment(3), NULL, NULL, true);
 
@@ -191,6 +157,53 @@ class Eventos extends CI_Controller {
         $this->data['breadcrumbs'] = 'Eventos';
         $this->load->view('master/template_view', $this->data);
         //$this->template->load('content', 'eventos_edit', $this->data);
+    }
+
+    function editar(){
+
+        $this->data['custom_error'] = '';
+        $this->data['errorfecha'] = '';
+
+        $endHora = $_POST['EndHora'];
+        $startHora = $_POST['StartHora'];
+
+        $dEveStartTime = $_POST['dEveStartTime'];
+        $dEveEndTime = $_POST['dEveEndTime'];
+
+        if (strtotime($dEveStartTime) > strtotime($dEveEndTime)) {
+            $this->data['errorfecha'] = '<br><div class="text-warning">La fecha de empiezo debe ser menor a la de termino</div>';
+        } else {
+
+            $data = array(
+                'cEveLatitud' => $_POST['cEveLatitud'],
+                'cEveLongitud' => $_POST['cEveLongitud'],
+                'cEveTitulo' => $_POST['cEveTitulo'],
+                'cEveDescripcion' => $_POST['cEveDescripcion'],
+                'cEveLinkFoto' => $_POST['foto_url'],
+                'cEveLinkFacebook' => $_POST['cEveLinkFacebook'],
+                'cEveDireccion' => $_POST['cEveDireccion'],
+                'dEveStartTime' => $_POST['dEveStartTime'] . ' ' . $startHora,
+                'dEveEndTime' => $_POST['dEveEndTime'] . ' ' . $endHora,
+                'nUbiDepartamento' => $_POST['nUbiDepartamento'],
+                'nUbiProvincia' => $_POST['nUbiProvincia'],
+                'nUbiDistrito' => $_POST['nUbiDistrito'],
+                'dEveFechaRegistro' => $_POST['dEveFechaRegistro'],
+                'cEveEstado' => $_POST['cEveEstado'],
+                'nEveCosto' => $_POST['nEveCosto'],
+                'nUsuario' => $_POST['nUsuario']
+            );
+
+
+            if ($this->codegen_model->edit('eventos', $data, 'nEveID', $_POST['nEveID']) == TRUE) {
+                redirect(base_url() . 'eventos/');
+            } else {
+                echo 'error 2';
+                $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
+            }
+        }
+        
+
+
     }
 
     function delete() {

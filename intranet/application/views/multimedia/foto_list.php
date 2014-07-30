@@ -33,12 +33,12 @@
 
 					<li>
 						<a href="#" data-rel="colorbox">
-							<img id="foto_list" alt="150x150" src="<?=URL_MAIN?>img/img2.jpg" />
+							<img id="foto_list" alt="150x150" src="<?= $list_multimedia[$i]['cMultLink']; ?>" />
 						</a>
 
 						<div class="tools tools-right">
-
-							<a href="#">
+																
+							<a href="#" onClick="return deletechecked('<?=URL_MAIN?>multimedia/delete_foto/<?=$list_multimedia[$i]['nMultID'];?>/<?=$list_multimedia[$i]['cMultLink'];?>');" >
 								<i class="icon-remove red"></i>
 							</a>
 						</div>
@@ -56,6 +56,7 @@
 <style type="text/css">
 	img#foto_list{
 		width: 150px;
+		height: 100px;
 	}
 </style>
 
