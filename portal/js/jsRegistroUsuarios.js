@@ -1,11 +1,14 @@
 $(function(){   
 
-
-
     // ACCION BUTTON REGISTRO USUARIOS
     $("#btn_ins_users").bind('click', function(event){
-        registro_usuarios();
+        
+        alert("hola");  
+        
+
     });  
+    
+    
 });  
         
 function registro_usuarios(){
@@ -16,10 +19,10 @@ function registro_usuarios(){
         data: $(form).serialize(),
         success: function(msg){
             if(msg.trim()==1){        
-            //                            msgLoadSaveRemove("#btn_ins_usuario");
-            //                            mensaje("Los datos de usuario se han registrado correctamente!","e");
-            //                            limpiarForm("#frm_ins_usuario");
-            //alert("Registro exitoso");
+                //                            msgLoadSaveRemove("#btn_ins_usuario");
+                //                            mensaje("Los datos de usuario se han registrado correctamente!","e");
+                //                            limpiarForm("#frm_ins_usuario");
+                alert("Registro exitoso");
             }else{
                 alert("No se ha registrado bien");
             //                            mensaje("Error Inesperado, no se puede registrar los datos del usuario!, vuelva a intentarlo","r");                        

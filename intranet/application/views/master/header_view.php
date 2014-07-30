@@ -109,7 +109,7 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
 
                 <div class="navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
-                        <li class="grey">
+<!--                        <li class="grey">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="icon-tasks"></i>
                                 <span class="badge badge-grey">4</span>
@@ -180,7 +180,7 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>-->
 
                         <li class="purple">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -322,8 +322,8 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                                 <img class="nav-user-photo" src="<?= URL_IMG ?>avatars/user.jpg" alt="Jason's Photo" />
                                 <span class="user-info">
-                                    <small>Welcome,</small>
-                                    Jason
+                                    <small>Bienvenido,</small>
+                                    <?php echo $this->session->userdata('Nombres'); ?>
                                 </span>
 
                                 <i class="icon-caret-down"></i>
@@ -331,25 +331,32 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
 
                             <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="#">
+                                    <a href="<?php echo URL_MAIN; ?>cambiar_clave">
                                         <i class="icon-cog"></i>
-                                        Settings
+                                        Cambiar Clave
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="#">
+                                    <a href="<?php echo URL_MAIN; ?>actualizar_datos">
                                         <i class="icon-user"></i>
-                                        Profile
+                                        Actualizar Datos
                                     </a>
                                 </li>
 
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="#">
+                                    <?php 
+                                    if ($this->session->userdata('dedonde') == "portal"){
+                                        $ruta_logout = URL_PORTAL."acceso/logout";
+                                    }else{
+                                        $ruta_logout = URL_MAIN."acceso/logout";
+                                    } 
+                                    ?>
+                                    <a href="<?php echo $ruta_logout ?>">
                                         <i class="icon-off"></i>
-                                        Logout
+                                        Cerrar Sesión
                                     </a>
                                 </li>
                             </ul>
@@ -369,7 +376,7 @@ window.jQuery || document.write("<?php echo URL_JS; ?>jquery-1.10.2.min.js'>"+"<
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        <a href="#">Home</a>
+                        <a href="<?php echo URL_MAIN ?>manage">Inicio</a>
                     </li>
                     <li class="active"><?= $breadcrumbs ?></li>
                 </ul><!-- .breadcrumb -->

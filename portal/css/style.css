@@ -254,7 +254,7 @@ h6.shortcodes-caption{
     padding-right:5000px;
     margin-left:-5000px;
     margin-right:-5000px;
-    background:#FFF;
+    background:#2F5306;
     color:#e2eaf2;
     height:130px;
     padding-top:17px;
@@ -356,7 +356,6 @@ h6.shortcodes-caption{
 }
 
 #newsletter h5{
-    text-transform:uppercase;
     font-size:14px;
     font-weight:400;
     margin-top:0;
@@ -412,7 +411,31 @@ h6.shortcodes-caption{
     padding:0 5px;
 }
 
+.logout{
+    float:right;
+    color: #FFF;
+    font-size: 11px;
+    margin-top:3px;
+}
+.logout:hover{
+    color: #63b2f5;
+}
+
 .newsletter-form input[type="text"]{
+    padding:7px 10px;
+    border:none;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    height:35px;
+    background:#f3f4f6;
+    width:100%;
+    color:#3e474c;
+    font-size:13px;
+    margin-bottom:0;
+}
+
+.newsletter-form input[type="password"]{
     padding:7px 10px;
     border:none;
     border-radius:3px;
@@ -507,7 +530,7 @@ h6.shortcodes-caption{
     padding-right:5000px;
     margin-left:-5000px;
     margin-right:-5000px;
-    background:#556B2F;
+    background:#3C6909;
     color:#3e474c;
     position:relative;
     z-index:5000;
@@ -524,7 +547,7 @@ h6.shortcodes-caption{
     left:0;
     right:0;
     bottom:0;
-    border-top:1px solid #fff;
+    border-top:1px solid #2f5306;
     border-bottom:1px solid #dee0e5;
     z-index:0;
 }
@@ -589,8 +612,9 @@ h6.shortcodes-caption{
     display:table-cell;
     text-align:center;
     position:relative;
-    border-right:1px solid #4D612C;
-    background:#556B2F;
+    border-right:1px solid #9A9414;
+/*    border-right:1px solid #4D612C;*/
+    background:#3C6909;
 }
 
 #navigation>li:first-child{
@@ -4048,19 +4072,104 @@ a.button.details-button:hover:after{
 
 /* BANNER AGREGADO **/
 
-.banner.donate-banner2{
-    background:#1F7900;
+.banner_new{
+    background:#e2eaf2;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    padding:18px 10px 15px 50px;
+    overflow:hidden;
+    position:relative;
+    display:block;
+    min-height:75px;
+    transition:background 0.3s;
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+}
+
+.banner-wrapper + .banner-wrapper{
+    margin-top:5px;
+}
+
+.banner_new h4{
+    color:#274472;
+    font-weight:800;
+    text-transform:uppercase;
+    margin:0;
+    white-space: nowrap;
+    transition:color 0.2s;
+    -webkit-transition:color 0.2s;
+    -moz-transition:color 0.2s;
+}
+
+/*.banner_new p{
+    color:#808ca4;
+    margin-top:0;
+    font-size:13px;
+    margin-bottom:0;
+    transition:color 0.2s;
+    -webkit-transition:color 0.2s;
+    -moz-transition:color 0.2s;
+}*/
+
+/*.banner_new .icons{
+    position:absolute;
+    font-size:48px;
+    width:50px;
+    color:#c6d0dc;
+    left:-23px;
+    top:50%;
+    margin-top:-26px;
+    z-index:500;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition:color 0.2s, opacity 0.7s, -webkit-transform 0.6s;
+    -moz-transition:color 0.2s, opacity 0.7s, -moz-transform 0.6s;
+    transition:color 0.2s, opacity 0.7s, transform 0.6s;
+}
+
+.banner_new:hover{
+    background:#63b2f5;
+    text-decoration:none;
+}
+
+.banner_new:hover h4{
+    color:#fff
+}
+
+.banner_new:hover p{
+    color:#dbe7f2;
+}
+
+.banner_new:hover .icons{
+    color:#9ccbf8;
+}
+
+.banner_new:hover .icons.icons-fadeout{
+    color:#9ccbf8;
+    -webkit-transform:scale(4);
+    -moz-transform:scale(4);
+    transform:scale(4);
+    opacity:0;
+    -moz-opacity:0;
+    -khtml-opacity:0;
+}*/
+
+
+.banner_new.donate-banner2{
+    background:#2C4D05;
     padding:20px 18px 20px 20px;
 }
 
-.banner.donate-banner2 h5{
+.banner_new.donate-banner2 h5{
     margin:4px 0 22px;
     font-size:16px;
     color:#FFF;
     font-weight:400;
 }
 
-.banner.donate-banner2 input[type="submit"]{
+.banner_new.donate-banner2 input[type="submit"]{
     background:#a82512;
     border-top:1px solid #be2e17;
     border-bottom:1px solid #911f0f;
@@ -4078,11 +4187,11 @@ a.button.details-button:hover:after{
     vertical-align:bottom;
 }
 
-.banner.donate-banner2 input[type="radio"]{
+.banner_new.donate-banner2 input[type="radio"]{
     display:none;
 }
 
-.banner.donate-banner2 input[type="radio"]+label{
+.banner_new.donate-banner2 input[type="radio"]+label{
     background:#fff;
     box-shadow:0 0 1px #a82512;
     cursor:pointer;
@@ -4097,19 +4206,19 @@ a.button.details-button:hover:after{
     -moz-transition:background 0.3s, color 0.2s;
 }
 
-.banner.donate-banner2 input[type="radio"]+label:before{
+.banner_new.donate-banner2 input[type="radio"]+label:before{
     display:none;
     content:'';
     margin:0;
 }
 
-.banner.donate-banner2 input[type="radio"]:checked+label,
-.banner.donate-banner2 label.radio-checked{
+.banner_new.donate-banner2 input[type="radio"]:checked+label,
+.banner_new.donate-banner2 label.radio-checked{
     background:#a82512!important;
     color:#fff;
 }
 
-.banner.donate-banner2 input[type="submit"]:hover{
+.banner_new.donate-banner2 input[type="submit"]:hover{
     background:#d3311a;
     border-top-color:#de3d21;
     border-bottom-color:#b02713;
@@ -4117,19 +4226,19 @@ a.button.details-button:hover:after{
 
 
 /* Registro de Usuarios */
-.banner.donate-banner3{
+.banner_new.donate-banner3{
     background:#006db7;
-    padding:20px 18px 20px 20px;
+    padding:20px 18px 2px 20px;
 }
 
-.banner.donate-banner3 h5{
+.banner_new.donate-banner3 h5{
     margin:4px 0 22px;
     font-size:16px;
     color:#FFF;
     font-weight:400;
 }
 
-.banner.donate-banner3 input[type="submit"]{
+.banner_new.donate-banner3 input[type="submit"]{
     background:#24560F;
     border-top:1px solid #be2e17;
     border-bottom:1px solid #911f0f;
@@ -4147,11 +4256,11 @@ a.button.details-button:hover:after{
     vertical-align:bottom;
 }
 
-.banner.donate-banner3 input[type="radio"]{
+.banner_new.donate-banner3 input[type="radio"]{
     display:none;
 }
 
-.banner.donate-banner3 input[type="radio"]+label{
+.banner_new.donate-banner3 input[type="radio"]+label{
     background:#fff;
     box-shadow:0 0 1px #a82512;
     cursor:pointer;
@@ -4166,27 +4275,23 @@ a.button.details-button:hover:after{
     -moz-transition:background 0.3s, color 0.2s;
 }
 
-.banner.donate-banner3 input[type="radio"]+label:before{
+.banner_new.donate-banner3 input[type="radio"]+label:before{
     display:none;
     content:'';
     margin:0;
 }
 
-.banner.donate-banner3 input[type="radio"]:checked+label,
-.banner.donate-banner3 label.radio-checked{
+.banner_new.donate-banner3 input[type="radio"]:checked+label,
+.banner_new.donate-banner3 label.radio-checked{
     background:#a82512!important;
     color:#fff;
 }
 
-.banner.donate-banner3 input[type="submit"]:hover{
+.banner_new.donate-banner3 input[type="submit"]:hover{
     background:#d3311a;
     border-top-color:#de3d21;
     border-bottom-color:#b02713;
 }
-
-
-
-
 
 
 /* Social Media */
@@ -4981,7 +5086,7 @@ a.tag:hover{
     margin-right:-5000px;
     padding-left:5000px;
     padding-right:5000px;
-    background:#274472;
+    background:#2f5306;
     color:#e2eaf2;
     -webkit-transform: translateZ(0px);
     transition: margin 0.3s, padding 0.3s;
@@ -5175,7 +5280,7 @@ a.button.twitter-button:hover:before{
 /* Lower Footer */
 
 #lower-footer{
-    border-top:1px solid #324e79;
+    border-top:1px solid #2A4A05;
     padding-top:15px;
     padding-bottom:15px;
     -webkit-transform: translateZ(0px);
@@ -5187,7 +5292,7 @@ a.button.twitter-button:hover:before{
 }
 
 .copyright{
-    color:#808ca4;
+    color:#FFF;
     padding-top:13px;
     margin:0;
 }
@@ -6122,6 +6227,7 @@ blockquote.link-quote:after{
     width:20px;
     height:20px;
 }
+
 
 .alert-box + .alert-box{
     margin-top:10px;

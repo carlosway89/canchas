@@ -6,20 +6,27 @@ class Loaders {
     public function get_menu() {
         $CI = & get_instance();
         $CI->load->model('admin/objeto_model', 'objObjeto');
-        $url = $CI->uri->segment(1) . '/' . $CI->uri->segment(2). '/' . $CI->uri->segment(3);
+
+        if ($CI->uri->segment(2) == "") {
+            $ruta = $CI->uri->segment(1);
+        } else {
+            $ruta = $CI->uri->segment(1) . '/' . $CI->uri->segment(2);
+        }
+
+        $url = $ruta;
         $data = array('url' => $url);
         $CI->session->set_userdata($data);
         return $CI->objObjeto->listaMenuOpciones2();
     }
-    public function get_menu_body() {
-        $CI = & get_instance();
-        $CI->load->model('admin/objeto_model', 'objObjeto');
-        $url = $CI->uri->segment(1) . '/' . $CI->uri->segment(2). '/' . $CI->uri->segment(3);
-        $data = array('url' => $url);
-        $CI->session->set_userdata($data);
-        return $CI->objObjeto->listaMenuOpciones3();
-    }
 
+//    public function get_menu_body() {
+//        $CI = & get_instance();
+//        $CI->load->model('admin/objeto_model', 'objObjeto');
+//        $url = $CI->uri->segment(1) . '/' . $CI->uri->segment(2). '/' . $CI->uri->segment(3);
+//        $data = array('url' => $url);
+//        $CI->session->set_userdata($data);
+//        return $CI->objObjeto->listaMenuOpciones3();
+//    }
     //VERIFICAR ACCESO DE USUARIO
     public function verificaAcceso($plataforma) {
         $CI = & get_instance();
@@ -28,15 +35,6 @@ class Loaders {
         if ($iduser) {
             $url = $CI->uri->segment(1) . '/' . $CI->uri->segment(2);
             $iduser = $CI->session->userdata('nUsuID');
-//            $query = $CI->db->query("CALL USP_GEN_S_VALIDAR_ACCESO (?,?,?)", array($plataforma, $iduser, $url));
-//            $CI->db->close();
-//            if ($query->num_rows() > 0) {
-//                return true;
-//                $Rand = rand(111111111111, 999999999999);
-//                $_SESSION['Seguridad']   = array('Secure_Url' => $url, 'Secure_Rand' => $Rand);
-//                return '<input id="hid_secure_uri" name="hid_secure_uri" value="' . md5($url . $Rand) . '" type="hidden">';
-            //}
-            //show_error(utf8_decode('<center><div style="display: table-cell;vertical-align: middle;position: relative;"><center><br/><p><img src="http://localhost/oficinavirtual/img/dashboard/error.gif"/><h2 style="color:black;">No cuenta con los privilegios suficientes para acceder a esta pagina.</h2><h4 style="color:black;"><i>Su intento ha sido registrado, y conocemos a su familia. JA JA JA!</i><br/>Si vuelve a intentarlo, gringasho visitará mañana su hogar.</h4></p></center></div></center>'), 500);
         } else {
             redirect("acceso/");
         }
@@ -100,7 +98,7 @@ class Loaders {
         }
     }
 
-//EVITAR INYECCION SQL - renzo probando
+    //EVITAR INYECCION SQL - renzo probando
     public function FiltrarTexto($str, $html = true, $e = 'ISO-8859-15') {
         if (is_array($str)) {
             $final = array();
@@ -172,8 +170,6 @@ class Loaders {
                 if (!$magic_quotes) {
 
                     if ($replaceQuote [0] == '\\') {
-                        // only since php 4.0.5
-                        //$str = seo_str_replace ( array ( '\\', "\0" ), array ( '\\\\', "\\\0" ), $str );
                         $str = str_replace("\0", "\\\0", str_replace('\\', '\\\\', $str));
                     }
                     return "'" . str_replace("'", $replaceQuote, $str) . "'";

@@ -2,7 +2,7 @@
     <div class="owl-header">
         <div class="side-segment">
             <h3 class="animate-onscroll">
-                <i class="icons icon-star"></i> Noticias importantes
+                <i class="icons icon-news"></i> Noticias importantes
             </h3>
         </div>
 

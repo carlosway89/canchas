@@ -10,7 +10,7 @@ function msjCargando(){
  
 $(function(){
     document.getElementById("mensajecarga").style.visibility="hidden";
-    $(".nav-list > li > a").click(function(e){
+    $(".submenu > li > a").click(function(e){
         msjCargando();
     });
 });
@@ -152,6 +152,33 @@ function funciones_dialog_ui(){
     }));
 }
 
+function confirmarOperacion(div,title,funcion){
+    funciones_dialog_ui();
+    var dialog = $( "#"+div ).removeClass('hide').dialog({
+        modal: true,
+        title: "<div class='widget-header widget-header-small'><h4 class='smaller'><i class='icon-ok'></i> "+title+"</h4></div>",
+        title_html: true,
+        draggable: false, 
+        width:400,
+        closeOnEscape:false,
+        buttons: [ 
+        {
+            text: "OK",
+            "class" : "btn btn-primary btn-xs",
+            click: function() {
+                funcion();
+                $( this ).dialog( "close" ); 
+            } 
+        }
+        ]
+       
+    });
+    
+    $(".ui-dialog-titlebar-close").bind('click', function(event){   
+        funcion();
+    });
+    
+}
 
 function confirmarDelete(title,msg,funcion,parametro){
     funciones_dialog_ui();
@@ -703,34 +730,4 @@ function initCleanTags(clase_icon){
     }); 
 }
 
-function popup_sms_exito(obj,obj_cerrar){
-    
-    //    if(accion == "ins"){
-    //$("#email_ingresado").html("<b>"+$("#txt_upd_recu_clave").val().toLowerCase()+"</b>");
-    $(obj).modal({
-        show:true,
-        animate:"fade"
-    });
-        
-//        bootbox.dialog({
-//                        message: "Thank you! Your information was successfully saved!", 
-//                        buttons: {
-//                            "success" : {
-//                                "label" : "OK",
-//                                "className" : "btn-sm btn-primary"
-//                            }
-//                        }
-//                    });
-                     
-//        $(obj_cerrar).bind("click", function() {
-//            $(".bootbox").modal("hide");
-//        //            $("#mensajecarga").show();
-//        //            msjCargando();
-//        //            window.open("http://"+ruta+"/intranet/acceso", "_self");
-//        });   
-//    }else{
-//        alert("popup de actualización");
-//    }
-               
-}
           

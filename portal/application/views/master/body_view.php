@@ -1,3 +1,27 @@
+<!-- Add fancyBox main JS and CSS files -->
+<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<!-- Add Button helper (this is optional) -->
+<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+<!-- Add Thumbnail helper (this is optional) -->
+<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<!-- Add Media helper (this is optional) -->
+<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('.fancybox').fancybox();
+
+    });
+</script>
+
+
 <section id="content">
 
     <!-- Section -->
@@ -12,11 +36,15 @@
 
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
                 <div class="banner-wrapper">
-                    <div class="banner donate-banner2 animate-onscroll">
+                    <div class="banner_new donate-banner2 animate-onscroll">
                         <div class="side-segment">
                             <h5>Búsqueda de <strong>Canchas</strong></h5>
                         </div>
                         <?php $this->load->view("master/form_search_canchas_view"); ?>
+                        
+                        <div id="inline1" style="width:700px;display: none;">
+                            <?php $this->load->view("registro_usuarios/panel_view"); ?>    
+                        </div>
                     </div>
                 </div>											
             </div>
@@ -67,7 +95,7 @@
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-8">
                 <div class="side-segment">
-                    <h3 class="animate-onscroll no-margin-top"><i class="icons icon-news"></i> Últimas noticias</h3>
+                    <h3 class="animate-onscroll no-margin-top"><i class="icons icon-newspaper"></i> Noticia de la Semana</h3>
                 </div>
 
                 <!-- SECCION NOTICIA PRINCIPAL -->
@@ -81,9 +109,6 @@
                 <!-- SECCION CANCHAS FAVORITAS -->
                 <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
                 <!-- END -->	
-
-
-
 
                 <!-- /Owl Carousel -->						<!-- Banner Rotator -->
                 <div class="banner-rotator animate-onscroll">
@@ -125,19 +150,32 @@
                 <!-- /Banner Rotator -->						
             </div>
 
-            
+
             <!-- Sidebar -->
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
 
                 <!-- Featured Video -->
                 <div class="sidebar-box white featured-video animate-onscroll">
                     <div class="side-segment">
-                        <h3><i class="icons icon-video"></i> Video de la Semana</h3>
+                        <h3><i class="icons icon-info-circled"></i> SOLO CANCHAS</h3>
                     </div>
-                    <iframe src="http://player.vimeo.com/video/37811493" width="500" height="320"></iframe> 
-                    <a href="#" class="button transparent button-arrow">Más Videos</a>
+                    <p style="text-align: justify;">
+                        SoloCanchas es la única guía que reúne información de los mejores centros deportivos del pais, nuestros anunciantes cuentan 
+                        con todo tipo de actividades relacionadas al entrenamiento y bienestar físico. El portal brinda toda la 
+                        información necesaria para conocer y contactarse con centros deportivos a nivel nacional. 
+                    </p>
                 </div>
-                <!-- /Featured Video -->						<!-- Upcoming Events -->
+                <!-- /Featured Video -->
+
+                <!-- Publicidad de Anuncios -->
+                <br />
+                <div class="animate-onscroll">
+                    <img src="<?php echo URL_IMG ?>banner_anncia.png" style="width: 100%;" />
+                </div>
+                <br />
+                <!-- /Publicidad de Anuncios -->
+
+                <!-- Sección de Eventos -->
                 <div class="sidebar-box white animate-onscroll">
                     <div class="side-segment">
                         <h3><i class="icons icon-calendar"></i> Últimos Eventos</h3>
@@ -204,25 +242,30 @@
                     </ul>
                     <a href="#" class="button transparent button-arrow">Más eventos</a>
                 </div>
-                <!-- /Upcoming Events -->						<!-- Image Banner -->
-                <!--                <div class="sidebar-box image-banner animate-onscroll">
-                                    <a href="issues.html">
-                                        <img src="<?php echo URL_IMG; ?>main-issues.jpg" alt="">
-                                        <h3>The main issues</h3>
-                                        <span class="button transparent button-arrow">Find out more</span>
-                                    </a>
-                                </div>
-                                 /Image Banner 						 Flickr Photos 
-                                <div class="sidebar-box white flickr-photos animate-onscroll">
-                                    <div class="side-segment">
-                                        <h3><i class="icons icon-picture"></i> Flickr Photos</h3>
-                                    </div>
-                                    <ul class="flickr-feed">
-                                    </ul>
-                                </div>-->
-                <!-- /Flickr Photos -->	
+                <!-- /Sección de Eventos -->						
 
 
+                <div class="sidebar-box white animate-onscroll">
+                    <div class="side-segment">
+                        <h3><i class="icons icon-facebook-squared"></i> SOLOCANCHAS.COM</h3>
+                    </div>
+                    <div>
+                        <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FSoloCanchasPeru&amp;width&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true"  frameborder="0" style="border:none;  height:500px;background: #FFF;" allowTransparency="true"></iframe>
+                    </div>
+                </div>
+
+
+                <div class="sidebar-box white animate-onscroll">
+                    <div class="side-segment">
+                        <h3><i class="icons icon-youtube"></i> SOLOCANCHAS.COM</h3>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+
+
+                <!-- Image Banner -->
                 <div class="sidebar-box white animate-onscroll">
                     <div class="side-segment">
                         <h3><i class="icons icon-comment"></i> Testimonios</h3>

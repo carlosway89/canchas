@@ -26,7 +26,7 @@ class Acceso extends CI_Controller {
 
     function logout() {
         $this->session->sess_destroy();
-        redirect("usuario/login");
+        redirect("acceso/login");
     }
 
 //    function user_registration_from_login() {
@@ -74,9 +74,11 @@ class Acceso extends CI_Controller {
                 $data = array(
                     'esta_logeado' => true,
                     'usuario' => $login[0]->cUsuNick,
-                    'Nombres' => $login[0]->cPerNomApe,
+                    'Nombres' => $login[0]->cPerNombres,
+                    'Apellidos' => $login[0]->cPerApellidos,
                     'nPerID' => $login[0]->nPerID,
-                    'nUsuID' => $login[0]->nUsuID
+                    'nUsuID' => $login[0]->nUsuID,
+                    'dedonde' => 'intranet',
                 );
                 $this->session->set_userdata($data);
                 echo "1";

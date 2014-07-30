@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer id="footer">
     <!-- Main Footer -->
-    <div id="main-footer">
+<!--    <div id="main-footer">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 animate-onscroll">
                 <div class="side-segment">
@@ -50,10 +50,10 @@
                 </div>
                 <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FSoloCanchasPeru&amp;width&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true"  frameborder="0" style="border:none;  height:250px;background: #FFF;" allowTransparency="true"></iframe>
 
-<!--                <iframe src="../../www.facebook.com/plugins/likebox34d7.html?href=http%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;width=270&amp;height=240&amp;colorscheme=dark&amp;header=false&amp;show_faces=true&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:100%; height:240px;"></iframe>-->
+                <iframe src="../../www.facebook.com/plugins/likebox34d7.html?href=http%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;width=270&amp;height=240&amp;colorscheme=dark&amp;header=false&amp;show_faces=true&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:100%; height:240px;"></iframe>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- /Main Footer -->
 
     <!-- Lower Footer -->
@@ -151,7 +151,7 @@
 <script src="<?php echo URL_JS; ?>jquery.prettyPhoto.js"></script>
 
 <!-- Main Script -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>script.js"></script>
+<script type="text/javascript" src="<?php echo URL_JS; ?>script_main.js"></script>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 

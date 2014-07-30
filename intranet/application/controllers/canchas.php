@@ -15,6 +15,7 @@ class Canchas extends CI_Controller {
     }
 
     public function index() {
+        $this->loaders->verificaAcceso('W');
         $data['main_content'] = 'canchas/panel_view';
         $data['title'] = '.: Panel de Administración - Módulo de Canchas :.';
         $data['breadcrumbs'] = 'Módulo de Canchas';
