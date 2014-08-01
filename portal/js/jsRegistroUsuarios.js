@@ -1,7 +1,5 @@
 $(function(){   
 
-    //msgLoadSave("#sms_ins_user","#btn_ins_users");
-
     // ACCION BUTTON REGISTRO USUARIOS
     $("#btn_ins_users").bind('click', function(event){
 
@@ -29,8 +27,10 @@ $(function(){
             $("#error_form_register_users").hide().fadeIn(150);
             $("#txt_ins_user_email").focus();
         }else if(!email_re.test(email)){
-                alert("email invalido");
-            
+            msgAlerta("#error_form_register_users","Ingrese un email válido");
+            $("#error_form_register_users").css("margin-bottom","10px");
+            $("#error_form_register_users").hide().fadeIn(150);
+            $("#txt_ins_user_email").focus();
         }else if(clave == "" || clave == " "){
             msgAlerta("#error_form_register_users","Ingrese su clave");
             $("#error_form_register_users").css("margin-bottom","10px");
@@ -41,7 +41,13 @@ $(function(){
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
             $("#txt_ins_user_repeclave").focus();
+        }else if(clave != repetirclave ){
+            msgAlerta("#error_form_register_users","Las claves no son iguales");
+            $("#error_form_register_users").css("margin-bottom","10px");
+            $("#error_form_register_users").hide().fadeIn(150);
+            $("#txt_ins_user_repeclave").focus();
         }else{
+            $("#error_form_register_users").css("margin-bottom","0");
             registro_usuarios();   
         }
     });  
