@@ -1,3 +1,8 @@
+<div class="side-segment">
+            <h3 class="animate-onscroll">
+                <i class="icons icon-news"></i> Noticia Principal
+            </h3>
+        </div>
 <?php foreach ($noticia_principal as $noticia_principal) { ?>
     <div class="blog-post big animate-onscroll">
 
