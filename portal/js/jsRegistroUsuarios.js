@@ -1,6 +1,6 @@
 $(function(){   
 
-    msgLoadSave("#sms_ins_user","#btn_ins_users");
+    //msgLoadSave("#sms_ins_user","#btn_ins_users");
 
     // ACCION BUTTON REGISTRO USUARIOS
     $("#btn_ins_users").bind('click', function(event){
@@ -10,6 +10,8 @@ $(function(){
         var email = $("#txt_ins_user_email").val();
         var clave = $("#txt_ins_user_clave").val();
         var repetirclave = $("#txt_ins_user_repeclave").val();
+        
+        var email_re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         
         if(nombres == "" || nombres == " "){
             msgAlerta("#error_form_register_users","Ingrese sus nombres");
@@ -26,6 +28,9 @@ $(function(){
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
             $("#txt_ins_user_email").focus();
+        }else if(!email_re.test(email)){
+                alert("email invalido");
+            
         }else if(clave == "" || clave == " "){
             msgAlerta("#error_form_register_users","Ingrese su clave");
             $("#error_form_register_users").css("margin-bottom","10px");
