@@ -28,7 +28,7 @@ $(function(){
     
     
 });
-var ruta="http://localhost/canchas/portal";
+
 var link_host="http://localhost/canchas/portal/fixture";
 
 function acciones(){
@@ -61,7 +61,7 @@ function acciones(){
 
 function carga_loader(){
     $('#fixture_content_show').empty();
-    $('#fixture_content_show').html('<div id="loader_image" class="text-center"><img src="portal/img/cargando.gif" class="img_loader" style="height: 50px;" /><br/>Cargando..</div>');
+    $('#fixture_content_show').html('<div id="loader_image" class="text-center"><img src="http://solocanchas.com/portal/img/cargando.gif" class="img_loader" style="height: 50px;" /><br/>Cargando..</div>');
 }
 
 function get_goleadores(){
@@ -143,7 +143,7 @@ function data_process_posiciones(){
     img.each(function() {
         var src=$(this).attr('src');
         src=src.replace('/f/i/escudos/20x20/','');
-        $(this).attr('src','portal/img/escudos/'+src);
+        $(this).attr('src','http://solocanchas.com/portal/img/escudos/'+src);
     });
 
     
@@ -174,7 +174,7 @@ function data_process_resultados(){
     img.each(function() {
         var src=$(this).attr('src');
         src=src.replace('/f/i/escudos/20x20/','');
-        $(this).attr('src','portal/img/escudos/'+src);
+        $(this).attr('src','http://solocanchas.com/portal/img/escudos/'+src);
     });
 
 
