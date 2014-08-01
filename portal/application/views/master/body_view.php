@@ -95,7 +95,9 @@
                     <a id="link-resultados" class="fixture-navegador" href="#resultados">RESULTADOS</a>
                     <!-- <a id="link-calendario" class="fixture-navegador" href="#calendario">CALENDARIO</a> -->
                     <a id="link-goleadores" class="fixture-navegador" href="#goleadores">GOLEADORES</a>
-                </div>
+                    <div id="resultados-envivo"></div>
+                </div><br>
+
 
                 <div id="fixture_content_show" style="display:none">
                     <!--fixture content -->

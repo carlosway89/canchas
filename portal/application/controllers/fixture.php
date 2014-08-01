@@ -110,6 +110,33 @@ class Fixture extends CI_Controller {
         echo  $cadena;
 
     }
+
+    function get_envivo(){
+
+        $url="http://www.libero.pe/"; 
+
+        $cadena = file_get_contents($url); 
+
+
+        
+        $find_1 = '</div><div class="controls">'; 
+        $position_1 = strpos($cadena, $find_1);
+        
+        $cadena = substr($cadena, 0, $position_1);
+
+        
+        $find_2 = '<div class="slider" id="slider-partido-agenda">';
+        
+        $position_2 = strpos($cadena, $find_2);
+
+        $cadena = substr($cadena, $position_2);
+
+        
+        
+
+        echo  $cadena;
+
+    }
     
 
 }

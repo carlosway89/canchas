@@ -5,6 +5,7 @@
 }
 ul.paginador-fixture{
 	height:50px;
+	margin-left: 0px;
 }
 ul.paginador-fixture>li{
 	height:50px;
@@ -15,7 +16,7 @@ ul.paginador-fixture>li{
 ul.paginador-fixture>.titulo{
 	font-size: 24px;
 	font-weight: bold;
-	width:73%;
+	width:72.5%;
 	color:#9A9414;
 }
 ul.paginador-fixture>.previous{
@@ -43,13 +44,14 @@ ul.paginador-fixture>.next>a{
 }
 .option-select{
 	width:100%;
-	height:44px;
+	height:100px;
 	background-color: #FAFBFD;
 	border-radius: 5px;
+	border: 1px solid #ddd;
 	
 }
 .fixture-navegador,.fixture-navegador:hover{
-	border-right: 1px solid #9A9414;
+	border-radius: 2px 2px 0px 0px;
 	background: #386604; /* Old browsers */
 	background: -moz-linear-gradient(top, #386604 0%, #4a6828 58%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#386604), color-stop(58%,#4a6828)); /* Chrome,Safari4+ */
@@ -58,10 +60,10 @@ ul.paginador-fixture>.next>a{
 	background: -ms-linear-gradient(top, #386604 0%,#4a6828 58%); /* IE10+ */
 	background: linear-gradient(to bottom, #386604 0%,#4a6828 58%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#386604', endColorstr='#4a6828',GradientType=0 ); /* IE6-9 */
-	border-bottom: 4px solid #9A9414;
-	padding:10px;
-	padding-left: 50px;
-	padding-right:50px;
+	border-bottom: 2px solid #F7BE1D;
+	padding:15px;
+	padding-left: 55px;
+	padding-right:55px;
 	width:200px !important;
 	color:white ;
 	font-size: 14px;
@@ -73,6 +75,53 @@ ul.paginador-fixture>.next>a{
 	padding-right:35px;
 }
 .fixture-navegador.active{
-	color:yellow;
+	color:#F7BE1D;
+
+}
+#resultados-envivo{
+	margin: 14px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	height:50px;
+
+	
+}
+#resultados-envivo> a {
+    text-decoration: none;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 12px;
+	float: left;
+	width: 200px;
+	border-right: 1px solid #ddd;
+}
+
+#resultados-envivo> a:last-child {
+    border-right:none;
+}
+#resultados-envivo> a:nth-child(2) {
+    margin-left:1px;
+}
+#resultados-envivo> a:nth-child(3) {
+    margin-left:7px;
+}
+#resultados-envivo> a .fecha{
+	color:#4a6828;
+	font-size: 13px;
+	font-weight: bold;
+
+}
+#resultados-envivo> a .equipo{
+	color:#3E474C;
+	font-size: 11px;
+
+
+
+}
+#resultados-envivo> a .marcador{
+
+	color:#4a6828;
+	font-size: 14px;
+	font-weight: bolder;
 
 }

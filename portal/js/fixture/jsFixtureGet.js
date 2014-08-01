@@ -1,6 +1,6 @@
 $(function(){
                                          
-    
+    get_envivo();
 
     $('#link-noticias').on('click',function(){
         $('[id^=link-]').removeClass('active');
@@ -78,7 +78,30 @@ function carga_loader(){
     $('#fixture_content_show').empty();
     $('#fixture_content_show').html('<div id="loader_image" class="text-center"><img src="http://solocanchas.com/portal/img/cargando.gif" class="img_loader" style="height: 50px;" /><br/>Cargando..</div>');
 }
+function carga_envio(){
+    $('#resultados-envivo').empty();
+    $('#resultados-envivo').html('<div id="loader_image" class="text-center"><img src="http://solocanchas.com/portal/img/cargando.gif" class="img_loader" style="height: 25px;" />Cargando Resultados en vivo..</div>');
+}
+function get_envivo(){
 
+    carga_envio();
+    $.ajax({
+        type: "GET",
+        url: link_host+"/get_envivo",
+        cache: false,
+        success: function(data) {
+
+            $('#resultados-envivo').empty();
+            $('#resultados-envivo').html(data);
+
+            data_process_envivo();
+        },
+        error: function() { 
+            alert("error");
+        }              
+    });
+
+}
 function get_goleadores(){
     carga_loader();
     $.ajax({
@@ -152,7 +175,15 @@ function get_resultados(id_fecha){
         }              
     });
 }
+function data_process_envivo(){
+    var resultados=$('#resultados-envivo');
+    var tabla=resultados.find('#slider-partido-agenda');
+    tabla.find('a').attr('href','#');
+    tabla.find('a:nth-child(4)').remove();
+    var data=tabla.html();
+    $('#resultados-envivo').html(data);
 
+}
 function data_process_posiciones(){
     var fixture=$('#fixture_content_show');
     var tabla=fixture.find('.tbl-clasificacion');
