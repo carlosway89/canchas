@@ -8,10 +8,11 @@ class Actualizar_datos extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('admin/usuario_model');
+        $this->loaders->verificaAcceso('W');
     }
 
     public function index() {
-        $this->loaders->verificaAcceso('W');
+        
         $code_usuario = $this->session->userdata('nUsuID');
         $data['main_content'] = 'perfil_usuario/actualizar_datos/panel_view';
         $data['title'] = '.: Solo Canchas - Módulo de Actualización de Datos :.';

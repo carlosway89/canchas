@@ -102,6 +102,9 @@
                 <link href="<?= URL_CSS ?>externo/externo.css" rel="stylesheet" type="text/css" />
                 <script type="text/javascript" src="<?php echo URL_JS; ?>fixture/jsFixtureGet.js"></script>
 
+                <!-- SECCION NOTICIAS IMPORTANTES -->
+                <?php $this->load->view("noticias/noticia_principal_view"); ?>
+                <!-- END -->
 
                 <!-- SECCION NOTICIAS IMPORTANTES -->
                 <?php $this->load->view("noticias/noticias_importantes_view"); ?>

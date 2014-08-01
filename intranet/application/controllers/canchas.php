@@ -12,6 +12,7 @@ class Canchas extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('admin/canchas_model');
         $this->load->model('admin/ubigeo_model');
+        $this->loaders->verificaAcceso('W');
     }
 
     public function index() {
