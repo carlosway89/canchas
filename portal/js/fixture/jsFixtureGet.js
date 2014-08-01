@@ -46,6 +46,7 @@ $(function(){
     
 });
 
+// var link_host="http://solocanchas.com/portal/fixture";
 var link_host="http://localhost/canchas/portal/fixture";
 
 function acciones(){
