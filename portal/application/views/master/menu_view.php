@@ -46,7 +46,7 @@
 
             <!-- Contactenos -->
             <li class="<?php if($menu_home == 'contacto') {  echo "current-menu-item"; } ?>">
-                <a href="<?php echo URL_MAIN; ?>contactenos">Contáctenos</a>
+                <a href="<?php echo URL_MAIN; ?>contactenos">Cont&aacute;ctenos</a>
             </li>
             <!-- /Contactenos -->
 
