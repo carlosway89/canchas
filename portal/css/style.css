@@ -6473,6 +6473,7 @@ table tr:hover>th{
 }
 
 form input[type="text"],
+form input[type="password"],
 form select,
 form .chosen-container{
     margin-bottom:10px;

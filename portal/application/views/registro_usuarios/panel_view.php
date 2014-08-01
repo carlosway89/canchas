@@ -33,8 +33,8 @@
                 $txt_ins_user_nombres = form_input(array('name' => 'txt_ins_user_nombres', 'id' => 'txt_ins_user_nombres', 'placeholder' => 'Ingresar nombres', 'maxlength' => '100'));
                 $txt_ins_user_apellidos = form_input(array('name' => 'txt_ins_user_apellidos', 'id' => 'txt_ins_user_apellidos', 'placeholder' => 'Ingresar apellidos', 'maxlength' => '100'));
                 $txt_ins_user_email = form_input(array('name' => 'txt_ins_user_email', 'id' => 'txt_ins_user_email', 'placeholder' => 'Ingresar email', 'maxlength' => '100'));
-                $txt_ins_user_clave = form_input(array('type'=>'password','name' => 'txt_ins_user_clave', 'id' => 'txt_ins_user_clave', 'placeholder' => 'Ingresar contraseña', 'maxlength' => '100'));
-                $txt_ins_user_repeclave = form_input(array('type'=>'password','name' => 'txt_ins_user_repeclave', 'id' => 'txt_ins_user_repeclave', 'placeholder' => 'Repetir contraseña', 'maxlength' => '100'));
+                $txt_ins_user_clave = form_password(array('name' => 'txt_ins_user_clave', 'id' => 'txt_ins_user_clave', 'placeholder' => 'Ingresar contraseña', 'maxlength' => '100'));
+                $txt_ins_user_repeclave = form_password(array('name' => 'txt_ins_user_repeclave', 'id' => 'txt_ins_user_repeclave', 'placeholder' => 'Repetir contraseña', 'maxlength' => '100'));
 
                 $btn_ins_users = form_button('btn_ins_users', 'GUARDAR DATOS', 'id="btn_ins_users" class="button donate3 btn_submit"');
                 ?>
