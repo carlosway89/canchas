@@ -2,7 +2,7 @@ var ruta=window.location.host+"/canchas";
 var pathname = window.location.pathname;
 
 function msjCargando(){
-    $('#mensajecarga').html('<div class="sms_carga"><center><br/><p><img  src="http://'+ruta+'/intranet/img/cargando.gif" /><h2 class="color_negro">Espere un Momento...</h2></p></center></div>');  
+    $('#mensajecarga').html('<div class="sms_carga"><center><br/><p><img  src="http://'+ruta+'/portal/img/cargando.gif" /><h2 class="color_negro">Espere un Momento...</h2></p></center></div>');  
     document.getElementById("mensajecarga").style.opacity="0.6";  
     document.getElementById("mensajecarga").style.background="white";  
     document.getElementById("mensajecarga").style.visibility="visible";
@@ -37,9 +37,9 @@ function mascaraTelefono(obj){
 
 function msgLoading(obj,msg){
     if(msg == undefined){
-        $(obj).html("<div id='msg_loading' style='color:#2D91D4;font-size:0.75em'><img src='http://"+ruta+"/intranet/img/loading.gif'/>&nbsp;Cargando ... por favor espere.</div>");
+        $(obj).html("<div id='msg_loading' style='color:#2D91D4;font-size:0.75em'><img src='http://"+ruta+"/portal/img/loading.gif'/>&nbsp;Cargando ... por favor espere.</div>");
     }else{
-        $(obj).html("<div id='msg_loading' style='color:#2D91D4;font-size:0.75em'><img src='http://"+ruta+"/intranet/img/loading.gif'/>&nbsp;"+" "+msg+"</div>");
+        $(obj).html("<div id='msg_loading' style='color:#2D91D4;font-size:0.75em'><img src='http://"+ruta+"/portal/img/loading.gif'/>&nbsp;"+" "+msg+"</div>");
     }
 }
 
@@ -82,7 +82,7 @@ function msgAlerta(obj,msg){
 
 function msgLoadSave(obj,btn){ //preload al costado del boton
     $(btn).attr("disabled", "true");
-    $(obj).html("<div id='msg_saving' style='display:inline;'><img src='http://"+ruta+"/intranet/img/loading.gif'/></div>");
+    $(obj).html("<div id='msg_saving' style='display:inline;'><img src='http://"+ruta+"/portal/img/loading.gif'/></div>");
 }
 
 function msgLoadSaveRemove(btn){

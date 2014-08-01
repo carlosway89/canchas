@@ -47,7 +47,7 @@
                 <?php echo $txt_ins_user_email; ?>
                 <?php echo $txt_ins_user_clave; ?>
                 <?php echo $txt_ins_user_repeclave; ?>
-                <?php echo $btn_ins_users; ?>
+                <?php echo $btn_ins_users; ?> <span id="sms_ins_user"></span>
                 <?php echo form_close(); ?>
                 <?php echo validation_errors(); ?>
             </div>

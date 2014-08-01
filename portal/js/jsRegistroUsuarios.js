@@ -1,6 +1,6 @@
 $(function(){   
 
-    //msgAlerta("#error_form_register_users","Ingrese su usuario");
+    msgLoadSave("#sms_ins_user","#btn_ins_users");
 
     // ACCION BUTTON REGISTRO USUARIOS
     $("#btn_ins_users").bind('click', function(event){
@@ -43,6 +43,7 @@ $(function(){
 });  
         
 function registro_usuarios(){
+    msgLoadSave("#sms_ins_user","#btn_ins_users")
     var form = "#frm_ins_registro_users";
     $.ajax({
         type: "POST",
@@ -53,6 +54,7 @@ function registro_usuarios(){
                 //                            msgLoadSaveRemove("#btn_ins_usuario");
                 //                            mensaje("Los datos de usuario se han registrado correctamente!","e");
                 //                            limpiarForm("#frm_ins_usuario");
+                msgLoadSaveRemove("#btn_ins_users");
                 alert("Registro exitoso");
             }else{
                 alert("No se ha registrado bien");
