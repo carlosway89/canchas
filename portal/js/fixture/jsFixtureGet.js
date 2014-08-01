@@ -39,6 +39,8 @@ $(function(){
         $(this).addClass('active');
     });
 
+
+
     
     
     
@@ -48,6 +50,7 @@ var link_host="http://localhost/canchas/portal/fixture";
 
 function acciones(){
 
+    
 
     $('a#previo-paginador,a#next-paginador').on('click',function(){
         var id=$(this).attr('value-data');
@@ -70,6 +73,20 @@ function acciones(){
         }
         
     });
+
+    setTimeout(function(){
+
+        $('.link-resultado').on('click',function(){
+            get_resultados();
+            $('#fixture_content_show').fadeIn();
+            $('#noticias-resultados').fadeOut();
+            $('[id^=link-]').removeClass('active');
+            $(this).addClass('active');
+        });
+
+    },300);
+
+    
 
 
 }
@@ -178,10 +195,12 @@ function get_resultados(id_fecha){
 function data_process_envivo(){
     var resultados=$('#resultados-envivo');
     var tabla=resultados.find('#slider-partido-agenda');
-    tabla.find('a').attr('href','#');
+    tabla.find('a').attr('href','#resultados');
+    tabla.find('a').addClass('link-resultado');
     tabla.find('a:nth-child(4)').remove();
     var data=tabla.html();
     $('#resultados-envivo').html(data);
+    acciones();
 
 }
 function data_process_posiciones(){
