@@ -7,6 +7,7 @@ class Eventos extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url', 'codegen_helper'));
         $this->load->model('codegen_model', '', TRUE);
+        $this->loaders->verificaAcceso('W');
     }
 
     function index() {

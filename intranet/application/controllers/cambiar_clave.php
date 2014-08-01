@@ -6,10 +6,11 @@ class Cambiar_Clave extends CI_Controller {
         $this->load->helper('form');
         $this->load->model('admin/clave_model');
         $this->load->model('admin/usuario_model');
+        $this->loaders->verificaAcceso('W');
     }
 
     function index() {
-        $this->loaders->verificaAcceso('W');
+      
         $data['titulo'] = '.: SoloCanchas. - Módulo de Actualización de Clave :.';
         $data['main_content'] = 'perfil_usuario/cambiar_clave/panel_view';
         $data['breadcrumbs'] = 'Módulo de Actualización de Clave';
