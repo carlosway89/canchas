@@ -40,7 +40,7 @@
 
             <!-- Campeonatos -->
             <li >
-                <a href="get-involved.html">Campeonatos</a>
+                <a href="#">Campeonatos</a>
             </li>
             <!-- /Campeonatos -->
 
