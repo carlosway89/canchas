@@ -8,6 +8,7 @@ class Multimedia extends CI_Controller {
 		$this->load->helper(array('form','url','codegen_helper'));
 		$this->load->model('codegen_model','',TRUE);
 		$this->load->model('admin/noticias_model');
+        $this->loaders->verificaAcceso('W');
 	}	
 	
 	function index(){

@@ -152,6 +152,7 @@
 
 <!-- Main Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>script_main.js"></script>
+<script type="text/javascript" src="<?php echo URL_JS; ?>jsGeneral.js"></script>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 

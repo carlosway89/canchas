@@ -8,6 +8,7 @@ class Manage extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->_Esta_logeado();
+        $this->loaders->verificaAcceso('W');
     }
     
     public function index() {
