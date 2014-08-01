@@ -15,22 +15,27 @@ $(function(){
             msgAlerta("#error_form_register_users","Ingrese sus nombres");
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
+            $("#txt_ins_user_nombres").focus();
         }else if(apellidos == "" || apellidos == " "){
             msgAlerta("#error_form_register_users","Ingrese sus apellidos");
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
+            $("#txt_ins_user_apellidos").focus();
         }else if(email == "" || email == " "){
             msgAlerta("#error_form_register_users","Ingrese su email");
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
+            $("#txt_ins_user_email").focus();
         }else if(clave == "" || clave == " "){
             msgAlerta("#error_form_register_users","Ingrese su clave");
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
+            $("#txt_ins_user_clave").focus();
         }else if(repetirclave == "" || repetirclave == " "){
             msgAlerta("#error_form_register_users","Confirme su clave");
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
+            $("#txt_ins_user_repeclave").focus();
         }else{
             registro_usuarios();   
         }

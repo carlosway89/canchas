@@ -79,9 +79,9 @@ $(document).ready(function(){
 	
     /* Social Media Feeds */
 	
-    enableFlickrFeed(); // Flickr Feed
+    //enableFlickrFeed(); // Flickr Feed
 	
-    enableInstagramFeed(); // Instagram Feed
+    //enableInstagramFeed(); // Instagram Feed
 	
     //enableTwitterFeed(); // Twitter Feed
 	
@@ -95,15 +95,15 @@ $(document).ready(function(){
 	
     enableAlertBoxes(); // Alert Boxes
 	
-    enableProgressbars(); // Progress Bars
+    //enableProgressbars(); // Progress Bars
 	
-    enableCustomAudio(); // Custom Audio Player
+    //enableCustomAudio(); // Custom Audio Player
 	
-    enableShoppingCart(); // Shopping Cart 
+    //enableShoppingCart(); // Shopping Cart 
 	
     enableCustomizeBox(); // Customize Box
 	
-    enableSocialShare(); // Social Share Buttons
+    //enableSocialShare(); // Social Share Buttons
 	
 	
 	
@@ -112,13 +112,13 @@ $(document).ready(function(){
     enablePrettyPhoto();
     //enableJackBox(); // JackBox Plugin
 	
-    enableCalendar(); // Full Calendar
+    //enableCalendar(); // Full Calendar
 	
-    enableStarRating(); // Star Rating
+    //enableStarRating(); // Star Rating
 	
     enableMixItup(); // MixItUp (Filtering and Sorting)
 	
-    enableProductSlider(); // ClouZoom Products Slider
+    //enableProductSlider(); // ClouZoom Products Slider
 	
 	
 	

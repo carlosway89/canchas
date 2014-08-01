@@ -39,7 +39,8 @@
                 $btn_ins_users = form_button('btn_ins_users', 'GUARDAR DATOS', 'id="btn_ins_users" class="button donate3 btn_submit"');
                 ?>
 
-                <?php echo form_open('http://solocanchas.com/portal/registro_usuarios/usuariosIns', $atributosForm); ?>
+                <?php echo form_open('http://localhost/canchas/portal/registro_usuarios/usuariosIns', $atributosForm); ?>
+                <?php //echo form_open('http://solocanchas.com/portal/registro_usuarios/usuariosIns', $atributosForm); ?>
                 <div id="error_form_register_users"></div>
                 <?php echo $txt_ins_user_nombres; ?>
                 <?php echo $txt_ins_user_apellidos; ?>
