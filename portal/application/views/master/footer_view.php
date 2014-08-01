@@ -160,10 +160,7 @@
 <script type="text/javascript" src="<?php echo URL_JS; ?>underscore-min.js"></script>
 <!-- Calendar Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>jstz.js"></script>
-<!-- Calendar Script -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>calendar.js"></script>
-<!-- Calendar Script -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>app.js"></script>
+
 
 <!--[if lt IE 9]>
         <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.placeholder.js"></script>
