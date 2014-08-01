@@ -14,12 +14,12 @@ $(function(){
         $(this).addClass('active');
     });
     $('#link-calendario').on('click',function(){
-        get_calendario(9); 
+        get_calendario(); 
         $('[id^=link-]').removeClass('active');
         $(this).addClass('active');
     });
     $('#link-resultados').on('click',function(){
-        get_resultados(9);
+        get_resultados();
         $('[id^=link-]').removeClass('active');
         $(this).addClass('active');
     });
@@ -101,6 +101,7 @@ function get_posiciones(){
 }
 
 function get_calendario(id_fecha){
+    var id_fecha=id_fecha?id_fecha:'';
     carga_loader();
     $.ajax({
         type: "GET",
@@ -118,6 +119,8 @@ function get_calendario(id_fecha){
     });
 }
 function get_resultados(id_fecha){
+
+    var id_fecha=id_fecha?id_fecha:'';
     carga_loader();
     $.ajax({
         type: "GET",
