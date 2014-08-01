@@ -68,7 +68,34 @@
 		</div>
 		
 	</section>
+
+
 	<!-- /Section -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>jsBuscarEventos.js"></script>
+
+<script type="text/javascript">
+
+if (document.addEventListener) {
+         document.addEventListener("DOMContentLoaded", loadScripts, false);
+      }
+
+
+function loadScripts() { 
+	var script = document.createElement('script'); 
+	script.type = 'text/javascript'; 
+	script.src = '<?php echo URL_JS; ?>calendar.js'; 
+	document.body.appendChild(script); 
+
+	var script = document.createElement('script'); 
+	script.type = 'text/javascript'; 
+	script.src = '<?php echo URL_JS; ?>app.js'; 
+	document.body.appendChild(script); 
+
+	
+}
+
+</script>
+
+
 </section>
 
