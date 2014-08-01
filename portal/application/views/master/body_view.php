@@ -90,25 +90,30 @@
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-8">
                 <div class="option-select text-center">
-                    <a id="link-resultados" class="fixture-navegador" href="#resultados">FUTBOL PERUANO</a>
+                    <a id="link-noticias" class="fixture-navegador active" href="#noticias">FUTBOL PERUANO</a>
                     <a id="link-posiciones" class="fixture-navegador" href="#posiciones">POSICIONES</a>
-                    <a id="link-calendario" class="fixture-navegador" href="#calendario">CALENDARIO</a>
+                    <a id="link-resultados" class="fixture-navegador" href="#resultados">RESULTADOS</a>
+                    <!-- <a id="link-calendario" class="fixture-navegador" href="#calendario">CALENDARIO</a> -->
                     <a id="link-goleadores" class="fixture-navegador" href="#goleadores">GOLEADORES</a>
                 </div>
 
-                <div id="fixture_content_show">
+                <div id="fixture_content_show" style="display:none">
                     <!--fixture content -->
                 </div>
                 <link href="<?= URL_CSS ?>externo/externo.css" rel="stylesheet" type="text/css" />
                 <script type="text/javascript" src="<?php echo URL_JS; ?>fixture/jsFixtureGet.js"></script>
 
-                <!-- SECCION NOTICIAS IMPORTANTES -->
-                <?php $this->load->view("noticias/noticia_principal_view"); ?>
-                <!-- END -->
+                <div id="noticias-resultados">
+                    <!-- SECCION NOTICIAS IMPORTANTES -->
+                    <?php $this->load->view("noticias/noticia_principal_view"); ?>
+                    <!-- END -->
 
-                <!-- SECCION NOTICIAS IMPORTANTES -->
-                <?php $this->load->view("noticias/noticias_importantes_view"); ?>
-                <!-- END -->	
+                    <!-- SECCION NOTICIAS IMPORTANTES -->
+                    <?php $this->load->view("noticias/noticias_importantes_view"); ?>
+                    <!-- END -->
+
+                </div>
+                	
 
                 <!-- SECCION CANCHAS FAVORITAS -->
                 <?php $this->load->view("canchas/canchas_favoritas_view"); ?>

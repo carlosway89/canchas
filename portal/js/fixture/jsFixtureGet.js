@@ -2,24 +2,39 @@ $(function(){
                                          
     
 
+    $('#link-noticias').on('click',function(){
+        $('[id^=link-]').removeClass('active');
+        $(this).addClass('active');
+        $('#noticias-resultados').fadeIn();
+        $('#fixture_content_show').fadeOut();
+
+    });
     $('#link-posiciones').on('click',function(){
         get_posiciones();
+        $('#fixture_content_show').fadeIn();
+        $('#noticias-resultados').fadeOut();
         $('[id^=link-]').removeClass('active');
         $(this).addClass('active');
 
     });
     $('#link-goleadores').on('click',function(){
         get_goleadores();
+        $('#fixture_content_show').fadeIn();
+        $('#noticias-resultados').fadeOut();        
         $('[id^=link-]').removeClass('active');
         $(this).addClass('active');
     });
     $('#link-calendario').on('click',function(){
-        get_calendario(); 
+        get_calendario();
+        $('#fixture_content_show').fadeIn();
+        $('#noticias-resultados').fadeOut(); 
         $('[id^=link-]').removeClass('active');
         $(this).addClass('active');
     });
     $('#link-resultados').on('click',function(){
         get_resultados();
+        $('#fixture_content_show').fadeIn();
+        $('#noticias-resultados').fadeOut();
         $('[id^=link-]').removeClass('active');
         $(this).addClass('active');
     });
