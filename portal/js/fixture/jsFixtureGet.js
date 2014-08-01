@@ -28,8 +28,8 @@ $(function(){
     
     
 });
-
-var link_host="portal/fixture";
+var ruta="http://localhost/canchas/portal";
+var link_host="http://localhost/canchas/portal/fixture";
 
 function acciones(){
 
@@ -148,7 +148,7 @@ function data_process_posiciones(){
 
     
     var data=tabla.html();
-    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Posiciones</h3></div><table class='tabla-fixture'>"+data+"</table>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Posiciones</h3></div><table class='tabla-fixture'>"+data+"</table><br></br>");
 
 
 }
@@ -159,7 +159,7 @@ function data_process_goleadores(){
     var select=fixture.find('div.pull-right').html();
 
     var data=tabla.html();
-    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Goleadores</h3></div><table class='tabla-fixture'>"+data+"</table>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Goleadores</h3></div><table class='tabla-fixture'>"+data+"</table><br></br>");
     
 
 }
@@ -180,7 +180,7 @@ function data_process_resultados(){
 
     var data=tabla.html();
 
-    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Resultados</h3></div><ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Tabla de Resultados</h3></div><ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div><br></br>");
 
     var uri='http://depor.pe/estadisticas/peru/resultados/';
     var link_prv=fixture.find('.previous>a');
@@ -218,7 +218,7 @@ function data_process_calendario(){
 
     var data=tabla.html();
 
-    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Calendario</h3></div><ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div>");
+    $('#fixture_content_show').html("<div class='side-segment'><h3 class='animate-onscroll no-margin-top'><i class='icons icon-news'></i> Calendario</h3></div><ul class='paginador-fixture list-inline'>"+ul+"</ul><br/><table class='tabla-fixture'>"+data+"</table><br><div class='pull-right'><select id='fecha-selector' class='form-control'>"+select+"</select></div><br></br>");
 
     var uri='http://depor.pe/estadisticas/peru/calendario/';
     var link_prv=fixture.find('.previous>a');

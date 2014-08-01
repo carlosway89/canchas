@@ -31,7 +31,7 @@ define('URL_PORTAL', 'http://' . SERVER_NAME . '/' . PROJECT_PORTAL . '/');*/
 
 /* DEFINICION DE CONSTANTES SERVER */
 
-define('SERVER_NAME', 'www.solocanchas.com');
+define('SERVER_NAME', 'localhost/canchas');
 define('PROJECT_NAME', 'intranet');
 define('PROJECT_PORTAL', 'portal');
 define('URL_CSS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/css/');

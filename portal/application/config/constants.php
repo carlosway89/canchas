@@ -22,7 +22,7 @@ define('DIR_READ_MODE', 0755);
 define('DIR_WRITE_MODE', 0777);
 
 /* DEFINICION DE CONSTANTES */
-define('SERVER_NAME', 'www.solocanchas.com');
+define('SERVER_NAME', 'localhost/canchas');
 define('PROJECT_NAME', 'portal');
 define('PROJECT_NAME_INTRANET', 'intranet');
 define('URL_CSS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/css/');
