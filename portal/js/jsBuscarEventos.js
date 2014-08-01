@@ -1,4 +1,4 @@
-var ruta = window.location.host+ window.location.pathname;
+var ruta = 'localhost/canchas/portal/eventos';
 
 $(function(){   
     
@@ -19,7 +19,7 @@ function search_eventos(){
     if(nombre_evento == "" ){
         alert("Ingrese un evento a buscar");
     }else{
-        window.location.href = "http://"+ruta+"/buscar/"+nombre_evento;
+        window.location.href = "http://localhost/canchas/portal/eventos/buscar/"+nombre_evento;
     }
 }
 
