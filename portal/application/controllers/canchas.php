@@ -52,7 +52,7 @@ class Canchas extends CI_Controller {
                 $id_cancha = $row->nCanID;
                 $name_cancha = $row->cCanNombre;
             }
-            redirect("canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
+            redirect("../index.php/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
         } else {
             $this->load->view('master/template_view', $data);
         }

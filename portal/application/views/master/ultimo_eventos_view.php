@@ -5,15 +5,8 @@
                     <ul class="upcoming-events">
 
                         <?php
-                        $n=count($list_eventos);
-                        if ($n==0) {
-                            echo '<div class="alert alert-info">No hay eventos</div>';
-                        }
-                        else{
-                            $n=$n==1?1:($n==2?$n=2:$n=3);
-                        }
 
-                        for($i=0;$i<$n;$i++) { 
+                        for($i=0;$i<3;$i++) { 
                             ?>
                         <!-- Event -->
                         <li>

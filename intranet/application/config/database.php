@@ -57,9 +57,9 @@ $db['default']['dbdriver'] = 'mysqli';*/
 
 /*configuracion server*/
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '150189';
-$db['default']['database'] = 'bd_canchas';
+$db['default']['username'] = 'canch_admin';
+$db['default']['password'] = 'solo12345';
+$db['default']['database'] = 'canchas_nueva';
 $db['default']['dbdriver'] = 'mysqli';
 
 

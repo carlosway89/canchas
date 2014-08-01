@@ -12,8 +12,6 @@ class Canchas extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('admin/canchas_model');
         $this->load->model('admin/ubigeo_model');
-        $this->load->model('codegen_model', '', TRUE);
-        $this->loaders->verificaAcceso('W');
     }
 
     public function index() {
@@ -177,78 +175,6 @@ class Canchas extends CI_Controller {
         } else {
             echo "2";
         }
-    }
-    function galeria(){
-
-        $id_cancha=$this->uri->segment(3);
-        if($id_cancha==null || $id_cancha==0)
-            redirect(base_url().'canchas');
-
-        $data['main_content'] = 'canchas/galeria_view';
-        $data['title'] = '.: Panel de Administración - Módulo de Canchas :.';
-        $data['breadcrumbs'] = 'Módulo de Canchas';
-        $data['nCanID'] = $id_cancha;
-        $data['list_galeria'] = $this->canchas_model->canchasGaleria(array('LISTADO-GALERIA-CANCHAS', $id_cancha, '', '', ''));
-        $this->load->view('master/template_view', $data);
-
-    }
-    function agregar_foto(){
-
-        $this->data['custom_error'] = '';
-
-        $data_multimedia = array(
-            'nMultTipoID' => 1,
-            'nMultCategID' => 3,
-            'cMultLinkMiniatura' => $_POST['foto_url'],
-            'cMultLink' => $_POST['foto_url'],
-            'cMultTitulo' => 'foto cancha',
-            'cMultDescripcion' => 'galleria de canchas',
-            'cMultFechaRegistro' => date('Y-m-d'),
-            'cMultFechaInicial' => date('Y-m-d'),
-            'cMultFechaFinal' => date('Y-m-d'),
-            'cMultEstado' => 'H',
-            'cMultNumVisitas' => 0
-            );
-        
-
-        $id_cancha=$_POST['nCanID'];
-
-        $id_multimedia=$this->codegen_model->add('multimedia',$data_multimedia);
-
-        if ( $id_multimedia!= 0)
-        {
-            $data = array(
-            'nMultID' => $id_multimedia,
-            'nCanID' => $id_cancha
-            );
-
-            if ($this->codegen_model->add('multimedia_canchas',$data)) {
-                redirect(base_url().'canchas/galeria/'.$id_cancha);
-            }
-             
-        }
-        else
-        {
-             $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
-        }
-
-
-
-    }
-    function delete_foto(){
-
-        $ID = $this->uri->segment(3);
-        if ($this->codegen_model->delete('multimedia_canchas', 'nMultID', $ID)) {
-           if ($this->codegen_model->delete('multimedia', 'nMultID', $ID)) {
-              redirect(base_url() . 'canchas/galeria/'.$this->uri->segment(4));
-           }
-        }
-        else{
-            echo 'error';
-        }
-
-        
-
     }
 
 }

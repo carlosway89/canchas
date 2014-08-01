@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '150189';
-$db['default']['database'] = 'bd_canchas';
+$db['default']['username'] = 'canch_admin';
+$db['default']['password'] = 'solo12345';
+$db['default']['database'] = 'canchas_nueva';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

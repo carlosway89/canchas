@@ -1,3 +1,4 @@
+
 <section id="content">
 
     <!-- Page Heading -->
@@ -44,7 +45,7 @@
                         <p>
                             <i class="icons icon-ticket"></i> <b>Precio: </b> S/.30.00 Nuevos Soles
                         </p>
-                        <a class="button donate btn_reservar" target="_blank"      href="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11><i class="icons icon-right-hand"></i> Reservar</a>
+                        <a class="button donate btn_reservar" target="_blank" href="http://adealoxica.es/WebCanchas/frmReserva.aspx?CIF=11111111A"><i class="icons icon-right-hand"></i> Reservar</a>
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-6 animate-onscroll">

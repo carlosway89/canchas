@@ -22,14 +22,14 @@ define('DIR_READ_MODE', 0755);
 define('DIR_WRITE_MODE', 0777);
 
 /* DEFINICION DE CONSTANTES */
-define('SERVER_NAME', 'localhost/canchas');
+define('SERVER_NAME', 'www.solocanchas.com');
 define('PROJECT_NAME', 'portal');
-define('PROJECT_INTRANET', 'intranet');
+define('PROJECT_NAME_INTRANET', 'intranet');
 define('URL_CSS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/css/');
 define('URL_JS', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/js/');
 define('URL_IMG', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/img/');
 define('URL_MAIN', 'http://' . SERVER_NAME . '/' . PROJECT_NAME . '/');
-define('URL_INTRANET', 'http://' . SERVER_NAME . '/' . PROJECT_INTRANET . '/');
+define('URL_INTRANET', 'http://' . SERVER_NAME . '/' . PROJECT_NAME_INTRANET . '/');
 
 /* ------------------------------------------------------------------------ */
 

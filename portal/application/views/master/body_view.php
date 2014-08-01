@@ -1,23 +1,3 @@
-<!-- Add fancyBox main JS and CSS files -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/jquery.fancybox.js?v=2.1.5"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
-
-<!-- Add Button helper (this is optional) -->
-<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-
-<!-- Add Thumbnail helper (this is optional) -->
-<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-
-<!-- Add Media helper (this is optional) -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.fancybox').fancybox();
-    });
-</script>
 <section id="content">
 
     <!-- Section -->
@@ -32,14 +12,11 @@
 
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
                 <div class="banner-wrapper">
-                    <div class="banner_new donate-banner2 animate-onscroll">
+                    <div class="banner donate-banner2 animate-onscroll">
                         <div class="side-segment">
                             <h5>Búsqueda de <strong>Canchas</strong></h5>
                         </div>
                         <?php $this->load->view("master/form_search_canchas_view"); ?>
-                        <div id="inline1" style="width:700px;display: none;">
-                            <?php $this->load->view("registro_usuarios/panel_view"); ?>    
-                        </div>
                     </div>
                 </div>											
             </div>
@@ -65,7 +42,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="#">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>multimedia/add_foto">
                             <i class="icons icon-picture margen_ico"></i>
                             <h4 class="letra-h4">Publica Multimedia</h4>
                             <p>Publica tus Fotos y Videos</p>
@@ -73,7 +50,7 @@
                     </div>
 
                     <div class="banner-wrapper">
-                        <a class="banner animate-onscroll" href="#">
+                        <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>torneos/add">
                             <i class="icons icon-picture margen_ico"></i>
                             <h4 class="letra-h4">Torneos</h4>
                             <p>Crea tu torne de tu club</p>
@@ -89,19 +66,26 @@
     <section class="section full-width-bg gray-bg">
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-8">
-                <div class="option-select text-center">
+		<div class="option-select text-center">
                     <a id="link-resultados" class="fixture-navegador" href="#resultados">FUTBOL PERUANO</a>
                     <a id="link-posiciones" class="fixture-navegador" href="#posiciones">POSICIONES</a>
                     <a id="link-calendario" class="fixture-navegador" href="#calendario">CALENDARIO</a>
                     <a id="link-goleadores" class="fixture-navegador" href="#goleadores">GOLEADORES</a>
                 </div>
-
+                
                 <div id="fixture_content_show">
                     <!--fixture content -->
                 </div>
-                <link href="<?= URL_CSS ?>externo/externo.css" rel="stylesheet" type="text/css" />
+                <link href="<?=URL_CSS?>externo/externo.css" rel="stylesheet" type="text/css" />
                 <script type="text/javascript" src="<?php echo URL_JS; ?>fixture/jsFixtureGet.js"></script>
+                <br></br>
+                <div class="side-segment">
+                    <h3 class="animate-onscroll no-margin-top"><i class="icons icon-newspaper"></i> Noticia de la Semana</h3>
+                </div>
 
+                <!-- SECCION NOTICIA PRINCIPAL -->
+                <?php $this->load->view("noticias/noticia_principal_view") ?>
+                <!-- END -->	
 
                 <!-- SECCION NOTICIAS IMPORTANTES -->
                 <?php $this->load->view("noticias/noticias_importantes_view"); ?>
@@ -190,16 +174,16 @@
                     </div>
                 </div>
 
-
+                
                 <div class="sidebar-box white animate-onscroll">
                     <div class="side-segment">
                         <h3><i class="icons icon-youtube"></i> SOLOCANCHAS.COM</h3>
                     </div>
                     <div>
-
+                        
                     </div>
                 </div>
-
+                
 
                 <!-- Image Banner -->
                 <div class="sidebar-box white animate-onscroll">

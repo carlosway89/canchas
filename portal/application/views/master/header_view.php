@@ -97,41 +97,22 @@
                             <!-- Newsletter -->
                             <div class="col-lg-4 col-md-5 col-sm-5">
 
-                                <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
+                                <form id="newsletter" action="acceso/autentication" method="POST">
 
-                                    <h5>
-                                        <i class="icons icon-laptop"></i>
-                                        <?php
-                                        if ($this->session->userdata("Nombres") != "") {
-                                            $input_disabled = 'disabled = "disabled"';
-                                            ?>
-                                            SESIÓN INICIADA: 
-                                            <strong><?php echo strtoupper($this->session->userdata("Nombres")); ?></strong> 
-
-                                            <a class="logout" href="<?php echo URL_MAIN ?>acceso/logout">
-                                                Cerrar Sesión
-                                            </a>
-
-                                        <?php
-                                        } else {
-                                            $input_disabled = '';
-                                            ?>
-                                            ACCEDER AL <strong>SISTEMA</strong>
-<?php } ?>
-                                    </h5>
+                                    <h5><i class="icons icon-laptop"></i> Acceder al <strong>Sistema</strong></h5>
                                     <div class="newsletter-form">
 
                                         <div class="newsletter-email">
-                                            <input <?php echo $input_disabled; ?> type="text" id="txt_ins_login_user" name="txt_ins_login_user" placeholder="Usuario">
+                                            <input type="text" id="txt_ins_login_user" name="txt_ins_login_user" placeholder="Usuario">
                                         </div>
 
                                         <div class="newsletter-zip">
-                                            <input <?php echo $input_disabled; ?> type="password" id="txt_ins_login_clave" name="txt_ins_login_clave" placeholder="Contraseña">
+                                            <input type="password" id="txt_ins_login_clave" name="txt_ins_login_clave" placeholder="Contraseña">
                                         </div>
 
                                         <div class="newsletter-submit">
-                                            <input <?php echo $input_disabled; ?> id="btn_ins_login" type="submit" value="">
-                                            <i class="icons icon-login"></i>
+                                            <input id="btn_ins_login" type="submit" value="">
+                                            <i class="icons icon-right-thin"></i>
                                         </div>
 
                                     </div>
@@ -147,6 +128,6 @@
 
                 </div>
                 <!-- /Main Header -->
-<?php $this->load->view("master/menu_view"); ?>
+                <?php $this->load->view("master/menu_view"); ?>
             </header>
             <!-- /Header -->

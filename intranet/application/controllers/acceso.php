@@ -12,17 +12,14 @@ class Acceso extends CI_Controller {
         $this->load->library('email');
         $this->load->model('admin/usuario_model');
         $this->load->model('admin/persona_model');
-        
     }
 
     function index() {
-        $this->_Esta_logeado();
         $data['title'] = '.: SoloCanchas - Acceso a la Intranet :.';
         $this->load->view("login/panel_view", $data);
     }
 
     function login() {
-        $this->_Esta_logeado();
         $data['title'] = '.: SoloCanchas - Acceso a la Intranet :.';
         $this->load->view("login/panel_view", $data);
     }
@@ -180,13 +177,6 @@ class Acceso extends CI_Controller {
             echo "false";
         } else {
             echo "true";
-        }
-    }
-    function _Esta_logeado() {
-
-        $nPerID = $this->session->userdata('nPerID');
-        if ( $nPerID != '') {
-            redirect('manage');
         }
     }
 
