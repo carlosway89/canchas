@@ -64,6 +64,7 @@ class Canchas extends CI_Controller {
         $data['main_content'] = 'canchas/info_cancha_selected_view';
         $data['title'] = '.: Solo Canchas - Información de la Cancha seleccionada :.';
         $data['menu_home'] = 'canchas';
+        $data['list_galeria'] = $this->canchas_model->canchasGaleria(array('LISTADO-GALERIA-CANCHAS', $cadena[1], '', '', ''));
         $data['list_otrascanchas'] = $this->canchas_model->canchasQryOtros(array('LISTADO-CANCHAS-OTROS', $cadena[1], '', '', ''));
         $data['list_comentarios'] = $this->comentarios_canchas_model->comentarios_canchasQry(array('LISTADO-COMENTARIOS-CANCHAS-CRITERIO'));
        

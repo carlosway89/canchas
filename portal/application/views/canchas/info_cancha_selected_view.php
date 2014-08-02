@@ -33,10 +33,10 @@
                             <?php echo $cCanDescripcion; ?>
                         </p>
                         <p>
-                            <i class="icons icon-globe"></i> <b>Web: </b> <a>http://companyname.com</a>
+                            <i class="icons icon-globe"></i> <b>Web: </b> <a><?=$cCanSitioWeb?></a>
                         </p>
                         <p>
-                            <i class="icons icon-mail-alt"></i> <b>Email: </b> <a href="mailto:mail@companyname.com"> <?php echo $cCanEmail; ?></a>
+                            <i class="icons icon-mail-alt"></i> <b>Email: </b> <a href="mailto:<?php echo $cCanEmail; ?>"> <?php echo $cCanEmail; ?></a>
                         </p>
                         <p>
                             <i class="icons icon-location"></i> <b>Dirección: </b>  <?php echo $cCanDireccion; ?>
@@ -55,10 +55,23 @@
                         <div class="portfolio-slideshow flexslider animate-onscroll">
 
                             <ul class="slides">
+                                <?php
+                                  $n=count($list_galeria);
+                                  if($n==0){
+                                ?>
+                                  <div class="alert alert-info">No dispone de una galeria a&uacute;n </div>
+                                <?php    
+                                    
+                                  }
+                                  else{
+                                    foreach ($list_galeria as $list_galeria){ 
+                                        ?>
 
-                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley1.jpg"><img src="<?php echo URL_IMG; ?>galley1.jpg" alt=""></a></li>
-                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley2.jpg"><img src="<?php echo URL_IMG; ?>galley2.jpg" alt=""></a></li>
-                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley3.jpg"><img src="<?php echo URL_IMG; ?>galley3.jpg" alt=""></a></li>												
+                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?=$list_galeria->cMultLink?>"><img src="<?=$list_galeria->cMultLink?>" alt=""></a></li>
+                                <?php
+                                            } 
+                                  }
+                                        ?>						
                             </ul>
 
                         </div>

@@ -179,6 +179,16 @@ class Canchas_model extends CI_Model {
             return null;
         }
     }
+    function canchasGaleria($Parametros){
+        $query = $this->db->query("CALL USP_GEN_S_CANCHAS (?,?,?,?,?)", $Parametros);
+        $this->db->close();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+
+    }
 
 }
 
