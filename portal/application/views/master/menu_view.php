@@ -52,8 +52,16 @@
 
             <!-- Registro de Usuarios -->
             <li class="donate-button ">
+                <?php 
+                if ($this->session->userdata("Nombres") == "") {?>
                 <a class="fancybox media-icon" href="#inline1"><i class="icons icon-users"></i> Registro de Usuarios</a>
 <!--                <a class="fancybox media-icon" href="<?php echo URL_MAIN; ?>registro_usuarios?iframe=true&width=800&height=950"><i class="icons icon-users"></i> Registro de Usuarios</a>-->
+                <?php }else {?>
+
+                <a class="fancybox media-icon" href="<?php echo URL_INTRANET; ?>"><i class="icons icon-login"></i> Ir al Panel</a>
+
+                <?php }?>
+
             </li>
             <!-- /Registro de Usuarios -->
 

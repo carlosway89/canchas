@@ -9,7 +9,7 @@
 		view: 'month',
 		tmpl_path: 'tmpls/',
 		tmpl_cache: false,
-		day: fecha,
+		day: 'now',
 		onAfterEventsLoad: function(events) {
 			if(!events) {
 				return;

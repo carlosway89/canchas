@@ -12,7 +12,7 @@
 
     <!-- Event Map -->
     <section class="section full-width full-width-image animate-onscroll">
-        <img src="<?php echo URL_IMG; ?>portada.jpg" alt="" style="width: 100%;">
+        <img src="<?= $cCanFotoPortada; ?>" alt="" style="width: 100%;">
     </section>
     <!-- /Event Map -->
 
@@ -21,7 +21,7 @@
     <section class="section full-width-bg">
 
         <div class="row">
-            <?php ?>
+            
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="row event-details">
 
@@ -41,10 +41,10 @@
                         <p>
                             <i class="icons icon-location"></i> <b>Dirección: </b>  <?php echo $cCanDireccion; ?>
                         </p>
-                        <p>
+                        <!-- <p>
                             <i class="icons icon-ticket"></i> <b>Precio: </b> S/.30.00 Nuevos Soles
-                        </p>
-                        <a class="button donate btn_reservar" target="_blank"      href="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11><i class="icons icon-right-hand"></i> Reservar</a>
+                        </p> -->
+                        <a class="button donate btn_reservar" target="_blank"      href="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11"><i class="icons icon-right-hand"></i> Reservar</a>
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-6 animate-onscroll">

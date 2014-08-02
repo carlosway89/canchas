@@ -89,6 +89,7 @@ class Canchas extends CI_Controller {
             $data['cCanSitioWeb'] = $this->canchas_model->getCanSitioWeb();
             $data['nCanVisitas'] = $this->canchas_model->getCanVisitas();
             $data['cCanEstado'] = $this->canchas_model->getCanEstado();
+            $data['cCanFotoPortada'] = $this->canchas_model->getCanFotoPortada();
             return $data;
         } else {
             return false;

@@ -411,14 +411,23 @@ h6.shortcodes-caption{
     padding:0 5px;
 }
 
+.sesion-opciones{
+    margin-top: 15px;
+    text-transform: none !important;
+}
 .logout{
     float:right;
-    color: #FFF;
-    font-size: 11px;
+    font-size: 14px;
+    font-weight: 500px;
     margin-top:3px;
+    color:black !important;
 }
-.logout:hover{
-    color: #63b2f5;
+.go-panel{
+    float:right;
+    color: #fff !important;
+    font-size: 14px;
+    margin-top:3px;
+
 }
 
 .newsletter-form input[type="text"]{
@@ -1882,6 +1891,8 @@ h6.shortcodes-caption{
     padding-bottom:0;
     position:relative;
     background:#fff;
+    height: 350px;
+    overflow: hidden;
 }
 
 .section.full-width-map iframe{

@@ -97,7 +97,7 @@
                             <!-- Newsletter -->
                             <div class="col-lg-4 col-md-5 col-sm-5">
 
-                                <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
+                                <form id="newsletter" action="http://localhost/canchas/intranet/acceso/autentication" method="POST">
 
                                     <h5>
                                         <i class="icons icon-laptop"></i>
@@ -106,18 +106,24 @@
                                             $input_disabled = 'disabled = "disabled"';
                                             ?>
                                             SESIÓN INICIADA: 
-                                            <strong><?php echo strtoupper($this->session->userdata("Nombres")); ?></strong> 
-
-                                            <a class="logout" href="<?php echo URL_MAIN ?>acceso/logout">
-                                                Cerrar Sesión
-                                            </a>
+                                            <strong><?php echo strtoupper($this->session->userdata("Nombres")); ?></strong>
+                                            <br> 
+                                            <ul class="sesion-opciones list-inline">
+                                                <li>
+                                                    <a class="logout" href="<?php echo URL_MAIN ?>acceso/logout">
+                                                     <i class="icon-off"></i> Cerrar Sesión
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            
+                                            
 
                                         <?php
                                         } else {
                                             $input_disabled = '';
                                             ?>
                                             ACCEDER AL <strong>SISTEMA</strong>
-<?php } ?>
+                                        
                                     </h5>
                                     <div class="newsletter-form">
 
@@ -135,6 +141,7 @@
                                         </div>
 
                                     </div>
+                                    <?php } ?>
 
                                 </form>
 
