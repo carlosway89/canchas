@@ -94,6 +94,7 @@ ul.paginador-fixture>.next>a{
 	float: left;
 	width: 200px;
 	border-right: 1px solid #ddd;
+	cursor:unset;
 }
 
 #resultados-envivo> a:last-child {

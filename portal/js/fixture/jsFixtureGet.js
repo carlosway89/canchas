@@ -198,7 +198,15 @@ function data_process_envivo(){
     var tabla=resultados.find('#slider-partido-agenda');
     tabla.find('a').attr('href','#resultados');
     tabla.find('a').addClass('link-resultado');
-    tabla.find('a:nth-child(4)').remove();
+    var cantidad=$("#resultados-envivo a").size();
+    
+    if(cantidad>4){
+        for (var i = 2; i <= cantidad; i++) {
+            tabla.find('a:nth-child('+i+')').remove();
+        }
+    }
+    
+    
     var data=tabla.html();
     $('#resultados-envivo').html(data);
     acciones();
