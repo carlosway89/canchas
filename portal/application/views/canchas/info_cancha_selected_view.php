@@ -12,7 +12,7 @@
 
     <!-- Event Map -->
     <section class="section full-width full-width-image animate-onscroll">
-        <img src="<?= $cCanFotoPortada; ?>" alt="" style="width: 100%;">
+        <a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?= $cCanFotoPortada; ?>"><img src="<?= $cCanFotoPortada; ?>" alt="" style="width: 100%;"></a>
     </section>
     <!-- /Event Map -->
 

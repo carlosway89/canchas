@@ -7140,18 +7140,6 @@ input.numeric-input:focus{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==================================== */
 /* Responsive */
 /* ==================================== */
@@ -8250,6 +8238,10 @@ input.numeric-input:focus{
 
     .main-flexslider h2{
         margin-top:0;
+    }
+    .section.full-width-map, .section.full-width-image {
+        height: 150px;
+        overflow: hidden;
     }
 
 }

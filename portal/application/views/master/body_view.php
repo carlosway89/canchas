@@ -122,7 +122,7 @@
                 <!-- END -->	
 
                 <!-- /Owl Carousel -->						<!-- Banner Rotator -->
-                <div class="banner-rotator animate-onscroll">
+                <!-- <div class="banner-rotator animate-onscroll">
                     <div class="flexslider banner-rotator-flexslider">
                         <ul class="slides">
 
@@ -157,6 +157,9 @@
 
                     </div>
 
+                </div> -->
+                <div class="animate-onscroll">
+                    <img src="<?php echo URL_IMG ?>ban.png" style="width: 100%;" />
                 </div>
                 <!-- /Banner Rotator -->						
             </div>
@@ -212,107 +215,7 @@
 
 
                 <!-- Image Banner -->
-                <div class="sidebar-box white animate-onscroll">
-                    <div class="side-segment">
-                        <h3><i class="icons icon-comment"></i> Testimonios</h3>
-                    </div>
-                    <!-- Owl Carousel -->
-                    <div class="owl-carousel-container testimonial-carousel animate-onscroll">
-
-                        <div class="owl-carousel" data-max-items="1">
-
-                            <!-- Owl Item -->
-                            <div>
-
-                                <!-- Testimonial -->
-                                <div class="testimonial">
-
-                                    <div class="testimonial-content">
-                                        <p>"Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis."<br>
-                                            Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna." </p>
-                                    </div>
-
-                                    <div class="testimonial-author">
-                                        <img src="<?php echo URL_IMG; ?>testimonials/profile1.jpg" alt="">
-                                        <div class="author-meta">
-                                            <span class="name">Gloria Mann,</span>
-                                            <span class="location">Los Angeles</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- /Testimonial -->
-
-                            </div>
-                            <!-- /Owl Item -->
-
-                            <!-- Owl Item -->
-                            <div>
-
-                                <!-- Testimonial -->
-                                <div class="testimonial">
-
-                                    <div class="testimonial-content">
-                                        <p>"Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros." </p>
-                                    </div>
-
-                                    <div class="testimonial-author">
-                                        <img src="<?php echo URL_IMG; ?>testimonials/profile2.jpg" alt="">
-                                        <div class="author-meta">
-                                            <span class="name">Gloria Mann,</span>
-                                            <span class="location">Los Angeles</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- /Testimonial -->
-
-                            </div>
-                            <!-- /Owl Item -->
-
-                            <!-- Owl Item -->
-                            <div>
-
-                                <!-- Testimonial -->
-                                <div class="testimonial">
-
-                                    <div class="testimonial-content">
-                                        <p>"Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis."<br>
-                                            Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna." </p>
-                                    </div>
-
-                                    <div class="testimonial-author">
-                                        <img src="<?php echo URL_IMG; ?>testimonials/profile3.jpg" alt="">
-                                        <div class="author-meta">
-                                            <span class="name">Gloria Mann,</span>
-                                            <span class="location">Los Angeles</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- /Testimonial -->
-
-                            </div>
-                            <!-- /Owl Item -->
-
-                        </div>
-
-                        <div class="owl-header">
-
-                            <div class="carousel-arrows">
-                                <span class="left-arrow"><i class="icons icon-left-dir"></i></span>
-                                <span class="right-arrow"><i class="icons icon-right-dir"></i></span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <!-- /Owl Carousel -->	
-
-
-
-
-                </div>
+                
             </div>
 
 

@@ -47,6 +47,7 @@ error_reporting(0);
 									<img src="<?=$result[0]['cEveLinkFoto']?>" alt="">
 								</div>
 							</div>
+							<br>
 							
 						</div>
 						

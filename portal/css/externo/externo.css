@@ -83,6 +83,7 @@ ul.paginador-fixture>.next>a{
 	margin-top: 20px;
 	margin-bottom: 30px;
 	height:50px;
+	overflow: hidden;
 
 	
 }
@@ -124,5 +125,20 @@ ul.paginador-fixture>.next>a{
 	color:#4a6828;
 	font-size: 14px;
 	font-weight: bolder;
+
+}
+@media (max-width: 480px){
+
+	.fixture-navegador, .fixture-navegador:hover {
+	    padding: 1px 5px;
+	}
+	.option-select {
+	    width: 100%;
+	    height: 150px;
+	}
+	#resultados-envivo > a {
+	    width: 100%;
+	    border-right: none;
+	}
 
 }
