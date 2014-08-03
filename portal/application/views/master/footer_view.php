@@ -161,6 +161,15 @@
 <!-- Calendar Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>jstz.js"></script>
 
+<!--parse plugin server-->
+<script src="<?php echo URL_JS; ?>parse.js"></script>
+
+<script type="text/javascript">
+
+    Parse.initialize('xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW','KTFcdFGV9cfR6y7OLXy6xei6dxZ02H6coSXS9ucq');
+    //Parse.initialize.(APP_ID,javascript KEY)
+
+</script>
 
 <!--[if lt IE 9]>
         <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.placeholder.js"></script>

@@ -67,7 +67,7 @@
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 									
-									<a class="green" href="<?=URL_MAIN?>multimedia/edit_noticia/<?=$list_noticias->nMultID;?>">
+									<a class="green" href="<?=URL_MAIN?>multimedia/edit_noticia/<?=$list_noticias->nInfoID;?>">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 

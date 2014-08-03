@@ -16,7 +16,7 @@
                   <!-- PAGE CONTENT BEGINS -->
                   <?php   
                   $atributosForm = array('id ' => 'frm_nuevo_evento', "class" => 'form-horizontal');
-
+                  echo $errorfecha;
                   echo form_open('eventos/guardar', $atributosForm); ?>
                   
                         <div class="form-group">

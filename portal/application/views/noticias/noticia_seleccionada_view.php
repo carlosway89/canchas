@@ -37,14 +37,14 @@
                                         <span class="day"><?php echo $nro_dia; ?></span>
                                         <span class="month"><?php echo $nombre_mes; ?></span>
                                     </div>
-
+<!-- 
                                     <a href="blog-single-sidebar.html"><div class="post-format">
                                             <i class="icons icon-doc-text-inv"></i>
                                         </div></a>
 
                                     <div class="post-comments">
                                         <a href="blog-single-sidebar.html#comments"><i class="icons icon-chat-empty"></i> 25</a>
-                                    </div>
+                                    </div> -->
 
                                 </div>
 
@@ -52,7 +52,6 @@
                                     <h2><a><?php echo $cNotiTitulo; ?></a></h2>
                                     <div class="post-meta">
                                         <span>Por <a href="#"><?php echo $cNotiAutor; ?></a></span>
-                                        <span>in <a href="#">Comentarios</a>, <a href="#">20</a></span>
                                     </div>
                                 </div>
 
@@ -67,7 +66,7 @@
                                     <blockquote class="iconic-quote">"<?php echo $cNotiSumilla; ?>"</blockquote>
 
 
-                                    <img class="align-left animate-onscroll img_noticia" src="<?php echo URL_IMG; ?>noticias/<?php echo $cNotiFotoPortada; ?>" alt="">
+                                    <img class="align-left animate-onscroll img_noticia" src="<?php echo $cNotiFotoPortada; ?>" alt="">
 
                                     <p>
                                         <?php echo $cNotiDescripcion; ?>
@@ -84,31 +83,6 @@
                 </div>
             </div>
 
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12" style="opacity: 1;">
-
-                <!-- Tabs -->
-                <div class="tabs">
-
-                    <div class="tab-header">
-                        <ul>
-                            <li class="active-tab"><a href="#tab11"><h6>Fotos</h6></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-content">
-
-                        <div class="tab" id="tab11" style="display: block;">
-                            <?php $this->load->view("noticias/fotos_noticia_seleccionada_view"); ?>  
-                        </div>
-                        
-                    </div>
-
-                </div>
-                <!-- /Tabs -->					
-            </div>
         </div>
 
         <div class="row">
