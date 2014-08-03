@@ -13,6 +13,11 @@
             $txt_ins_login_user = form_input(array('name' => 'txt_ins_login_user', 'id' => 'txt_ins_login_user', 'class' => 'form-control', 'placeholder' => 'Correo electrónico', 'required' => 'required'));
             $txt_ins_login_clave = form_password("txt_ins_login_clave", '', "id='txt_ins_login_clave' class='form-control' placeholder = 'Contraseña'  required='required'");
             ?>
+            <div id="notificacion-error" class="alert-danger" style="display:none">
+                <p>
+                    Usuario no habilitado o error de contraseña
+                </p>
+            </div>
             <fieldset>
                 <label class="block clearfix">
                     <span class="block input-icon input-icon-right">
