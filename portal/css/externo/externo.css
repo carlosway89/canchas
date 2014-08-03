@@ -138,7 +138,19 @@ ul.paginador-fixture>.next>a{
 	}
 	#resultados-envivo > a {
 	    width: 100%;
-	    border-right: none;
+	}
+	ul.paginador-fixture>li{
+		width:33%;
+		height: 70px;
+	}
+	ul.paginador-fixture>.titulo{
+		width:65%;
+	}
+	ul.paginador-fixture>.previous{
+		width:13%;
+	}
+	ul.paginador-fixture>.next{
+		width:13%;
 	}
 
 }
