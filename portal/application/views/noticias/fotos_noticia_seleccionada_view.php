@@ -9,7 +9,7 @@
 
                     <div class="media-image">
 
-                        <img alt="" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_1.jpg">
+                        <img alt="" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_1.jpg" alt="solocanchas.com">
 
                         <div class="media-hover">
                             <div class="media-icons">
@@ -30,7 +30,7 @@
 
                     <div class="media-image">
 
-                        <img alt="" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_2.jpg">
+                        <img alt="solocanchas.com" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_2.jpg">
 
                         <div class="media-hover">
                             <div class="media-icons">
@@ -51,7 +51,7 @@
 
                     <div class="media-image">
 
-                        <img alt="" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_3.jpg">
+                        <img alt="solocanchas.com" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_3.jpg">
 
                         <div class="media-hover">
                             <div class="media-icons">
@@ -72,7 +72,7 @@
 
                     <div class="media-image">
 
-                        <img alt="" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_4.jpg">
+                        <img alt="solocanchas.com" src="<?php echo URL_IMG; ?>noticias/chelsea_partido_4.jpg">
 
                         <div class="media-hover">
                             <div class="media-icons">

@@ -17,7 +17,7 @@
                 ?>
                 <div class="event-image">
                     <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
-                        <img src="<?php echo $list_otrasnoticias->foto_noticia; ?>" alt="">
+                        <img src="<?php echo $list_otrasnoticias->foto_noticia; ?>" alt="solocanchas.com">
                     </a>
                 </div>
 

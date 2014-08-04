@@ -22,7 +22,7 @@
                 <div class="blog-post animate-onscroll">
                     <div class="post-image">
                         <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas_favoritas->nCanID; ?>">
-                            <img src="<?php echo $list_canchas_favoritas->cCanFotoPortada; ?>" alt="">
+                            <img src="<?php echo $list_canchas_favoritas->cCanFotoPortada; ?>" alt="solocanchas.com">
                         </a>
                     </div>
 

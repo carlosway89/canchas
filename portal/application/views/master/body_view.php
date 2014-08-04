@@ -1,23 +1,3 @@
-<!-- Add fancyBox main JS and CSS files -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/jquery.fancybox.js?v=2.1.5"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
-
-<!-- Add Button helper (this is optional) -->
-<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-
-<!-- Add Thumbnail helper (this is optional) -->
-<link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-
-<!-- Add Media helper (this is optional) -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.fancybox').fancybox();
-    });
-</script>
 <section id="content">
 
     <!-- Section -->
@@ -118,45 +98,8 @@
                 <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
                 <!-- END -->	
 
-                <!-- /Owl Carousel -->						<!-- Banner Rotator -->
-                <!-- <div class="banner-rotator animate-onscroll">
-                    <div class="flexslider banner-rotator-flexslider">
-                        <ul class="slides">
-
-                            <li id="flex_rotator_1">
-                                <div class="banner-rotator-content">
-                                    <h5>Campaign trial</h5>
-                                    <h2>New York</h2>
-                                    <span class="date">December 17th</span>
-                                    <a href="#" class="button big button-arrow">Details</a>
-                                </div>
-                            </li>
-
-                            <li id="flex_rotator_2">
-                                <div class="banner-rotator-content">
-                                    <h5>Campaign trial</h5>
-                                    <h2>Corden</h2>
-                                    <span class="date">April 12th</span>
-                                    <a href="#" class="button big button-arrow">Details</a>
-                                </div>
-                            </li>
-
-                            <li id="flex_rotator_3">
-                                <div class="banner-rotator-content">
-                                    <h5>Campaign trial</h5>
-                                    <h2>Redhedge</h2>
-                                    <span class="date">June 27th</span>
-                                    <a href="#" class="button big button-arrow">Details</a>
-                                </div>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div> -->
                 <div class="animate-onscroll">
-                    <img src="<?php echo URL_IMG ?>ban.png" style="width: 100%;" />
+                    <img src="<?php echo URL_IMG ?>ban.png" style="width: 100%;" alt="solocanchas.com" />
                 </div>
                 <!-- /Banner Rotator -->						
             </div>

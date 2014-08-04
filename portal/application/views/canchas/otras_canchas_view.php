@@ -19,7 +19,7 @@
             <div class="event-item">
                 <div class="event-image">
                     <div class="media-item gallery-item no-margin-bottom">
-                        <img src="<?php echo $img_cancha; ?>" alt="">
+                        <img src="<?php echo $img_cancha; ?>" alt="solocanchas.com">
                         <div class="media-hover">
                             <div class="media-icons">
                                 <a class="media-icon" rel="prettyPhoto[gallery1]" href="<?php echo $img_cancha; ?>"><i class="icons icon-eye"></i></a>

@@ -1,60 +1,7 @@
 <!-- Footer -->
 <footer id="footer">
     <!-- Main Footer -->
-<!--    <div id="main-footer">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6 animate-onscroll">
-                <div class="side-segment">
-                    <h4>SoloCanchas</h4>
-                </div>
 
-                <p>
-                    SoloCanchas es la única guía que reúne los mejores centros deportivos del pais, nuestros anunciantes cuentan 
-                    con todo tipo de actividades relacionadas al entrenamiento y bienestar físico. El portal brinda toda la 
-                    información necesaria para conocer y contactarse con centros deportivos a nivel nacional. 
-                </p>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 animate-onscroll">
-                <div class="side-segment">
-                    <h4>Enlaces</h4>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 menu-container">
-                    <ul class="menu">
-                        <li><a href="<?php echo URL_MAIN; ?>">Inicio</a></li>
-                        <li><a href="<?php echo URL_MAIN; ?>canchas">Canchas</a></li>
-                        <li><a href="#">Academias</a></li>
-                        <li><a href="#">Gimnasios</a></li> 
-                        <li><a href="#">Campeonatos</a></li>
-                        <li><a href="<?php echo URL_MAIN; ?>contactenos">Contáctenos</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 twitter-widget-area animate-onscroll">
-                <div class="side-segment">
-                    <h4>Latest Tweets</h4>
-                </div>
-
-                <div class="twitter-widget">
-
-                </div>
-                <a href="#" class="button twitter-button">Follow us on twitter</a>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 animate-onscroll">
-                <div class="side-segment">
-                    <h4>FACEBOOK</h4>
-                    
-                </div>
-                <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FSoloCanchasPeru&amp;width&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true"  frameborder="0" style="border:none;  height:250px;background: #FFF;" allowTransparency="true"></iframe>
-
-                <iframe src="../../www.facebook.com/plugins/likebox34d7.html?href=http%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;width=270&amp;height=240&amp;colorscheme=dark&amp;header=false&amp;show_faces=true&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:100%; height:240px;"></iframe>
-            </div>
-        </div>
-    </div>-->
-    <!-- /Main Footer -->
 
     <!-- Lower Footer -->
     <div id="lower-footer">
@@ -86,17 +33,6 @@
 <!-- Back To Top -->
 <a href="#" id="button-to-top"><i class="icons icon-up-dir"></i></a>
 
-<!-- Customize Box 
-<div class="customize-box">
-    <h5>FACEBOOK</h5>
-    <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FSoloCanchasPeru&amp;width&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:590px;background: #FFF;" allowTransparency="true"></iframe>
-
-
-    <div class="customize-box-button">
-        <i class="icons icon-facebook"></i>
-    </div>
-</div>
-  /Customize Box -->
 
 </div>
 <!-- /Container -->	
@@ -120,32 +56,16 @@
 <!-- Calendar -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>responsive-calendar.min.js"></script>
 
-<!-- Raty -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>jquery.raty.min.js"></script>
+
 
 <!-- Chosen -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>chosen.jquery.min.js"></script>
 
-<!-- jFlickrFeed -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>jflickrfeed.min.js"></script>
 
-<!-- InstaFeed -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>instafeed.min.js"></script>
-
-<!-- Twitter -->
-<!--<script type="text/javascript" src="php/twitter/jquery.tweet.js"></script>-->
-
-<!-- MixItUp -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>jquery.mixitup.js"></script>
 
 <!-- JackBox -->
 <!--<script type="text/javascript" src="<?php echo URL_JS; ?>jackbox/js/jackbox-packed.min.js"></script>-->
 
-<!-- CloudZoom -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>zoomsl-3.0.min.js"></script>
-
-<!-- ColorPicker -->
-<script type="text/javascript" src="<?php echo URL_JS; ?>colorpicker.js"></script>
 
 <!-- PrettyPhoto -->
 <script src="<?php echo URL_JS; ?>jquery.prettyPhoto.js"></script>
@@ -171,10 +91,6 @@
 
 </script>
 
-<!--[if lt IE 9]>
-        <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.placeholder.js"></script>
-        <script type="text/javascript" src="<?php echo URL_JS; ?>script_ie.js"></script>
-<![endif]-->
 
 </body>
 

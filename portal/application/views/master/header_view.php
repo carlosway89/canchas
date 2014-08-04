@@ -5,6 +5,10 @@
         <!-- Meta Tags -->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="solocanchas.com es una guía que reúne información de los mejores centros deportivos del pais"/>
+        <meta name="author" content="Grupo SAV"/>
+        <meta name="keywords" content="futbol peruano, futbol internacional, deportes, noticias, en vivo, fixture, eventos"/>
+        <meta name="robots" content="INDEX,FOLLOW">
 
         <!-- Title -->
         <title><?php echo $title; ?></title>
@@ -20,29 +24,11 @@
         <link href="<?php echo URL_CSS; ?>owl.carousel.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>responsive-calendar.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>chosen.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo URL_CSS; ?>cloud-zoom.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo URL_CSS; ?>colorpicker.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>prettyPhoto.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo URL_CSS; ?>validate/validacion.css" rel="stylesheet" type="text/css">
         <link href="<?php echo URL_CSS; ?>style.css" rel="stylesheet" type="text/css">
 
 
-        <!--[if IE 9]>
-                <link rel="stylesheet" href="<?php echo URL_JS; ?>ie9.css">
-        <![endif]-->
-
-        <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                <link href="<?php echo URL_JS; ?>jackbox-ie8.css" rel="stylesheet" type="text/css" />
-                <link rel="stylesheet" href="<?php echo URL_JS; ?>ie.css">
-<![endif]-->
-
-        <!--[if gt IE 8]>
-                <link href="<?php echo URL_CSS; ?>jackbox-ie9.css" rel="stylesheet" type="text/css" />
-        <![endif]-->
-
-        <!--[if IE 7]>
-                <link rel="stylesheet" href="<?php echo URL_CSS; ?>fontello-ie7.css">
-        <![endif]-->
 
         <style type="text/css">
             .no-fouc {display:none;}
@@ -55,6 +41,30 @@
         <!-- Preloader -->
         <script src="<?php echo URL_JS; ?>jquery.queryloader2.min.js"></script>
         <script src="<?php echo URL_JS; ?>jsCustomHeader.js"></script>
+
+        <script src="<?php echo URL_JS; ?>validacion/jqueryvalidate.js"></script>
+
+
+        <!-- Add fancyBox main JS and CSS files -->
+        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/jquery.fancybox.js?v=2.1.5"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+        <!-- Add Button helper (this is optional) -->
+        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+        <!-- Add Thumbnail helper (this is optional) -->
+        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+        <!-- Add Media helper (this is optional) -->
+        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.fancybox').fancybox();
+            });
+        </script>
 
 
     </head>
@@ -79,7 +89,7 @@
                             <!-- Logo -->
                             <div id="logo" class="col-lg-4 col-md-3 col-sm-3">
 
-                                <a href="main-v1.html"><img src="<?php echo URL_IMG; ?>logo.png" alt="Logo" width="331" height="101" style="margin-top:-20px"></a>
+                                <a href="#"><img src="<?php echo URL_IMG; ?>logo.png" alt="Logo" width="331" height="101" style="margin-top:-20px"></a>
 
 
 
@@ -97,7 +107,7 @@
                             <!-- Newsletter -->
                             <div class="col-lg-4 col-md-5 col-sm-5">
 
-                                <form id="newsletter" action="http://localhost/canchas/portal/acceso/autentication" method="POST">
+                                <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
 
                                     <h5>
                                         <i class="icons icon-laptop"></i>

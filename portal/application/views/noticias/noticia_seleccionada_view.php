@@ -66,7 +66,7 @@
                                     <blockquote class="iconic-quote">"<?php echo $cNotiSumilla; ?>"</blockquote>
 
 
-                                    <img class="align-left animate-onscroll img_noticia" src="<?php echo $cNotiFotoPortada; ?>" alt="">
+                                    <img class="align-left animate-onscroll img_noticia" src="<?php echo $cNotiFotoPortada; ?>" alt="solocanchas.com">
 
                                     <p>
                                         <?php echo $cNotiDescripcion; ?>

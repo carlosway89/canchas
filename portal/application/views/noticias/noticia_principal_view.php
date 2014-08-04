@@ -11,7 +11,7 @@
         ?>
 
         <div class="post-image">
-            <img src="<?php echo $noticia_principal->foto_noticia; ?>" alt="">
+            <img src="<?php echo $noticia_principal->foto_noticia; ?>" alt="solocanchas.com">
         </div>
 
         <h4 class="post-title"><a href="<?php echo URL_MAIN; ?>noticias/detalle/principal_<?php echo $noticia_principal->nInfoID; ?>">

@@ -71,7 +71,7 @@
                                 <!-- Media Item -->
                                 <div class="media-item animate-onscroll ">
                                     <div class="media-image">
-                                        <img src="<?php echo $img_cancha; ?>" alt="">
+                                        <img src="<?php echo $img_cancha; ?>" alt="solocanchas.com">
                                         <div class="media-hover">
                                             <div class="media-icons">
                                                 <a class="media-icon" rel="prettyPhoto[gallery1]" href="<?php echo $img_cancha; ?>"><i class="icons icon-eye"></i></a>

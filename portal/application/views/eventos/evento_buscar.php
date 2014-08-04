@@ -20,7 +20,7 @@
 				<div class="event-item">
 					
 					<div class="event-image">
-						<img src="<?=$result[$i]['cEveLinkFoto']?>" alt="">
+						<img src="<?=$result[$i]['cEveLinkFoto']?>" alt="solocanchas.com">
 					</div>
 					
 					<div class="event-info">

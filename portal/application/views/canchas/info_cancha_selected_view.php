@@ -12,7 +12,7 @@
 
     <!-- Event Map -->
     <section class="section full-width full-width-image animate-onscroll">
-        <a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?= $cCanFotoPortada; ?>"><img src="<?= $cCanFotoPortada; ?>" alt="" style="width: 100%;"></a>
+        <a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?= $cCanFotoPortada; ?>"><img src="<?= $cCanFotoPortada; ?>"alt="solocanchas.com" style="width: 100%;"></a>
     </section>
     <!-- /Event Map -->
 
