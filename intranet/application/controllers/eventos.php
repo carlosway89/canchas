@@ -103,11 +103,24 @@ class Eventos extends CI_Controller {
             $dEveEndTime = $_POST['dEveEndTime'];
 
             if (strtotime($dEveStartTime) > strtotime($dEveEndTime)) {
-                $this->data['errorfecha'] = '<br><div class="text-warning">La fecha de empiezo debe ser menor a la de termino</div>';
+                $this->data['errorfecha'] = '<br><div class="alert-danger">La fecha y hora de empiezo debe ser menor a la de termino</div><br>';
+                $this->data['main_content'] = 'eventos/evento_nuevo';
+                $this->data['title'] = '.: Solo Canchas - Intranet :.';
+                $this->data['menu_home'] = 'intranet';
+                $this->data['breadcrumbs'] = 'Eventos';
+                $this->load->view('master/template_view', $this->data);
+
             } else {
+                if (strtotime($startHora) > strtotime($endHora)){
+                    $this->data['errorfecha'] = '<br><div class="alert-danger">La fecha y hora de empiezo debe ser menor a la de termino</div><br>';
+                    $this->data['main_content'] = 'eventos/evento_nuevo';
+                    $this->data['title'] = '.: Solo Canchas - Intranet :.';
+                    $this->data['menu_home'] = 'intranet';
+                    $this->data['breadcrumbs'] = 'Eventos';
+                    $this->load->view('master/template_view', $this->data);
 
-
-                $data = array(
+                }else{
+                    $data = array(
                     'cEveLatitud' => $_POST['cEveLatitud'],
                     'cEveLongitud' => $_POST['cEveLongitud'],
                     'cEveTitulo' => $_POST['cEveTitulo'],
@@ -124,17 +137,21 @@ class Eventos extends CI_Controller {
                     'cEveEstado' => $_POST['cEveEstado'],
                     'nEveCosto' => $_POST['nEveCosto'],
                     'nUsuario' => $_POST['nUsuario']
-                );
+                    );
 
 
-                if ($this->codegen_model->add('eventos', $data) != 0) {
-                    //$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
-                    // or redirect
-                    redirect(base_url() . 'eventos/');
-                } else {
-                    echo 'error 2';
-                    $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+                    if ($this->codegen_model->add('eventos', $data) != 0) {
+                        //$this->data['custom_error'] = '<div class="form_ok"><p>Added</p></div>';
+                        // or redirect
+                        redirect(base_url() . 'eventos/');
+                    } else {
+                        echo 'error 2';
+                        $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+                    }
                 }
+
+
+                
             }
         //}
 
@@ -169,34 +186,53 @@ class Eventos extends CI_Controller {
         $dEveEndTime = $_POST['dEveEndTime'];
 
         if (strtotime($dEveStartTime) > strtotime($dEveEndTime)) {
-            $this->data['errorfecha'] = '<br><div class="text-warning">La fecha de empiezo debe ser menor a la de termino</div>';
+            $this->data['errorfecha'] = '<br><div class="alert-danger">La fecha y hora de empiezo debe ser menor a la de termino</div><br>';
+            $this->data['result'] = $this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto,nUsuario', 'nEveID = ' . $_POST['nEveID'], NULL, NULL, true);
+            $this->data['main_content'] = 'eventos/evento_edit';
+            $this->data['title'] = '.: Solo Canchas - Intranet :.';
+            $this->data['menu_home'] = 'intranet';
+            $this->data['breadcrumbs'] = 'Eventos';
+            $this->load->view('master/template_view', $this->data);
+            
+
         } else {
+            if (strtotime($startHora) > strtotime($endHora)){
+                 $this->data['errorfecha'] = '<br><div class="alert-danger">La fecha y hora de empiezo debe ser menor a la de termino</div><br>';
+                $this->data['result'] = $this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto,nUsuario', 'nEveID = ' . $_POST['nEveID'], NULL, NULL, true);
+                $this->data['main_content'] = 'eventos/evento_edit';
+                $this->data['title'] = '.: Solo Canchas - Intranet :.';
+                $this->data['menu_home'] = 'intranet';
+                $this->data['breadcrumbs'] = 'Eventos';
+                $this->load->view('master/template_view', $this->data);
 
-            $data = array(
-                'cEveLatitud' => $_POST['cEveLatitud'],
-                'cEveLongitud' => $_POST['cEveLongitud'],
-                'cEveTitulo' => $_POST['cEveTitulo'],
-                'cEveDescripcion' => $_POST['cEveDescripcion'],
-                'cEveLinkFoto' => $_POST['foto_url'],
-                'cEveLinkFacebook' => $_POST['cEveLinkFacebook'],
-                'cEveDireccion' => $_POST['cEveDireccion'],
-                'dEveStartTime' => $_POST['dEveStartTime'] . ' ' . $startHora,
-                'dEveEndTime' => $_POST['dEveEndTime'] . ' ' . $endHora,
-                'nUbiDepartamento' => $_POST['nUbiDepartamento'],
-                'nUbiProvincia' => $_POST['nUbiProvincia'],
-                'nUbiDistrito' => $_POST['nUbiDistrito'],
-                'dEveFechaRegistro' => $_POST['dEveFechaRegistro'],
-                'cEveEstado' => $_POST['cEveEstado'],
-                'nEveCosto' => $_POST['nEveCosto'],
-                'nUsuario' => $_POST['nUsuario']
-            );
+            }else{
+
+                $data = array(
+                    'cEveLatitud' => $_POST['cEveLatitud'],
+                    'cEveLongitud' => $_POST['cEveLongitud'],
+                    'cEveTitulo' => $_POST['cEveTitulo'],
+                    'cEveDescripcion' => $_POST['cEveDescripcion'],
+                    'cEveLinkFoto' => $_POST['foto_url'],
+                    'cEveLinkFacebook' => $_POST['cEveLinkFacebook'],
+                    'cEveDireccion' => $_POST['cEveDireccion'],
+                    'dEveStartTime' => $_POST['dEveStartTime'] . ' ' . $startHora,
+                    'dEveEndTime' => $_POST['dEveEndTime'] . ' ' . $endHora,
+                    'nUbiDepartamento' => $_POST['nUbiDepartamento'],
+                    'nUbiProvincia' => $_POST['nUbiProvincia'],
+                    'nUbiDistrito' => $_POST['nUbiDistrito'],
+                    'dEveFechaRegistro' => $_POST['dEveFechaRegistro'],
+                    'cEveEstado' => $_POST['cEveEstado'],
+                    'nEveCosto' => $_POST['nEveCosto'],
+                    'nUsuario' => $_POST['nUsuario']
+                );
 
 
-            if ($this->codegen_model->edit('eventos', $data, 'nEveID', $_POST['nEveID']) == TRUE) {
-                redirect(base_url() . 'eventos/');
-            } else {
-                echo 'error 2';
-                $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
+                if ($this->codegen_model->edit('eventos', $data, 'nEveID', $_POST['nEveID']) == TRUE) {
+                    redirect(base_url() . 'eventos/');
+                } else {
+                    echo 'error 2';
+                    $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
+                }
             }
         }
         

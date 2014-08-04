@@ -36,7 +36,8 @@ $(function(){
                     if(data.trim() == 1){
                         window.open("http://"+ruta+"/intranet/manage", "_self");
                     }else{
-                        window.open("http://"+ruta+"/intranet/acceso", "_self");
+                        $("#notificacion-error").fadeIn();
+                        $("#mensajecarga").hide();
                     }
                 },
                 error: function() { 

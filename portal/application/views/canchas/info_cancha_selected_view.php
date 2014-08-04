@@ -12,7 +12,7 @@
 
     <!-- Event Map -->
     <section class="section full-width full-width-image animate-onscroll">
-        <img src="<?php echo URL_IMG; ?>portada.jpg" alt="" style="width: 100%;">
+        <a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?= $cCanFotoPortada; ?>"><img src="<?= $cCanFotoPortada; ?>" alt="" style="width: 100%;"></a>
     </section>
     <!-- /Event Map -->
 
@@ -21,7 +21,7 @@
     <section class="section full-width-bg">
 
         <div class="row">
-            <?php ?>
+            
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="row event-details">
 
@@ -33,18 +33,18 @@
                             <?php echo $cCanDescripcion; ?>
                         </p>
                         <p>
-                            <i class="icons icon-globe"></i> <b>Web: </b> <a>http://companyname.com</a>
+                            <i class="icons icon-globe"></i> <b>Web: </b> <a><?=$cCanSitioWeb?></a>
                         </p>
                         <p>
-                            <i class="icons icon-mail-alt"></i> <b>Email: </b> <a href="mailto:mail@companyname.com"> <?php echo $cCanEmail; ?></a>
+                            <i class="icons icon-mail-alt"></i> <b>Email: </b> <a href="mailto:<?php echo $cCanEmail; ?>"> <?php echo $cCanEmail; ?></a>
                         </p>
                         <p>
                             <i class="icons icon-location"></i> <b>Dirección: </b>  <?php echo $cCanDireccion; ?>
                         </p>
-                        <p>
+                        <!-- <p>
                             <i class="icons icon-ticket"></i> <b>Precio: </b> S/.30.00 Nuevos Soles
-                        </p>
-                        <a class="button donate btn_reservar" target="_blank"      href="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11><i class="icons icon-right-hand"></i> Reservar</a>
+                        </p> -->
+                        <a class="button donate btn_reservar" target="_blank"      href="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11"><i class="icons icon-right-hand"></i> Reservar</a>
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-6 animate-onscroll">
@@ -55,10 +55,23 @@
                         <div class="portfolio-slideshow flexslider animate-onscroll">
 
                             <ul class="slides">
+                                <?php
+                                  $n=count($list_galeria);
+                                  if($n==0){
+                                ?>
+                                  <div class="alert alert-info">No dispone de una galeria a&uacute;n </div>
+                                <?php    
+                                    
+                                  }
+                                  else{
+                                    foreach ($list_galeria as $list_galeria){ 
+                                        ?>
 
-                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley1.jpg"><img src="<?php echo URL_IMG; ?>galley1.jpg" alt=""></a></li>
-                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley2.jpg"><img src="<?php echo URL_IMG; ?>galley2.jpg" alt=""></a></li>
-                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?php echo URL_IMG; ?>galley3.jpg"><img src="<?php echo URL_IMG; ?>galley3.jpg" alt=""></a></li>												
+                                <li><a class="media-icon" rel="prettyPhoto[slider_gallery1]"  href="<?=$list_galeria->cMultLink?>"><img src="<?=$list_galeria->cMultLink?>" alt=""></a></li>
+                                <?php
+                                            } 
+                                  }
+                                        ?>						
                             </ul>
 
                         </div>

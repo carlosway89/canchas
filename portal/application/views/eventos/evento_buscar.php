@@ -20,7 +20,7 @@
 				<div class="event-item">
 					
 					<div class="event-image">
-						<img src="<?php echo URL_IMG; ?>events/event2.jpg" alt="">
+						<img src="<?=$result[$i]['cEveLinkFoto']?>" alt="">
 					</div>
 					
 					<div class="event-info">

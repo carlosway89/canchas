@@ -54,7 +54,7 @@
 					</div>
 					<br>
 					<table id="calendar" class="event-calendar animate-onscroll">
-						
+										
 					</table>
 					
 					
@@ -85,11 +85,16 @@ function loadScripts() {
 	script.type = 'text/javascript'; 
 	script.src = '<?php echo URL_JS; ?>calendar.js'; 
 	document.body.appendChild(script); 
+	setTimeout(function(){
 
-	var script = document.createElement('script'); 
-	script.type = 'text/javascript'; 
-	script.src = '<?php echo URL_JS; ?>app.js'; 
-	document.body.appendChild(script); 
+		var script = document.createElement('script'); 
+		script.type = 'text/javascript'; 
+		script.src = '<?php echo URL_JS; ?>app.js'; 
+		document.body.appendChild(script); 
+
+	},1000);
+
+	
 
 	
 }

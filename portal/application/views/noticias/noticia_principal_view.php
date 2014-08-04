@@ -1,6 +1,6 @@
 <div class="side-segment">
             <h3 class="animate-onscroll">
-                <i class="icons icon-news"></i> Noticia Principal
+                <i class="icons icon-star"></i> Noticia Principal
             </h3>
         </div>
 <?php foreach ($noticia_principal as $noticia_principal) { ?>
@@ -11,7 +11,7 @@
         ?>
 
         <div class="post-image">
-            <img src="<?php echo URL_IMG; ?>noticias/<?php echo $noticia_principal->foto_noticia; ?>" alt="">
+            <img src="<?php echo $noticia_principal->foto_noticia; ?>" alt="">
         </div>
 
         <h4 class="post-title"><a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia_principal; ?>_<?php echo $noticia_principal->nInfoID; ?>">

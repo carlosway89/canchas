@@ -106,18 +106,24 @@
                                             $input_disabled = 'disabled = "disabled"';
                                             ?>
                                             SESIÓN INICIADA: 
-                                            <strong><?php echo strtoupper($this->session->userdata("Nombres")); ?></strong> 
+                                            <strong><?php echo strtoupper($this->session->userdata("Nombres")); ?></strong>
+                                            <br> 
+                                            <ul class="sesion-opciones list-inline">
+                                                <li>
+                                                    <a class="logout" href="<?php echo URL_MAIN ?>acceso/logout">
+                                                     <i class="icon-off"></i> Cerrar Sesión
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            
+                                            
 
-                                            <a class="logout" href="<?php echo URL_MAIN ?>acceso/logout">
-                                                Cerrar Sesión
-                                            </a>
-
-                                            <?php
+                                        <?php
                                         } else {
                                             $input_disabled = '';
                                             ?>
                                             ACCEDER AL <strong>SISTEMA</strong>
-                                        <?php } ?>
+                                        
                                     </h5>
                                     <div class="newsletter-form">
 
@@ -135,6 +141,7 @@
                                         </div>
 
                                     </div>
+                                    <?php } ?>
 
                                 </form>
 
@@ -147,13 +154,6 @@
 
                 </div>
                 <!-- /Main Header -->
-                <?php $this->load->view("master/menu_view"); ?>
-
-                <div id="inline1" style="width:700px;display: none;">
-                    <?php $this->load->view("registro_usuarios/panel_view"); ?>    
-                </div>
-                <div id="inline2" style="width:500px;display: none;">
-                    El usuario ha sido registrado correctamente.
-                </div>
+<?php $this->load->view("master/menu_view"); ?>
             </header>
             <!-- /Header -->

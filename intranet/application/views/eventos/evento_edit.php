@@ -17,7 +17,7 @@
                   <?php echo $custom_error; ?>
                   <?php   
                   $atributosForm = array('id ' => 'frm_nuevo_evento', "class" => 'form-horizontal');
-
+                  echo $errorfecha;
                   echo form_open('eventos/editar', $atributosForm); ?>
                   
                         <div class="form-group">

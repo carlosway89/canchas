@@ -52,7 +52,7 @@ class Canchas extends CI_Controller {
                 $id_cancha = $row->nCanID;
                 $name_cancha = $row->cCanNombre;
             }
-            redirect("../index.php/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
+            redirect("/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
         } else {
             $this->load->view('master/template_view', $data);
         }
@@ -64,6 +64,7 @@ class Canchas extends CI_Controller {
         $data['main_content'] = 'canchas/info_cancha_selected_view';
         $data['title'] = '.: Solo Canchas - Información de la Cancha seleccionada :.';
         $data['menu_home'] = 'canchas';
+        $data['list_galeria'] = $this->canchas_model->canchasGaleria(array('LISTADO-GALERIA-CANCHAS', $cadena[1], '', '', ''));
         $data['list_otrascanchas'] = $this->canchas_model->canchasQryOtros(array('LISTADO-CANCHAS-OTROS', $cadena[1], '', '', ''));
         $data['list_comentarios'] = $this->comentarios_canchas_model->comentarios_canchasQry(array('LISTADO-COMENTARIOS-CANCHAS-CRITERIO'));
        
@@ -88,6 +89,7 @@ class Canchas extends CI_Controller {
             $data['cCanSitioWeb'] = $this->canchas_model->getCanSitioWeb();
             $data['nCanVisitas'] = $this->canchas_model->getCanVisitas();
             $data['cCanEstado'] = $this->canchas_model->getCanEstado();
+            $data['cCanFotoPortada'] = $this->canchas_model->getCanFotoPortada();
             return $data;
         } else {
             return false;

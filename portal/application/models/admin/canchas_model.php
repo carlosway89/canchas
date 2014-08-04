@@ -133,6 +133,14 @@ class Canchas_model extends CI_Model {
         $this->CanEstado = $CanEstado;
     }
 
+    public function setCanFotoPortada($CanFotoPortada){
+        $this->CanFotoPortada=$CanFotoPortada;
+    }
+     public function getCanFotoPortada(){
+        return $this->CanFotoPortada;
+
+     }
+
     function canchasQry($Parametros) {
         $query = $this->db->query("CALL USP_GEN_S_CANCHAS (?,?,?,?,?)", $Parametros);
         $this->db->close();
@@ -174,10 +182,21 @@ class Canchas_model extends CI_Model {
             $this->setCanSitioWeb($row->sitio_web);
             $this->setCanVisitas($row->nCanVisitas);
             $this->setCanEstado($row->cCanEstado);
+            $this->setCanFotoPortada($row->cCanFotoPortada);
             return $row;
         } else {
             return null;
         }
+    }
+    function canchasGaleria($Parametros){
+        $query = $this->db->query("CALL USP_GEN_S_CANCHAS (?,?,?,?,?)", $Parametros);
+        $this->db->close();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+
     }
 
 }

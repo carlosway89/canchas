@@ -90,3 +90,16 @@
     color:red;
 }
 /* END CONTRASEÑA*/
+
+.navbar {
+    background: none repeat scroll 0% 0% #2F5306;
+}
+.ace-nav > li.light-blue > a {
+    background-color: #2F5306;
+}
+.ace-nav > li.light-blue > a:hover {
+    background-color: #7DAA50;
+}
+.ace-nav > li.light-blue > a:focus  {
+    background-color: #7DAA50 !important;
+}

@@ -17,7 +17,7 @@
                 ?>
                 <div class="event-image">
                     <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_otrasnoticias->nInfoID; ?>">
-                        <img src="<?php echo URL_IMG; ?>noticias/<?php echo $list_otrasnoticias->foto_noticia; ?>" alt="">
+                        <img src="<?php echo $list_otrasnoticias->foto_noticia; ?>" alt="">
                     </a>
                 </div>
 
@@ -41,8 +41,7 @@
                             </a>
                         </h6>
                         <ul class="event-meta">
-                            <li><i class="icons icon-clock"></i> 4:00 pm - 6:00 pm</li>
-                            <li><i class="icons icon-location"></i> 340 W 50th St.New York</li>
+                            <li><i class="icons icon-location"></i> <?=$list_otrasnoticias->cInfoLugar;?></li>
                         </ul>
                     </div>
 
