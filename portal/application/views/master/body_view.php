@@ -37,9 +37,6 @@
                             <h5>Búsqueda de <strong>Canchas</strong></h5>
                         </div>
                         <?php $this->load->view("master/form_search_canchas_view"); ?>
-                        <div id="inline1" style="width:700px;display: none;">
-                            <?php $this->load->view("registro_usuarios/panel_view"); ?>    
-                        </div>
                     </div>
                 </div>											
             </div>

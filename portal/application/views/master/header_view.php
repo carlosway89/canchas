@@ -112,12 +112,12 @@
                                                 Cerrar Sesión
                                             </a>
 
-                                        <?php
+                                            <?php
                                         } else {
                                             $input_disabled = '';
                                             ?>
                                             ACCEDER AL <strong>SISTEMA</strong>
-<?php } ?>
+                                        <?php } ?>
                                     </h5>
                                     <div class="newsletter-form">
 
@@ -147,6 +147,13 @@
 
                 </div>
                 <!-- /Main Header -->
-<?php $this->load->view("master/menu_view"); ?>
+                <?php $this->load->view("master/menu_view"); ?>
+
+                <div id="inline1" style="width:700px;display: none;">
+                    <?php $this->load->view("registro_usuarios/panel_view"); ?>    
+                </div>
+                <div id="inline2" style="width:500px;display: none;">
+                    El usuario ha sido registrado correctamente.
+                </div>
             </header>
             <!-- /Header -->

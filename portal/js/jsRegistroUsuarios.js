@@ -1,4 +1,10 @@
 $(function(){   
+    
+    limpiarForm("#frm_ins_registro_users");
+    
+    
+    
+    $.fancybox({'href' : '#inline2'});
 
     // ACCION BUTTON REGISTRO USUARIOS
     $("#btn_ins_users").bind('click', function(event){
@@ -42,12 +48,13 @@ $(function(){
             $("#error_form_register_users").hide().fadeIn(150);
             $("#txt_ins_user_repeclave").focus();
         }else if(clave != repetirclave ){
-            msgAlerta("#error_form_register_users","Las claves no son iguales");
+            msgAlerta("#error_form_register_users","Las claves no coinciden");
             $("#error_form_register_users").css("margin-bottom","10px");
             $("#error_form_register_users").hide().fadeIn(150);
             $("#txt_ins_user_repeclave").focus();
         }else{
             $("#error_form_register_users").css("margin-bottom","0");
+            $("#error_form_register_users").html('');
             registro_usuarios();   
         }
     });  
@@ -62,19 +69,24 @@ function registro_usuarios(){
         data: $(form).serialize(),
         success: function(msg){
             if(msg.trim()==1){        
-                //                            msgLoadSaveRemove("#btn_ins_usuario");
-                //                            mensaje("Los datos de usuario se han registrado correctamente!","e");
-                //                            limpiarForm("#frm_ins_usuario");
+                limpiarForm("#frm_ins_registro_users");
                 msgLoadSaveRemove("#btn_ins_users");
                 alert("Registro exitoso");
+                $.fancybox.close();
+                
+                
+                
+                
+                
+                
+                
+                
             }else{
                 alert("No se ha registrado bien");
-            //                            mensaje("Error Inesperado, no se puede registrar los datos del usuario!, vuelva a intentarlo","r");                        
             }                    
         },
         error: function(msg){     
             alert("Error");
-        //                        mensaje("r","Error Inesperado, no se puede registrar los datos del usuario!, vuelva a intentarlo");                        ;
         }
     });
 }
