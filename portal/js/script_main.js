@@ -116,7 +116,7 @@ $(document).ready(function(){
 	
     //enableStarRating(); // Star Rating
 	
-    enableMixItup(); // MixItUp (Filtering and Sorting)
+    //enableMixItup(); // MixItUp (Filtering and Sorting)
 	
     //enableProductSlider(); // ClouZoom Products Slider
 	
@@ -1118,22 +1118,7 @@ $(document).ready(function(){
             });
 			
 			
-            // ColorPicker
-            $('#colorpicker').ColorPicker({
-				
-                onSubmit: function(hsb, hex, rgb, el) {
-                    $('#colorpicker-value').val('#'+hex);
-                    $(el).ColorPickerHide();
-                },
-                onBeforeShow: function () {
-                    $(this).ColorPickerSetColor($('#colorpicker-value').val());
-                },
-                onChange: function (hsb, hex, rgb) {
-                    $('#colorpicker-value').val('#'+hex);
-                    $('#colorpicker').css('backgroundColor', '#' + hex);
-                }
-			 
-            });
+            
 			
 
 
@@ -1239,37 +1224,84 @@ $(document).ready(function(){
 		
         $('#contact-form>*').wrap('<div class="form-content"></div>');
         $('#contact-form').append('<div class="form-report"></div>');
-		
-        $('#contact-form').submit(function(e){
-			
-            e.preventDefault();
-			
-            var form = $(this);
-            var action = $(this).attr('action');
-            var data = $(this).serialize();
-			
-            $.ajax({
-                type: "POST",
-                url: action,
-                data: data,  
-                beforeSend: function(){
-                    form.css('opacity', '0.5');
+	
+
+
+        $("#contact-form").validate({
+            rules: {
+                txt_ins_user_nombres: {
+                    required: true
                 },
-                success: function(data){
-					
-                    // Display returned data
-                    form.css('opacity', '1');
-                    form.find('.form-report').html(data);
-					
-                    // Hide Form on Success
-                    if (data.indexOf('class="success"') >= 0){
-                        form.find('.form-content').slideUp(300);
-                    }
-					
+                txt_ins_user_apellidos: {
+                    required: true
+                },
+                txt_ins_user_email: {
+                    required: true,
+                    email: true
+                },
+                txt_ins_user_clave: {
+                    required: true
+                },
+                txt_ins_user_repeclave: {
+                    required: true,
+                    equalTo: "#txt_ins_user_clave"
                 }
-            });
-			
+            },
+            messages: {
+                txt_ins_user_repeclave:{
+                    equalTo:"* Las contraseñas no coinciden"
+                }
+            },
+            submitHandler: function(form){
+                msgLoadSave("#sms_ins_user_add","#btn_ins_user_add");
+                $.ajax({
+                    type: "POST",
+                    url: $(form).attr('action'),
+                    cache: false,
+                    data: $(form).serialize(),
+                    success: function(data) {
+                        msgLoadSaveRemove("#btn_ins_user_add");
+                        //alert(data);
+                        if(data.trim() == 1){
+                            alert("exito");
+                        //enviar_email();
+                        //popup_sms_exito('#pop_reg_user','.close_popup')
+                        }else{
+                            alert("error");
+                        }
+                    },
+                    error: function() { 
+                        alert("Error code");
+                    //mensaje("Error Inesperado validando el usuario !, vuelva a intentarlo","r");   
+                    }              
+                });
+            }
         });
+
+
+//        $('#contact-form').submit(function(e){
+//			
+//            e.preventDefault();
+//			
+//            var form = $(this);
+//            var action = $(this).attr('action');
+//            var data = $(this).serialize();
+//			
+//            $.ajax({
+//                type: "POST",
+//                url: action,
+//                data: data,  
+//                success: function(data){
+//                    
+//                    
+//                    alert(data);
+//					
+//                    
+//					
+//                }
+//            });
+//			
+//        });
 		
     }	
 	
