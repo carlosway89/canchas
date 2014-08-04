@@ -14,7 +14,7 @@
             <img src="<?php echo $noticia_principal->foto_noticia; ?>" alt="">
         </div>
 
-        <h4 class="post-title"><a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia_principal; ?>_<?php echo $noticia_principal->nInfoID; ?>">
+        <h4 class="post-title"><a href="<?php echo URL_MAIN; ?>noticias/detalle/principal_<?php echo $noticia_principal->nInfoID; ?>">
                 <?php echo $noticia_principal->cInfoTitulo; ?>
             </a>
         </h4>
@@ -26,7 +26,7 @@
 
         <p><?php echo $noticia_principal->cInfoSumilla; ?></p>
 
-        <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia_principal; ?>_<?php echo $noticia_principal->nInfoID; ?>" class="button read-more-button big button-arrow">
+        <a href="<?php echo URL_MAIN; ?>noticias/detalle/principal_<?php echo $noticia_principal->nInfoID; ?>" class="button read-more-button big button-arrow">
             Leer más
         </a>
 

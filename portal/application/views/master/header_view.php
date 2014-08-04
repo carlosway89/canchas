@@ -118,7 +118,7 @@
                             <!-- Newsletter -->
                             <div class="col-lg-4 col-md-5 col-sm-5">
 
-                                <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
+                                <form id="newsletter" action="http://localhost/canchas/portal/acceso/autentication" method="POST">
 
                                     <h5>
                                         <i class="icons icon-laptop"></i>
