@@ -1,7 +1,7 @@
 <section id="style-switcher">
     <h2>Facebook <a href="#"><i class="icon-facebook"></i></a></h2>
     <div>
-        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FFavaratoExpress&amp;width=260&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="width:260px;border:none; overflow:hidden; height:258px;" allowTransparency="true"></iframe>
+        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FFavaratoExpress&amp;width=260&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=true" scrolling="no" style="width:260px;border:none; overflow:hidden; height:258px;"></iframe>
     </div>
 </section>
 

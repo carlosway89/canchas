@@ -79,7 +79,7 @@
                 <div id="fixture_content_show" style="display:none">
                     <!--fixture content -->
                 </div>
-                <link href="<?= URL_CSS ?>externo/externo.css" rel="stylesheet" type="text/css" />
+                <link href="<?= URL_CSS ?>externo/externo.css" rel="stylesheet" type="text/css" >
                 <script type="text/javascript" src="<?php echo URL_JS; ?>fixture/jsFixtureGet.js"></script>
 
                 <div id="noticias-resultados">
@@ -124,7 +124,7 @@
                 <!-- Publicidad de Anuncios -->
                 <br />
                 <div class="animate-onscroll">
-                    <img src="<?php echo URL_IMG ?>banner_anncia.png" style="width: 100%;" />
+                    <img src="<?php echo URL_IMG ?>banner_anncia.png" style="width: 100%;" alt="banner solocanchas" />
                 </div>
                 <br />
                 <!-- /Publicidad de Anuncios -->
@@ -139,7 +139,7 @@
                         <h3><i class="icons icon-facebook-squared"></i> SOLOCANCHAS.COM</h3>
                     </div>
                     <div>
-                        <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FSoloCanchasPeru&amp;width&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true"  frameborder="0" style="border:none;  height:250px;background: #FFF;" allowTransparency="true"></iframe>
+                        <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FSoloCanchasPeru&amp;width&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true"  frameborder="0" style="border:none;  height:250px;background: #FFF;"></iframe>
                     </div>
                 </div>
 

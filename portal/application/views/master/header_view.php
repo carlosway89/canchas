@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="solocanchas.com es una guía que reúne información de los mejores centros deportivos del pais"/>
         <meta name="author" content="Grupo SAV"/>
-        <meta name="keywords" content="futbol peruano, futbol internacional, deportes, noticias, en vivo, fixture, eventos"/>
+        <meta name="keywords" content="futbol, jugar, canchas, ver, deportes, noticias, en vivo, fixture, eventos, reservas, cerca, arriendo"/>
         <meta name="robots" content="INDEX,FOLLOW">
 
         <!-- Title -->
@@ -29,8 +29,7 @@
         <link href="<?php echo URL_CSS; ?>style.css" rel="stylesheet" type="text/css">
 
 
-
-        <style type="text/css">
+        <style type="text/css" rel="stylesheet">
             .no-fouc {display:none;}
         </style>
 
@@ -47,7 +46,7 @@
 
         <!-- Add fancyBox main JS and CSS files -->
         <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/jquery.fancybox.js?v=2.1.5"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5"  />
 
         <!-- Add Button helper (this is optional) -->
         <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
@@ -66,27 +65,6 @@
             });
         </script>
 
-
-        <!-- Add fancyBox main JS and CSS files -->
-        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/jquery.fancybox.js?v=2.1.5"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
-
-        <!-- Add Button helper (this is optional) -->
-        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
-        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-
-        <!-- Add Thumbnail helper (this is optional) -->
-        <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
-        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-
-        <!-- Add Media helper (this is optional) -->
-        <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.fancybox').fancybox();
-            });
-        </script>
 
     </head>
 

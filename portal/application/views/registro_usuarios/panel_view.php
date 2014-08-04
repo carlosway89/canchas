@@ -1,5 +1,5 @@
 
-<style type="text/css">
+<style type="text/css" rel="stylesheet">
     #clase_prueba { 
         -webkit-background-size: cover; 
         -moz-background-size: cover; 
