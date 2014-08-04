@@ -1212,97 +1212,57 @@ $(document).ready(function(){
         });	
 		
     }
-	
-	
-	
-	
-	
-	
+		
 	
     /* AJAX Contact Form */
     function enableContactForm(){
-		
         $('#contact-form>*').wrap('<div class="form-content"></div>');
         $('#contact-form').append('<div class="form-report"></div>');
 	
-
-
         $("#contact-form").validate({
             rules: {
-                txt_ins_user_nombres: {
+                contact_firstname: {
                     required: true
                 },
-                txt_ins_user_apellidos: {
+                contact_lastname: {
                     required: true
                 },
-                txt_ins_user_email: {
+                contact_email: {
                     required: true,
                     email: true
                 },
-                txt_ins_user_clave: {
+                contact_message: {
                     required: true
-                },
-                txt_ins_user_repeclave: {
-                    required: true,
-                    equalTo: "#txt_ins_user_clave"
-                }
-            },
-            messages: {
-                txt_ins_user_repeclave:{
-                    equalTo:"* Las contraseñas no coinciden"
                 }
             },
             submitHandler: function(form){
-                msgLoadSave("#sms_ins_user_add","#btn_ins_user_add");
+                msgLoadSave("#sms_ins_contacto","#btn_ins_contacto");
+                var nombres = $("#contact_firstname").val();
+                var apellidos = $("#contact_lastname").val();
+                var nombre_persona = apellidos + " " +nombres;
                 $.ajax({
                     type: "POST",
                     url: $(form).attr('action'),
                     cache: false,
                     data: $(form).serialize(),
                     success: function(data) {
-                        msgLoadSaveRemove("#btn_ins_user_add");
-                        //alert(data);
+                        msgLoadSaveRemove("#btn_ins_contacto");
                         if(data.trim() == 1){
-                            alert("exito");
-                        //enviar_email();
-                        //popup_sms_exito('#pop_reg_user','.close_popup')
+                            $("#nombre_persona").html('<b>'+nombre_persona+'</b>');
+                            $.fancybox({
+                                'href' : '#inline3'
+                            });
+                            limpiarForm("#contact-form");
                         }else{
                             alert("error");
                         }
                     },
                     error: function() { 
                         alert("Error code");
-                    //mensaje("Error Inesperado validando el usuario !, vuelva a intentarlo","r");   
                     }              
                 });
             }
         });
-
-
-//        $('#contact-form').submit(function(e){
-//			
-//            e.preventDefault();
-//			
-//            var form = $(this);
-//            var action = $(this).attr('action');
-//            var data = $(this).serialize();
-//			
-//            $.ajax({
-//                type: "POST",
-//                url: action,
-//                data: data,  
-//                success: function(data){
-//                    
-//                    
-//                    alert(data);
-//					
-//                    
-//					
-//                }
-//            });
-//			
-//        });
-		
     }	
 	
     /* AJAX Newsletter Form */
