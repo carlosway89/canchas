@@ -111,36 +111,36 @@
                                             <ul class="sesion-opciones list-inline">
                                                 <li>
                                                     <a class="logout" href="<?php echo URL_MAIN ?>acceso/logout">
-                                                     <i class="icon-off"></i> Cerrar Sesión
+                                                        <i class="icon-off"></i> Cerrar Sesión
                                                     </a>
                                                 </li>
                                             </ul>
-                                            
-                                            
 
-                                        <?php
+
+
+                                            <?php
                                         } else {
                                             $input_disabled = '';
                                             ?>
                                             ACCEDER AL <strong>SISTEMA</strong>
-                                        
-                                    </h5>
-                                    <div class="newsletter-form">
 
-                                        <div class="newsletter-email">
-                                            <input <?php echo $input_disabled; ?> type="text" id="txt_ins_login_user" name="txt_ins_login_user" placeholder="Usuario">
+                                        </h5>
+                                        <div class="newsletter-form">
+
+                                            <div class="newsletter-email">
+                                                <input <?php echo $input_disabled; ?> type="text" id="txt_ins_login_user" name="txt_ins_login_user" placeholder="Usuario">
+                                            </div>
+
+                                            <div class="newsletter-zip">
+                                                <input <?php echo $input_disabled; ?> type="password" id="txt_ins_login_clave" name="txt_ins_login_clave" placeholder="Contraseña">
+                                            </div>
+
+                                            <div class="newsletter-submit">
+                                                <input <?php echo $input_disabled; ?> id="btn_ins_login" type="submit" value="">
+                                                <i class="icons icon-login"></i>
+                                            </div>
+
                                         </div>
-
-                                        <div class="newsletter-zip">
-                                            <input <?php echo $input_disabled; ?> type="password" id="txt_ins_login_clave" name="txt_ins_login_clave" placeholder="Contraseña">
-                                        </div>
-
-                                        <div class="newsletter-submit">
-                                            <input <?php echo $input_disabled; ?> id="btn_ins_login" type="submit" value="">
-                                            <i class="icons icon-login"></i>
-                                        </div>
-
-                                    </div>
                                     <?php } ?>
 
                                 </form>
@@ -154,6 +154,12 @@
 
                 </div>
                 <!-- /Main Header -->
-<?php $this->load->view("master/menu_view"); ?>
+                <?php $this->load->view("master/menu_view"); ?>
+                <div id="inline1" style="width:700px;display: none;">
+                    <?php $this->load->view("registro_usuarios/panel_view"); ?>    
+                </div>
+                <div id="inline2" style="width:500px;display: none;">
+                   Se ha registrado al uduario correctamente.
+                </div>
             </header>
             <!-- /Header -->
