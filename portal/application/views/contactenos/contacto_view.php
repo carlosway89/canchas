@@ -34,7 +34,7 @@
                     <div class="side-segment">
                         <h3>Oficina Central</h3>
                     </div>
-                    
+
                     <p><i class="icons icon-home"></i> <b>Dirección</b> Jirón Grau 440 2º Nivel A-13</p>
                     <p><i class="icons icon-email"></i> <b>Email</b>  <a href="#">comercial@gsavt.com</a></p>
                     <p><i class="icons icon-phone"></i> <b>Teléfono</b> (044) - 293750</p>
@@ -51,6 +51,11 @@
                     </div>
 
                 </div>			
+            </div>
+
+            <div id="inline3" style="width:500px;display: none;">
+                Gracias por escribirnos <span id="nombre_persona"></span>. Tu mensaje será respondido dentro de 
+                las 24 horas del día.
             </div>
             <!-- /Sidebar -->
 
