@@ -60,6 +60,30 @@ class Usuarios extends CI_Controller {
         $data["nombreuser"] = $this->usuario_model->getPerApellidos()." ".$this->usuario_model->getPerNombres();
         $this->load->view('usuarios/permisos/panel_view', $data);
     }
+    
+    function usuariosUpd($nPerID) {
+        $this->form_validation->set_rules('txt_upd_user_nombres', 'nombres', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_user_apellidos', 'apellidos', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_user_email', 'email', '|trim|required');
+        $this->form_validation->set_message('required', 'El campo %s es requerido');
+
+        if ($this->form_validation->run() == true) {
+            $this->usuario_model->setPerId($nPerID);
+            $this->usuario_model->setPerNombres($this->input->post('txt_upd_user_nombres'));
+            $this->usuario_model->setPerApellidos($this->input->post('txt_upd_user_apellidos'));
+            $this->usuario_model->setPerEmail($this->input->post('txt_upd_user_email'));
+            
+            $result = $this->usuario_model->usuariosUpd();
+
+            if ($result) {
+               echo 1;
+            } else {
+                echo 0;
+            }
+        } else {
+            echo "Error de validacion";
+        }
+    }
 
     function usuariosDel($nUsuID) {
         $this->usuario_model->getDatosUsuario(array('LIST-PERSON-POR-CODE-PERSONA', $nUsuID, ''));

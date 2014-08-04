@@ -2,10 +2,7 @@ $(function(){
     
     limpiarForm("#frm_ins_registro_users");
     
-    
-    
-    $.fancybox({'href' : '#inline2'});
-
+  
     // ACCION BUTTON REGISTRO USUARIOS
     $("#btn_ins_users").bind('click', function(event){
 
@@ -72,9 +69,9 @@ function registro_usuarios(){
                 limpiarForm("#frm_ins_registro_users");
                 msgLoadSaveRemove("#btn_ins_users");
                 alert("Registro exitoso");
-                $.fancybox.close();
+                //$.fancybox.close();
                 
-                
+                $.fancybox({'href' : '#inline2'});
                 
                 
                 
