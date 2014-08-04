@@ -59,6 +59,7 @@ $(function(){
         
 function registro_usuarios(){
     msgLoadSave("#sms_ins_user","#btn_ins_users")
+    var email = $("#txt_ins_user_email").val();
     var form = "#frm_ins_registro_users";
     $.ajax({
         type: "POST",
@@ -68,16 +69,9 @@ function registro_usuarios(){
             if(msg.trim()==1){        
                 limpiarForm("#frm_ins_registro_users");
                 msgLoadSaveRemove("#btn_ins_users");
-                alert("Registro exitoso");
-                //$.fancybox.close();
                 
+                $("#email_user").html('<b>'+email+'</b>');
                 $.fancybox({'href' : '#inline2'});
-                
-                
-                
-                
-                
-                
             }else{
                 alert("No se ha registrado bien");
             }                    
