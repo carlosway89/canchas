@@ -8,8 +8,6 @@
     </section>
     <!-- Page Heading -->
 
-
-
     <!-- Section -->
     <section class="section full-width-bg gray-bg">
 
@@ -37,9 +35,9 @@
                         <h3>Oficina Central</h3>
                     </div>
                     
-                    <p><i class="icons icon-home"></i> <b>Dirección</b> 9863 Mill Road, Cambridge, MG09 99HT</p>
-                    <p><i class="icons icon-email"></i> <b>Email</b>  <a href="#">gsavt-administrador@hotmail.com</a></p>
-                    <p><i class="icons icon-phone"></i> <b>Teléfono</b> 1 800 559 6580</p>
+                    <p><i class="icons icon-home"></i> <b>Dirección</b> Jirón Grau 440 2º Nivel A-13</p>
+                    <p><i class="icons icon-email"></i> <b>Email</b>  <a href="#">comercial@gsavt.com</a></p>
+                    <p><i class="icons icon-phone"></i> <b>Teléfono</b> (044) - 293750</p>
                 </div>
 
 
@@ -49,31 +47,9 @@
                     </div>
 
                     <div class="contact-map">
-                        <iframe width="900" height="200" src="https://maps.google.rs/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=marmora+road&amp;sll=44.210767,20.922416&amp;sspn=4.606139,10.821533&amp;ie=UTF8&amp;hq=&amp;hnear=Marmora+Rd,+London+SE22+0RX,+United+Kingdom&amp;t=m&amp;z=14&amp;ll=51.451955,-0.055755&amp;output=embed"></iframe>
+                        <div id="mapa-de-contactos" class="map-contacto clase-maps-google"></div>
                     </div>
 
-<!--                    <div class="row">
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 animate-onscroll">
-                            <h6>Mailing Address</h6>
-                            <p>9863 - 9867 Mill Road, <br>
-                                Cambridge, MG09 99HT </p>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 animate-onscroll">
-                            <h6>Phone Numbers</h6>
-                            <p>+1 800 559 6580<br>
-                                1 800 603 6035 (Fax)</p>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 animate-onscroll">
-                            <h6>Email Addresses</h6>
-                            <p>
-                                <a href="mailto:mail@companyname.com">mail@companyname.com</a><br>
-                                <a href="mailto:info@companyname.com">info@companyname.com</a>
-                            </p>
-                        </div>
-                    </div>-->
                 </div>			
             </div>
             <!-- /Sidebar -->
@@ -82,3 +58,36 @@
     </section>
     <!-- /Section -->
 </section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function(){
+            initialize_maps()
+        }, 500);
+    });
+    
+    // FUNCIÓN PARA CARGAR MAPA DE CONTACTANOS
+    function initialize_maps(){
+        var popupinicial;
+        var myOptions = {
+            center: new google.maps.LatLng(-8.115159105817382,-79.02586688413083),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    
+        var map = new google.maps.Map(document.getElementById("mapa-de-contactos"),myOptions);       
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(-8.115159105817382,-79.02586688413083),
+            map: map,	   
+            title: 'Grupo Savt Tecnología'		
+        });
+    
+        if(!popupinicial){
+            popupinicial = new google.maps.InfoWindow();
+        }
+           
+        var contenido='Grupo Savt Tecnología';
+        popupinicial.setContent(contenido);
+        popupinicial.open(map, marker);
+    }
+</script>
