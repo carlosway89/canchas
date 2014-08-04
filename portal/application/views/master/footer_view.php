@@ -56,16 +56,8 @@
 <!-- Calendar -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>responsive-calendar.min.js"></script>
 
-
-
 <!-- Chosen -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>chosen.jquery.min.js"></script>
-
-
-
-<!-- JackBox -->
-<!--<script type="text/javascript" src="<?php echo URL_JS; ?>jackbox/js/jackbox-packed.min.js"></script>-->
-
 
 <!-- PrettyPhoto -->
 <script src="<?php echo URL_JS; ?>jquery.prettyPhoto.js"></script>
@@ -80,7 +72,6 @@
 <script type="text/javascript" src="<?php echo URL_JS; ?>underscore-min.js"></script>
 <!-- Calendar Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>jstz.js"></script>
-
 <!--parse plugin server-->
 <script src="<?php echo URL_JS; ?>parse.js"></script>
 

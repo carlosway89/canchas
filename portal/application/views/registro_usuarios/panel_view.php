@@ -12,8 +12,6 @@
         background-position: left top, right bottom, 0 0;
     }
 </style>
-<!--<link type="text/css" rel="stylesheet" href="<?php echo URL_CSS; ?>validate/validation.css" />
-<script type="text/javascript" src="<?php echo URL_JS; ?>validacion/jqueryvalidate.js"></script>-->
 <script type="text/javascript" src="<?php echo URL_JS; ?>jsRegistroUsuarios.js"></script>
 <div id="clase_prueba">
     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -40,7 +38,6 @@
                 ?>
 
                 <?php echo form_open('http://localhost/canchas/portal/registro_usuarios/usuariosIns', $atributosForm); ?>
-                <?php //echo form_open('http://solocanchas.com/portal/registro_usuarios/usuariosIns', $atributosForm); ?>
                 <div id="error_form_register_users"></div>
                 <?php echo $txt_ins_user_nombres; ?>
                 <?php echo $txt_ins_user_apellidos; ?>
