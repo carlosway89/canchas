@@ -46,7 +46,7 @@
 
                             <div class="event-content">
                                 <h6>
-                                    <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_noticias->nInfoID; ?>">
+                                    <a href="<?php echo URL_MAIN; ?>noticias/detalle/noticia_<?php echo $list_noticias->nInfoID; ?>">
                                         <?php echo $list_noticias->cInfoTitulo; ?>
                                     </a>
                                 </h6>
