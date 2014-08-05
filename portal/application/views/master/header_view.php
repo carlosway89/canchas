@@ -38,8 +38,7 @@
         <script src="<?php echo URL_JS; ?>jquery-ui-1.10.4.min.js"></script>
 
         <!-- Preloader -->
-        <script src="<?php echo URL_JS; ?>jquery.queryloader2.min.js"></script>
-        <script src="<?php echo URL_JS; ?>jsCustomHeader.js"></script>
+        
 
         <script src="<?php echo URL_JS; ?>validacion/jqueryvalidate.js"></script>
 
@@ -76,7 +75,7 @@
         <div class="container">
 
             <!-- Header -->
-            <header id="header" class="animate-onscroll">
+            <header id="header" class="">
 
                 <!-- Main Header -->
                 <div id="main-header">
@@ -86,25 +85,19 @@
                         <div class="row">
 
                             <!-- Logo -->
-                            <div id="logo" class="col-lg-4 col-md-3 col-sm-3">
-
+                            <div id="logo" class="col-xs-12 col-lg-4 col-md-3 col-sm-3">
                                 <a href="#"><img src="<?php echo URL_IMG; ?>logo.png" alt="Logo" width="331" height="101" style="margin-top:-20px"></a>
-
-
-
                             </div>
                             <!-- /Logo -->
 
                             <!-- Main Quote -->
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-
-                                <!--                                <blockquote>Nam elit agna,enderit sit amet, tinciunt ac,<br>viverra sed, nulla..</blockquote>-->
-
+                            <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4">
+                                &nbsp;
                             </div>
                             <!-- /Main Quote -->
 
                             <!-- Newsletter -->
-                            <div class="col-lg-4 col-md-5 col-sm-5">
+                            <div class="col-xs-12 col-lg-4 col-md-5 col-sm-5">
 
                                 <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
 

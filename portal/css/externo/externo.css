@@ -130,11 +130,15 @@ ul.paginador-fixture>.next>a{
 @media (max-width: 480px){
 
 	.fixture-navegador, .fixture-navegador:hover {
-	    padding: 1px 5px;
+	    padding: 0px;
+		float: left;
+		margin-right: 100px;
+		margin-top: 10px;
+		margin-left: 10%;
 	}
 	.option-select {
 	    width: 100%;
-	    height: 150px;
+	    height: 200px;
 	}
 	#resultados-envivo > a {
 	    width: 100%;

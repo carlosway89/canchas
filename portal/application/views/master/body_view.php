@@ -12,7 +12,7 @@
 
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
                 <div class="banner-wrapper">
-                    <div class="banner_new donate-banner2 animate-onscroll">
+                    <div class="banner_new donate-banner2">
                         <div class="side-segment">
                             <h5>Búsqueda de <strong>Canchas</strong></h5>
                         </div>
@@ -73,7 +73,8 @@
                     <!-- <a id="link-calendario" class="fixture-navegador" href="#calendario">CALENDARIO</a> -->
                     <a id="link-goleadores" class="fixture-navegador" href="#goleadores">GOLEADORES</a>
                     <div id="resultados-envivo"></div>
-                </div><br>
+                </div>
+                <br>
 
 
                 <div id="fixture_content_show" style="display:none">
@@ -98,7 +99,7 @@
                 <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
                 <!-- END -->	
 
-                <div class="animate-onscroll">
+                <div class="">
                     <img src="<?php echo URL_IMG ?>ban.png" style="width: 100%;" alt="solocanchas.com" />
                 </div>
                 <!-- /Banner Rotator -->						
@@ -109,7 +110,7 @@
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
 
                 <!-- Featured Video -->
-                <div class="sidebar-box white featured-video animate-onscroll">
+                <div class="sidebar-box white featured-video ">
                     <div class="side-segment">
                         <h3><i class="icons icon-info-circled"></i> SOLO CANCHAS</h3>
                     </div>
@@ -123,7 +124,7 @@
 
                 <!-- Publicidad de Anuncios -->
                 <br />
-                <div class="animate-onscroll">
+                <div class="">
                     <img src="<?php echo URL_IMG ?>banner_anncia.png" style="width: 100%;" alt="banner solocanchas" />
                 </div>
                 <br />
@@ -134,7 +135,7 @@
                 <!-- /Sección de Eventos -->						
 
 
-                <div class="sidebar-box white animate-onscroll">
+                <div class="sidebar-box white animate-onscroll hidden-xs">
                     <div class="side-segment">
                         <h3><i class="icons icon-facebook-squared"></i> SOLOCANCHAS.COM</h3>
                     </div>
@@ -144,7 +145,7 @@
                 </div>
 
 
-                <div class="sidebar-box white animate-onscroll">
+                <div class="sidebar-box white animate-onscroll hidden-xs">
                     <div class="side-segment">
                         <h3><i class="icons icon-youtube"></i> SOLOCANCHAS.COM</h3>
                     </div>

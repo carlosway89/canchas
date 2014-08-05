@@ -6,11 +6,11 @@
     <!-- Lower Footer -->
     <div id="lower-footer">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 animate-onscroll">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
                 <p class="copyright">© 2014 SoloCanchas. Todos los derechos reservados.</p>
             </div>
 
-            <div class="col-lg-8 col-md-8 col-sm-8 animate-onscroll">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
                 <div class="social-media">
                     <ul class="social-icons">
                         <li class="facebook"><a href="#" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>

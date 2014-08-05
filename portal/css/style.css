@@ -3,7 +3,8 @@ html{
 }
 
 body{
-    overflow:hidden;
+    overflow:hidden !important;
+    width:100% !important;
     font: 15px/23px 'Open Sans', Segoe UI, Arial, sans-serif;
     color:#3e474c;
     background:url(../img/body-background.jpg) repeat;
@@ -1313,7 +1314,7 @@ h6.shortcodes-caption{
 
 .blog-post.big .post-title{
     margin-top:0;
-    font-size:24px;
+    font-size:20px;
     font-weight:400;
 }
 
@@ -8242,6 +8243,9 @@ input.numeric-input:focus{
     .section.full-width-map, .section.full-width-image {
         height: 150px;
         overflow: hidden;
+    }
+    body{
+        background:none;
     }
 
 }

@@ -20,7 +20,7 @@
         </h4>
 
         <div class="post-meta">
-            <span>Por <a href="#"><?php echo $noticia_principal->cInfoAutor; ?></a></span>
+            <span>Por <span class="text-info"><?php echo $noticia_principal->cInfoAutor; ?></span></span>
             <span><?php echo $noticia_principal->dInfoFechaRegistro; ?></span>
         </div>
 
