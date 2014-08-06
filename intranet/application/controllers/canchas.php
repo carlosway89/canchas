@@ -186,6 +186,7 @@ class Canchas extends CI_Controller {
     }
     function galeria(){
 
+
         $id_cancha=$this->uri->segment(3);
         if($id_cancha==null || $id_cancha==0)
             redirect(base_url().'canchas');
@@ -243,9 +244,27 @@ class Canchas extends CI_Controller {
     }
     function delete_foto(){
 
+
+
         $ID = $this->uri->segment(3);
         if ($this->codegen_model->delete('multimedia_canchas', 'nMultID', $ID)) {
            if ($this->codegen_model->delete('multimedia', 'nMultID', $ID)) {
+
+                $imagen=$this->uri->segment(5);
+                // abrimos la sesión cURL
+                $ch = curl_init("https://api.parse.com/1/files/".$imagen.'.jpg');
+
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, "");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                //declaramos los header
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Parse-Application-Id: xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW','X-Parse-Master-Key: R6HGHuynLGZ496sgMKAr5tYAQyye7DRhAMswLLbs'));
+
+                //ejecutamos el CURL
+                curl_exec ($ch);
+                // cerramos la sesión cURL
+                curl_close ($ch);
+
               redirect(base_url() . 'canchas/galeria/'.$this->uri->segment(4));
            }
         }

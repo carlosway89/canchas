@@ -70,11 +70,7 @@ window.jQuery || document.write("<script src='<?php echo URL_JS; ?>jquery-1.10.2
                     <div class="col-sm-10 col-sm-offset-1">
                         <div class="login-container">
                             <div class="center">
-                                <h1>
-                                    <i class="icon-leaf green"></i>
-                                    <span class="red">Solo</span>
-                                    <span class="white">Canchas</span>
-                                </h1>
+                                <img src="<?=URL_IMG?>SOLO_CANCHAS.png" alt="logo solocanchas" style="margin-top: 60px;">
                             </div>
 
                             <div class="space-6"></div>

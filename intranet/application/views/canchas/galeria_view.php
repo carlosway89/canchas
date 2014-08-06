@@ -35,8 +35,11 @@
 						</a>
 
 						<div class="tools tools-right">
-																
-							<a href="#" onClick="return deletechecked('<?=URL_MAIN?>canchas/delete_foto/<?=$list_galeria->nMultID?>/<?=$list_galeria->nCanID?>');" >
+							<?php 
+                $imagen_link=str_replace('http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/','',$list_galeria->cMultLink);
+                $imagen_link= str_replace('.jpg','',$imagen_link);
+              ?>
+							<a href="#" onClick="return deletechecked('<?=URL_MAIN?>canchas/delete_foto/<?=$list_galeria->nMultID?>/<?=$list_galeria->nCanID?>/<?=$imagen_link;?>');" >
 								<i class="icon-remove red"></i>
 							</a>
 						</div>
@@ -206,32 +209,6 @@
              });
 
       }
-
-      function deleteImage(imagen){
-
-        var serverUrl = 'https://api.parse.com/1/files/' + imagen;
-
-          $.ajax({
-            type: "DELETE",
-            beforeSend: function(request) {
-              request.setRequestHeader("X-Parse-Application-Id", 'xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW');
-              request.setRequestHeader("X-Parse-REST-API-Key", 'glPBhAwIPdKBq9BRVcXFAiJkJEg5wtqycL0idMzW');
-            },
-            url: serverUrl,
-            processData: false,
-            contentType: false,
-            success: function(data) {
-              console.log('bien'+data);              
-
-            },
-            error: function(data) {
-              console.log('error' +data);
-            }
-
-          });
-
-      }
-
       
 </script>
 
