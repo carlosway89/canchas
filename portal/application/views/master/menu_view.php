@@ -51,7 +51,7 @@
             <!-- /Contactenos -->
 
             <!-- Registro de Usuarios -->
-            <li class="donate-button ">
+            <li class="registro-button ">
                 <?php 
                 if ($this->session->userdata("Nombres") == "") {?>
                 <a class="fancybox media-icon" href="#inline1"><i class="icons icon-users"></i> Registro de Usuarios</a>

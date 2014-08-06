@@ -1328,6 +1328,10 @@ $(document).ready(function(){
             }
 					
             if(!error){
+                $('.newsletter-submit').hide();
+                $('.newsletter-loading').show();
+                $('form#newsletter').find('input').attr('disabled','disabled');
+
                 $.ajax({
                     type: "POST",
                     url: action,
@@ -1337,7 +1341,11 @@ $(document).ready(function(){
                         if(data.trim() == 1){
                             window.open("http://"+ruta+"/intranet/manage", "_self");
                         }else{
-                            window.open("http://"+ruta+"/portal/", "_self");
+                            $('form#newsletter').find('input').removeAttr('disabled');
+                            $('.newsletter-submit').show();
+                            $('.newsletter-loading').hide('');
+                            $("#titulo-acceder").hide();
+                            $("#notificacion-error").fadeIn();
                         }
                     }
                 });

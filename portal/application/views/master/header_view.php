@@ -101,7 +101,7 @@
 
                                 <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
 
-                                    <h5>
+                                    <h5 id="titulo-acceder">
                                         <i class="icons icon-laptop"></i>
                                         <?php
                                         if ($this->session->userdata("Nombres") != "") {
@@ -124,10 +124,17 @@
                                         } else {
                                             $input_disabled = '';
                                             ?>
-                                            ACCEDER AL <strong>SISTEMA</strong>
+                                                ACCEDER AL <strong>SISTEMA</strong>
+                                            
+                                            
+                                            
 
                                         </h5>
+                                        <span id="notificacion-error" class="alert-danger" style="display:none">
+                                            Usuario no habilitado o error de contraseña
+                                        </span>
                                         <div class="newsletter-form">
+
 
                                             <div class="newsletter-email">
                                                 <input <?php echo $input_disabled; ?> type="text" id="txt_ins_login_user" name="txt_ins_login_user" placeholder="Usuario">
@@ -140,6 +147,9 @@
                                             <div class="newsletter-submit">
                                                 <input <?php echo $input_disabled; ?> id="btn_ins_login" type="submit" value="">
                                                 <i class="icons icon-login"></i>
+                                            </div>
+                                            <div class="newsletter-loading" style="display:none">
+                                                <img src="img/loading.gif">
                                             </div>
 
                                         </div>

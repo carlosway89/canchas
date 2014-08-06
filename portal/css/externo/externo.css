@@ -67,7 +67,7 @@ ul.paginador-fixture>.next>a{
 	width:200px !important;
 	color:white ;
 	font-size: 14px;
-	font-size: bold;
+	font-weight: bolder;
 
 }
 .fixture-navegador:first-child{
@@ -127,6 +127,7 @@ ul.paginador-fixture>.next>a{
 	font-weight: bolder;
 
 }
+
 @media (max-width: 480px){
 
 	.fixture-navegador, .fixture-navegador:hover {

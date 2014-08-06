@@ -110,7 +110,7 @@
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
 
                 <!-- Featured Video -->
-                <div class="sidebar-box white featured-video ">
+                <div class="sidebar-box white featured-detalle ">
                     <div class="side-segment">
                         <h3><i class="icons icon-info-circled"></i> SOLO CANCHAS</h3>
                     </div>
@@ -145,14 +145,14 @@
                 </div>
 
 
-                <div class="sidebar-box white animate-onscroll hidden-xs">
+                <!-- <div class="sidebar-box white animate-onscroll hidden-xs">
                     <div class="side-segment">
                         <h3><i class="icons icon-youtube"></i> SOLOCANCHAS.COM</h3>
                     </div>
                     <div>
 
                     </div>
-                </div>
+                </div> -->
 
 
                 <!-- Image Banner -->
