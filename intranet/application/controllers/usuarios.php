@@ -12,6 +12,13 @@ class Usuarios extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('admin/usuario_model');
         $this->load->model('admin/permisos_model');
+
+        $this->load->model('admin/permisos_model');
+
+        $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Usuarios'));
+
+        if(!$acceso)
+            redirect(base_url().'manage');
     }
 
     public function index() {

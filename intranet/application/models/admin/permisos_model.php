@@ -61,6 +61,15 @@ class permisos_model extends CI_Model {
             return null;
         }
     }
+    function permisos($Parametros) {
+        $query = $this->db->query("CALL USP_GEN_S_USUARIOS_OPCIONES (?,?,?)", $Parametros);
+        $this->db->close();
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

@@ -9,6 +9,8 @@ class Multimedia extends CI_Controller {
         $this->load->model('codegen_model','',TRUE);
         $this->load->model('admin/noticias_model');
         $this->loaders->verificaAcceso('W');
+
+        
     }   
     
     function index(){
@@ -21,13 +23,19 @@ class Multimedia extends CI_Controller {
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';
         $this->data['breadcrumbs'] = 'Multimedia';
-        $this->data['list_multimedia'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultFechaRegistro,cMultFechaInicial,cMultFechaFinal,nParID,cMultEstado,cMultNumVisitas', '', null);
+        $this->data['list_multimedia'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultFechaRegistro,cMultFechaInicial,cMultFechaFinal,nParID,cMultEstado,cMultNumVisitas', 'nMultCategID = 4', null);
 
         $this->load->view('master/template_view', $this->data);
 
     }
     function noticias(){
+        $this->load->model('admin/permisos_model');
 
+        $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Noticias'));
+
+        if(!$acceso)
+            redirect(base_url().'manage');
+        
         $this->data['main_content'] = 'multimedia/noticia_list';
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';

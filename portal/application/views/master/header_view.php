@@ -14,7 +14,7 @@
         <title><?php echo $title; ?></title>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+        <link rel="icon" type="image/png" href="http://localhost/canchas/portal/img/favicon.ico" />
 
         <!-- Stylesheets -->
         <link href="<?php echo URL_CSS; ?>bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -99,7 +99,7 @@
                             <!-- Newsletter -->
                             <div class="col-xs-12 col-lg-4 col-md-5 col-sm-5">
 
-                                <form id="newsletter" action="http://localhost/canchas/portal/acceso/autentication" method="POST">
+                                <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
 
                                     <h5 id="titulo-acceder">
                                         <i class="icons icon-laptop"></i>

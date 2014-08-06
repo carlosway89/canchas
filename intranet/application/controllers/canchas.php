@@ -14,6 +14,12 @@ class Canchas extends CI_Controller {
         $this->load->model('admin/ubigeo_model');
         $this->load->model('codegen_model', '', TRUE);
         $this->loaders->verificaAcceso('W');
+
+        $this->load->model('admin/permisos_model');
+
+        $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Canchas'));
+        if(!$acceso)
+            redirect(base_url().'manage');
     }
 
     public function index() {

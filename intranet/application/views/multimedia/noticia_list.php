@@ -48,8 +48,10 @@
 
 				<tbody>
 					<?php
-	
-					foreach ($list_noticias as $list_noticias) {
+					$n=count($list_noticias);
+					if($n>1){
+
+						foreach ($list_noticias as $list_noticias) {
 						?>
 						<tr>
 							
@@ -104,7 +106,9 @@
 								</div>
 							</td>
 						</tr>
-					<?php }?>
+					<?php }
+						}
+					?>
 
 				</tbody>
 			</table>

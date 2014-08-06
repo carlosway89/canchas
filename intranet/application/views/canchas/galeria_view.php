@@ -207,6 +207,31 @@
 
       }
 
+      function deleteImage(imagen){
+
+        var serverUrl = 'https://api.parse.com/1/files/' + imagen;
+
+          $.ajax({
+            type: "DELETE",
+            beforeSend: function(request) {
+              request.setRequestHeader("X-Parse-Application-Id", 'xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW');
+              request.setRequestHeader("X-Parse-REST-API-Key", 'glPBhAwIPdKBq9BRVcXFAiJkJEg5wtqycL0idMzW');
+            },
+            url: serverUrl,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+              console.log('bien'+data);              
+
+            },
+            error: function(data) {
+              console.log('error' +data);
+            }
+
+          });
+
+      }
+
       
 </script>
 

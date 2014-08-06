@@ -8,6 +8,13 @@ class Eventos extends CI_Controller {
         $this->load->helper(array('form', 'url', 'codegen_helper'));
         $this->load->model('codegen_model', '', TRUE);
         $this->loaders->verificaAcceso('W');
+
+        $this->load->model('admin/permisos_model');
+
+        $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Eventos'));
+        
+        if(!$acceso)
+            redirect(base_url().'manage');
     }
 
     function index() {
@@ -15,7 +22,8 @@ class Eventos extends CI_Controller {
         $this->data['title'] = '.: Solo Canchas - Intranet :.';
         $this->data['menu_home'] = 'intranet';
         $this->data['breadcrumbs'] = 'Eventos';
-        $this->data['list_eventos'] = $this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', '', null);
+        $filtro=$this->session->userdata('tipo')=='1'?'':'nUsuario = '.$this->session->userdata('nUsuID');
+        $this->data['list_eventos'] = $this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', $filtro, null);
 
         $this->load->view('master/template_view', $this->data);
     }
@@ -136,7 +144,7 @@ class Eventos extends CI_Controller {
                     'dEveFechaRegistro' => $_POST['dEveFechaRegistro'],
                     'cEveEstado' => $_POST['cEveEstado'],
                     'nEveCosto' => $_POST['nEveCosto'],
-                    'nUsuario' => $_POST['nUsuario']
+                    'nUsuario' => $this->session->userdata('nUsuID')
                     );
 
 
@@ -222,8 +230,7 @@ class Eventos extends CI_Controller {
                     'nUbiDistrito' => $_POST['nUbiDistrito'],
                     'dEveFechaRegistro' => $_POST['dEveFechaRegistro'],
                     'cEveEstado' => $_POST['cEveEstado'],
-                    'nEveCosto' => $_POST['nEveCosto'],
-                    'nUsuario' => $_POST['nUsuario']
+                    'nEveCosto' => $_POST['nEveCosto']
                 );
 
 

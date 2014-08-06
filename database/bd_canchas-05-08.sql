@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 05-08-2014 a las 19:48:18
--- Versión del servidor: 5.5.38
--- Versión de PHP: 5.3.10-1ubuntu3.13
+-- Servidor: localhost:3306
+-- Tiempo de generación: 06-08-2014 a las 01:19:40
+-- Versión del servidor: 5.1.68-community
+-- Versión de PHP: 5.4.23
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,14 +17,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `bd_canchas`
+-- Base de datos: `canchas_nueva`
 --
 
 DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_I_CANCHAS`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_I_CANCHAS`(
 IN _accion varchar(50),
 IN _nombre varchar (100),
 IN _descripcion varchar (500),
@@ -99,7 +99,7 @@ END IF;
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_I_USUARIOS`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_I_USUARIOS`(
 IN _accion varchar(50),
 IN _nombres varchar (100),
 IN _apellidos varchar (100),
@@ -127,7 +127,7 @@ VALUES(@_codpersona,_email,_contraseña,'2',now(),'I');
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_CANCHAS`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_CANCHAS`(
 IN _accion varchar(50),
 IN _criterio varchar(100),
 IN _iddepa char(5),
@@ -271,7 +271,7 @@ where can.nCanID = CAST(_criterio AS UNSIGNED);
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_COMENTARIOS_CANCHAS`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_COMENTARIOS_CANCHAS`(
 IN _accion varchar(50)
 )
 BEGIN
@@ -284,7 +284,7 @@ ORDER BY 1 DESC;
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_MENU`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_MENU`(
 in _nUsuID integer,
 in _nAplID integer,
 in _cOpdPlataforma char(1)
@@ -298,7 +298,7 @@ AND UO.cUsoEstado='H' AND O.cOpcEstado='H' AND OD.cOpdEstado='H'
 ORDER BY O.cOpcDescripcion ASC;
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_NOTICIAS`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_NOTICIAS`(
 IN _accion varchar(50),
 IN _criterio varchar (100)
 )
@@ -349,7 +349,7 @@ ORDER BY info.nInfoVisitas LIMIT 0,1;
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_PERSONA`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_PERSONA`(
 in _accion varchar(50),
 in _criterio varchar(100), -- codigo o criterio string
 in _valor varchar(50)
@@ -403,7 +403,7 @@ END if;
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_UBIGEO`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_UBIGEO`(
 IN Accion varchar(50),
 IN Criterio varchar(50),
 IN Opcional varchar(50)
@@ -426,7 +426,7 @@ nUbiProvincia=cast(Opcional AS UNSIGNED)  AND nUbiDistrito <> 0 and cUbiEstado =
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_USER_CLAVE`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_USER_CLAVE`(
 IN _nPerID integer,
 IN _usuario varchar(30) , 
 IN _clave varchar(100)
@@ -439,7 +439,7 @@ and cPerEstado='H'
 and cUsuEstado='H'; 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_USUARIOS_OPCIONES`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_USUARIOS_OPCIONES`(
 in _accion varchar(50),
 in _criterio  varchar(100),
 in _criterio2 varchar(100)
@@ -460,6 +460,12 @@ INNER JOIN  opciones_detalle opde ON opc.nOpcID=opde.nOpcID
 WHERE apl.cAplEstado='H' AND opc.cOpcEstado='H' AND opde.cOpdEstado='H' AND opde.cOpdPlataforma='W'
 ORDER BY apl.nAplID ASC;
 
+-- MOSTRAR PERMISOS USUARIO--
+ELSEIF _accion = 'ACCESO-PERMISO-USER' THEN
+select us.nUsoID from usuarios_opciones us
+inner join opciones o on o.nOpcID=us.nOpcID
+where us.nUsuID = cast(_criterio AS UNSIGNED) and o.cOpcDescripcion = _criterio2;
+
 -- ELIMINAR USUARIOS_OPCIONES
 ELSEIF _accion='DELETE-USUARIOS-OPCIONES' THEN
 DELETE FROM usuarios_opciones WHERE nUsuID = cast(_criterio AS UNSIGNED);
@@ -475,11 +481,11 @@ UPDATE usuarios SET cUsuEstado = 'H' WHERE nUsuID = cast(_criterio AS UNSIGNED);
 end if;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_S_VALIDAR_USUARIO`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_S_VALIDAR_USUARIO`(
 IN _usuario varchar(30) , 
 IN _clave varchar(100)
 )
-SELECT u.cUsuNick, p.cPerApellidos,p.cPerNombres,u.nPerID,u.nUsuID 
+SELECT u.cUsuNick, p.cPerApellidos,p.cPerNombres,u.nPerID,u.nUsuID,u.cUsuTipo 
 	FROM usuarios u 
 	INNER JOIN persona p ON p.nPerID = u.nPerID 
 	WHERE 
@@ -488,7 +494,7 @@ SELECT u.cUsuNick, p.cPerApellidos,p.cPerNombres,u.nPerID,u.nUsuID
 	p.cPerEstado = 'H' AND 
 	u.cUsuEstado = 'H'$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_U_CANCHAS`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_U_CANCHAS`(
 IN _accion varchar(50),
 IN _codigo int (11),
 IN _criterio varchar (100),
@@ -571,7 +577,7 @@ END IF;
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GEN_U_USUARIOS`(
+CREATE DEFINER=`canch_admin`@`%` PROCEDURE `USP_GEN_U_USUARIOS`(
 IN _accion varchar(50),
 IN _codigo int(11),
 IN _nombres varchar (100),
@@ -654,7 +660,7 @@ CREATE TABLE IF NOT EXISTS `canchas` (
   `cCanEstado` char(1) NOT NULL,
   `cCanFotoPortada` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`nCanID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `canchas`
@@ -670,8 +676,9 @@ INSERT INTO `canchas` (`nCanID`, `cCanNombre`, `cCanDescripcion`, `cCanLatitud`,
 (7, 'MARANGONI ROSALES', 'Volviendo hacia la zona norte, detrás del club Obras Sanitarias, se destaca el predio de canchas Muni Fútbol en Núñez. Las canchas están en excelente estado y hay alternativas desde 6 hasta 8 jugadores, techadas y sin techar.', '-8.096561248544479', '-79.04290544143066', '15', '1', '1510', '2014-07-03 00:00:00', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-e15d7b3e-32b2-49b6-a716-1cdd4ba018ba-img-demo4.jpg'),
 (8, 'MARANGONI', 'En la zona norte de la ciudad y cerca del Alto Palermo, aparece un espacio en el que todo futbolista amateur alguna vez jugó un partidito: el Complejo Claudio Marangoni.', '-8.091080314869291', '-79.04389249434814', '13', '1', '1350', '2014-07-03 00:00:00', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-ea841e9a-d519-46d3-ba35-ef921ccf3954-img-demo3.jpg'),
 (12, 'prueba de registro', 'contenido de prueba de registro', '-7.227131', '-79.42983600000002', '13', '1', '1350', '2014-07-26 16:55:06', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-6187969c-af55-4b3f-b4c6-ae8ccdb28a65-nofoto.jpg'),
-(13, 'boulevard pruebaxxx', 'contenido de prueba', '-7.7001724', '-79.43381879999998', '13', '1', '1350', '2014-07-26 20:19:39', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-6187969c-af55-4b3f-b4c6-ae8ccdb28a65-nofoto.jpg'),
-(14, 'Sport Huanchaco', 'Contamos con 2 Instalaciones, Baños con agua Caliente, juegos de Niños, un FutBar', '-8.111729024852341', '-79.02822839370117', '13', '1', '1353', '2014-07-27 01:53:06', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f8301071-e909-4e72-b941-c807221970ee-huancha.jpg');
+(13, 'Portal Arco Iris', 'Canchas de pasto sintetico, para 12 y 14 jugadores por cancha, baños y camerines', '-8.0587728', '-79.05341149999998', '13', '1', '1354', '2014-07-26 20:19:39', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-5d284692-e8f6-489e-8399-eff629d25212-137726.jpg'),
+(14, 'AVENTURA', 'Contamos con 2 Instalaciones, Baños con agua Caliente, juegos de Niños, un FutBar', '-8.111729024852341', '-79.02822839370117', '13', '1', '1350', '2014-07-27 01:53:06', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-322270fd-054d-4b22-99da-cc3cc30c153b-formstack2.jpg'),
+(15, 'la bombonera', 'Amplia Sala de Reunion para amigos y Familiares acompañado de la mejor Musica, tv por cable y con kiosko con variedad de producto.', '-8.08891948933328', '-79.01814711062013', '13', '1', '1350', '2014-07-31 19:47:15', 0, 'H', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-a3810ba2-9b9b-40a3-a4dc-94403aa92f0f-M2160005.jpg');
 
 -- --------------------------------------------------------
 
@@ -713,7 +720,7 @@ CREATE TABLE IF NOT EXISTS `detalle_canchas` (
   `cDetCanEstado` char(1) NOT NULL,
   PRIMARY KEY (`nDetCanID`),
   KEY `nCanID` (`nCanID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=69 ;
 
 --
 -- Volcado de datos para la tabla `detalle_canchas`
@@ -771,15 +778,21 @@ INSERT INTO `detalle_canchas` (`nDetCanID`, `nCanID`, `cDetCanValor`, `nParID`, 
 (49, 12, 'pruebanommas@hotmail.com', 16, 11, 'H'),
 (52, 12, 'locumbeto de melaxxx', 15, 11, 'H'),
 (53, 12, 'www.pruebanomas.com', 17, 11, 'H'),
-(54, 13, 'direccion de prueba', 12, 11, 'H'),
+(54, 13, 'av condorcanqui 1280', 12, 11, 'H'),
 (55, 13, '7187187', 13, 11, 'H'),
-(56, 13, '1', 14, 11, 'H'),
-(57, 13, 'prueba@hotmail.com', 16, 11, 'H'),
-(58, 14, 'los Abetos # 345', 12, 11, 'H'),
-(59, 14, '902365738', 13, 11, 'H'),
-(60, 14, '2', 14, 11, 'H'),
+(56, 13, '2', 14, 11, 'H'),
+(57, 13, 'reservas@solocanchas.com', 16, 11, 'H'),
+(58, 14, 'Av. Metropolitana N°1 Urb san Isidro', 12, 11, 'H'),
+(59, 14, '947341407', 13, 11, 'H'),
+(60, 14, '3', 14, 11, 'H'),
 (61, 14, 'soluplagas@hotmail.com', 16, 11, 'H'),
-(62, 14, 'www.huanchaco.com', 17, 11, 'H');
+(62, 14, 'www.solocanchas.com', 17, 11, 'H'),
+(63, 15, 'LOS GERANIOS MZ B lote 4 manpuesto', 12, 11, 'H'),
+(64, 15, '044-761626', 13, 11, 'H'),
+(65, 15, '2', 14, 11, 'H'),
+(66, 15, 'reservas@solocanchas.com', 16, 11, 'H'),
+(67, 15, 'www.solocanchas.com', 17, 11, 'H'),
+(68, 13, 'www.solocanchas.com', 17, 11, 'H');
 
 -- --------------------------------------------------------
 
@@ -806,18 +819,14 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `nEveCosto` varchar(10) NOT NULL,
   `nUsuario` varchar(40) NOT NULL,
   PRIMARY KEY (`nEveID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `eventos`
 --
 
 INSERT INTO `eventos` (`nEveID`, `cEveLatitud`, `cEveLongitud`, `cEveTitulo`, `cEveDescripcion`, `cEveLinkFoto`, `cEveLinkFacebook`, `cEveDireccion`, `dEveStartTime`, `dEveEndTime`, `nUbiDepartamento`, `nUbiProvincia`, `nUbiDistrito`, `dEveFechaRegistro`, `cEveEstado`, `nEveCosto`, `nUsuario`) VALUES
-(20, '-8.111729024852341', '-79.02822839370117', 'prueba 2', 'dwdwwdwd', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-c1d73c80-ead7-4d9c-b0c0-4e99d598d85b-1.png', '', 'lima', '2014-07-31 00:47:00', '2014-07-31 03:47:00', NULL, NULL, NULL, '2014-07-31 00:00:00', 'H', '10', '1'),
-(21, '29.0357338', '-81.30009089999999', 'dwdwdwdwd', 'wdwdwdw', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-1e4a8378-1d68-4194-ac9c-ff6ff4d999d5-75969_558313060875267_1428882545_n.jpg', '', 'ddd', '2014-07-31 00:48:00', '2014-07-31 04:48:00', NULL, NULL, NULL, '2014-07-31 00:00:00', 'H', '20', '1'),
-(22, '-8.111729024852341', '-79.02822839370117', 'ssss', 'wdwdwd', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-1ecfc6c2-3708-4347-96c3-da72640cd1c0-Be-Proactive.jpg', '', 'd', '2014-07-17 00:48:00', '2014-07-17 03:48:00', NULL, NULL, NULL, '2014-07-31 00:00:00', 'H', '0', '1'),
-(23, '-8.111729024852341', '-79.02822839370117', 'wwww editadoe', 'dwdwdwd', '', '', 'www', '2014-07-09 00:49:00', '2014-07-10 00:49:00', NULL, NULL, NULL, '2014-08-04 00:00:00', 'H', '10', '1'),
-(24, '7.9630921', '30.158930300000065', 'www ssss', 'qsqs', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-229888bc-6192-4cf0-9afa-32fab4ba5499-Be-Proactive.jpg', '', 'ss', '2014-08-02 20:58:00', '2014-08-02 21:58:00', NULL, NULL, NULL, '2014-08-02 00:00:00', 'H', '0', '1');
+(22, '-8.0911741', '-79.0434391', 'Futbol Amateur', 'para los equipos ganadores los Premios: 1 Premio 1200.00 2 Premio 400.00 ', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-ad424ed3-ed82-49e9-a82e-dd0bfa410d5b-futbol%20amateur.jpg', '', 'metropolitana N°1 URB San Isidro, trujillo', '2014-08-07 10:30:00', '2014-08-07 16:40:00', NULL, NULL, NULL, '2014-08-02 00:00:00', 'H', '150', '1');
 
 -- --------------------------------------------------------
 
@@ -843,18 +852,22 @@ CREATE TABLE IF NOT EXISTS `informacion` (
   `nUsuID` char(100) DEFAULT NULL,
   `cInfoLinkFoto` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`nInfoID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `informacion`
 --
 
 INSERT INTO `informacion` (`nInfoID`, `nInfoTipoID`, `cInfoTitulo`, `cInfoSumilla`, `cInfoDescripcion`, `dInfoFechaRegistro`, `dInfoFechaInicio`, `dInfoFechaFinal`, `cInfoLugar`, `cInfoAutor`, `nParID`, `nPcaID`, `nInfoVisitas`, `cInfoEstado`, `nUsuID`, `cInfoLinkFoto`) VALUES
-(1, 1, 'Di Stéfano, uno de los "cuatro grandes" de la historia del fútbol', 'Pelé, Cruyff, Maradona y Di Stéfano están considerados los "4 grandes" del fútbol.', 'Nombre como Beckenbauer, Eusebio o Zidane hicieron grandes cosas y son muchos los partidarios de incluirles en el selecto club de ''los más grandes''. Algún jugador actual podría llegar algún día a formar parte de ese selecto club, quizás Messi. Pero todo el mundo coincide en los cuatro futbolistas anteriormente citados por su trascendencia en la historia del fútbol, cada uno trasgresor en su época.', '2014-07-09 00:00:00', '2014-07-09 00:00:00', '2014-07-09 00:00:00', 'Trujillo, La Libertad', 'Luiggi Chirinos Plasencia', 24, 23, 10, 'H', NULL, ''),
-(2, 1, 'La mayor humillación de la historia del fútbol: Alemania aplasta a Brasil (1-7)', 'Belo Horizonte fue testigo de un partido que pasa a la historia del fútbol.', 'Lo vivido en la primera media hora del Brasil - Alemania pasará a la historia de los Mundiales. Será recordado durante décadas, quizás siglos. La selección pentacampeona del mundo fue humillada como no lo había sido nunca, aplastada sin piedad por el rodillo alemán en un partido en el que parecían jugar niños contra hombres. El 1-7 final de esta semifinal del Mundial lo dice todo. <br /><br />', '2014-07-09 00:00:00', '2014-07-09 00:00:00', '2014-07-09 00:00:00', 'Trujillo, La Libertad', 'Luiggi Chirinos Plasencia', 24, 23, 20, 'H', NULL, ''),
-(3, 1, 'Alianza Lima: Rodrigo Cuba y Joazhiño Arroé con ofertas blanquiazules', 'Se aproximan. Luego de asegurar el concurso de Mauro Guevgeozián y cerrar la cabida a otro jugador foráneo en el plantel, Alianza Lima no ha desestimado contratar a uno que otro refuerzo nacional de cara a lo que resta del año.', 'LÍBERO pudo conocer que Rodrígo Cuba, lateral del Juan Aurich, ha sido sondeado y se sabe que dentro de poco podría surgir alguna negociación. El volante Joazhiño Arroé no ha renovado con Cristal y ahora maneja la propuesta grone.   ', '2014-07-09 00:00:00', '2014-07-09 00:00:00', '2014-07-09 00:00:00', 'Trujillo, La Libertad', 'Luiggi Chirinos Plasencia', 25, 23, 1, 'H', NULL, ''),
-(4, 1, 'La Real jugará con el Chelsea FC el 12 de agosto en Stamford Bridge', 'El encuentro servirá como presentación del conjunto londinense ante su afición', '<p>La Real Sociedad afronta una de las pretemporadas más exigentes de las que se recuerda en cuanto a rivales y partidos amistosos se refiere. El club txuri urdin ha anunciado que será el rival del Chelsea F.C. en la presentación del conjunto londinense ante su afición. El encuento se disputará en Stamford Bridge a partir de las 20:45 (hora en Gipuzkoa).</p>  <p>Al frente del equipo londinense sigue otra temporada José Mourinho, que tiene a su disposición una de las plantillas más completas de Europa y que ha sido reforzada con fichajes de relumbrón como los de Diego Costa y Cesc Fábregas. En su segunda etapa al frente del conjunto azul Mourinho cuenta además en su plantilla con jugadores de la talla de Torres, Hazard, Óscar, Courtois, Terry o Schurrle.</p> <p>El primer encuentro de la pretemporada la Real lo disputará el próximo sábado en Berazubi <b>ante el Tolosa y servirá de homenaje Urtzi Gurrutxaga</b>, futbolista fallecido en febrero durante el transcurso de un partido de la liga de Honor Regional.</p><p>El día 17 el equipo txuri urdin viajará hasta Holanda para llevar a cabo una concentración de nueve días. El primer rival de la Real fuera de Gipuzkoa será el Ajax de Amsterdam, al que se medirá el día 19 en un encuentro que se disputará en el Estadio De Boshoek, en la localidad de Hardenberg.</p><p>El partido ante el campeón holandés en las útlimas cuatro temporadas será un buen toque de piedra de cara a la primera previa de la Europa League que la Real disputará el 31 de julio y el 7 de agosto. Para cuando aterricen en el país de los tulipanes el equipo ya conocerá la identidad del rival de esa eliminatoria, ya que el sorteo se celebrará el día 18.</p>', '2014-07-09 00:00:00', '2014-07-09 00:00:00', '2014-07-09 00:00:00', 'Trujillo, La Libertad', 'Luiggi Chirinos Plasencia', 24, 23, 5, 'H', NULL, ''),
-(5, 1, 'prueba de noticia', 'prueba', 'dprueba prueb', '2014-07-24 00:00:00', '2014-07-24 00:00:00', '2014-07-24 00:00:00', 'trujillo', 'juan', 24, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-2f6c0d3c-e695-4717-8acf-075e97c');
+(1, 1, 'Real Madrid quiere vender a Casillas y comprar a arquero de Premier League', 'Según El Confidencial, el club merengue quiere deshacerse como sea de Casillas y reemplazarlo con este arquero del fútbol inglés.', 'Con la llegada de Keylor Navas al Real Madrid, se pensó que el capítulo del titularato de la portería había llegado a su fin. Poner a Casillas de titular y hacer alguna rotación con Navas. Sin embargo, el panorama parece ser distinto. Según El Confidencial, el Madrid quiere deshacerse de Iker y contratar a un mejor portero.\r\n\r\nSegún el medio mencionado, luego del pésimo papel de España en el Mundial, Casillas no es visto con los mismos ojos y hasta es señalado como uno de los responsables del fracaso español. Esta sería una de las razones por las que el Real Madrid busca la salida del portero que ya lleva 15 temporadas siendo merengue.\r\n\r\nPero, ¿quién cubriría el lugar de Casillas si pretenden venderlo?. El elegido sería nada menos que el belga Thibaut Courtois, el portero quien atraviesa por uno de los mejores momentos en su carrera. En la temporada pasada alcanzó la final de la Champíons League y ganó la Liga con el Atlético de Madrid.\r\n\r\nCon esto, estaríamos hablando prácticamente de un trueque entre el Chelsea y Real Madrid. ¿Por qué? Mourinho tendría la intención de llevarse a Diego López. Cech se quedaría como titular en los ‘Blues’ y Courtois tendría que luchar el titularato con Navas.', '2014-08-05 00:00:00', '2014-08-05 00:00:00', '2014-08-05 00:00:00', 'España', 'Luiggi Chirinos Plasencia', 24, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-63506f34-70c6-488d-83f5-5865dad'),
+(2, 1, 'Paolo Guerrero: Corinthians ya le encontró reemplazo al peruano', 'Según GloboEsporte, el ‘Timao’ busca un delantero del mismo perfil de Guerrero para jugar lo que resta del Brasileirao.', 'Su futuro está más cerca de la Premier League que del Corinthians. El Newcastle está interesado en contratar a Paolo Guerrero y la dirigencia corinthiana ha puesto manos a la obra en busca de un reemplazo. Según GloboEsporte, ha encontrado encontrado un jugador con el mismo perfil que el peruano.\r\n\r\nSegún el mencionado medio, el Corinthians ve difícil retener a Guerrero de aquí a lo que resta del Brasileirao. Y como aún restan muchas fechas para el final, el club brasileño se ha interesado en Nilmar. Mano Menezes estaría de acuerdo con la llegada del delantero de 30 años.\r\n\r\nEste lunes, Nilmar rescindió contrato con el Jaish de Qatar. Esto le permitiría negociar su fichaje con el Corinthians para lo que resta del Brasileirao.. Sin embargo, el ‘Timao’ no sería el único club que estaría pensando en ficharlo. Según el mismo medio, el Sao Paulo es otro que sigue sus pasos.\r\n\r\nNilmar tiene 30 años y en su carrera ha vestido las camisetas del Internacional (Brasil), Villareal (España) y Lyon (Francia). Desde el 2005 hasta el 2007, el internacional brasileño ya jugó por el Corinthians. En su época como jugador ‘corintiano’ sumó 31 goles en 55 partidos.', '2014-08-05 00:00:00', '2014-08-05 00:00:00', '2014-08-05 00:00:00', 'Trujillo, La Libertad', 'Luiggi Chirinos Plasencia', 24, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-97b73c8b-4005-435b-99a9-36820d4'),
+(3, 1, 'Carlos Navarro Montoya: ídolo de Boca Juniors suena como nuevo técnico de León de Huánuco', 'El ‘Mono’ debutó el año pasado como técnico en Chacarita Juniors y suena fuerte para dirigir al equipo huanuqueño.', 'En su mejor época, Carlos Navarro Montoya fue sinónimo de garantía bajo los tres palos. El ‘Mono’ era uno de los mejores arqueros del fútbol argentino en la década de los noventas. Siempre llamó la atención por sus peculiares atuendos a la hora de tapar.\r\n\r\nHeredó la pasión por el arco de su padre, Raúl Ramón Navarro Paviato. El exarquero de 48 años es colombiano de nacimiento e inició sus primeros pasos en el arco en las divisiones menores de Vélez Sarsfield de Argentina, club donde debutó profesionalmente.\r\n\r\nUn 8 de abril de 1984, Alfio Basile le dijo: “pibe, prepárate que el domingo sos titular” le dijo. Su equipo venció 1-0 a Temperley con gol de Carlos Bianchi y sería el inicio de su exitosa carrera.\r\n\r\nBoca Juniors fue el club que lo vio brillar en su máximo esplendor. Llegó a la institución xeneize en 1988 y debutó con un triunfo en un clásico ante River Plate por 2-0. Durante ocho años se cuadró bajo los tres palos durante ocho años para conseguir cinco títulos, mérito que le valió para ser considerado ídolo del club.\r\n\r\nSin embargo, como tantos buenos jugadores, la oportunidad de jugar un mundial se le negó. Tuvo la oportunidad de defender la camiseta de la selección colombiana en 1985. Gabriel Ochoa Uribe lo convocó para que cuide la portería en tres partidos del repechaje para México 86 pero los cafeteros no alcanzaron a clasificar.', '2014-08-05 00:00:00', '2014-08-05 00:00:00', '2014-08-05 00:00:00', 'Trujillo, La Libertad', 'Luiggi Chirinos Plasencia', 25, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-46c04586-f508-44b1-8e3d-9459c19'),
+(4, 1, 'Luis Guadalupe: "No se puede seguir jugando como equipos mediocres"', 'El capitán de César Vallejo comparó el Mundial Brasil 2014 con el fútbol peruano y dijo “Estoy avergonzado”.', '<p>Luis Guadalupe no entra en cuentos ni en rodeos. A ‘Cuto’ siempre le gusta ser directo e ir al grano. El defensa de César Vallejo le pegó duro a la gente de Los Caimanes. Sucede que el capitán ‘poeta’ no olvida la derrota de la fecha pasada, ni la actitud de algunos jugadores verdes y arremetió fuerte.\r\n\r\nAdemás, comparó el fútbol peruano con el mundial de Brasil. “Hemos visto hace poco el Mundial y vemos un fútbol totalmente diferente. A mis treinta y ocho años me siento avergonzado de los equipos que hacen tiempo. No se puede seguir jugando como equipos mediocres y sin hambre de gloria”.\r\n\r\nPero eso no fue todo, pues el jugador de César Vallejo también se dirigió a los árbitros del Torneo. “Hay situaciones y arbitrajes desastrosos que incomodan. Espero que ellos, al igual que nosotros también tengan sanciones”.</p>', '2014-08-05 00:00:00', '2014-08-05 00:00:00', '2014-08-05 00:00:00', 'Trujillo, La Libertad', 'Luiggi Chirinos Plasencia', 25, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-b44a5fb2-0f59-4a6f-be66-5ae0275'),
+(5, 1, 'prueba de noticia', 'prueba', 'dprueba prueb', '2014-07-24 00:00:00', '2014-07-24 00:00:00', '2014-07-24 00:00:00', 'trujillo', 'juan', 24, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-2f6c0d3c-e695-4717-8acf-075e97c'),
+(6, 1, 'prueba de noticias', 'prueba ', 'pruebe prube', '2014-08-03 00:00:00', '2014-08-03 00:00:00', '2014-08-03 00:00:00', 'Trujillo, La Libertad ,Peru', 'juan carlos', 25, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-bde65d32-4c60-4919-bcb1-674c014'),
+(7, 1, 'Lionel Messi reapareció con nuevo look en su primer entrenamiento', 'El delantero argentino se sumó por primera vez en la temporada a las prácticas del Barza y dejó ver su nuevo peinado.', 'Muchos futbolistas trataron de dar su máximo esfuerzo durante el Mundial Brasil 2014, ya que este torneo podía cambiar todo. Un ejemplo de ello es Keylor Navas, quien abandonó el pequeño Levante para fichar seis temporadas por Real Madrid de España.\r\n\r\nA propósito de ello, te jugamos a 10 jugadores que cambiaron de equipo en el presente mercado de pases gracias al torneo mundialista y nadie se enteró. Cabe mencionar que no solo hablamos del mercado europeo, sino también el americano:', '2014-08-05 00:00:00', '2014-08-05 00:00:00', '2014-08-05 00:00:00', 'Barcelona', 'solocanchas', 24, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f94f1da2-33e0-4ded-8dcb-30367fe'),
+(8, 1, 'Neymar puede estar a punto para el debut liguero', 'Neymar puede llegar a tiempo para jugar el primer partido liguero contra el Elche', 'Los doctores que han llevado la lesión de Neymar son optimistas sobre su recuperación y, según ha informado Catalunya Ràdio, en un principio debe estar a punto para jugar el primer partido de Liga contra el Elche. Por el contrario, parece difícil que pueda jugar ya el Trofeu Joan Gamper, el día 18, a pesar de que el propio jugador aseguró hace pocos días que para ese encuentro ya estaría al cien por cien.\r\n\r\nNeymar pasó unas pruebas médicas este martes y la conclusión es que todo va muy bien. El doctor que lo ha llevado, Enric Cáceres, explicaba en declaraciones a TV3 que "el corsé que llevaba para inmovilizarle ya se lo hemos retirado hoy mismo y también hoy mismo inicia el trabajo específico, lumbar y de las extremidades inferiores. Probablemente en una semana, según lo que decidan los doctores del Barça, podrá iniciar ya los entrenamientos en el campo". Además, ha reconocido que "somos muy optimistas en estos momentos en su evolución y esperamos que esta fractura no le deja ningún tipo de consecuencia".', '2014-08-05 00:00:00', '2014-08-05 00:00:00', '2014-08-05 00:00:00', 'Barcelona', 'solocanchas', 24, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-ab428983-dc1c-4ac6-a7e5-a14a2c1'),
+(9, 1, 'Selección peruana jugará amistoso con Chile en octubre', 'La ''Blanquirroja'' enfrentará a ''mapochos'' en partidos de ida y vuelta.', 'Tras el partido de mañana ante Panamá, la selección peruana seguirá con los encuentros de preparación para la Copa América de Chile 2015. Según fuentes cercanas a la FPF, Perú jugará contra la roja de Jorge Sampaoli el 10 de octubre.\r\n\r\nEste compromiso ante la estrella solitaria acontecerá en el mes del Señor de los Milagros, con revancha en Santiago en fecha por confirmar.\r\n\r\nEste sería el primer tope contra Chile bajo la dirección técnica de Sampaoli  ex Sport Boys y Cristal, y que en algún momento interesó a la FPF para que asuma el cargo de seleccionador ''incaico''.\r\n\r\nMaratón de partidos\r\n\r\nLuego vendrá Chile el 10 de octubre y una danza de amistosos con idas y vueltas para el 14 de octubre, 14 o 18 de noviembre frente a Uruguay, y 27 y 31 de marzo del 2015. Una de estas revanchas con los charrúas y mapochos.\r\n\r\nLas demás fechas por cerrar están entre Paraguay y Costa Rica. \r\n\r\nSegún la planificación de la Federación, está contemplado jugar por lo menos tres partidos en Europa, en donde serán convocados los principales futbolistas que juegan en el Viejo Continente, los que alternarán con la base local que formará el técnico Pablo Bengoechea en estos topes amistosos internacionales.', '2014-08-05 00:00:00', '2014-08-05 00:00:00', '2014-08-05 00:00:00', 'Trujillo, La Libertad', 'solocanchas', 25, 23, 0, 'H', '1', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-02a62d57-1ac1-4e36-9c6b-d4fe377');
 
 -- --------------------------------------------------------
 
@@ -898,7 +911,7 @@ CREATE TABLE IF NOT EXISTS `multimedia` (
   `cMultEstado` char(2) NOT NULL,
   `cMultNumVisitas` int(11) DEFAULT NULL,
   PRIMARY KEY (`nMultID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Volcado de datos para la tabla `multimedia`
@@ -906,16 +919,20 @@ CREATE TABLE IF NOT EXISTS `multimedia` (
 
 INSERT INTO `multimedia` (`nMultID`, `nMultTipoID`, `nMultCategID`, `cMultLinkMiniatura`, `cMultLink`, `cMultTitulo`, `cMultDescripcion`, `cMultFechaRegistro`, `cMultFechaInicial`, `cMultFechaFinal`, `nParID`, `cMultEstado`, `cMultNumVisitas`) VALUES
 (1, 6, 1, 'ejemplo.jpg', 'ejemplo.jpg', 'prueba', 'descripcion editado', '20-10-2005', '20-10-2005', '20-10-2005', 10, 'H', 0),
-(2, 6, 1, 'alianza_lima.jpg', 'alianza_lima.jpg', 'Foto de alianza lima', '', '20-10-2005', '20-10-2005', '20-10-2005', NULL, 'H', 0),
-(3, 6, 1, 'brazil_alemania.jpg', 'brazil_alemania.jpg', 'Foto del Partido de Alemania y Brazil', '', '20-10-2005', '20-10-2005', '20-10-2005', NULL, 'H', 0),
-(4, 6, 1, 'di_estefano.jpg', 'di_estefano.jpg', 'Foto de Di Estafano', '', '20-10-2005', '20-10-2005', '20-10-2005', NULL, 'H', 0),
-(5, 6, 1, 'chelsea_partido.jpg', 'chelsea_partido.jpg', 'Foto del Partido de Chelsea', '', '20-10-2005', '20-10-2005', '20-10-2005', NULL, 'H', 0),
+(2, 6, 1, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-46c04586-f508-44b1-8e3d-9459c196943e-carlos.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-46c04586-f508-44b1-8e3d-9459c196943e-carlos.jpg', 'Carlos Navarro Montoya: ídolo de Boca Juniors suena como nuevo técnico de León de Huánuco', 'En su mejor época, Carlos Navarro Montoya fue sinónimo de garantía bajo los tres palos. El ‘Mono’ era uno de los mejores arqueros del fútbol argentino en la década de los noventas. Siempre llamó la atención por sus peculiares atuendos a la hora de tapar.\r\n\r\nHeredó la pasión por el arco de su padre, Raúl Ramón Navarro Paviato. El exarquero de 48 años es colombiano de nacimiento e inició sus primeros pasos en el arco en las divisiones menores de Vélez Sarsfield de Argentina, club donde debutó prof', '2014-08-05', '2014-08-05', '2014-08-05', NULL, 'H', 0),
+(3, 6, 1, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-97b73c8b-4005-435b-99a9-36820d44faf0-paolo.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-97b73c8b-4005-435b-99a9-36820d44faf0-paolo.jpg', 'Paolo Guerrero: Corinthians ya le encontró reemplazo al peruano', 'Su futuro está más cerca de la Premier League que del Corinthians. El Newcastle está interesado en contratar a Paolo Guerrero y la dirigencia corinthiana ha puesto manos a la obra en busca de un reemplazo. Según GloboEsporte, ha encontrado encontrado un jugador con el mismo perfil que el peruano.\r\n\r\nSegún el mencionado medio, el Corinthians ve difícil retener a Guerrero de aquí a lo que resta del Brasileirao. Y como aún restan muchas fechas para el final, el club brasileño se ha interesado en Ni', '2014-08-05', '2014-08-05', '2014-08-05', NULL, 'H', 0),
+(4, 6, 1, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-63506f34-70c6-488d-83f5-5865dad0b959-real.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-63506f34-70c6-488d-83f5-5865dad0b959-real.jpg', 'Real Madrid quiere vender a Casillas y comprar a arquero de Premier League', 'Con la llegada de Keylor Navas al Real Madrid, se pensó que el capítulo del titularato de la portería había llegado a su fin. Poner a Casillas de titular y hacer alguna rotación con Navas. Sin embargo, el panorama parece ser distinto. Según El Confidencial, el Madrid quiere deshacerse de Iker y contratar a un mejor portero.\r\n\r\nSegún el medio mencionado, luego del pésimo papel de España en el Mundial, Casillas no es visto con los mismos ojos y hasta es señalado como uno de los responsables del fr', '2014-08-05', '2014-08-05', '2014-08-05', NULL, 'H', 0),
+(5, 6, 1, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-b44a5fb2-0f59-4a6f-be66-5ae0275c90a6-cuto.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-b44a5fb2-0f59-4a6f-be66-5ae0275c90a6-cuto.jpg', 'Luis Guadalupe: "No se puede seguir jugando como equipos mediocres"', '<p>Luis Guadalupe no entra en cuentos ni en rodeos. A ‘Cuto’ siempre le gusta ser directo e ir al grano. El defensa de César Vallejo le pegó duro a la gente de Los Caimanes. Sucede que el capitán ‘poeta’ no olvida la derrota de la fecha pasada, ni la actitud de algunos jugadores verdes y arremetió fuerte.\r\n\r\nAdemás, comparó el fútbol peruano con el mundial de Brasil. “Hemos visto hace poco el Mundial y vemos un fútbol totalmente diferente. A mis treinta y ocho años me siento avergonzado de los e', '2014-08-05', '2014-08-05', '2014-08-05', NULL, 'H', 0),
 (6, 0, 4, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-6bff60e6-fd77-4d72-895e-b67d03f412f8-Chrysanthemum.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-6bff60e6-fd77-4d72-895e-b67d03f412f8-Chrysanthemum.jpg', 'ejemplo de foto', 'foto subida al servidor', '2014-07-24', '2014-07-24', '2014-07-24', NULL, 'H', 0),
-(8, 0, 0, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-066d9ade-4d17-4e65-b3fa-9c6c1bca38b6-bolante.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-066d9ade-4d17-4e65-b3fa-9c6c1bca38b6-bolante.jpg', '0', '0', '2014-07-30', '2014-07-30', '2014-07-30', NULL, 'H', 0),
-(9, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-3ce683c4-4183-4232-a6dd-4cb6f7a327b9-bolante.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-3ce683c4-4183-4232-a6dd-4cb6f7a327b9-bolante.jpg', 'foto cancha', 'galleria de canchas', '2014-07-30', '2014-07-30', '2014-07-30', NULL, 'H', 0),
-(10, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-28c1e2d0-58e0-4658-b47d-93e2c9b83c99-byebye.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-28c1e2d0-58e0-4658-b47d-93e2c9b83c99-byebye.jpg', 'foto cancha', 'galleria de canchas', '2014-07-30', '2014-07-30', '2014-07-30', NULL, 'H', 0),
-(13, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-7beebcd3-50f4-4c88-8de5-f8b03dd6ed1f-Be-Proactive.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-7beebcd3-50f4-4c88-8de5-f8b03dd6ed1f-Be-Proactive.jpg', 'foto cancha', 'galleria de canchas', '2014-07-31', '2014-07-31', '2014-07-31', NULL, 'H', 0),
-(14, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-5bd6c9c1-a58e-4e81-97cd-7d368e2214d6-75969_558313060875267_1428882545_n.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-5bd6c9c1-a58e-4e81-97cd-7d368e2214d6-75969_558313060875267_1428882545_n.jpg', 'foto cancha', 'galleria de canchas', '2014-07-31', '2014-07-31', '2014-07-31', NULL, 'H', 0);
+(8, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-0619a8ae-a815-438d-9672-14a17f65f668-Be-Proactive.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-0619a8ae-a815-438d-9672-14a17f65f668-Be-Proactive.jpg', 'foto cancha', 'galleria de canchas', '2014-07-31', '2014-07-31', '2014-07-31', NULL, 'H', 0),
+(10, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-3bca60f2-5746-46ba-a0f0-47db3bbb2cb8-M2160002.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-3bca60f2-5746-46ba-a0f0-47db3bbb2cb8-M2160002.jpg', 'foto cancha', 'galleria de canchas', '2014-08-01', '2014-08-01', '2014-08-01', NULL, 'H', 0),
+(11, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-49b9a948-5782-450f-bb41-8059d0c2a9e4-M2160006.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-49b9a948-5782-450f-bb41-8059d0c2a9e4-M2160006.jpg', 'foto cancha', 'galleria de canchas', '2014-08-01', '2014-08-01', '2014-08-01', NULL, 'H', 0),
+(13, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f62d4cf8-ede6-412f-b6ea-289a9446d876-Be-Proactive.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f62d4cf8-ede6-412f-b6ea-289a9446d876-Be-Proactive.jpg', 'foto cancha', 'galleria de canchas', '2014-08-03', '2014-08-03', '2014-08-03', NULL, 'H', 0),
+(14, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f63fb7e4-bf04-4e54-a50d-7430c6f42e88-bolante.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f63fb7e4-bf04-4e54-a50d-7430c6f42e88-bolante.jpg', 'foto cancha', 'galleria de canchas', '2014-08-03', '2014-08-03', '2014-08-03', NULL, 'H', 0),
+(15, 1, 3, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-75a09deb-0337-420f-a40c-763b5842fa15-comenzar.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-75a09deb-0337-420f-a40c-763b5842fa15-comenzar.jpg', 'foto cancha', 'galleria de canchas', '2014-08-03', '2014-08-03', '2014-08-03', NULL, 'H', 0),
+(16, 6, 1, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f94f1da2-33e0-4ded-8dcb-30367fe5550d-leonel.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-f94f1da2-33e0-4ded-8dcb-30367fe5550d-leonel.jpg', 'Lionel Messi reapareció con nuevo look en su primer entrenamiento', 'Muchos futbolistas trataron de dar su máximo esfuerzo durante el Mundial Brasil 2014, ya que este torneo podía cambiar todo. Un ejemplo de ello es Keylor Navas, quien abandonó el pequeño Levante para fichar seis temporadas por Real Madrid de España.\r\n\r\nA propósito de ello, te jugamos a 10 jugadores que cambiaron de equipo en el presente mercado de pases gracias al torneo mundialista y nadie se enteró. Cabe mencionar que no solo hablamos del mercado europeo, sino también el americano:', '2014-08-05', '2014-08-05', '2014-08-05', NULL, 'H', 0),
+(17, 6, 1, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-ab428983-dc1c-4ac6-a7e5-a14a2c1dcc4b-neymar.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-ab428983-dc1c-4ac6-a7e5-a14a2c1dcc4b-neymar.jpg', 'Neymar puede estar a punto para el debut liguero', 'Los doctores que han llevado la lesión de Neymar son optimistas sobre su recuperación y, según ha informado Catalunya Ràdio, en un principio debe estar a punto para jugar el primer partido de Liga contra el Elche. Por el contrario, parece difícil que pueda jugar ya el Trofeu Joan Gamper, el día 18, a pesar de que el propio jugador aseguró hace pocos días que para ese encuentro ya estaría al cien por cien.\r\n\r\nNeymar pasó unas pruebas médicas este martes y la conclusión es que todo va muy bien. El', '2014-08-05', '2014-08-05', '2014-08-05', NULL, 'H', 0),
+(18, 6, 1, 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-02a62d57-1ac1-4e36-9c6b-d4fe37701c07-peru.jpg', 'http://files.parsetfss.com/a0123345-0b5c-4bbe-86e3-98d56cdc8497/tfss-02a62d57-1ac1-4e36-9c6b-d4fe37701c07-peru.jpg', 'Selección peruana jugará amistoso con Chile en octubre', 'Tras el partido de mañana ante Panamá, la selección peruana seguirá con los encuentros de preparación para la Copa América de Chile 2015. Según fuentes cercanas a la FPF, Perú jugará contra la roja de Jorge Sampaoli el 10 de octubre.\r\n\r\nEste compromiso ante la estrella solitaria acontecerá en el mes del Señor de los Milagros, con revancha en Santiago en fecha por confirmar.\r\n\r\nEste sería el primer tope contra Chile bajo la dirección técnica de Sampaoli  ex Sport Boys y Cristal, y que en algún mo', '2014-08-05', '2014-08-05', '2014-08-05', NULL, 'H', 0);
 
 -- --------------------------------------------------------
 
@@ -925,21 +942,22 @@ INSERT INTO `multimedia` (`nMultID`, `nMultTipoID`, `nMultCategID`, `cMultLinkMi
 
 CREATE TABLE IF NOT EXISTS `multimedia_canchas` (
   `nMultCanID` int(11) NOT NULL AUTO_INCREMENT,
-  `nMultID` varchar(100) DEFAULT NULL,
-  `nCanID` varchar(100) DEFAULT NULL,
+  `nCanID` varchar(100) NOT NULL,
+  `nMultID` varchar(100) NOT NULL,
   PRIMARY KEY (`nMultCanID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `multimedia_canchas`
 --
 
-INSERT INTO `multimedia_canchas` (`nMultCanID`, `nMultID`, `nCanID`) VALUES
-(1, '6', '2'),
-(2, '9', '2'),
-(3, '10', '2'),
-(6, '13', '13'),
-(7, '14', '14');
+INSERT INTO `multimedia_canchas` (`nMultCanID`, `nCanID`, `nMultID`) VALUES
+(1, '14', '8'),
+(3, '15', '10'),
+(4, '15', '11'),
+(5, '13', '13'),
+(6, '13', '14'),
+(7, '13', '15');
 
 -- --------------------------------------------------------
 
@@ -976,7 +994,7 @@ CREATE TABLE IF NOT EXISTS `multimedia_informacion` (
   `nInfoID` int(11) DEFAULT NULL,
   `cMultInfoEstado` char(1) DEFAULT NULL,
   PRIMARY KEY (`nMultInfoID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `multimedia_informacion`
@@ -987,7 +1005,11 @@ INSERT INTO `multimedia_informacion` (`nMultInfoID`, `nMultID`, `nInfoID`, `cMul
 (2, 3, 2, 'H'),
 (3, 2, 3, 'H'),
 (4, 5, 4, 'H'),
-(5, 7, 5, 'H');
+(5, 7, 5, 'H'),
+(6, 12, 6, 'H'),
+(7, 16, 7, 'H'),
+(8, 17, 8, 'H'),
+(9, 18, 9, 'H');
 
 -- --------------------------------------------------------
 
@@ -1147,7 +1169,7 @@ CREATE TABLE IF NOT EXISTS `persona` (
   `dPerFechaRegistro` datetime DEFAULT NULL,
   `cPerEstado` char(1) NOT NULL,
   PRIMARY KEY (`nPerID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Volcado de datos para la tabla `persona`
@@ -1155,7 +1177,7 @@ CREATE TABLE IF NOT EXISTS `persona` (
 
 INSERT INTO `persona` (`nPerID`, `cPerNombres`, `cPerApellidos`, `cPerTipo`, `dPerFechaRegistro`, `cPerEstado`) VALUES
 (1, 'juan', 'manay', 'N', '2014-07-11 19:50:06', 'H'),
-(3, 'Gino Luiggi', 'Chirinos Plasencia', 'N', '2014-07-11 19:50:06', 'H'),
+(3, 'Gino Luiggie', 'Chirinos Plasencia', 'N', '2014-07-11 19:50:06', 'H'),
 (4, 'jose', 'guevara', 'N', '2014-07-11 20:33:59', 'H'),
 (5, 'jose', 'guevara', 'N', '2014-07-11 20:34:37', 'H'),
 (8, 'compare', 'compare', 'N', '2014-07-18 19:09:07', 'H'),
@@ -1167,8 +1189,14 @@ INSERT INTO `persona` (`nPerID`, `cPerNombres`, `cPerApellidos`, `cPerTipo`, `dP
 (14, 'usuario feo', 'usuario feo', 'N', '2014-07-22 19:51:13', 'H'),
 (15, 'pepe', 'pepe', 'N', '2014-07-26 20:28:15', 'H'),
 (16, 'prueba', 'prubea', 'N', '2014-07-29 18:43:52', 'H'),
-(17, 'otro', 'otros', 'N', '2014-07-31 20:43:35', 'H'),
-(18, 'purabaa', 'manay', 'N', '2014-08-04 16:32:33', 'H');
+(17, 'carlos', 'manay ramal', 'N', '2014-07-31 20:45:54', 'H'),
+(18, 'clemente', 'verau', 'N', '2014-07-31 20:59:34', 'H'),
+(19, 'abad', 'veriau', 'N', '2014-07-31 21:30:58', 'H'),
+(20, 'abad', 'veriau', 'N', '2014-07-31 21:31:10', 'H'),
+(21, 'wdwd', 'wdwwd', 'N', '2014-07-31 21:47:26', 'H'),
+(22, 'locumbeto', 'payasito', 'N', '2014-07-31 22:39:19', 'H'),
+(23, 'usuario de prueba', 'prueba', 'N', '2014-08-04 16:04:10', 'H'),
+(24, 'comparito', 'comparito', 'N', '2014-08-04 20:09:29', 'H');
 
 -- --------------------------------------------------------
 
@@ -1186,7 +1214,7 @@ CREATE TABLE IF NOT EXISTS `persona_detalle` (
   PRIMARY KEY (`nPedID`),
   KEY `nPerID` (`nPerID`),
   KEY `nParID` (`nParID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Volcado de datos para la tabla `persona_detalle`
@@ -1205,8 +1233,14 @@ INSERT INTO `persona_detalle` (`nPedID`, `nPerID`, `cPedValor`, `nParID`, `nPcaI
 (14, 14, 'user_new@hotmail.com', 9, 8, 'H'),
 (15, 15, 'luiggichirinos_p@outlook.com', 9, 8, 'H'),
 (16, 16, 'miemail@hotmail.com', 9, 8, 'H'),
-(17, 17, 'ajaj@hos.com', 9, 8, 'H'),
-(18, 18, 'carlos@reality.com', 9, 8, 'H');
+(17, 17, 'jc_breack18@hotmail.com', 9, 8, 'H'),
+(18, 18, 'clemente@soporte.com', 9, 8, 'H'),
+(19, 19, 'soluciontecnica@hotmail.com', 9, 8, 'H'),
+(20, 20, 'soluciontecnica@hotmail.com', 9, 8, 'H'),
+(21, 21, 'dwd@hot.com', 9, 8, 'H'),
+(22, 22, 'luiggichirinos_p@hotmail.com', 9, 8, 'H'),
+(23, 23, 'luiggichirinos_p@outlook.com', 9, 8, 'H'),
+(24, 24, 'comparito@hotmail.com', 9, 8, 'H');
 
 -- --------------------------------------------------------
 
@@ -3558,7 +3592,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `cUsuEstado` char(1) NOT NULL,
   PRIMARY KEY (`nUsuID`),
   KEY `nPerID` (`nPerID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -3572,11 +3606,17 @@ INSERT INTO `usuarios` (`nUsuID`, `nPerID`, `cUsuNick`, `cUsuClave`, `cUsuTipo`,
 (9, 9, 'local@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2', '2014-07-18 19:17:59', 'I'),
 (10, 10, 'compadre@outlook.com', 'e10adc3949ba59abbe56e057f20f883e', '2', '2014-07-18 19:23:54', 'H'),
 (11, 11, 'wefjhwef@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2', '2014-07-18 19:27:47', 'I'),
-(12, 12, 'carlos@reality-magic.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-22 15:58:20', 'I'),
-(14, 14, 'user_new@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-22 19:51:13', 'I'),
+(12, 12, 'carlos@reality-magic.com', 'e10adc3949ba59abbe56e057f20f883e', '2', '2014-07-22 15:58:20', 'H'),
+(14, 14, 'user_new@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-22 19:51:13', 'H'),
 (16, 16, 'miemail@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-29 18:43:52', 'H'),
-(17, 17, 'ajaj@hos.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-31 20:43:35', 'H'),
-(18, 18, 'carlos@reality.com', 'e10adc3949ba59abbe56e057f20f883e', '2', '2014-08-04 16:32:33', 'I');
+(17, 17, 'jc_breack18@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-31 20:45:54', 'H'),
+(18, 18, 'clemente@soporte.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-31 20:59:34', 'H'),
+(19, 19, 'soluciontecnica@hotmail.com', 'bc545ab9f18bcaaf33d7d7640dfb2df0', '2', '2014-07-31 21:30:58', 'H'),
+(20, 20, 'soluciontecnica@hotmail.com', 'bc545ab9f18bcaaf33d7d7640dfb2df0', '2', '2014-07-31 21:31:10', 'H'),
+(21, 21, 'dwd@hot.com', '827ccb0eea8a706c4c34a16891f84e7b', '2', '2014-07-31 21:47:26', 'H'),
+(22, 22, 'luiggichirinos_p@hotmail.com', '25f9e794323b453885f5181f1b624d0b', '2', '2014-07-31 22:39:19', 'H'),
+(23, 23, 'luiggichirinos_p@outlook.com', 'e10adc3949ba59abbe56e057f20f883e', '2', '2014-08-04 16:04:10', 'I'),
+(24, 24, 'comparito@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2', '2014-08-04 20:09:30', 'I');
 
 -- --------------------------------------------------------
 
@@ -3592,7 +3632,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_opciones` (
   PRIMARY KEY (`nUsoID`),
   KEY `nOpcID` (`nOpcID`),
   KEY `nUsuID` (`nUsuID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=66 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=82 ;
 
 --
 -- Volcado de datos para la tabla `usuarios_opciones`
@@ -3624,13 +3664,19 @@ INSERT INTO `usuarios_opciones` (`nUsoID`, `nUsuID`, `nOpcID`, `cUsoEstado`) VAL
 (56, 2, 9, 'H'),
 (57, 2, 10, 'H'),
 (58, 2, 11, 'H'),
-(59, 12, 14, 'H'),
-(60, 12, 12, 'H'),
-(61, 12, 13, 'H'),
-(62, 12, 8, 'H'),
-(63, 12, 9, 'H'),
-(64, 12, 10, 'H'),
-(65, 12, 11, 'H');
+(69, 14, 13, 'H'),
+(70, 14, 8, 'H'),
+(71, 14, 9, 'H'),
+(72, 18, 5, 'H'),
+(73, 18, 12, 'H'),
+(74, 18, 13, 'H'),
+(75, 18, 14, 'H'),
+(76, 18, 8, 'H'),
+(77, 18, 9, 'H'),
+(78, 12, 12, 'H'),
+(79, 12, 13, 'H'),
+(80, 12, 8, 'H'),
+(81, 12, 9, 'H');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

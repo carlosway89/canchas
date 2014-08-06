@@ -87,7 +87,8 @@ class Acceso extends CI_Controller {
                     'Apellidos' => $login[0]->cPerApellidos,
                     'nPerID' => $login[0]->nPerID,
                     'nUsuID' => $login[0]->nUsuID,
-                    'dedonde' => 'intranet'
+                    'dedonde' => 'intranet',
+                    'tipo' =>$login[0]->cUsuTipo
                 );
                 $this->session->set_userdata($data);
                 echo "1";
