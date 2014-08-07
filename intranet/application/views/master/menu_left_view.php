@@ -30,6 +30,14 @@
                         <span class="menu-text"> PANEL </span>
                     </a>
                 </li>
+                <li>
+                    <a href="http://solocanchas.com/SLGimnasio"  target="_blank" >
+                        <i class=" icon-laptop "></i>
+                        <span class="menu-text">
+                            ADMINISTAR CANCHA
+                        </span>
+                    </a>
+                </li>
 
                 <?php
                 $opciones = $this->loaders->get_menu();

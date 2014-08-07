@@ -8,10 +8,8 @@ $(function(){
     });
     
     // TAB CANCHAS -> LISTADO
-    $("#tab_cancha_listar").bind('click', function(event){ 
         canchasQry();
         MostrarOcultarCapas('#cont_content_edit_canchas','#cont_div_qry_canchas');
-    });
     
     // Evento Regresar Pantalla Anterior
     $("#anc_back").click(function(evt){

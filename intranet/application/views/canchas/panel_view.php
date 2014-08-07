@@ -8,26 +8,27 @@
             <div class="tabbable">
                 <ul id="tab_mod_canchas" class="nav nav-tabs">
                     <li class="active">
+                        <a href="#listar" id="tab_cancha_listar" data-toggle="tab">
+                            <i class="red icon-list bigger-110"></i>
+                            Canchas
+                        </a>
+                    </li>
+                    <li >
                         <a href="#registrar" id="tab_cancha_registrar" data-toggle="tab">
                             <i class="blue icon-plus-sign bigger-110"></i>
-                            Registrar
+                            Registrar una Cancha
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#listar" id="tab_cancha_listar" data-toggle="tab">
-                            <i class="red icon-list bigger-110"></i>
-                            Listado
-                        </a>
-                    </li>
+                    
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane in active" id="registrar">
+                    <div class="tab-pane " id="registrar">
                         <?php $this->load->view("canchas/ins_view"); ?>
                     </div>
 
-                    <div class="tab-pane" id="listar">
+                    <div class="tab-pane in active" id="listar">
                         <div id="cont_div_qry_canchas"></div>
                         
                         <!-- Contenedor de formulario para editar canchas -->

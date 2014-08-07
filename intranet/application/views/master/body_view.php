@@ -12,14 +12,23 @@
 			<div class="row">
 
 				<div class="col-md-3">
-					<h4 class="text-warning">Cambiar mi Clave</h4>
-					<a href="<?=URL_MAIN?>cambiar_clave" class="btn btn-app btn-info" style="width: 150px;">
+					<h4 class="text-warning">Mi Cancha</h4>
+					<a href="http://solocanchas.com/SLGimnasio" class="btn btn-app btn-info" target="_blank" style="width: 150px;">
 						<br>
-						<i class="icon-unlock  bigger-230"></i>
+						<i class=" icon-laptop "></i>
 						<br>
 						
 					</a>
 					
+				</div>
+				<div class="col-md-3">
+					<h4 class="text-warning">Eventos</h4>
+					<a href="<?=URL_MAIN?>eventos" class="btn btn-app btn-warning" style="width: 150px;">
+						<br>
+						<i class="icon-calendar  bigger-230"></i>
+						<br>
+						
+					</a>
 				</div>
 				<div class="col-md-3">
 					<h4 class="text-warning">Actualizar mis Datos</h4>
@@ -30,15 +39,6 @@
 						
 					</a>
 
-				</div>
-				<div class="col-md-3">
-					<h4 class="text-warning">Eventos</h4>
-					<a href="<?=URL_MAIN?>eventos" class="btn btn-app btn-warning" style="width: 150px;">
-						<br>
-						<i class="icon-calendar  bigger-230"></i>
-						<br>
-						
-					</a>
 				</div>
 				<div class="col-md-3">
 					<h4 class="text-warning">Salir del Sistema</h4>

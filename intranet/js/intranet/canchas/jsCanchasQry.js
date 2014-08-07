@@ -53,3 +53,13 @@ function eliminarCanchas(nCanID){
         }              
     });
 }
+
+function deletecancha(link)
+{
+    var answer = confirm('Esta seguro de Eliminar esta Cancha?')
+    if (answer){
+        window.location = link;
+    }
+    
+    return false;  
+}

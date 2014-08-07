@@ -55,7 +55,7 @@
                                     <a data-rel="tooltip" title="Agregar fotos" class="blue add-galerai cursor_pointer" href="<?=URL_MAIN?>canchas/galeria/<?=$list_canchas->nCanID; ?>">
                                         <i class=" icon-camera bigger-130"></i>&nbsp;
                                     </a>
-                                    <a data-rel="tooltip" title="eliminar cancha" class="red" href="<?=URL_MAIN?>canchas/delete_cancha/<?=$list_canchas->nCanID; ?>">
+                                    <a href="#" onClick="return deletecancha('<?=URL_MAIN?>canchas/delete_cancha/<?=$list_canchas->nCanID; ?>');" class="tooltip-error red" data-rel="tooltip" title="Eliminar">
                                         <i class="icon-trash bigger-130"></i>&nbsp;
                                     </a>
                                 </div>
