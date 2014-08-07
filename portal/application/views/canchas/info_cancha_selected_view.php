@@ -44,7 +44,7 @@
                         <!-- <p>
                             <i class="icons icon-ticket"></i> <b>Precio: </b> S/.30.00 Nuevos Soles
                         </p> -->
-                        <a class="button donate btn_reservar" target="_blank"      href="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11"><i class="icons icon-right-hand"></i> Reservar</a>
+                        <a class="button donate btn_reservar fancybox media-icon" href="#modal-cancha-reservar" data-value="<?=$nCanEnlace?>" ><i class="icons icon-right-hand"></i> Reservar</a>
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-6 animate-onscroll">
@@ -105,6 +105,12 @@
         <?php $this->load->view("canchas/otras_canchas_view"); ?>
     </section>
     <!-- /Related Events -->
+
+    <!-- modal de reserva-->
+    <div id="modal-cancha-reservar" style="width: 850px;height:550px;display: none;">
+        <iframe src="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11" width="100%" height="100%">
+        </iframe>
+    </div>
 
 </section>
 

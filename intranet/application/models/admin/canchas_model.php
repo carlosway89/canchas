@@ -20,6 +20,7 @@ class Canchas_model extends CI_Model {
     private $CanVisitas;
     private $CanFotoPortada;
     private $CanEstado;
+    private $CanEnlace;
 
     function __construct() {
         parent::__construct();
@@ -168,6 +169,13 @@ class Canchas_model extends CI_Model {
     public function setCanEstado($CanEstado) {
         $this->CanEstado = $CanEstado;
     }
+    public function setCanEnlace($CanEnlace){
+        $this->CanEnlace=$CanEnlace;
+     }
+
+     public function getCanEnlace(){
+        return $this->CanEnlace;
+     }
     
     function canchasIns() {
         $parametros = array(
@@ -185,10 +193,11 @@ class Canchas_model extends CI_Model {
             $this->getCanEmail(),
             $this->getCanSitioWeb(),
             $this->getCanNroCanchas(),
-            $this->getCanFotoPortada()
+            $this->getCanFotoPortada(),
+            $this->getCanEnlace()
         );
 
-        $query = $this->db->query("CALL USP_GEN_I_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
+        $query = $this->db->query("CALL USP_GEN_I_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
         $this->db->close();
         if ($query) {
             return true;
@@ -214,10 +223,11 @@ class Canchas_model extends CI_Model {
             $this->getCanEmail(),
             $this->getCanSitioWeb(),
             $this->getCanNroCanchas(),
-            $this->getCanFotoPortada()
+            $this->getCanFotoPortada(),
+            $this->getCanEnlace()
         );
 
-        $query = $this->db->query("CALL USP_GEN_U_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
+        $query = $this->db->query("CALL USP_GEN_U_CANCHAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
         $this->db->close();
         if ($query) {
             return true;
@@ -270,6 +280,7 @@ class Canchas_model extends CI_Model {
             $this->setCanVisitas($row->nCanVisitas);
             $this->setCanFotoPortada($row->cCanFotoPortada);
             $this->setCanEstado($row->cCanEstado);
+            $this->setCanEnlace($row->nCanEnlace);
             return $row;
         } else {
             return null;

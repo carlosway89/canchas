@@ -70,6 +70,7 @@ class Canchas extends CI_Controller {
             }
             
             $this->canchas_model->setCanFotoPortada($foto_cancha);
+            $this->canchas_model->setCanEnlace($this->input->post('txt_ins_can_enlace'));
             
             $result = $this->canchas_model->canchasIns();
 
