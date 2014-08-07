@@ -44,10 +44,7 @@
                             <td>
                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                                     <?php $url_nombre_cancha = replace_caracteres_raros($list_canchas->cCanNombre); ?>
-                                    <a target="_blank" href="<?php echo URL_PORTAL ?>canchas/informacion/<?php echo $url_nombre_cancha."_".$list_canchas->nCanID ?>" data-rel="tooltip" title="Ver detalles" class="blue ver-cancha">
-                                        <i class="icon-search bigger-130"></i>
-                                    </a>
-                                    
+                                                                       
                                     <a data-rel="tooltip" title="Editar" class="orange edit-cancha cursor_pointer" data-id = "<?php echo $list_canchas->nCanID; ?>">
                                         <i class="icon-edit bigger-130"></i>
                                     </a>
@@ -57,6 +54,9 @@
                                     </a>
                                     <a data-rel="tooltip" title="Agregar fotos" class="blue add-galerai cursor_pointer" href="<?=URL_MAIN?>canchas/galeria/<?=$list_canchas->nCanID; ?>">
                                         <i class=" icon-camera bigger-130"></i>&nbsp;
+                                    </a>
+                                    <a data-rel="tooltip" title="eliminar cancha" class="red" href="<?=URL_MAIN?>canchas/delete_cancha/<?=$list_canchas->nCanID; ?>">
+                                        <i class="icon-trash bigger-130"></i>&nbsp;
                                     </a>
                                 </div>
                             </td>

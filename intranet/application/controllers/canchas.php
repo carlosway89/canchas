@@ -106,6 +106,7 @@ class Canchas extends CI_Controller {
             $data['nCanVisitas'] = $this->canchas_model->getCanVisitas();
             $data['cCanEstado'] = $this->canchas_model->getCanEstado();
             $data['cCanFotoPortada'] = $this->canchas_model->getCanFotoPortada();
+            $data['nCanEnlace'] = $this->canchas_model->getCanEnlace();
             return $data;
         } else {
             return false;
@@ -156,6 +157,7 @@ class Canchas extends CI_Controller {
             }
             
             $this->canchas_model->setCanFotoPortada($foto_cancha);
+            $this->canchas_model->setCanEnlace($this->input->post('txt_upd_can_enlace'));
             
             $result = $this->canchas_model->canchasUpd();
 
@@ -178,12 +180,22 @@ class Canchas extends CI_Controller {
             $estado = 'H';
         }
 
-        $query = $this->canchas_model->canchasDel(array('DEL-CANCHAS', $nCanID, $estado,'','','','','','','','','','','','',''));
+        $query = $this->canchas_model->canchasDel(array('DEL-CANCHAS', $nCanID, $estado,'','','','','','','','','','','','','',''));
         if ($query) {
             echo "1";
         } else {
             echo "2";
         }
+    }
+    function delete_cancha(){
+        $ID = $this->uri->segment(3);
+        
+
+        $this->codegen_model->delete('detalle_canchas', 'nCanID', $ID);
+        $this->codegen_model->delete('canchas', 'nCanID', $ID);
+        redirect(base_url().'canchas');
+        
+
     }
     function galeria(){
 

@@ -288,7 +288,7 @@ class Canchas_model extends CI_Model {
     }
     
     function canchasDel($parametros) {
-        $query = $this->db->query("CALL USP_GEN_U_CANCHAS (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
+        $query = $this->db->query("CALL USP_GEN_U_CANCHAS (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", $parametros);
 
         $this->db->close();
         if ($query) {

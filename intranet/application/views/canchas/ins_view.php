@@ -8,6 +8,7 @@ $txt_ins_can_telefono = form_input(array('name' => 'txt_ins_can_telefono', 'id' 
 $txt_ins_can_facebook = form_input(array('name' => 'txt_ins_can_facebook', 'id' => 'txt_ins_can_facebook', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
 $txt_ins_can_email = form_input(array('name' => 'txt_ins_can_email', 'id' => 'txt_ins_can_email', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100', "required" => "required"));
 $txt_ins_can_web = form_input(array('name' => 'txt_ins_can_web', 'id' => 'txt_ins_can_web', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
+$txt_ins_can_enlace = form_input(array('name' => 'txt_ins_can_enlace', 'id' => 'txt_ins_can_enlace', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
 
 
 /* Generar el combo de Departamentos */
@@ -191,6 +192,16 @@ $cbo_ins_can_distritos[''] = "Seleccionar Distrito";
 
                 <div class="col-sm-9">
                     <input class="input-mini" id="txt_ins_can_nrocanchas" type="text" placeholder="Nro de Canchas" required="required"  name="txt_ins_can_nrocanchas" />
+                </div>
+            </div>
+
+            <div class="space-4"></div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="txt_ins_can_enlace"> Enlace ID </label>
+
+                <div class="col-sm-5">
+                    <?php echo $txt_ins_can_enlace; ?>
                 </div>
             </div>
 

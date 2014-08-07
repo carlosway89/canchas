@@ -73,6 +73,7 @@ $(function(){
                     msgLoadSaveRemove("#btn_ins_can_add");
                     if(data.trim() == 1){
                         alert("exito");
+                        $('#frm_ins_canchas').find('input, textarea, select').val('');
                     }else{
                         alert("error");
                     }
