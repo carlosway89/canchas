@@ -6,6 +6,7 @@
 
             <div class="col-lg-9 col-md-9 col-sm-8">
                 <!-- Main Slider -->
+                
                 <?php $this->load->view("master/slider_view"); ?>
                 <!-- /Main Slider -->
             </div>
@@ -100,7 +101,16 @@
                 <!-- END -->	
 
                 <div class="">
-                    <img src="<?php echo URL_IMG ?>ban.png" style="width: 100%;" alt="solocanchas.com" />
+                    <?php 
+                for($i=0;$i<count($list_publicidad);$i++) { 
+
+                    if($list_publicidad[$i]['cMultTitulo']=='abajo'){
+                    ?>
+                    <img src="<?= $list_publicidad[$i]['cMultLink']; ?>" style="width: 100%;" alt="banner abajo solocanchas" />
+                <?php 
+                    }
+                }
+                ?>
                 </div>
                 <!-- /Banner Rotator -->						
             </div>
@@ -125,7 +135,16 @@
                 <!-- Publicidad de Anuncios -->
                 <br />
                 <div class="">
-                    <img src="<?php echo URL_IMG ?>banner_anncia.png" style="width: 100%;" alt="banner solocanchas" />
+                <?php 
+                for($i=0;$i<count($list_publicidad);$i++) { 
+
+                    if($list_publicidad[$i]['cMultTitulo']=='derecha'){
+                    ?>
+                    <img src="<?= $list_publicidad[$i]['cMultLink']; ?>" style="width: 100%;" alt="banner derecha solocanchas" />
+                <?php 
+                    }
+                }
+                ?>
                 </div>
                 <br />
                 <!-- /Publicidad de Anuncios -->

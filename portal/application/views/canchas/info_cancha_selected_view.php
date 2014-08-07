@@ -108,8 +108,20 @@
 
     <!-- modal de reserva-->
     <div id="modal-cancha-reservar" style="width: 850px;height:550px;display: none;">
-        <iframe src="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=11" width="100%" height="100%">
+        <?php 
+        if($nCanEnlace==''){?>
+        <h3>Lo sentimos!!!</h3>
+        <div class="alert alert-warning">
+            Esta cancha aún no esta habilitada para reservas.
+        </div>
+        <?php 
+        }
+        else{?>
+        <iframe src="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=<?=$nCanEnlace?>" width="100%" height="100%">
         </iframe>
+        <?php
+        }
+        ?>
     </div>
 
 </section>

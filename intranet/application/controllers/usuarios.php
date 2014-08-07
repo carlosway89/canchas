@@ -13,19 +13,24 @@ class Usuarios extends CI_Controller {
         $this->load->model('admin/usuario_model');
         $this->load->model('admin/permisos_model');
 
+        
+    }
+
+    public function index() {
+        
         $this->load->model('admin/permisos_model');
 
         $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Usuarios'));
 
         if(!$acceso)
             redirect(base_url().'manage');
-    }
 
-    public function index() {
+
         $data['main_content'] = 'usuarios/panel_view';
         $data['title'] = '.: Panel de Administración - Módulo de Usuarios :.';
         $data['breadcrumbs'] = 'Módulo de Usuarios';
         $this->load->view('master/template_view', $data);
+
     }
 
     function usuariosQry() {
@@ -93,6 +98,14 @@ class Usuarios extends CI_Controller {
     }
 
     function usuariosDel($nUsuID) {
+        
+        $this->load->model('admin/permisos_model');
+
+        $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Usuarios'));
+
+        if(!$acceso)
+            redirect(base_url().'manage');
+
         $this->usuario_model->getDatosUsuario(array('LIST-PERSON-POR-CODE-PERSONA', $nUsuID, ''));
 
         if ($this->usuario_model->getUsuEstado() == "H") {
