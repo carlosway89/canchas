@@ -77,14 +77,14 @@ class Acceso extends CI_Controller {
     function enviar_email($accion, $email, $clave) {
 
         //configuracion para gmail
-        $smtp_user = 'luipa1303@gmail.com';
-        $smtp_clave = 'lampard_lampard';
-        $identificacion = 'Web Master SoloCanchas.';
+         $smtp_user = 'soporte@solocanchas.com';
+        $smtp_clave = 'gsavtecno';
+        $identificacion = 'Soporte SoloCanchas.';
 
         $configGmail = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_port' => 465,
+            'smtp_host' => 'webmail.solocanchas.com',
+            'smtp_port' => 25,
             'smtp_user' => $smtp_user,
             'smtp_pass' => $smtp_clave,
             'mailtype' => 'html',

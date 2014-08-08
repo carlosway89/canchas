@@ -55,7 +55,7 @@ class Usuarios extends CI_Controller {
             $result = $this->usuario_model->usuariosIns();
 
             if ($result) {
-               $this->enviar_email('registro', 'luiggichirinos_p@outlook.com', $this->input->post('txt_ins_user_clave'));
+               $this->enviar_email('registro', $this->input->post('txt_ins_user_email'), $this->input->post('txt_ins_user_clave'));
             } else {
                 echo 0;
             }
@@ -126,12 +126,12 @@ class Usuarios extends CI_Controller {
 
         //configuracion para gmail
         $smtp_user = 'soporte@solocanchas.com';
-        $smtp_clave = 'solo12345';
+        $smtp_clave = 'gsavtecno';
         $identificacion = 'Soporte SoloCanchas.';
 
         $configGmail = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'www.solocanchas.com',
+            'smtp_host' => 'webmail.solocanchas.com',
             'smtp_port' => 25,
             'smtp_user' => $smtp_user,
             'smtp_pass' => $smtp_clave,
@@ -145,8 +145,7 @@ class Usuarios extends CI_Controller {
         if ($accion == "registro") {
             $asunto = 'SOLO CANCHAS. - REGISTRO DE NUEVO USUARIO';
             $body_mensaje = '<p style="text-align:justify;padding:5px 8px 5px 8px;">
-                    Se ha generado una nueva clave de acceso a la Intranet. Tu nueva clave es 
-                    &nbsp;' . $clave . '</p>';
+                    Se ha generado una nueva usuario de acceso a la Intranet. <br> <b>Usuario:</b>'.$email.' <br><b>clave de usuario:</b>&nbsp;' . $clave . '</p>';
         } 
 
         $this->email->from($smtp_user, $identificacion);

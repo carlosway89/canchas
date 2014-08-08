@@ -1,8 +1,8 @@
 <section id="content">
 
     <!-- Page Heading -->
-    <section class="section page-heading animate-onscroll">
-
+    <section class="section page-heading animate-onscroll">       
+        
         <h1><?php echo $cCanNombre; ?></h1>
         <p class="breadcrumb"><a href="<?php echo URL_MAIN ?>">Inicio</a> / <a href="<?php echo URL_MAIN ?>canchas/busqueda">Búsqueda de Canchas</a> / Información de la Cancha seleccionada</p>
 

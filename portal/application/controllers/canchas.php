@@ -69,7 +69,8 @@ class Canchas extends CI_Controller {
         $data['menu_home'] = 'canchas';
         $data['list_galeria'] = $this->canchas_model->canchasGaleria(array('LISTADO-GALERIA-CANCHAS', $cadena[1], '', '', ''));
         $data['list_otrascanchas'] = $this->canchas_model->canchasQryOtros(array('LISTADO-CANCHAS-OTROS', $cadena[1], '', '', ''));
-        $data['list_comentarios'] = $this->comentarios_canchas_model->comentarios_canchasQry(array('LISTADO-COMENTARIOS-CANCHAS-CRITERIO'));
+        $data['nombre_id']=$nombre_cancha_id;
+        $data['list_comentarios'] = $this->codegen_model->get('comentarios_canchas', 'nComcaID,nCanID,cComcaNombrePersona,cComcaTexto,dComcaFechaRegistro', 'nCanID = '.$cadena[1], null);
        
         $this->load->view('master/template_view', $data);
     }
@@ -98,6 +99,29 @@ class Canchas extends CI_Controller {
         } else {
             return false;
         }
+    }
+    function comentar(){
+
+        $data = array(
+                'nCanID' => $this->input->post('nCanID'),
+                'cComcaNombrePersona' => $this->input->post('cComcaNombrePersona'),
+                'cComcaTexto' => $this->input->post('cComcaTexto'),
+                'nComcaPadreID' => '1',
+                'dComcaFechaRegistro' => date('Y-m-d'),
+                'cComcaEstado' => 'H',
+                'nComcaEmail' => $this->input->post('nComcaEmail')
+        );
+       
+        if ($this->codegen_model->add('comentarios_canchas',$data) == TRUE)
+        {   
+            redirect(base_url().'canchas/informacion/'.$this->input->post('nombre_id'));
+        }
+        else
+        {
+            echo '<div class="form_error"><p>An Error Occured.</p></div>';
+
+        }
+
     }
 
 }
