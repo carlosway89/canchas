@@ -250,7 +250,7 @@ class Eventos extends CI_Controller {
     function delete() {
         $ID = $this->uri->segment(3);
         $this->codegen_model->delete('eventos', 'nEveID', $ID);
-        redirect(base_url() . 'index.php/eventos/');
+        redirect(base_url() . 'eventos/');
     }
 
 }

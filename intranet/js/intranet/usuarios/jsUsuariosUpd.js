@@ -41,10 +41,7 @@ $(function(){
         }
     });
 });
-
-// FUNCIÓN PÁRA REGRESAR AL LOGIN DESPUES DE LA ACTUALIZACIÓN DE DATOS
 function reload(){
     msjCargando();
-    document.location.href ="../intranet/acceso/logout";
+    document.location.href ="../../usuarios";
 }
-

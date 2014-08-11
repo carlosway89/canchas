@@ -11,7 +11,7 @@
                         <th>Nombres</th>
                         <th>Usuario</th>
                         <th class="hidden-480">Estado</th>
-                        <th></th>
+                        <th id="opciones-usuario"></th>
                     </tr>
                 </thead>
 
@@ -36,46 +36,20 @@
                             </td>
                             <td>
                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                    <a data-rel="tooltip" data-original-title="Default" class="blue ver-permisos cursor_pointer" data-id = "<?php echo $list_usuarios->nUsuID; ?>">
+                                    <a data-rel="tooltip" title="Asignar Permisos" class="blue ver-permisos cursor_pointer" data-id = "<?php echo $list_usuarios->nUsuID; ?>">
                                         <i class="icon-external-link bigger-130"></i>
                                     </a>
 
-                                    <a data-rel="tooltip" data-original-title="Default" class="<?php echo $css_opcion; ?> cursor_pointer del-user" data-id = "<?php echo $list_usuarios->nUsuID; ?>">
+                                    <a data-rel="tooltip" title="<?=$css_opcion=='green'?'Habilitar Usuario':'Deshabilitar Usuario';?>" class="<?php echo $css_opcion; ?> cursor_pointer del-user" data-id = "<?php echo $list_usuarios->nUsuID; ?>">
                                         <i class="icon-exchange  bigger-130"></i>
                                     </a>
-                                </div>
-                                <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                    <div class="inline position-relative">
-                                        <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-                                            <i class="icon-caret-down icon-only bigger-120"></i>
-                                        </button>
+                                    <a data-rel="tooltip" title="Editar Usuario" class="blue" href="<?= URL_MAIN ?>usuarios/editar/<?= $list_usuarios->nUsuID; ?>">
+                                        <i class="icon-pencil bigger-130"></i>
+                                    </a>
 
-                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-                                            <li>
-                                                <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                    <span class="blue">
-                                                        <i class="icon-zoom-in bigger-120"></i>
-                                                    </span>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                    <span class="green">
-                                                        <i class="icon-edit bigger-120"></i>
-                                                    </span>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                    <span class="red">
-                                                        <i class="icon-trash bigger-120"></i>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <a  data-rel="tooltip" title="Eliminar Usuario" class="red" href="#" onClick="return deleteUser('<?= URL_MAIN ?>usuarios/eliminar/<?= $list_usuarios->nPerID; ?>');" >
+                                        <i class="icon-trash bigger-130"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -85,3 +59,9 @@
         </div>
     </div>
 </div>
+<style type="text/css">
+
+    #opciones-usuario{
+        width: 150px !important;
+    }
+</style>

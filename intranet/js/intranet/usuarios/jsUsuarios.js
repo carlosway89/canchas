@@ -1,7 +1,7 @@
 $(function(){
     
-    $("#anc_back").hide()
-    
+    $("#anc_back").hide();
+    usuariosQry();
     // TAB USUARIOS -> REGISTRAR
     $("#tab_user_registrar").bind('click', function(event){   
         $("#frm_ins_usuarios").data('validator').resetForm();

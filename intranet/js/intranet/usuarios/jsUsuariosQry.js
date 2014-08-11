@@ -52,3 +52,13 @@ function eliminarUsuarios(nUsuID){
         }              
     });
 }
+
+function deleteUser(link)
+{
+    var answer = confirm('Esta seguro de Eliminar este Usuario?')
+    if (answer){
+        window.location = link;
+    }
+    
+    return false;  
+}

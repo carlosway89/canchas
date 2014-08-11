@@ -12,6 +12,7 @@ class Usuarios extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('admin/usuario_model');
         $this->load->model('admin/permisos_model');
+        $this->load->model('codegen_model', '', TRUE);
 
         
     }
@@ -55,7 +56,8 @@ class Usuarios extends CI_Controller {
             $result = $this->usuario_model->usuariosIns();
 
             if ($result) {
-               $this->enviar_email('registro', $this->input->post('txt_ins_user_email'), $this->input->post('txt_ins_user_clave'));
+               // $this->enviar_email('registro', $this->input->post('txt_ins_user_email'), $this->input->post('txt_ins_user_clave'));
+               echo 1;
             } else {
                 echo 0;
             }
@@ -162,6 +164,62 @@ class Usuarios extends CI_Controller {
         } else {
             echo $this->email->print_debugger();
         }
+    }
+    function editar(){
+
+
+        $this->load->model('admin/permisos_model');
+
+        $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Usuarios'));
+
+        if(!$acceso)
+            redirect(base_url().'manage');
+        else{
+            $ID = $this->uri->segment(3);
+            $data['main_content'] = 'usuarios/editar_usuario';
+            $data['title'] = '.: Solo Canchas - Módulo de Actualización de Datos :.';
+            $data['menu_home'] = 'intranet';
+            $data['breadcrumbs'] = 'Módulo de Actualización de Datos';
+            
+            $this->usuario_model->getDatosUsuario(array('LIST-PERSON-POR-CODE-PERSONA', $ID, ''));
+            $data["nPerID"] = $this->usuario_model->getPerId(); 
+            $data["NombresUser"] = $this->usuario_model->getPerNombres();
+            $data["ApellidosUser"] = $this->usuario_model->getPerApellidos();
+            $data["EmailUser"] = $this->usuario_model->getPerEmail();
+
+            $this->load->view('master/template_view', $data);
+
+        }
+
+        
+
+    }
+    function eliminar(){
+
+        $this->load->model('admin/permisos_model');
+
+        $acceso=$this->permisos_model->permisos(array('ACCESO-PERMISO-USER',$this->session->userdata('nUsuID'),'Usuarios'));
+
+        if(!$acceso)
+            redirect(base_url().'manage');
+
+        else{
+            $ID = $this->uri->segment(3);
+            
+            if ($this->codegen_model->delete('usuarios', 'nPerID', $ID)) {
+                if ($this->codegen_model->delete('persona', 'nPerID', $ID)) {
+                    $this->codegen_model->delete('persona_detalle', 'nPerID', $ID);
+                    redirect(base_url() . 'usuarios');                    
+                }
+            }
+            else{
+                echo 2;
+            }
+
+            
+
+        }
+        
     }
 }
 
