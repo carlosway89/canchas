@@ -56,8 +56,7 @@ class Usuarios extends CI_Controller {
             $result = $this->usuario_model->usuariosIns();
 
             if ($result) {
-               // $this->enviar_email('registro', $this->input->post('txt_ins_user_email'), $this->input->post('txt_ins_user_clave'));
-               echo 1;
+               $this->enviar_email('registro', $this->input->post('txt_ins_user_email'), $this->input->post('txt_ins_user_clave'));
             } else {
                 echo 0;
             }
@@ -127,14 +126,14 @@ class Usuarios extends CI_Controller {
     function enviar_email($accion, $email, $clave) {
 
         //configuracion para gmail
-        $smtp_user = 'soporte@solocanchas.com';
-        $smtp_clave = 'gsavtecno';
+        $smtp_user = 'gsavtecno@gmail.com';
+        $smtp_clave = 'solo12345';
         $identificacion = 'Soporte SoloCanchas.';
 
         $configGmail = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'webmail.solocanchas.com',
-            'smtp_port' => 25,
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_port' => 587,
             'smtp_user' => $smtp_user,
             'smtp_pass' => $smtp_clave,
             'mailtype' => 'html',
@@ -149,7 +148,7 @@ class Usuarios extends CI_Controller {
             $body_mensaje = '<p style="text-align:justify;padding:5px 8px 5px 8px;">
                     Se ha generado una nueva usuario de acceso a la Intranet. <br> <b>Usuario:</b>'.$email.' <br><b>clave de usuario:</b>&nbsp;' . $clave . '</p>';
         } 
-
+        $this->email->SMTPSecure = 'tls';
         $this->email->from($smtp_user, $identificacion);
         $this->email->to($email);
         $this->email->subject($asunto);
@@ -194,6 +193,47 @@ class Usuarios extends CI_Controller {
         
 
     }
+    function usuariosUpdSuper($nPerID) {
+        $this->form_validation->set_rules('txt_upd_user_nombres', 'nombres', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_user_apellidos', 'apellidos', '|trim|required');
+        $this->form_validation->set_rules('txt_upd_user_email', 'email', '|trim|required');
+        $this->form_validation->set_message('required', 'El campo %s es requerido');
+
+        if ($this->form_validation->run() == true) {
+            $this->usuario_model->setPerId($nPerID);
+            $this->usuario_model->setPerNombres($this->input->post('txt_upd_user_nombres'));
+            $this->usuario_model->setPerApellidos($this->input->post('txt_upd_user_apellidos'));
+            $this->usuario_model->setPerEmail($this->input->post('txt_upd_user_email'));
+            
+            $result = $this->usuario_model->usuariosUpd();
+            $password=$this->input->post('txt_upd_password');
+            if ($password!='') {
+                $data = array(
+                    'cUsuNick' => $this->input->post('txt_upd_user_email'),
+                    'cUsuClave' => md5($this->input->post('txt_upd_password'))
+                );
+            }
+            else{
+                $data = array(
+                    'cUsuNick' => $this->input->post('txt_upd_user_email')
+                );
+
+            }            
+           
+            if ($this->codegen_model->edit('usuarios',$data,'nPerID',$nPerID) == TRUE)
+            {
+                if ($result) {
+                   echo 1;
+                } else {
+                    echo 0;
+                }
+            }
+            
+        } else {
+            echo "Error de validacion";
+        }
+    }
+
     function eliminar(){
 
         $this->load->model('admin/permisos_model');

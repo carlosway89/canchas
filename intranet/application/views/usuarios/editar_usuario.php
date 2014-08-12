@@ -12,9 +12,11 @@
             $txt_upd_user_nombres = form_input(array('value' => $NombresUser, 'name' => 'txt_upd_user_nombres', 'id' => 'txt_upd_user_nombres', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
             $txt_upd_user_apellidos = form_input(array('value' => $ApellidosUser, 'name' => 'txt_upd_user_apellidos', 'id' => 'txt_upd_user_apellidos', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
             $txt_upd_user_email = form_input(array('value' => $EmailUser, 'name' => 'txt_upd_user_email', 'id' => 'txt_upd_user_email', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '100'));
+
+            $txt_upd_password = form_input(array('type' => 'password', 'name' => 'txt_upd_password', 'id' => 'txt_upd_password', 'class' => 'col-xs-10 col-sm-5', 'maxlength' => '50', 'placeholder' => 'si no quiere cambiarlo deje en blanco'));
             ?>
 
-            <?php echo form_open('usuarios/usuariosUpd/' . $nPerID, $atributosForm); ?>
+            <?php echo form_open('usuarios/usuariosUpdSuper/' . $nPerID, $atributosForm); ?>
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="txt_upd_user_nombres"> Nombres </label>
 
@@ -45,6 +47,16 @@
 
             <div class="space-4"></div>
 
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="txt_upd_user_email"> Nueva Contraseña</label>
+
+                <div class="col-sm-9">
+                    <?php echo $txt_upd_password; ?>
+                </div>
+            </div>
+
+            <div class="space-4"></div>
+
             <div class="clearfix form-actions">
                 <div class="col-md-offset-3 col-md-9">
                     <span id="sms_upd_user_edit"></span>
@@ -54,10 +66,10 @@
                     </button>
 
                     &nbsp; &nbsp; &nbsp;
-                    <button class="btn" id="btn_upd_user_cancel" type="reset">
+                    <a class="btn" id="btn_upd_user_cancel" href="<?=URL_MAIN?>usuarios">
                         <i class="icon-undo bigger-110"></i>
                         Cancelar
-                    </button>
+                    </a>
                 </div>
             </div>
             <?php echo form_close(); ?>

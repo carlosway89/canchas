@@ -126,14 +126,14 @@ class Acceso extends CI_Controller {
     function enviar_email($accion, $email, $clave) {
 
         //configuracion para gmail
-        $smtp_user = 'soporte@solocanchas.com';
+        $smtp_user = 'gsavtecno@gmail.com';
         $smtp_clave = 'solo12345';
         $identificacion = 'Soporte SoloCanchas.';
 
         $configGmail = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'www.solocanchas.com',
-            'smtp_port' => 25,
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_port' => 587,
             'smtp_user' => $smtp_user,
             'smtp_pass' => $smtp_clave,
             'mailtype' => 'html',
@@ -154,7 +154,7 @@ class Acceso extends CI_Controller {
                     Se ha generado una nueva clave de acceso a la Intranet. Tu nueva clave es 
                     &nbsp;' . $new_clave . '</p>';
         }
-
+        $this->email->SMTPSecure = 'tls';
         $this->email->from($smtp_user, $identificacion);
         $this->email->to($email);
         $this->email->subject($asunto);

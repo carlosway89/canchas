@@ -85,21 +85,52 @@
                         <div class="row">
 
                             <!-- Logo -->
-                            <div id="logo" class="col-xs-12 col-lg-4 col-md-3 col-sm-3">
-                                <a href="#"><img src="<?php echo URL_IMG; ?>logo.png" alt="Logo" width="331" height="101" style="margin-top:-20px"></a>
+                            <div id="logo" class="col-xs-12 col-lg-8 col-md-7 col-sm-7">
+
+                                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100%" height="100%" id="banner" align="middle">
+                                    <param name="movie" value="<?=URL_IMG?>banner.swf" />
+                                    <param name="quality" value="high" />
+                                    <param name="bgcolor" value="#ffffff" />
+                                    <param name="play" value="true" />
+                                    <param name="loop" value="true" />
+                                    <param name="wmode" value="window" />
+                                    <param name="scale" value="showall" />
+                                    <param name="menu" value="true" />
+                                    <param name="devicefont" value="false" />
+                                    <param name="salign" value="" />
+                                    <param name="allowScriptAccess" value="sameDomain" />
+                                    <!--[if !IE]>-->
+                                    <object type="application/x-shockwave-flash" data="<?=URL_IMG?>banner.swf" width="700" height="100" style="margin-top:-12px;margin-left:-25px;">
+                                        <param name="movie" value="<?=URL_IMG?>banner.swf" />
+                                        <param name="quality" value="high" />
+                                        <param name="bgcolor" value="#ffffff" />
+                                        <param name="play" value="true" />
+                                        <param name="loop" value="true" />
+                                        <param name="wmode" value="window" />
+                                        <param name="scale" value="showall" />
+                                        <param name="menu" value="true" />
+                                        <param name="devicefont" value="false" />
+                                        <param name="salign" value="" />
+                                        <param name="allowScriptAccess" value="sameDomain" />
+                                    <!--<![endif]-->
+                                        <a href="http://www.adobe.com/go/getflash">
+                                            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Obtener Adobe Flash Player" />
+                                        </a>
+                                    <!--[if !IE]>-->
+                                    </object>
+                                    <!--<![endif]-->
+                                </object>
+                            
                             </div>
                             <!-- /Logo -->
+                            
 
-                            <!-- Main Quote -->
-                            <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4">
-                                &nbsp;
-                            </div>
-                            <!-- /Main Quote -->
+                            
 
                             <!-- Newsletter -->
                             <div class="col-xs-12 col-lg-4 col-md-5 col-sm-5">
 
-                                <form id="newsletter" action="http://localhost/canchas/portal/acceso/autentication" method="POST">
+                                <form id="newsletter" action="http://solocanchas.com/portal/acceso/autentication" method="POST">
 
                                     <h5 id="titulo-acceder">
                                         <i class="icons icon-laptop"></i>

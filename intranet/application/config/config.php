@@ -14,8 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
-
+$config['base_url']	= 'http://'.SERVER_NAME.'/'.PROJECT_NAME;
 /*
 |--------------------------------------------------------------------------
 | Index File

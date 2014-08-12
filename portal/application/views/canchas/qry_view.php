@@ -14,7 +14,9 @@
 
         <div class="row">
 
-            <?php if (count($list_canchas) > 0) { ?>
+            <?php 
+
+            if (count($list_canchas) > 0) { ?>
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="media-filters" style="opacity: 1;">
@@ -58,77 +60,68 @@
                 </div>
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="media-items row">
-                        <?php $i = 1; ?>
-                        <?php foreach ($list_canchas as $list_canchas) { ?>
-                            <?php
-                            $img_cancha = $list_canchas->cCanFotoPortada;
-                            $url_nombre_cancha = replace_caracteres_raros($list_canchas->cCanNombre);
-                            ?>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 mix category-photos" data-nameorder="1" data-dateorder="3">
-
-                                <!-- Media Item -->
-                                <div class="media-item animate-onscroll ">
-                                    <div class="media-image">
-                                        <img src="<?php echo $img_cancha; ?>" alt="solocanchas.com">
-                                        <div class="media-hover">
-                                            <div class="media-icons">
-                                                <a class="media-icon" rel="prettyPhoto[gallery1]" href="<?php echo $img_cancha; ?>"><i class="icons icon-eye"></i></a>
-                                                <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha. "_" . $list_canchas->nCanID; ?>" class="media-icon"><i class="icons icon-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="media-info">
-                                        <div class="media-header">
-                                            <div class="media-caption">
-                                                <h2><a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas->nCanID; ?>"><?php echo $list_canchas->cCanNombre; ?></a></h2>
-                                            </div>
-                                        </div>
-
-                                        <div class="media-description">
-                                            <p>
-                                                <i class="icons icon-location"></i> Dirección: <?php echo $list_canchas->direccion; ?>
-                                            </p>
-                                            <p>
-                                                <i class="icons icon-home"></i> <?php echo $list_canchas->distrito; ?>, <?php echo $list_canchas->departamento; ?>
-                                            </p>
-                                            <p>
-                                                <i class="icons icon-phone"></i> Teléfono: <?php echo $list_canchas->telefono; ?>
-                                            </p>
-                                            <p>
-                                                <i class="icons icon-flag-1"></i> Canchas: <?php echo $list_canchas->nro_canchas; ?>
-                                            </p>
-                                        </div>
-
-                                        <div class="media-button">
-                                            <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas->nCanID; ?>" class="button big button-arrow">Ver detalle</a>									</div>
-
-                                    </div>
-                                </div>
-                                <!-- /Media Item -->							
+                    
+                    <div class="owl-carousel-container">
+                        <div class="owl-header">
+                            <div class="side-segment">
+                                <h3 class="animate-onscroll">
+                                    Registro de Canchas Encontradas
+                                </h3>
                             </div>
 
-                            <?php $i++; ?>
-                        <?php } ?>
+                            <div class="carousel-arrows animate-onscroll">
+                                <span class="left-arrow"><i class="icons icon-left-dir"></i></span>
+                                <span class="right-arrow"><i class="icons icon-right-dir"></i></span>
+                            </div>
+                        </div>
 
-                    </div>
-                    <div class="animate-onscroll">
-                        <div class="divider"></div>
-                        <div class="numeric-pagination">
-                            <a href="#" class="button"><i class="icons icon-left-dir"></i></a>
-                            <a href="#" class="button">1</a>
-                            <a href="#" class="button active-button">2</a>
-                            <a href="#" class="button">3</a>
-                            <a href="#" class="button"><i class="icons icon-right-dir"></i></a>
+                        <div class="owl-carousel" data-max-items="4">
+
+                            <?php foreach ($list_canchas as $list_canchas) { ?>
+                                <?php $url_nombre_cancha = replace_caracteres_raros($list_canchas->cCanNombre); ?>
+                                <!-- Owl Item -->
+                                <div>
+                                    <!-- Blog Post -->
+                                    <div class="blog-post animate-onscroll">
+                                        <div class="post-image">
+                                            <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas->nCanID; ?>">
+                                                <img src="<?php echo $list_canchas->cCanFotoPortada; ?>" alt="solocanchas.com">
+                                            </a>
+                                        </div>
+
+                                        <h4 class="post-title">
+                                            <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas->nCanID; ?>">
+                                               <?php echo $list_canchas->cCanNombre; ?>
+                                            </a>
+                                        </h4>
+
+                                        <p>
+                                            <i class="icons icon-location"></i> Dirección: <?php echo $list_canchas->direccion; ?>
+                                        </p>
+                                        <p>
+                                            <i class="icons icon-home"></i> <?php echo $list_canchas->provincia; ?>, <?php echo $list_canchas->departamento; ?>
+                                        </p>
+                                        <p>
+                                            <i class="icons icon-phone"></i> Teléfono: <?php echo $list_canchas->telefono; ?>
+                                        </p>
+                                        <p>
+                                            <i class="icons icon-flag-1"></i> Canchas:  <?php echo $list_canchas->nro_canchas; ?>
+                                        </p>
+                                        <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $list_canchas->nCanID; ?>" class="button read-more-button big button-arrow">Ver detalle</a>
+
+                                    </div>
+                                    <!-- /Blog Post -->
+                                </div>
+                                <!-- /Owl Item -->
+                            <?php } ?>
+
                         </div>
                     </div>
                 </div>
             <?php } else { ?>
                 <div class="col-lg-12 col-md-12 col-sm-12" style="opacity: 1;">
                     <div class="alert-box info">
-                        <p><strong>Importante!</strong> No se han encontrado registros de canchas con tu búsqueda. </p>
+                        <p><strong>Lo Sentimos!</strong> No se han encontrado registros de canchas con tu búsqueda. </p>
                         <i class="icons icon-cancel-circle-1"></i>
                     </div>
                 </div>

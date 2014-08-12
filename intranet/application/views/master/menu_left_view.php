@@ -55,7 +55,7 @@
                         echo '<ul ' . $opciones[$i]["ul"] . '>';
                         for ($j = 0; $j < $count2; $j++) {
                             ?>                              
-                        <li <?php echo $opciones[$i]["datos"][$j]["li"]; ?>>
+                        <li <?= $opciones[$i]["datos"][$j]["li"]; ?> >
                             <a href="<?php echo URL_MAIN . $opciones[$i]["datos"][$j]["url"]; ?>">
                                 <i class="icon-double-angle-right"></i>
                                 <?php echo $opciones[$i]["datos"][$j]["value"]; ?>
