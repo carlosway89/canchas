@@ -26,7 +26,7 @@
                         $titulo_noticia = replace_caracteres_raros($list_noticias->cInfoTitulo);
                         ?>
                         <div class="event-image">
-                            <a href="<?php echo URL_MAIN; ?>noticias/detalle/<?php echo $titulo_noticia; ?>_<?php echo $list_noticias->nInfoID; ?>">
+                            <a href="<?php echo URL_MAIN; ?>noticias/detalle/noticia_<?php echo $list_noticias->nInfoID; ?>">
                                 <img src="<?php echo $list_noticias->foto_noticia; ?>" alt="solocanchas.com">
                             </a>
                         </div>

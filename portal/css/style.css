@@ -348,7 +348,7 @@ h6.shortcodes-caption{
 }
 
 #newsletter{
-    background:#324e79;
+    background-color:rgba(60,105,9,0.5);
     padding:20px;
     border-radius:5px;
     -webkit-border-radius:5px;
@@ -4192,7 +4192,8 @@ a.button.details-button:hover:after{
 
 
 .banner_new.donate-banner2{
-    background:#2C4D05;
+    background-color: rgba(50,78,121,1);
+
     padding:20px 18px 20px 20px;
 }
 
@@ -8368,6 +8369,11 @@ input.numeric-input:focus{
 
 .btn_submit{
     font-size:16px;
+    background: none repeat scroll 0% 0% #4174C5;
+    color: #FFF;
+    border-top-color: #4378CC;
+    border-bottom-color: #3761A6;
+    text-decoration: none;
 }
 
 .letra-h4{

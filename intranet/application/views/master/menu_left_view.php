@@ -56,10 +56,25 @@
                         for ($j = 0; $j < $count2; $j++) {
                             ?>                              
                         <li <?= $opciones[$i]["datos"][$j]["li"]; ?> >
-                            <a href="<?php echo URL_MAIN . $opciones[$i]["datos"][$j]["url"]; ?>">
+
+                            <?php 
+                                $url=$opciones[$i]["datos"][$j]["url"];
+
+                                if (strpos($url,'http')===false) {
+                            ?>
+                            <a href="<?=URL_MAIN . $url?>">
                                 <i class="icon-double-angle-right"></i>
                                 <?php echo $opciones[$i]["datos"][$j]["value"]; ?>
                             </a>
+                            <?php 
+                                }else{
+                            ?>
+                            <a href="<?=$url?>" target="_blank">
+                                <i class="icon-double-angle-right"></i>
+                                <?php echo $opciones[$i]["datos"][$j]["value"]; ?>
+                            </a>
+                            <?php
+                            } ?>
                         </li>
                         <?php
                     }

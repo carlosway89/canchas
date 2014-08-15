@@ -45,6 +45,7 @@
                             <i class="icons icon-ticket"></i> <b>Precio: </b> S/.30.00 Nuevos Soles
                         </p> -->
                         <a class="button donate btn_reservar fancybox media-icon" href="#modal-cancha-reservar" data-value="<?=$nCanEnlace?>" ><i class="icons icon-right-hand"></i> Reservar</a>
+                        <a class="button donate2 btn_reservar fancybox" href="#modal-pagar" > Pagar</a>
                     </div>
 
                     <div class="col-lg-5 col-md-5 col-sm-6 animate-onscroll">
@@ -122,6 +123,108 @@
         <?php
         }
         ?>
+    </div>
+
+    <div id="modal-pagar" style="width: 850px;height:650px;display: none;">
+        <H4>Realizar Pago de Reserva</H4>
+        <div class="payment-options">
+            <ul>
+                <li>
+                    <div class="payment-header">
+                        <input type="radio" name="payment-option" checked="checked" id="direct-bank-transfer-radio">
+                        <label for="direct-bank-transfer-radio">Pagar Con Tarjeta de Credito o Debito <img src="<?=URL_IMG?>logotipo-visa.jpg" alt="visa logo"></label>
+                    </div>
+                    <div class="payment-content">
+                        <p>Ingresar los Datos Requeridos para realizar el pago de su reserva con tarjeta Visa</p>
+                        <form class="">
+                            <div class="row inline-inputs">                                
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <label>Nombres*</label>
+                                    <input type="text" required>
+                                </div>                                
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <label>Apellidos*</label>
+                                    <input type="text" required>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <label>N° Tarjeta*</label>
+                                    <input type="text" required>
+                                </div>                                
+                            </div>
+                            <br>
+                            
+                            <div class="row ">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <label>Expiracion*</label>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <select name="month" class="chosen-select">
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option selected>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <select name="year" class="chosen-select">
+                                                <option selected>2014</option>
+                                                <option>2015</option>
+                                                <option>2016</option>
+                                                <option>2017</option>
+                                                <option>2018</option>
+                                                <option>2019</option>
+                                                <option>2020</option>
+                                                <option>2021</option>
+                                                <option>2022</option>
+                                                <option>2023</option>
+                                                <option>2024</option>
+                                                <option>2025</option>
+                                                <option>2026</option>
+                                            </select>
+                                        </div> 
+                                    </div>                                                                        
+                                    
+                                </div> 
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>Codigo CVV*</label>
+                                    <input type="text" required>
+                                </div> 
+                                
+                            </div>
+
+                        </form>
+                        <img src="<?=URL_IMG?>logotipo-verified-by-visa.jpg" alt="visa logo">
+                    </div>
+                </li>
+                <li>
+                    <div class="payment-header">
+                        <input type="radio" name="payment-option" id="cheque-payment-radio">
+                        <label for="cheque-payment-radio">Pagado por Agente o Banco (Ingresar Voucher)</label>
+                    </div>
+                    <div class="payment-content">
+                        <p>Ingresar los Datos Requeridos que acontinuacion se le pide para confirmar el pago de su reserva</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="payment-header">
+                        <input type="radio" name="payment-option" id="paypal-radio">
+                        <label for="paypal-radio">Pagar por PayPal <img src="<?=URL_IMG?>paypal.png" alt=""></label>
+                    </div>
+                    <div class="payment-content">
+                        <p>Realize el pago de su reserva por medio de Paypal</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
 </section>

@@ -31,18 +31,20 @@
                 <a href="<?php echo URL_MAIN ?>">Academias</a>
             </li>
             <!-- /Academias -->
+            
+            <!-- Campeonatos -->
+            <li >
+                <a href="#">Quiero Jugar</a>
+            </li>
+            <!-- /Campeonatos -->
 
             <!-- Gimnasios -->
             <li>
-                <a href="<?php echo URL_MAIN ?>">Gimnasios</a>
+                <a href="<?php echo URL_MAIN ?>noticias">Noticias</a>
             </li>
             <!-- /Gimnasios -->
 
-            <!-- Campeonatos -->
-            <li >
-                <a href="#">Campeonatos</a>
-            </li>
-            <!-- /Campeonatos -->
+            
 
             <!-- Contactenos -->
             <li class="<?php if($menu_home == 'contacto') {  echo "current-menu-item"; } ?>">

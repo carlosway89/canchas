@@ -14,7 +14,7 @@ $cbo_fnd_cancha_provincias[''] = "Seleccionar Provincia";
 /* Generar el combo de Distritos */
 $cbo_fnd_cancha_distritos[''] = "Seleccionar Distrito";
 
-$btn_fnd_canchas = form_button('btn_fnd_canchas', 'BUSCAR', 'id="btn_fnd_canchas" class="button donate2 btn_submit"');
+$btn_fnd_canchas = form_button('btn_fnd_canchas', 'BUSCAR', 'id="btn_fnd_canchas" class="button  btn_submit"');
 ?>
 
 <?php echo form_open('', $atributosForm); ?>

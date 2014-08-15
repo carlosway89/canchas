@@ -5,7 +5,7 @@
         <!-- Meta Tags -->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="solocanchas.com es una guía que reúne información de los mejores centros deportivos del pais"/>
+        <meta name="description" content="solocanchas reúne información de los mejores centros deportivos del pais, deportes, noticias y reservas"/>
         <meta name="author" content="Grupo SAV"/>
         <meta name="keywords" content="futbol, jugar, canchas, ver, deportes, noticias, en vivo, fixture, eventos, reservas, cerca, arriendo"/>
         <meta name="robots" content="INDEX,FOLLOW">
@@ -14,7 +14,7 @@
         <title><?php echo $title; ?></title>
 
         <!-- Favicon -->
-        <link rel="icon" type="image/png" href="http://localhost/canchas/portal/img/favicon.ico" />
+        <link rel="icon" type="image/png" href="http://solocanchas.com/portal/img/favicon.ico" />
 
         <!-- Stylesheets -->
         <link href="<?php echo URL_CSS; ?>bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -89,7 +89,7 @@
 
                                 <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100%" height="100%" id="banner" align="middle">
                                     <param name="movie" value="<?=URL_IMG?>banner.swf" />
-                                    <param name="quality" value="high" />
+                                    <param name="quality" value="medium" />
                                     <param name="bgcolor" value="#ffffff" />
                                     <param name="play" value="true" />
                                     <param name="loop" value="true" />
@@ -102,7 +102,7 @@
                                     <!--[if !IE]>-->
                                     <object type="application/x-shockwave-flash" data="<?=URL_IMG?>banner.swf" width="700" height="100" style="margin-top:-12px;margin-left:-25px;">
                                         <param name="movie" value="<?=URL_IMG?>banner.swf" />
-                                        <param name="quality" value="high" />
+                                        <param name="quality" value="medium" />
                                         <param name="bgcolor" value="#ffffff" />
                                         <param name="play" value="true" />
                                         <param name="loop" value="true" />
@@ -113,9 +113,7 @@
                                         <param name="salign" value="" />
                                         <param name="allowScriptAccess" value="sameDomain" />
                                     <!--<![endif]-->
-                                        <a href="http://www.adobe.com/go/getflash">
-                                            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Obtener Adobe Flash Player" />
-                                        </a>
+                                        <a href="#"><img src="<?php echo URL_IMG; ?>logo.png" alt="Logo" width="331" height="101" style="margin-top:-20px"></a>
                                     <!--[if !IE]>-->
                                     </object>
                                     <!--<![endif]-->

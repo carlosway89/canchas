@@ -34,58 +34,26 @@ class Contactenos extends CI_Controller {
         $email = $this->input->post('contact_email');
         $message = $this->input->post('contact_message');
 
-//    //configuracion para gmail
-//    $smtp_user = 'soporte@solocanchas.com';
-//    $smtp_clave = 'solo12345';
-//    $identificacion = 'Soporte SoloCanchas.';
-//
-//    $configGmail = array(
-//        'protocol' => 'smtp',
-//        'smtp_host' => 'www.solocanchas.com',
-//        'smtp_port' => 25,
-//        'smtp_user' => $smtp_user,
-//        'smtp_pass' => $smtp_clave,
-//        'mailtype' => 'html',
-//        'charset' => 'utf-8',
-//        'newline' => "\r\n"
-//    );
-        //configuracion para gmail
-        $smtp_user = 'luipa1303@gmail.com';
-        $smtp_clave = 'lampard_lampard';
-        $identificacion = 'Web Master Solo Canchas.';
 
-        $configGmail = array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_port' => 465,
-            'smtp_user' => $smtp_user,
-            'smtp_pass' => $smtp_clave,
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-            'newline' => "\r\n"
-        );
-
-        $this->email->initialize($configGmail);
 
 
         $asunto = 'SOLO CANCHAS. - MENSAJE DE CONTACTO';
         $body_mensaje = "<b>".$nombres." ".$apellidos."</b>"." <br />te ha enviado desde su correo electronico <b>".$email."</b> el siguiente mensaje: <br /><br />".$message;
 
+        ini_set("sendmail_from", "soporte@solocanchas.com");
 
-        $this->email->from($smtp_user, $identificacion);
-        $this->email->to('luiggichirinos_p@outlook.com');
-        $this->email->subject($asunto);
+        $message = $body_mensaje;
 
-        $estilo_css = '<style type="text/css">a {color: #003399;background-color: transparent;font-weight: normal;}h1 {color: #444;background-color: transparent;font-size: 24px;font-weight: bold;}code {font-family: Consolas, Monaco, Courier New, Courier, monospace;font-size: 12px;background-color: #f9f9f9;border: 1px solid #D0D0D0;color: #002166;display: block;margin: 14px 0 14px 0;padding: 12px 10px 12px 10px;}#body{margin: 0 15px 0 15px;}p.footer{text-align: right;font-size: 11px;border-top: 1px solid #D0D0D0;line-height: 32px;padding: 0 10px 0 10px;margin: 20px 0 0 0;}#container{width: 800px;margin: auto;border: 1px solid #D0D0D0;-webkit-box-shadow: 0 0 8px #D0D0D0;font: 13px/20px normal Helvetica, Arial, sans-serif;color: #4F5155;}#container img{float: left;margin: 5px 10px 0px 10px;width: 54px;height: 65px;}</style >';
-        $header_mensaje = '';
+        $headers = $asunto.
+        "MIME-Version: 1.0\r\n" .
+        "Content-Type: text/html; charset=utf-8\r\n" .
+        "Content-Transfer-Encoding: 8bit\r\n\r\n";
 
-        $this->email->message($estilo_css . $header_mensaje . $body_mensaje);
+        mail('soporte@solocanchas', $asunto, $message, $headers);
 
-        if ($this->email->send()) {
-            echo "1";
-        } else {
-            echo $this->email->print_debugger();
-        }
+        echo "1";
+
+
     }
 
 }

@@ -76,23 +76,7 @@ class Acceso extends CI_Controller {
 
     function enviar_email($accion, $email, $clave) {
 
-        //configuracion para gmail
-         $smtp_user = 'soporte@solocanchas.com';
-        $smtp_clave = 'gsavtecno';
-        $identificacion = 'Soporte SoloCanchas.';
 
-        $configGmail = array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'webmail.solocanchas.com',
-            'smtp_port' => 25,
-            'smtp_user' => $smtp_user,
-            'smtp_pass' => $smtp_clave,
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-            'newline' => "\r\n"
-        );
-
-        $this->email->initialize($configGmail);
 
         if ($accion == "registro") {
             $asunto = 'SOLO CANCHAS. - REGISTRO DE NUEVO USUARIO';
@@ -106,20 +90,18 @@ class Acceso extends CI_Controller {
                     &nbsp;' . $new_clave . '</p>';
         }
 
-        $this->email->from($smtp_user, $identificacion);
-        $this->email->to($email);
-        $this->email->subject($asunto);
+        ini_set("sendmail_from", "soporte@solocanchas.com");
 
-        $estilo_css = '<style type="text/css">a {color: #003399;background-color: transparent;font-weight: normal;}h1 {color: #444;background-color: transparent;font-size: 24px;font-weight: bold;}code {font-family: Consolas, Monaco, Courier New, Courier, monospace;font-size: 12px;background-color: #f9f9f9;border: 1px solid #D0D0D0;color: #002166;display: block;margin: 14px 0 14px 0;padding: 12px 10px 12px 10px;}#body{margin: 0 15px 0 15px;}p.footer{text-align: right;font-size: 11px;border-top: 1px solid #D0D0D0;line-height: 32px;padding: 0 10px 0 10px;margin: 20px 0 0 0;}#container{width: 800px;margin: auto;border: 1px solid #D0D0D0;-webkit-box-shadow: 0 0 8px #D0D0D0;font: 13px/20px normal Helvetica, Arial, sans-serif;color: #4F5155;}#container img{float: left;margin: 5px 10px 0px 10px;width: 54px;height: 65px;}</style >';
-        $header_mensaje = '';
+        $message = $body_mensaje;
 
-        $this->email->message($estilo_css . $header_mensaje . $body_mensaje);
+        $headers = $asunto.
+        "MIME-Version: 1.0\r\n" .
+        "Content-Type: text/html; charset=utf-8\r\n" .
+        "Content-Transfer-Encoding: 8bit\r\n\r\n";
 
-        if ($this->email->send()) {
-            echo "1";
-        } else {
-            echo $this->email->print_debugger();
-        }
+        mail($email, $asunto, $message, $headers);
+
+        echo "1";
     }
 
     function usuarioValidacion() {

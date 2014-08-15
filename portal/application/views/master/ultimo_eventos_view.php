@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="event-content">
-                                <h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/<?=$list_eventos[$i]['nEveID']?>"><?=$list_eventos[$i]['cEveTitulo']?></a></h6>
+                                <h6><a href="<?php echo URL_MAIN ?>eventos/mostrar/<?=$list_eventos[$i]['nEveID']?>" target="_blank"><?=$list_eventos[$i]['cEveTitulo']?></a></h6>
                                 <ul class="event-meta">
                                     <li><i class="icons icon-clock"></i> <?=date("H:i",strtotime($list_eventos[$i]['dEveStartTime']));?> - <?=date("H:i",strtotime($list_eventos[$i]['dEveEndTime']));?></li>
                                     <li><i class="icons icon-location"></i><?=$list_eventos[$i]['cEveDireccion']?></li>
@@ -36,5 +36,5 @@
                         <?php }?>
 
                     </ul>
-                    <a href="<?=URL_MAIN?>eventos" class="button transparent button-arrow">Más eventos</a>
+                    <a href="<?=URL_MAIN?>eventos" class="button transparent button-arrow" target="_blank">Más eventos</a>
                 </div>

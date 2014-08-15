@@ -15,10 +15,10 @@
         <div class="row">
 
             <?php 
-
+            
             if (count($list_canchas) > 0) { ?>
 
-                <div class="col-lg-12 col-md-12 col-sm-12">
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="media-filters" style="opacity: 1;">
 
                         <div class="filter-filtering">
@@ -57,7 +57,7 @@
                         </script>
 
                     </div>
-                </div>
+                </div> -->
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     

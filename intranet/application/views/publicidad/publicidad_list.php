@@ -76,7 +76,7 @@
 
 							<div class="tools tools-right">
 																	
-								<a href="#" onClick="return deletechecked('<?=URL_MAIN?>multimedia/delete_foto/<?=$list_multimedia[$i]['nMultID'];?>/<?=$list_multimedia[$i]['cMultLink'];?>');" >
+								<a href="#" onClick="return deletechecked('<?=URL_MAIN?>multimedia/delete_foto/<?=$list_multimedia[$i]['nMultID'];?>');" >
 									<i class="icon-remove red"></i>
 								</a>
 							</div>

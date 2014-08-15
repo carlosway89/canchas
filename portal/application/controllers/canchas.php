@@ -57,8 +57,86 @@ class Canchas extends CI_Controller {
             }
             redirect("/canchas/informacion/".str_replace(" ", "-", $name_cancha) . "_" . $id_cancha);
         } else {
-            $this->load->view('master/template_view', $data);
+            if (count($data['list_canchas']) < 1) {
+                $this->busqueda_inteligente($texto_criterio);
+                
+            }else{
+                $this->load->view('master/template_view', $data);
+            }
+
+            
         }
+    }
+
+    public function busqueda_inteligente($texto_criterio){
+
+        $data['main_content'] = 'canchas/qry_view';
+        $data['title'] = '.: Solo Canchas - Busqueda de Canchas :.';
+        $data['menu_home'] = 'canchas';
+
+        $leng=strlen($texto_criterio);
+
+        if($leng<3){
+            
+            $this->busqueda_reemplazo($texto_criterio);
+            // $data['list_canchas']=null;
+            // $this->load->view('master/template_view', $data);
+
+        }else{
+            $end=round(strlen($texto_criterio)/2);
+            $texto_cortado=substr($texto_criterio,0,$end);
+
+            $resultado=$this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO',$texto_cortado,'','',''));
+
+            if (count($resultado) >= 1) {
+                $data['list_canchas']=$resultado;
+                $this->load->view('master/template_view', $data);
+                // print_r($resultado);
+            }
+            else{
+                $this->busqueda_inteligente($texto_cortado);
+            }
+        }
+    }
+
+    public function busqueda_reemplazo($texto_criterio){
+        $data['main_content'] = 'canchas/qry_view';
+        $data['title'] = '.: Solo Canchas - Busqueda de Canchas :.';
+        $data['menu_home'] = 'canchas';
+        $data['list_canchas']=null;
+
+        $parecidos= array(
+            's' => 'c', 
+            'b' => 'v',
+            'c' => 's',
+            'v' => 'b',
+            'n' => 'm',
+            'm' => 'n',
+            'z' => 's',
+            's' => 'z',
+            'c' => 'z',
+            'z' => 'c',
+            'u' => 'ou',
+            'i' => 'y',
+            'y' => 'i'  
+        );
+
+        foreach ($parecidos as $key => $value) {
+
+            $texto_criterio=str_replace($key,$value,$texto_criterio);
+            $resultado=$this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO',$texto_criterio,'','',''));
+
+            if (count($resultado) >= 1) {
+                $data['list_canchas']=$resultado;
+            }
+        }        
+
+
+        $this->load->view('master/template_view', $data);
+
+
+
+
     }
 
     public function informacion($nombre_cancha_id) {

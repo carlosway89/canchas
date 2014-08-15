@@ -6,16 +6,19 @@
     <!-- Lower Footer -->
     <div id="lower-footer">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                 <p class="copyright">© 2014 SoloCanchas. Todos los derechos reservados.</p>
             </div>
+            <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 ">
+                <script type="text/javascript" src="http://counter6.statcounterfree.com/private/countertab.js?c=fccea93d102fbea62c9b84b428f44697"></script>        
+            </div> -->
 
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                 <div class="social-media">
                     <ul class="social-icons">
                         <li class="facebook"><a href="#" class="tooltip-ontop" title="Facebook"><i class="icons icon-facebook"></i></a></li>
                         <li class="twitter"><a href="#" class="tooltip-ontop" title="Twitter"><i class="icons icon-twitter"></i></a></li>
-                        <li class="google"><a href="#" class="tooltip-ontop" title="Google Plus" rel="Publisher"><i class="icons icon-gplus"></i></a></li>
+                        <li class="google"><a href="https://plus.google.com/" rel="publisher" class="tooltip-ontop" title="Google Plus" ><i class="icons icon-gplus"></i></a></li>
                         <li class="youtube"><a href="#" class="tooltip-ontop" title="Youtube"><i class="icons icon-youtube-1"></i></a></li>
                         <li class="flickr"><a href="#" class="tooltip-ontop" title="Flickr"><i class="icons icon-flickr-4"></i></a></li>
                         <li class="email"><a href="#" class="tooltip-ontop" title="Email"><i class="icons icon-mail"></i></a></li>

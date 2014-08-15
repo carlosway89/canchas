@@ -50,6 +50,9 @@ class Inicio extends CI_Controller {
             print_r($result);
         }
     }
+    function info(){
+        PHPinfo();
+    }
 
 }
 
