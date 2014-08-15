@@ -202,6 +202,18 @@ class Canchas extends CI_Controller {
 
     }
 
+    public function click_visita($id_cancha){
+
+        $actual_visita = $this->codegen_model->get('canchas','nCanVisitas','nCanID = '.$id_cancha,null,null);
+        $nueva_visita=$actual_visita+1;
+        $data = array(
+                    'nCanVisitas' => $nueva_visita,
+        );
+           
+        $this->codegen_model->edit('canchas',$data,'nCanID',$id_cancha);
+
+    }
+
 }
 
 /* End of file welcome.php */

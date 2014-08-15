@@ -37,16 +37,16 @@
                     <div class="banner-wrapper">
                         <a class="banner animate-onscroll" href="<?php echo URL_INTRANET ?>eventos/add" target="_blank">
                             <i class="icons icon-check margen_ico"></i>
-                            <h4 class="letra-h4">Registra tu evento</h4>
+                            <h4 class="letra-h4">Registrar eventos</h4>
                             <p>Registra tus eventos importantes</p>
                         </a>
                     </div>
 
                     <div class="banner-wrapper">
                         <a class="banner animate-onscroll" href="#">
-                            <i class="icons icon-picture margen_ico"></i>
-                            <h4 class="letra-h4">Publica Multimedia</h4>
-                            <p>Publica tus Fotos y Videos</p>
+                            <i class="icons icon-right-hand margen_ico"></i>
+                            <h4 class="letra-h4">Reservar Canchas</h4>
+                            <p>Buscas tus Canchas y Reservalas</p>
                         </a>
                     </div>
 
@@ -150,7 +150,7 @@
                 <!-- /Publicidad de Anuncios -->
 
                 <!-- Sección de Eventos -->
-                <?php $this->load->view("master/ultimo_eventos_view"); ?>
+                <?php $this->load->view("eventos/ultimo_eventos_view"); ?>
                 <!-- /Sección de Eventos -->						
 
 
