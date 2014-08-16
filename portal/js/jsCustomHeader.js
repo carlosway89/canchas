@@ -9,10 +9,10 @@ $(document).ready(function(){
     $("body").queryLoader2({
         backgroundColor: '#f2f4f9',
         barColor: '#63b2f5',
-        barHeight: 4,
+        barHeight: 5,
         percentage:false,
         deepSearch:true,
-        minimumTime:1000,
+        minimumTime:900,
         onComplete: function(){			
             $('.animate-onscroll').filter(function(index){		
                 return this.offsetTop < (window_s + window_h);				

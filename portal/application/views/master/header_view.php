@@ -64,6 +64,9 @@
             });
         </script>
 
+        <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.queryloader2.min.js"></script>
+        <script type="text/javascript" src="<?php echo URL_JS; ?>jsCustomHeader.js"></script>
+
 
     </head>
 

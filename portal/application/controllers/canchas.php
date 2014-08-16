@@ -19,8 +19,8 @@ class Canchas extends CI_Controller {
     }
 
     public function index() {
-        $data['main_content'] = 'master/body_view';
-        $data['title'] = '.: Solo Canchas - Inicio :.';
+        $data['main_content'] = 'canchas/body_view';
+        $data['title'] = '.: Solo Canchas - Canchas :.';
         $data['menu_home'] = 'canchas';
         $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
         $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
@@ -29,7 +29,8 @@ class Canchas extends CI_Controller {
         
         $data['list_publicidad'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultEstado,cMultNumVisitas', 'nMultCategID = 5', null);
 
-        $data['list_canchas_favoritas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-FAVORITAS','','','',''));
+        $data['list_canchas_favoritas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHA-TOP10','','','',''));
+        $data['cancha_top1'] = $this->canchas_model->canchasQry(array('CANCHA-TOP1','','','',''));
         $this->load->view('master/template_view', $data);
     }
 
@@ -151,6 +152,8 @@ class Canchas extends CI_Controller {
         $data['list_comentarios'] = $this->codegen_model->get('comentarios_canchas', 'nComcaID,nCanID,cComcaNombrePersona,cComcaTexto,dComcaFechaRegistro', 'nCanID = '.$cadena[1], null);
        
         $this->load->view('master/template_view', $data);
+
+        $this->click_visita($cadena[1]);
     }
 
     function canchasGet($nCanId) {
@@ -204,8 +207,10 @@ class Canchas extends CI_Controller {
 
     public function click_visita($id_cancha){
 
-        $actual_visita = $this->codegen_model->get('canchas','nCanVisitas','nCanID = '.$id_cancha,null,null);
-        $nueva_visita=$actual_visita+1;
+        $actual_visita = $this->codegen_model->get('canchas','nCanVisitas','nCanID = '.$id_cancha,null);
+
+        $nueva_visita=(int)$actual_visita[0]['nCanVisitas'] + 1;
+        
         $data = array(
                     'nCanVisitas' => $nueva_visita,
         );

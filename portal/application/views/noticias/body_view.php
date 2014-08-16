@@ -67,18 +67,37 @@
     <section class="section full-width-bg gray-bg">
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-8">
-                
+                <div class="option-select text-center">
+                    <a id="link-noticias" class="fixture-navegador active" href="#noticias">FUTBOL PERUANO</a>
+                    <a id="link-posiciones" class="fixture-navegador" href="#posiciones">POSICIONES</a>
+                    <a id="link-resultados" class="fixture-navegador" href="#resultados">RESULTADOS</a>
+                    <!-- <a id="link-calendario" class="fixture-navegador" href="#calendario">CALENDARIO</a> -->
+                    <a id="link-goleadores" class="fixture-navegador" href="#goleadores">GOLEADORES</a>
+                    <div id="resultados-envivo"></div>
+                </div>
+                <br>
+
+
+                <div id="fixture_content_show" style="display:none">
+                    <!--fixture content -->
+                </div>
+                <link href="<?= URL_CSS ?>externo/externo.css" rel="stylesheet" type="text/css" >
+                <script type="text/javascript" src="<?php echo URL_JS; ?>fixture/jsFixtureGet.js"></script>
+
+                <div id="noticias-resultados">
+                    <!-- SECCION NOTICIAS IMPORTANTES -->
+                    <?php $this->load->view("noticias/noticia_principal_view"); ?>
+                    <!-- END -->
+
+                    <!-- SECCION NOTICIAS IMPORTANTES -->
+                    <?php $this->load->view("noticias/noticias_importantes_view"); ?>
+                    <!-- END -->
+
+                </div>
                 	
-                <!-- SECCION CANCHAS IMPORTANTES TOP1-->
-                <?php $this->load->view("canchas/cancha_top1"); ?>
-                <!-- END -->
-                
+
                 <!-- SECCION CANCHAS FAVORITAS -->
                 <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
-                <!-- END -->
-
-                <!-- SECCION NOTICIAS IMPORTANTES -->
-                <?php $this->load->view("noticias/noticias_importantes_view"); ?>
                 <!-- END -->	
 
                 <div class="">
@@ -100,7 +119,7 @@
             <!-- Sidebar -->
             <div class="col-lg-3 col-md-3 col-sm-4 sidebar">
 
-                <!-- Informacion -->
+                <!-- Featured Video -->
                 <div class="sidebar-box white featured-detalle ">
                     <div class="side-segment">
                         <h3><i class="icons icon-info-circled"></i> SOLO CANCHAS</h3>
@@ -111,7 +130,7 @@
                         información necesaria para conocer y contactarse con centros deportivos a nivel nacional. 
                     </p>
                 </div>
-                <!-- /Informacion -->
+                <!-- /Featured Video -->
 
                 <!-- Publicidad de Anuncios -->
                 <br />
@@ -132,9 +151,7 @@
 
                 <!-- Sección de Eventos -->
                 <?php $this->load->view("eventos/ultimo_eventos_view"); ?>
-                <!-- /Sección de Eventos -->
-
-
+                <!-- /Sección de Eventos -->						
 
 
                 <div class="sidebar-box white animate-onscroll hidden-xs">

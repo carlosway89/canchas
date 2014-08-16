@@ -10,13 +10,26 @@ class Noticias extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('admin/ubigeo_model');
+        $this->load->model('admin/canchas_model');
+        $this->load->model('admin/comentarios_canchas_model');
         $this->load->model('admin/noticias_model');
+        $this->load->helper(array('form', 'url', 'codegen_helper'));
+        $this->load->model('codegen_model', '', TRUE);
     }
 
     public function index() {
-        $data['main_content'] = 'noticias/noticias_view';
+        $data['main_content'] = 'noticias/body_view';
         $data['title'] = '.: Solo Canchas - Noticias :.';
         $data['menu_home'] = 'noticias';
+        $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
+        $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
+        $data['noticia_principal'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-PRINCIPAL',''));
+        $data['list_eventos']=$this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', '', null);
+        
+        $data['list_publicidad'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultEstado,cMultNumVisitas', 'nMultCategID = 5', null);
+
+        $data['list_canchas_favoritas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHA-TOP10','','','',''));
         $this->load->view('master/template_view', $data);
     }
     

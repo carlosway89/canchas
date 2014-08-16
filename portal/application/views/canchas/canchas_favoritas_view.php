@@ -52,27 +52,32 @@
 
                 </div>
                 <!-- /Blog Post -->
+                
+                <!-- modal para reservar-->
+                <div id="modal-cancha-reservar-<?=$list_canchas_favoritas->nCanID?>" style="width: 850px;height:550px;display: none;">
+                    <?php 
+
+                    $nCanEnlace=$list_canchas_favoritas->nCanEnlace;
+
+                    if($nCanEnlace==''){?>
+                    <h3>Lo sentimos!!!</h3>
+                    <div class="alert alert-warning">
+                        Esta cancha aún no esta habilitada para reservas.
+                    </div>
+                    <?php 
+                    }
+                    else{?>
+                    <iframe src="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=<?=$nCanEnlace?>" width="100%" height="100%">
+                    </iframe>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <!-- /modal reservar-->
+
             </div>
             <!-- /Owl Item -->
-            <div id="modal-cancha-reservar-<?=$list_canchas_favoritas->nCanID?>" style="width: 850px;height:550px;display: none;">
-                <?php 
-
-                $nCanEnlace=$list_canchas_favoritas->nCanEnlace;
-
-                if($nCanEnlace==''){?>
-                <h3>Lo sentimos!!!</h3>
-                <div class="alert alert-warning">
-                    Esta cancha aún no esta habilitada para reservas.
-                </div>
-                <?php 
-                }
-                else{?>
-                <iframe src="http://solocanchas.com/WebCanchas/frmReserva.aspx?IdEmpresa=<?=$nCanEnlace?>" width="100%" height="100%">
-                </iframe>
-                <?php
-                }
-                ?>
-            </div>
+            
         <?php } ?>
 
     </div>
