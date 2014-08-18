@@ -67,18 +67,15 @@
     <section class="section full-width-bg gray-bg">
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-8">
-                
 
-                <div id="canchas-resultados">
-                    <!-- SECCION CANCHAS IMPORTANTES TOP1-->
-                    <?php $this->load->view("canchas/cancha_top1"); ?>
-                    <!-- END -->
+                <!-- SECCION CANCHAS POR FILTROS-->
+                <?php $this->load->view("canchas/canchas_filtro_view"); ?>
+                <!-- END -->
 
-                    <!-- SECCION CANCHAS IMPORTANTES TOP10-->
-                    <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
-                    <!-- END -->
+                <!-- SECCION CANCHAS IMPORTANTES TOP10-->
+                <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
+                <!-- END -->
 
-                </div>
                 
                 <!-- END -->	
 
@@ -131,9 +128,7 @@
                 <br />
                 <!-- /Publicidad de Anuncios -->
 
-                <!-- Sección de Eventos -->
-                <?php $this->load->view("eventos/ultimo_eventos_view"); ?>
-                <!-- /Sección de Eventos -->						
+                						
 
 
                 <div class="sidebar-box white animate-onscroll hidden-xs">

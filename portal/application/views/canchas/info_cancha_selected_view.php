@@ -199,6 +199,7 @@
                                 </div> 
                                 
                             </div>
+                            <button class="btn btn-lg">Pagar</button>
 
                         </form>
                         <img src="<?=URL_IMG?>logotipo-verified-by-visa.jpg" alt="visa logo">
@@ -211,6 +212,26 @@
                     </div>
                     <div class="payment-content">
                         <p>Ingresar los Datos Requeridos que acontinuacion se le pide para confirmar el pago de su reserva</p>
+                        <form class="">
+                            <div class="row inline-inputs">                                
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <label>Nombres y Apellidos*</label>
+                                    <input type="text" required>
+                                </div>                                
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <label>N° Documento*</label>
+                                    <input type="text" required>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <label>N° Voucher*</label>
+                                    <input type="text" required>
+                                </div>                                
+                            </div>
+                            
+                            </div>
+                            <button class="btn btn-lg">Confirmar</button>
+
+                        </form>
                     </div>
                 </li>
                 <li>
@@ -220,6 +241,7 @@
                     </div>
                     <div class="payment-content">
                         <p>Realize el pago de su reserva por medio de Paypal</p>
+                        <button class="btn btn-lg">Pagar</button>
                     </div>
                 </li>
             </ul>

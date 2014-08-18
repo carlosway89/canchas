@@ -43,6 +43,8 @@
         <script src="<?php echo URL_JS; ?>validacion/jqueryvalidate.js"></script>
 
 
+
+
         <!-- Add fancyBox main JS and CSS files -->
         <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/jquery.fancybox.js?v=2.1.5"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo URL_JS; ?>fancybox/jquery.fancybox.css?v=2.1.5"  />
@@ -63,6 +65,7 @@
                 $('.fancybox').fancybox();
             });
         </script>
+                
 
         <script type="text/javascript" src="<?php echo URL_JS; ?>jquery.queryloader2.min.js"></script>
         <script type="text/javascript" src="<?php echo URL_JS; ?>jsCustomHeader.js"></script>
@@ -90,7 +93,7 @@
                             <!-- Logo -->
                             <div id="logo" class="col-xs-12 col-lg-8 col-md-7 col-sm-7">
 
-                                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100%" height="100%" id="banner" align="middle">
+                                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100%" height="100%" id="banner" align="middle" style="margin-top:-12px;">
                                     <param name="movie" value="<?=URL_IMG?>banner.swf" />
                                     <param name="quality" value="medium" />
                                     <param name="bgcolor" value="#ffffff" />
@@ -102,7 +105,7 @@
                                     <param name="devicefont" value="false" />
                                     <param name="salign" value="" />
                                     <param name="allowScriptAccess" value="sameDomain" />
-                                    <!--[if !IE]>-->
+                                    
                                     <object type="application/x-shockwave-flash" data="<?=URL_IMG?>banner.swf" width="700" height="100" style="margin-top:-12px;margin-left:-25px;">
                                         <param name="movie" value="<?=URL_IMG?>banner.swf" />
                                         <param name="quality" value="medium" />
@@ -115,13 +118,16 @@
                                         <param name="devicefont" value="false" />
                                         <param name="salign" value="" />
                                         <param name="allowScriptAccess" value="sameDomain" />
-                                    <!--<![endif]-->
+                                    
                                         <a href="#"><img src="<?php echo URL_IMG; ?>logo.png" alt="Logo" width="331" height="101" style="margin-top:-20px"></a>
-                                    <!--[if !IE]>-->
+                                    
                                     </object>
-                                    <!--<![endif]-->
+                                    
                                 </object>
-                            
+                                <!-- <div id="Stage" class="EDGE-17150850" style="margin-top:-12px;margin-left:-25px;">
+                                </div>
+                                <a id="Stage-mobile" href="http://www.solocanchas.com" target="_blank" title="solo canchas"><img src="<?php echo URL_IMG; ?>logo.png" alt="Logo" width="331" height="101" style="margin-top:-20px"></a>
+                             -->
                             </div>
                             <!-- /Logo -->
                             

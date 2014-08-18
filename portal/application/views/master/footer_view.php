@@ -9,9 +9,9 @@
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                 <p class="copyright">© 2014 SoloCanchas. Todos los derechos reservados.</p>
             </div>
-            <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 ">
-                <script type="text/javascript" src="http://counter6.statcounterfree.com/private/countertab.js?c=fccea93d102fbea62c9b84b428f44697"></script>        
-            </div> -->
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 ">
+                <!--<script type="text/javascript" src="http://counter6.statcounterfree.com/private/countertab.js?c=fccea93d102fbea62c9b84b428f44697"></script> -->       
+            </div>
 
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                 <div class="social-media">
@@ -69,18 +69,26 @@
 <script type="text/javascript" src="<?php echo URL_JS; ?>script_main.js"></script>
 <script type="text/javascript" src="<?php echo URL_JS; ?>jsGeneral.js"></script>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
 <!-- UnderScore Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>underscore-min.js"></script>
 <!-- Calendar Script -->
 <script type="text/javascript" src="<?php echo URL_JS; ?>jstz.js"></script>
-<!--parse plugin server-->
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<!--parse plugin server
+
 <script src="<?php echo URL_JS; ?>parse.js"></script>
+
+-->
+<!--Js logo html5 
+<script type="text/javascript" src="<?php echo URL_JS; ?>logo/animacion_logo.js"></script>
+
+-->
 
 <script type="text/javascript">
 
-    Parse.initialize('xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW','KTFcdFGV9cfR6y7OLXy6xei6dxZ02H6coSXS9ucq');
+    // Parse.initialize('xdLEwFZLHdiIXJHpuI0scD67SQcGUuFS2xo4KUYW','KTFcdFGV9cfR6y7OLXy6xei6dxZ02H6coSXS9ucq');
     //Parse.initialize.(APP_ID,javascript KEY)
 
 

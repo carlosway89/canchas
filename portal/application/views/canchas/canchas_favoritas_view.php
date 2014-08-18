@@ -46,10 +46,12 @@
                     <p>
                         <i class="icons icon-flag-1"></i> Canchas:  <?php echo $list_canchas_favoritas->nro_canchas; ?>
                     </p>
-                    
-                    <a class="button donate btn_reservar fancybox media-icon" href="#modal-cancha-reservar-<?=$list_canchas_favoritas->nCanID?>" ><i class="icons icon-right-hand"></i> Reservar</a>
-                    <a class="button donate2 btn_reservar" href="#" > Pagar</a>
+                    <?php 
+                        if ($menu_home=='canchas') {
 
+                    ?>
+                    <a class="button donate btn_reservar fancybox media-icon" href="#modal-cancha-reservar-<?=$list_canchas_favoritas->nCanID?>" ><i class="icons icon-right-hand"></i> Reservar</a>
+                    <?php }?>
                 </div>
                 <!-- /Blog Post -->
                 

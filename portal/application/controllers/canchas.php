@@ -25,11 +25,12 @@ class Canchas extends CI_Controller {
         $data['list_departamentos'] = $this->ubigeo_model->ubigeoQry(array('L-U-DEP', '', ''));
         $data['list_noticias'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-CRITERIO',''));
         $data['noticia_principal'] = $this->noticias_model->noticiasQry(array('LISTADO-NOTICIAS-PRINCIPAL',''));
-        $data['list_eventos']=$this->codegen_model->get('eventos', 'nEveID,cEveLatitud,cEveLongitud,cEveTitulo,cEveDescripcion,cEveLinkFoto,cEveLinkFacebook,cEveDireccion,dEveStartTime,dEveEndTime,nUbiDepartamento,nUbiProvincia,nUbiDistrito,dEveFechaRegistro,cEveEstado,nEveCosto', '', null);
         
         $data['list_publicidad'] = $this->codegen_model->get('multimedia','nMultID,nMultTipoID,nMultCategID,cMultLinkMiniatura,cMultLink,cMultTitulo,cMultDescripcion,cMultEstado,cMultNumVisitas', 'nMultCategID = 5', null);
 
         $data['list_canchas_favoritas'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHA-TOP10','','','',''));
+        $data['canchas_filtro'] = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO',null,'13','1','1350'));
+
         $data['cancha_top1'] = $this->canchas_model->canchasQry(array('CANCHA-TOP1','','','',''));
         $this->load->view('master/template_view', $data);
     }
@@ -138,6 +139,16 @@ class Canchas extends CI_Controller {
 
 
 
+    }
+    public function busqueda_filtros($dep,$pro,$dis) {
+        
+        $list_canchas = $this->canchas_model->canchasQry(array('LISTADO-CANCHAS-CRITERIO',null,$dep,$pro,$dis));
+
+        if (count($list_canchas) < 1) {
+            echo 0;
+        } else {
+            echo json_encode($list_canchas);           
+        }
     }
 
     public function informacion($nombre_cancha_id) {

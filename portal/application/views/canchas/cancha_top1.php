@@ -8,7 +8,9 @@
 
         <?php $url_nombre_cancha = replace_caracteres_raros($cancha_top1->cCanNombre); ?>
         <div class="post-image">
-            <img src="<?php echo $cancha_top1->cCanFotoPortada; ?>" alt="solocanchas.com">
+            <a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $cancha_top1->nCanID; ?>" target="_blank" >
+                <img src="<?php echo $cancha_top1->cCanFotoPortada; ?>" alt="solocanchas.com">
+            </a>
         </div>
 
         <h4 class="title-capital"><a href="<?php echo URL_MAIN; ?>canchas/informacion/<?php echo $url_nombre_cancha . "_" . $cancha_top1->nCanID; ?>" target="_blank">

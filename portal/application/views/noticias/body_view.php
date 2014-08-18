@@ -96,9 +96,6 @@
                 </div>
                 	
 
-                <!-- SECCION CANCHAS FAVORITAS -->
-                <?php $this->load->view("canchas/canchas_favoritas_view"); ?>
-                <!-- END -->	
 
                 <div class="">
                     <?php 
@@ -149,9 +146,7 @@
                 <br />
                 <!-- /Publicidad de Anuncios -->
 
-                <!-- Sección de Eventos -->
-                <?php $this->load->view("eventos/ultimo_eventos_view"); ?>
-                <!-- /Sección de Eventos -->						
+                						
 
 
                 <div class="sidebar-box white animate-onscroll hidden-xs">
