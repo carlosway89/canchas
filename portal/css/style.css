@@ -6575,7 +6575,7 @@ input[type="checkbox"]+label:before{
     margin-left: .2em;
     vertical-align:top;
     margin-right:12px;
-    color:#95999e;
+    color:#31708F;
     position:relative;
     top:1px;
 }
@@ -6583,7 +6583,7 @@ input[type="checkbox"]+label:before{
 input[type="radio"]+label:before{
     content:'';
     background:#fafbfd;
-    border:1px solid #dee0e5;
+    border:1px solid #31708F;
     border-radius:50%;
     -webkit-border-radius:50%;
     -moz-border-radius:50%;

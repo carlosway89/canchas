@@ -21,14 +21,10 @@
         <div class="post-meta">
             <span><i class="icons icon-location"></i><span><?php echo $cancha_top1->direccion; ?></span></span>
         </div>
-        <p><?=$cancha_top1->cCanDescripcion?></p>
-        <p>
-            <i class="icons icon-home"></i> <?php echo $cancha_top1->provincia; ?>, <?php echo $cancha_top1->departamento; ?>
-        </p>
-        <p>
-            <i class="icons icon-phone"></i> Teléfono: <?php echo $cancha_top1->telefono; ?>
-        </p>
-        <p>
+        <p> 
+            <?=$cancha_top1->cCanDescripcion?><br>
+            <i class="icons icon-home"></i> <?php echo $cancha_top1->provincia; ?>, <?php echo $cancha_top1->departamento; ?><br>
+            <i class="icons icon-phone"></i> Teléfono: <?php echo $cancha_top1->telefono; ?><br>
             <i class="icons icon-flag-1"></i> Canchas:  <?php echo $cancha_top1->nro_canchas; ?>
         </p>
 

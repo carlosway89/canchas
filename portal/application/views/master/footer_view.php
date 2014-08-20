@@ -83,7 +83,6 @@
 -->
 <!--Js logo html5 
 <script type="text/javascript" src="<?php echo URL_JS; ?>logo/animacion_logo.js"></script>
-
 -->
 
 <script type="text/javascript">

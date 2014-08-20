@@ -126,16 +126,16 @@
     </div>
 
     <div id="modal-pagar" style="width: 850px;height:650px;display: none;">
-        <H4>Realizar Pago de Reserva</H4>
+        <H4>Realizar Pago de Reserva</H4>        
         <div class="payment-options">
             <ul>
                 <li>
                     <div class="payment-header">
                         <input type="radio" name="payment-option" checked="checked" id="direct-bank-transfer-radio">
-                        <label for="direct-bank-transfer-radio">Pagar Con Tarjeta de Credito o Debito <img src="<?=URL_IMG?>logotipo-visa.jpg" alt="visa logo"></label>
+                        <label for="direct-bank-transfer-radio" class="text-info">Pagar Con Tarjeta de Credito o Debito <img src="<?=URL_IMG?>logotipo-visa.jpg" alt="visa logo"></label>
                     </div>
                     <div class="payment-content">
-                        <p>Ingresar los Datos Requeridos para realizar el pago de su reserva con tarjeta Visa</p>
+                        <p class="text-warning">Ingresar los Datos Requeridos para realizar el pago de su reserva con tarjeta Visa</p>
                         <form class="">
                             <div class="row inline-inputs">                                
                                 <div class="col-lg-4 col-md-4 col-sm-4">
@@ -198,20 +198,29 @@
                                     <input type="text" required>
                                 </div> 
                                 
+                                
                             </div>
-                            <button class="btn btn-lg">Pagar</button>
+                            <div class="row">
+                                <div class="col-lg-11" >
+                                    <button class="btn btn-lg">Pagar</button>
+                                <img src="<?=URL_IMG?>logotipo-verified-by-visa.jpg" alt="visa logo">
+                                </div>
+                                
+
+                            </div>
+                            
 
                         </form>
-                        <img src="<?=URL_IMG?>logotipo-verified-by-visa.jpg" alt="visa logo">
+                        
                     </div>
                 </li>
                 <li>
                     <div class="payment-header">
                         <input type="radio" name="payment-option" id="cheque-payment-radio">
-                        <label for="cheque-payment-radio">Pagado por Agente o Banco (Ingresar Voucher)</label>
+                        <label for="cheque-payment-radio" class="text-info">Pagado por Agente o Banco (Ingresar Voucher)</label>
                     </div>
                     <div class="payment-content">
-                        <p>Ingresar los Datos Requeridos que acontinuacion se le pide para confirmar el pago de su reserva</p>
+                        <p class="text-warning">Ingresar los Datos Requeridos que acontinuacion se le pide para confirmar el pago de su reserva</p>
                         <form class="">
                             <div class="row inline-inputs">                                
                                 <div class="col-lg-4 col-md-4 col-sm-4">
@@ -225,11 +234,15 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4">
                                     <label>N° Voucher*</label>
                                     <input type="text" required>
-                                </div>                                
+                                </div>  
+                                                             
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <button class="btn btn-lg">Confirmar</button>
+                                </div> 
                             </div>
                             
-                            </div>
-                            <button class="btn btn-lg">Confirmar</button>
 
                         </form>
                     </div>
@@ -237,10 +250,10 @@
                 <li>
                     <div class="payment-header">
                         <input type="radio" name="payment-option" id="paypal-radio">
-                        <label for="paypal-radio">Pagar por PayPal <img src="<?=URL_IMG?>paypal.png" alt=""></label>
+                        <label for="paypal-radio" class="text-info">Pagar por PayPal <img src="<?=URL_IMG?>paypal.png" alt=""></label>
                     </div>
                     <div class="payment-content">
-                        <p>Realize el pago de su reserva por medio de Paypal</p>
+                        <p class="text-warning">Realize el pago de su reserva por medio de Paypal</p>
                         <button class="btn btn-lg">Pagar</button>
                     </div>
                 </li>

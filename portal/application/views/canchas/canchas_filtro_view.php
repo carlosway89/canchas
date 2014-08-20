@@ -167,7 +167,7 @@ function get_canchas(departamento,provincia,distrito){
 
          _.templateSettings.variable = "can"; 
 
-        var url_template='<?URL_MAIN?>tmpls/canchas_filtro.php';
+        var url_template='<?URL_MAIN?>tmpls/canchas_filtro.html';
 
         $.ajax({
             url:      url_template,

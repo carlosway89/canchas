@@ -61,6 +61,7 @@
         <script type="text/javascript" src="<?php echo URL_JS; ?>fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 
         <script type="text/javascript">
+            
             $(document).ready(function() {
                 $('.fancybox').fancybox();
             });
